@@ -40,3 +40,10 @@
 | D-017 | Resolve relative input paths against the directory containing `geoimpact.yml`; omit resolved paths from scientific artifacts. | Accepted | Caller working directory and machine location do not affect report content. |
 | D-018 | Serialize `report.json` canonically and derive both Markdown and RFC 7946 CRS84 relationship evidence from that report object. | Accepted | JSON remains authoritative; the map artifact uses explicit EPSG:25830-to-OGC:CRS84 transformation with `always_xy=True`. |
 | D-019 | Pin Python package dependencies used by the local Gate 2 run in `pyproject.toml`; document the tested native GEOS/PROJ versions separately. | Accepted | Stable Python-level dependencies improve reproducibility, while native library and operating-system portability remain explicitly unclaimed. |
+
+## Gate 3 decisions
+
+| ID | Decision | Status | Rationale / consequence |
+|---|---|---|---|
+| D-020 | Expose the Gate 2 runner through one required-argument `geoimpact analyze --config PATH --out DIRECTORY` console command, with exit 0 for PASS, 1 for completed BLOCK, and 2 for execution or usage errors. | Accepted | A caller can distinguish policy blocking from failure to produce a valid analysis without changing the proven analysis or artifact contract. |
+| D-021 | Keep the PASS fixture identical in spatial inputs and scientific declarations to the canonical BLOCK fixture, changing only threshold 1 to 2. | Accepted | Both successful exit states can be exercised while preserving Gate 1 evidence identity and spatial results. |

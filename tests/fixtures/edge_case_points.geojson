@@ -1,0 +1,15 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"point_id": "strictly_inside"},
+      "geometry": {"type": "Point", "coordinates": [-3.705889240969258, 40.37933311612615]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"point_id": "outside_both"},
+      "geometry": {"type": "Point", "coordinates": [-3.7042400852822777, 40.379343171112396]}
+    }
+  ]
+}

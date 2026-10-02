@@ -23,3 +23,11 @@
 4. Benchmark small/realistic fixtures before admitting DuckDB acceleration.
 5. Decide whether a topologically equal but structurally different geometry is
    warning-only or a distinct policy measurement.
+
+## Gate 1 decisions
+
+| ID | Decision | Status | Rationale / consequence |
+|---|---|---|---|
+| D-013 | The 40 m x 200 m control strip is geometrically consistent with the proposed 8,000 m² footprint and 40 m maximum displacement. | Verified | No Gate 0 control-value correction is required. |
+| D-014 | Store the test fixtures as CRS84 GeoJSON and transform to EPSG:25830 with PyProj `always_xy=True`. | Accepted | Gate 0 requires RFC 7946 GeoJSON to be transformed before metre measurements; PyProj is therefore required for this slice. |
+| D-015 | Gate 1 fixture metric assertions use ±1e-6 m / m², rather than the generic Gate 0 1e-9 suggestion. | Accepted | CRS84 decimal serialization and inverse projection yield an observed 8,000.0000001862645 m² footprint; the mathematical construction remains 8,000 m². |

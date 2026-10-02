@@ -1,0 +1,10 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"poi_id": "poi_212"},
+      "geometry": {"type": "Point", "coordinates": [-3.706011739832027, 40.37978282325828]}
+    }
+  ]
+}

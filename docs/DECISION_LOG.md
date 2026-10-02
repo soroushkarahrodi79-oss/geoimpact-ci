@@ -31,3 +31,12 @@
 | D-013 | The 40 m x 200 m control strip is geometrically consistent with the proposed 8,000 m² footprint and 40 m maximum displacement. | Verified | No Gate 0 control-value correction is required. |
 | D-014 | Store the test fixtures as CRS84 GeoJSON and transform to EPSG:25830 with PyProj `always_xy=True`. | Accepted | Gate 0 requires RFC 7946 GeoJSON to be transformed before metre measurements; PyProj is therefore required for this slice. |
 | D-015 | Gate 1 fixture metric assertions use ±1e-6 m / m², rather than the generic Gate 0 1e-9 suggestion. | Accepted | CRS84 decimal serialization and inverse projection yield an observed 8,000.0000001862645 m² footprint; the mathematical construction remains 8,000 m². |
+
+## Gate 2 decisions
+
+| ID | Decision | Status | Rationale / consequence |
+|---|---|---|---|
+| D-016 | Gate 2 accepts only contract version 1, EPSG:25830, GeoJSON FeatureCollections, WITHIN, and the `max_relationship_regressions` BLOCK rule. | Accepted | Keep file-backed invocation aligned with the narrow Gate 1 proof; other formats, CRSs, predicates, and policies remain deferred. |
+| D-017 | Resolve relative input paths against the directory containing `geoimpact.yml`; omit resolved paths from scientific artifacts. | Accepted | Caller working directory and machine location do not affect report content. |
+| D-018 | Serialize `report.json` canonically and derive both Markdown and RFC 7946 CRS84 relationship evidence from that report object. | Accepted | JSON remains authoritative; the map artifact uses explicit EPSG:25830-to-OGC:CRS84 transformation with `always_xy=True`. |
+| D-019 | Pin Python package dependencies used by the local Gate 2 run in `pyproject.toml`; document the tested native GEOS/PROJ versions separately. | Accepted | Stable Python-level dependencies improve reproducibility, while native library and operating-system portability remain explicitly unclaimed. |

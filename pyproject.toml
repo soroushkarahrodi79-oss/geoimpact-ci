@@ -1,3 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geoimpact-ci"
+version = "0.1.0"
+description = "Deterministic spatial change evidence for GeoJSON"
+requires-python = ">=3.11"
+dependencies = [
+    "pyproj==3.7.2",
+    "PyYAML==6.0.3",
+    "shapely==2.1.2",
+]
+
+[project.optional-dependencies]
+test = ["pytest==8.4.2"]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]

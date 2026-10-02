@@ -48,10 +48,12 @@ def analyze(
     dependent_sources: Mapping[str, tuple[Path, str]],
     *,
     relationship_threshold: int,
+    primary_id_field: str = "district_id",
+    primary_dataset: str = PRIMARY_DATASET,
 ) -> dict[str, object]:
     """Analyze the declared fixed dependencies against BASE and CANDIDATE."""
-    base_primary = load_features(base_primary_path, "district_id")
-    candidate_primary = load_features(candidate_primary_path, "district_id")
+    base_primary = load_features(base_primary_path, primary_id_field)
+    candidate_primary = load_features(candidate_primary_path, primary_id_field)
     relationship_records: list[dict[str, object]] = []
     regression_evidence: list[dict[str, object]] = []
     boundary_ambiguities: list[dict[str, object]] = []
@@ -90,7 +92,7 @@ def analyze(
             if change_type != "unchanged":
                 regression_evidence.append(
                     relationship_evidence(
-                        primary_dataset=PRIMARY_DATASET,
+                        primary_dataset=primary_dataset,
                         dependent_dataset=dependent_dataset,
                         dependent_id=dependent_id,
                         dependent_geometry=dependents[dependent_id],

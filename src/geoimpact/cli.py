@@ -6,7 +6,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from geoimpact.contract import ContractError
+from geoimpact.errors import GeoImpactError
 from geoimpact.runner import run_from_config
 
 
@@ -24,7 +24,10 @@ def main(argv: list[str] | None = None) -> int:
     arguments = _parser().parse_args(argv)
     try:
         report = run_from_config(arguments.config, arguments.out)
-    except (ContractError, OSError, UnicodeError, ValueError) as error:
+    except (GeoImpactError, OSError, UnicodeError) as error:
+        # Only expected GeoImpact domain/input failures and operational I/O
+        # errors become a controlled exit 2. Unexpected programming errors
+        # (including a bare ValueError) are left to propagate as a traceback.
         print(f"GeoImpact error: {error}", file=sys.stderr)
         return 2
 

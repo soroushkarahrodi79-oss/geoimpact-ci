@@ -122,11 +122,63 @@ differ.
 
 ## Tests
 
-The full test suite completed with **38 passed**. It retains all Gate 1 and
-Gate 2 tests and adds subprocess coverage for required arguments, PASS, BLOCK,
-expected errors, output completeness, canonical hashes, evidence identity,
-working-directory independence, direct-runner byte equality, PASS/BLOCK
-scientific invariance, and clean-environment console-script installation.
+On the originally tested Windows environment the full suite completed with
+**38 passed**. The final audit pass (below) added two tests, for a total of
+**40**. It retains all Gate 1 and Gate 2 tests and adds subprocess coverage for
+required arguments, PASS, BLOCK, expected errors, output completeness,
+canonical hashes, evidence identity, working-directory independence,
+direct-runner byte equality, PASS/BLOCK scientific invariance, and
+clean-environment console-script installation, plus the two
+exception-boundary tests described under the final audit.
+
+## Final audit (hardening pass)
+
+A later audit/hardening pass made four non-scientific corrections to the Gate 3
+change. None alter the Gate 1 or Gate 2 scientific outputs: the verdicts,
+changed features, relationship records, regression evidence, evidence IDs, and
+the canonical artifact serialization are all unchanged. These are audit
+corrections, not a claim that there were no prior Gate corrections.
+
+- **Reconciled the historical Gate 2 hash record.** The `GATE_2_REPORT.md`
+  determinism table listed a Run B SHA-256 for
+  `relationship-regressions.geojson` with a copy typo (a dropped `4b2c`
+  segment). The documentation now records the canonical
+  `93a00d6255cc20325f54ba6ac79b431ba3432c9c4b2c1d92817ac4bb2530d4a1` for both
+  runs. Only the report text changed; no scientific output or serialization was
+  modified to match.
+- **Closed D-012.** The Gate 0 decision log entry D-012 was still `Proposed`
+  pending a scoped Gate 1 proof. Gate 1 proved the deterministic
+  relationship-delta mechanism within the accepted narrow scope, so D-012 is
+  now `Verified` (overlap risk remains if scope expands).
+- **Narrowed the CLI exception boundary.** The CLI previously caught the
+  built-in `ValueError` as a broad operational-error category, which would
+  disguise an unrelated programming bug as a controlled `GeoImpact error`. A
+  dedicated `geoimpact.errors.GeoImpactError` base now marks expected
+  domain/input failures; `contract.ContractError` subclasses it (retaining
+  `ValueError`), and the analysis input-validation failures raise a new
+  `errors.InputError`. The CLI now catches only
+  `(GeoImpactError, OSError, UnicodeError)`. Expected malformed/invalid input
+  still yields exit 2 with a concise stderr diagnostic and no traceback; an
+  unexpected programming `ValueError` is no longer swallowed and remains
+  visible. Two tests assert this distinction.
+- **Ignored generated packaging output.** `.gitignore` now excludes `build/`
+  and `*.egg-info/` so local installation proofs do not leave untracked build
+  artifacts in the tree.
+
+### Cross-platform reproduction note
+
+The canonical `report.json` and `relationship-regressions.geojson` SHA-256
+hashes were frozen on the documented Windows environment. On a Linux container
+(same PyProj 3.7.2 / PROJ 9.5.1), the reprojected coordinate serialization
+differs in low-order floating-point digits — operating-system `libm`
+transcendental-math variance, not a PROJ-version difference and not a
+scientific defect. The verdict, changed features, relationship records, and
+evidence IDs are byte-identical across both platforms; only the embedded
+reprojected coordinates differ. Consequently the three byte-hash tests
+(`canonical hashes`, `cwd-independence`, and `clean-venv install`) pass on
+Windows but fail on Linux. This is the known Gate 2 limitation that no
+cross-platform byte determinism is claimed, and it is the reason this gate is
+not yet portable to a Linux CI runner.
 
 ## Limitations and deferred work
 

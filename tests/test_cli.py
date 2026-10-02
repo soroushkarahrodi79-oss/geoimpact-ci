@@ -9,8 +9,11 @@ import sys
 import venv
 from pathlib import Path
 
+import pytest
 import yaml
 
+from geoimpact import cli
+from geoimpact.errors import InputError
 from geoimpact.runner import run_from_config
 
 
@@ -229,3 +232,38 @@ def test_installed_console_entrypoint_works_in_clean_venv(tmp_path: Path) -> Non
     assert _hashes(tmp_path / "installed-output")["relationship-regressions.geojson"] == EXPECTED_HASHES[
         "relationship-regressions.geojson"
     ]
+
+
+def test_expected_domain_input_error_is_controlled_exit_two(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """An expected GeoImpact domain/input failure becomes a concise exit 2."""
+
+    def raise_input_error(*_args: object, **_kwargs: object) -> dict[str, object]:
+        raise InputError("districts_base.geojson is not a FeatureCollection")
+
+    monkeypatch.setattr(cli, "run_from_config", raise_input_error)
+    exit_code = cli.main(
+        ["analyze", "--config", str(BLOCK_CONFIG), "--out", str(tmp_path / "out")]
+    )
+    captured = capsys.readouterr()
+
+    assert exit_code == 2
+    assert "GeoImpact error: districts_base.geojson is not a FeatureCollection" in captured.err
+    assert "Traceback" not in captured.err
+    assert captured.out == ""
+
+
+def test_unexpected_programming_valueerror_is_not_swallowed(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """A bare programming ValueError must not be translated into exit 2."""
+
+    def raise_programming_error(*_args: object, **_kwargs: object) -> dict[str, object]:
+        raise ValueError("internal invariant violated")
+
+    monkeypatch.setattr(cli, "run_from_config", raise_programming_error)
+    with pytest.raises(ValueError, match="internal invariant violated"):
+        cli.main(
+            ["analyze", "--config", str(BLOCK_CONFIG), "--out", str(tmp_path / "out")]
+        )

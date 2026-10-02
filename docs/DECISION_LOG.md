@@ -13,7 +13,7 @@
 | D-009 | JSON is the source artifact; Markdown/GeoJSON are derived. | Accepted | Makes CI use and human review consistent. |
 | D-010 | Shapely/GEOS is normative; DuckDB Spatial is optional acceleration. | Accepted | Prevents two spatial engines becoming competing truth sources. |
 | D-011 | Do not build a generic validator, DVCS, or PR API. | Accepted | Existing tools already own those categories. |
-| D-012 | Gate 0 result is PASS subject to a scoped Gate 1 proof. | Proposed | Prior art lacks the defined relationship-delta gate, but overlap remains close if scope expands. |
+| D-012 | Gate 0 result is PASS subject to a scoped Gate 1 proof. | Verified | Gate 1 proved the deterministic relationship-delta mechanism within the accepted narrow scope; overlap risk remains if scope expands. |
 
 ## Gate 1 decisions to close
 

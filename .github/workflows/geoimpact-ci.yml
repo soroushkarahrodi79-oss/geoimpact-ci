@@ -1,0 +1,65 @@
+name: GeoImpact CI contract
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    name: ${{ matrix.identifier }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-latest
+            python-version: "3.11"
+            identifier: linux-py311
+          - runner: windows-latest
+            python-version: "3.14"
+            identifier: windows-py314
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install project and test dependencies
+        run: python -m pip install ".[test]"
+
+      - name: Run full test suite
+        run: python -m pytest
+
+      - name: Verify installed CLI PASS contract
+        run: python scripts/verify_ci_contract.py pass
+
+      - name: Verify installed CLI BLOCK contract
+        run: python scripts/verify_ci_contract.py block
+
+      - name: Verify installed CLI ERROR contract
+        run: python scripts/verify_ci_contract.py error
+
+      - name: Verify BLOCK artifact hashes
+        run: python scripts/verify_ci_contract.py hashes
+
+      - name: Upload BLOCK evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: geoimpact-block-${{ matrix.identifier }}
+          path: |
+            ci-output/block/report.json
+            ci-output/block/report.md
+            ci-output/block/relationship-regressions.geojson
+          if-no-files-found: error
+          retention-days: 7

@@ -1,0 +1,17 @@
+version: 1
+analysis:
+  crs: EPSG:25830
+primary:
+  dataset: ine_sections
+  base: ine-sections-2024-focus.geojson
+  candidate: ine-sections-2025-focus.geojson
+  id_field: cusec
+dependencies:
+  - dataset: madrid_portals
+    path: madrid-portals-change-footprint.geojson
+    id_field: portal_id
+    predicate: within
+policy:
+  max_relationship_regressions:
+    threshold: 0
+    severity: block

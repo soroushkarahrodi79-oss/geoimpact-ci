@@ -60,3 +60,10 @@
 |---|---|---|---|
 | D-023 | CI executes the installed GeoImpact CLI on Linux and Windows and validates PASS, BLOCK, and ERROR using exact subprocess exit codes 0, 1, and 2. | Accepted | CI distinguishes a completed policy BLOCK from an operational failure while enforcing the already-verified local contract; no analysis or policy implementation is duplicated. |
 | D-024 | CI uploads the three verified BLOCK artifacts from each matrix leg even though the underlying CLI returns exit code 1 for BLOCK. | Accepted | A completed BLOCK remains a green CI scenario and retains reviewable evidence as a run artifact; missing outputs or upload failure still fail the job. |
+
+## Gate 5 decisions
+
+| ID | Decision | Status | Rationale / consequence |
+|---|---|---|---|
+| D-025 | Qualify the INE Madrid 2024-to-2025 census-section transition with the Ayuntamiento's fixed portal-address inventory as the first real-world case. | Verified (existing CLI) | The official annual polygon pair and stable address IDs produced 2,112 observed `WITHIN` assignment changes across 26 old-to-new section-ID pairs; this establishes one concrete spatial blast-radius case without expanding analysis semantics. |
+| D-026 | Freeze only the reproducible change-footprint subset as a compact, attributed research fixture, keeping the sources' licenses distinct. | Accepted | A fixed input subset makes the observed case repeatable without checking in the 156 MB point snapshot or changing the code/test surface; the subset does not claim full-city coverage or a time-aligned historical address impact. |

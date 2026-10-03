@@ -13,7 +13,7 @@
 | D-009 | JSON is the source artifact; Markdown/GeoJSON are derived. | Accepted | Makes CI use and human review consistent. |
 | D-010 | Shapely/GEOS is normative; DuckDB Spatial is optional acceleration. | Accepted | Prevents two spatial engines becoming competing truth sources. |
 | D-011 | Do not build a generic validator, DVCS, or PR API. | Accepted | Existing tools already own those categories. |
-| D-012 | Gate 0 result is PASS subject to a scoped Gate 1 proof. | Proposed | Prior art lacks the defined relationship-delta gate, but overlap remains close if scope expands. |
+| D-012 | Gate 0 result is PASS subject to a scoped Gate 1 proof. | Verified | Gate 1 proved the deterministic relationship-delta mechanism within the accepted narrow scope; overlap risk remains if scope expands. |
 
 ## Gate 1 decisions to close
 
@@ -40,3 +40,16 @@
 | D-017 | Resolve relative input paths against the directory containing `geoimpact.yml`; omit resolved paths from scientific artifacts. | Accepted | Caller working directory and machine location do not affect report content. |
 | D-018 | Serialize `report.json` canonically and derive both Markdown and RFC 7946 CRS84 relationship evidence from that report object. | Accepted | JSON remains authoritative; the map artifact uses explicit EPSG:25830-to-OGC:CRS84 transformation with `always_xy=True`. |
 | D-019 | Pin Python package dependencies used by the local Gate 2 run in `pyproject.toml`; document the tested native GEOS/PROJ versions separately. | Accepted | Stable Python-level dependencies improve reproducibility, while native library and operating-system portability remain explicitly unclaimed. |
+
+## Gate 3 decisions
+
+| ID | Decision | Status | Rationale / consequence |
+|---|---|---|---|
+| D-020 | Expose the Gate 2 runner through one required-argument `geoimpact analyze --config PATH --out DIRECTORY` console command, with exit 0 for PASS, 1 for completed BLOCK, and 2 for execution or usage errors. | Accepted | A caller can distinguish policy blocking from failure to produce a valid analysis without changing the proven analysis or artifact contract. |
+| D-021 | Keep the PASS fixture identical in spatial inputs and scientific declarations to the canonical BLOCK fixture, changing only threshold 1 to 2. | Accepted | Both successful exit states can be exercised while preserving Gate 1 evidence identity and spatial results. |
+
+## Gate 3B decisions
+
+| ID | Decision | Status | Rationale / consequence |
+|---|---|---|---|
+| D-022 | Bound published artifact coordinate representation to a fixed precision at the serialization boundary only: EPSG:25830 projected geometry to 6 decimal places (1 µm), and derived OGC:CRS84 GeoJSON to 8 decimal places (~mm in Madrid). The spatial analysis — WITHIN predicates, symmetric difference, area, Hausdorff displacement, regression detection, and evidence identity — continues at full internal double precision; rounding is applied only when coordinates cross the artifact boundary, and scalar scientific measurements (areas, displacements, counts, thresholds) are never rounded for hashing. | Verified (Linux + Windows) | Makes `report.json` and `relationship-regressions.geojson` byte-reproducible across operating systems whose libm differs in the low-order digits of CRS transformations, without altering any scientific conclusion or evidence ID. Verified by identical full-suite results (46 passed) and byte-identical canonical hashes on Linux (Python 3.11.15) and Windows 11 (Python 3.14.5) under the pinned Python dependencies; no `sys.platform` serialization branch exists. Determinism beyond these tested environments and pins is not claimed. **Serialization precision is a representation choice, not the precision or accuracy of the source data or the analysis.** The pre-portable Windows-only canonical hashes are superseded; evidence IDs are unchanged because coordinate serialization is not part of evidence identity. |

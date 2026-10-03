@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -14,6 +15,78 @@ from shapely.ops import transform
 _ANALYSIS_TO_CRS84 = Transformer.from_crs(
     "EPSG:25830", "OGC:CRS84", always_xy=True
 )
+
+# Artifact-coordinate serialization precision (representation only, NOT the
+# precision or accuracy of the source data or the analysis). Scientific
+# computation runs at full double precision; coordinates are rounded solely
+# when they cross the published-artifact boundary, so artifact bytes are
+# reproducible across operating systems whose libm differs in the low-order
+# digits of CRS transformations. See decision log D-022.
+PROJECTED_COORDINATE_DECIMALS = 6  # EPSG:25830 metres -> 1e-6 m (one micrometre)
+GEOGRAPHIC_COORDINATE_DECIMALS = 8  # OGC:CRS84 degrees -> ~mm-scale in Madrid
+
+_GEOMETRY_TYPES = frozenset(
+    {
+        "Point",
+        "MultiPoint",
+        "LineString",
+        "MultiLineString",
+        "Polygon",
+        "MultiPolygon",
+    }
+)
+
+
+def canonical_coordinate(value: Any, decimals: int) -> float:
+    """Round one coordinate ordinate; normalize ``-0.0`` and reject non-finite."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError(f"coordinate ordinate must be a real number, got {value!r}")
+    number = float(value)
+    if not math.isfinite(number):
+        raise ValueError(f"coordinate ordinate must be finite, got {number!r}")
+    rounded = round(number, decimals)
+    if rounded == 0.0:
+        rounded = 0.0  # collapse -0.0 to a single canonical zero
+    return rounded
+
+
+def _canonicalize_coordinates(coordinates: Any, decimals: int) -> Any:
+    """Recursively round a GeoJSON coordinate array, preserving its structure."""
+    if isinstance(coordinates, (list, tuple)):
+        return [_canonicalize_coordinates(item, decimals) for item in coordinates]
+    return canonical_coordinate(coordinates, decimals)
+
+
+def canonicalize_geojson_geometry(geometry: Any, decimals: int) -> Any:
+    """Return a geometry mapping with coordinates rounded to ``decimals`` places.
+
+    Geometry type, coordinate ordering, and topology representation are
+    preserved; only numeric ordinates are rounded. Non-coordinate members are
+    left untouched. ``None`` (an absent geometry) passes through unchanged.
+    """
+    if geometry is None:
+        return None
+    if not isinstance(geometry, dict) or "type" not in geometry:
+        raise ValueError("geometry must be a GeoJSON mapping with a type member")
+    result = dict(geometry)
+    if "coordinates" in geometry:
+        result["coordinates"] = _canonicalize_coordinates(geometry["coordinates"], decimals)
+    return result
+
+
+def _canonicalize_report_geometry(value: Any, decimals: int) -> Any:
+    """Deep-copy-walk a report object, rounding every embedded geometry only.
+
+    Scalar scientific measurements (areas, displacements, counts, thresholds)
+    are not inside geometry mappings and are therefore never rounded here.
+    """
+    if isinstance(value, dict):
+        if value.get("type") in _GEOMETRY_TYPES and "coordinates" in value:
+            return canonicalize_geojson_geometry(value, decimals)
+        return {key: _canonicalize_report_geometry(item, decimals) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_canonicalize_report_geometry(item, decimals) for item in value]
+    return value
 
 
 def canonical_json_bytes(value: Any) -> bytes:
@@ -120,11 +193,16 @@ def build_relationship_geojson(report: dict[str, Any]) -> dict[str, Any]:
     features: list[dict[str, Any]] = []
     for item in report["relationship_regressions"]:
         analysis_geometry = shape(item["evidence_geometry"])
+        # The inverse CRS transform runs on the full-precision projected
+        # geometry; only its CRS84 output is rounded for serialization.
         crs84_geometry = transform(_ANALYSIS_TO_CRS84.transform, analysis_geometry)
+        geometry = canonicalize_geojson_geometry(
+            mapping(crs84_geometry), GEOGRAPHIC_COORDINATE_DECIMALS
+        )
         features.append(
             {
                 "type": "Feature",
-                "geometry": mapping(crs84_geometry),
+                "geometry": geometry,
                 "properties": {
                     "evidence_id": item["evidence_id"],
                     "dependent_dataset": item["dependent_dataset"],
@@ -153,7 +231,11 @@ def write_artifacts(report: dict[str, Any], output_directory: str | Path) -> dic
         "report.md": output / "report.md",
         "relationship-regressions.geojson": output / "relationship-regressions.geojson",
     }
-    paths["report.json"].write_bytes(canonical_json_bytes(report))
+    # report.json embeds EPSG:25830 geometry; round only those coordinates for
+    # serialization. The in-memory report keeps full precision, so the geojson
+    # inverse transform below still runs on unrounded projected geometry.
+    report_for_json = _canonicalize_report_geometry(report, PROJECTED_COORDINATE_DECIMALS)
+    paths["report.json"].write_bytes(canonical_json_bytes(report_for_json))
     paths["report.md"].write_text(render_markdown(report), encoding="utf-8", newline="\n")
     paths["relationship-regressions.geojson"].write_bytes(
         canonical_json_bytes(build_relationship_geojson(report))

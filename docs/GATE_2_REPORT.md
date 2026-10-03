@@ -93,10 +93,21 @@ were byte-identical in all runs:
 |---|---|---|
 | `report.json` | `569f018c06ba8ec9fcd7d60c1ac08bab57735978aa0101c1e57cfd285992f872` | `569f018c06ba8ec9fcd7d60c1ac08bab57735978aa0101c1e57cfd285992f872` |
 | `report.md` | `d161a55cbf1441e078ce1ea3181dbc41d2ee8d73e540b311f5a52690379f202e` | `d161a55cbf1441e078ce1ea3181dbc41d2ee8d73e540b311f5a52690379f202e` |
-| `relationship-regressions.geojson` | `93a00d6255cc20325f54ba6ac79b431ba3432c9c4b2c1d92817ac4bb2530d4a1` | `93a00d6255cc20325f54ba6ac79b431ba3432c9c1d92817ac4bb2530d4a1` |
+| `relationship-regressions.geojson` | `93a00d6255cc20325f54ba6ac79b431ba3432c9c4b2c1d92817ac4bb2530d4a1` | `93a00d6255cc20325f54ba6ac79b431ba3432c9c4b2c1d92817ac4bb2530d4a1` |
 
 The copied-bundle hashes matched Run A as well. The output scan found no
 temporary root or absolute local path in any artifact.
+
+> **Audit note (superseded by Gate 3B).** The three SHA-256 values above were
+> generated on the documented Windows environment under the earlier *unbounded*
+> floating-point coordinate serialization. They are **pre-portable-canonicalization
+> hashes** and are not reproducible across operating systems, because the
+> low-order digits of CRS-transformed coordinates vary with the platform's libm.
+> Gate 3B introduced a precision-bounded artifact serialization contract (decision
+> log D-022) that supersedes these values; the current canonical hashes are
+> recorded in `GATE_3_REPORT.md`. These historical values are retained here as the
+> original Gate 2 evidence, not as the active contract. The scientific results,
+> verdict, and evidence IDs are unchanged between the two serializations.
 
 ## Canonical fixture result and tests
 

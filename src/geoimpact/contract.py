@@ -7,8 +7,10 @@ from typing import Any
 
 import yaml
 
+from geoimpact.errors import GeoImpactError
 
-class ContractError(ValueError):
+
+class ContractError(GeoImpactError, ValueError):
     """A rejected or incomplete ``geoimpact.yml`` declaration."""
 
 

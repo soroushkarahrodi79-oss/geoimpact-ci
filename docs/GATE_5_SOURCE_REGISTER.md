@@ -8,8 +8,8 @@ freeze the exact small subset used for the CLI probe.
 
 | Role | Source and version | License / attribution | Findings |
 |---|---|---|---|
-| BASE primary polygons | INE `Secciones_2024`, `CUMUN=28079`, `TIPO=SECCIONADO` | CC BY-SA 4.0. Required attribution: “Seccionado cedido por el Instituto Nacional de Estadística”. | 2,450 valid non-empty MultiPolygons; ID `CUSEC`; OGC GeoJSON coordinates are CRS84. |
-| CANDIDATE primary polygons | INE `Secciones_2025`, same filters | CC BY-SA 4.0; same attribution. | 2,462 valid non-empty MultiPolygons; same `CUSEC` schema. Compared with 2024: 2,443 common IDs, 30 common geometries changed, 19 added IDs, 7 removed IDs. |
+| BASE primary polygons | INE `Secciones_2024`, `CUMUN=28079`, `TIPO=SECCIONADO` | The service requires attribution: “Seccionado cedido por el Instituto Nacional de Estadística”. Dataset-specific license remains ambiguous; see note below. | 2,450 valid non-empty MultiPolygons; ID `CUSEC`; OGC GeoJSON coordinates are CRS84. |
+| CANDIDATE primary polygons | INE `Secciones_2025`, same filters | Same required attribution; dataset-specific license remains ambiguous. | 2,462 valid non-empty MultiPolygons; same `CUSEC` schema. Compared with 2024: 2,443 common IDs, 30 common geometries changed, 19 added IDs, 7 removed IDs. |
 | Fixed dependency points | Ayuntamiento de Madrid Callejero resource `200075-1-callejero-csv`, filter `Tipologia del numero = Portal`; retrieved snapshot 2026-10-03 (published metadata update 2026-09-14) | CC BY 4.0; attribute Ayuntamiento de Madrid and link the dataset. | 161,190 rows; all `Codigo de numero` values unique; coordinate fields are ETRS89/WGS84 longitude/latitude. 2,112 points fell in the derived change footprint. |
 
 Official links:
@@ -33,9 +33,14 @@ with sorted keys and one trailing LF. They were not committed:
 
 The full point snapshot is intentionally not committed. The four compact,
 attributed GeoJSON/config inputs committed for the probe total 480,835 bytes.
-The INE-derived files remain under the INE share-alike license; the point
-subset remains under CC BY 4.0. The data licenses are separate from the
-project's source-code licensing.
+The Ayuntamiento Callejero source and point subset are CC BY 4.0. The INE
+census-section service requires attribution as “Seccionado cedido por el
+Instituto Nacional de Estadística”. INE web properties expose differing
+general Creative Commons labels, so this research record preserves the
+dataset-specific required attribution and records the licensing ambiguity
+rather than asserting an unsupported dataset-specific share-alike obligation.
+Confirm INE licensing before broader redistribution. The data terms are
+separate from the project's source-code licensing.
 
 ## Derived input files
 
@@ -80,3 +85,11 @@ transitions and 197 points unassigned in both versions. A broader installed-CLI
 attempt (5,480 points, complete section layers) was stopped after about 2.5
 minutes without output; completed CLI evidence is limited to the deterministic
 change-footprint subset.
+
+The transition-type audit classified 1,768 relationships as split-like (the
+old CUSEC is retained with changed geometry and the destination CUSEC is newly
+added in 2025) and 344 as merge-like (the old CUSEC disappears and the
+destination CUSEC is retained with changed geometry). There were no gained,
+lost, both-retained-ID, or pure ID-only/renumbering transitions. These labels
+describe the observed ID/geometry pattern and do not state INE's intention or
+cause.

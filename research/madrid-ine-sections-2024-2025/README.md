@@ -10,8 +10,12 @@ and [source register](../../docs/GATE_5_SOURCE_REGISTER.md).
 
 - Section geometries derive from the Instituto Nacional de Estadística annual
   census-section collections. Attribute the source as **“Seccionado cedido por
-  el Instituto Nacional de Estadística”**. The data and section-derived files
-  are under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+  el Instituto Nacional de Estadística”**. INE web properties expose differing
+  general Creative Commons labels, and the available census-section service
+  metadata does not establish a dataset-specific license. This fixture
+  preserves the service's required attribution and records that ambiguity
+  rather than asserting an unsupported dataset-specific share-alike
+  obligation. Confirm licensing with INE before broader redistribution.
 - Portal points derive from the Ayuntamiento de Madrid Callejero, resource
   `200075-1-callejero-csv`. Attribute **Ayuntamiento de Madrid** and link to
   its [Callejero dataset](https://datos.madrid.es/dataset/200075-0-callejero).

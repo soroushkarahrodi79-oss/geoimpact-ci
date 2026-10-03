@@ -61,6 +61,24 @@ GEOS 3.13.1, and PyProj 3.7.2 / PROJ 9.5.1:
 | Distinct old→new section ID pairs | 26 |
 | Boundary ambiguities | 0 |
 
+### Transition-type audit
+
+The 2,112 `assignment_changed` relationships were independently audited
+against the checked-in BASE/CANDIDATE feature IDs and geometries:
+
+| Transition pattern | Count | Observed ID/geometry pattern |
+|---|---:|---|
+| Split-like | 1,768 | The old CUSEC exists in both versions and its polygon changes; the destination CUSEC is newly added in 2025. |
+| Merge-like | 344 | The old CUSEC disappears in 2025; the destination CUSEC exists in both versions and its polygon changes. |
+| Gained / lost | 0 / 0 | No relationship changes were classified as a pure gain or loss. |
+| Both IDs retained in both versions | 0 | No transition has both old and new IDs present in both versions. |
+| Pure ID-only / renumbering | 0 | No observed transition is a pure ID-only or renumbering case. |
+
+Thus, the observed blast radius is not merely arbitrary CUSEC renumbering:
+the audited transitions coincide with changed retained geometries and
+added/removed section IDs. “Split-like” and “merge-like” describe only these
+observed data patterns. No administrative intention or cause is inferred.
+
 The largest observed address reassignment groups included `2807918058 →
 2807918076` (328 points), `2807919053 → 2807919059` (269), `2807908176 →
 2807908193` (205), and `2807919054 → 2807919060` (200) / `2807919061` (172).
@@ -92,9 +110,11 @@ The three output artifacts from this local run had SHA-256 values:
 ## Evidence classification
 
 - **Source facts:** INE publishes annual section layers and identifies the
-  collection storage CRS as EPSG:25830; the Ayuntamiento publishes the
-  monthly address resource, its identifier and coordinate fields, and its
-  update date. Source links and licenses are recorded in
+  collection storage CRS as EPSG:25830 and requires a specific attribution;
+  dataset-specific license ambiguity is recorded in the source register. The
+  Ayuntamiento publishes the monthly address resource, its identifier,
+  coordinate fields, CC BY 4.0 license, and update date. Source links and
+  licensing details are recorded in
   [the source register](GATE_5_SOURCE_REGISTER.md).
 - **Derived observations:** feature counts, geometry validity, IDs, selected
   subset, assignment transitions, measurements, and source/input SHA-256

@@ -26,10 +26,14 @@ ARTIFACTS = (
     "report.md",
     "relationship-regressions.geojson",
 )
+# Canonical hashes under the Gate 3B portable (precision-bounded) artifact
+# serialization contract. These supersede the pre-portable Windows-only hashes
+# (see docs/GATE_2_REPORT.md); report.md is unchanged because it embeds no
+# coordinates. See decision log D-022.
 EXPECTED_HASHES = {
-    "report.json": "569f018c06ba8ec9fcd7d60c1ac08bab57735978aa0101c1e57cfd285992f872",
+    "report.json": "234d31b08c18ed45e8698af2abf7e001b489bcb7efbf34ffb058e2113447388d",
     "report.md": "d161a55cbf1441e078ce1ea3181dbc41d2ee8d73e540b311f5a52690379f202e",
-    "relationship-regressions.geojson": "93a00d6255cc20325f54ba6ac79b431ba3432c9c4b2c1d92817ac4bb2530d4a1",
+    "relationship-regressions.geojson": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
 }
 EXPECTED_IDS = [
     "relationship-regression-526712f2a3cfcdb0b86e03e9b060807c34ec8909095e5bb87cd57ab47e3cde49",

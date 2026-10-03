@@ -98,6 +98,17 @@ were byte-identical in all runs:
 The copied-bundle hashes matched Run A as well. The output scan found no
 temporary root or absolute local path in any artifact.
 
+> **Audit note (superseded by Gate 3B).** The three SHA-256 values above were
+> generated on the documented Windows environment under the earlier *unbounded*
+> floating-point coordinate serialization. They are **pre-portable-canonicalization
+> hashes** and are not reproducible across operating systems, because the
+> low-order digits of CRS-transformed coordinates vary with the platform's libm.
+> Gate 3B introduced a precision-bounded artifact serialization contract (decision
+> log D-022) that supersedes these values; the current canonical hashes are
+> recorded in `GATE_3_REPORT.md`. These historical values are retained here as the
+> original Gate 2 evidence, not as the active contract. The scientific results,
+> verdict, and evidence IDs are unchanged between the two serializations.
+
 ## Canonical fixture result and tests
 
 The primary fixture change remains two modified features (`chamberi` and

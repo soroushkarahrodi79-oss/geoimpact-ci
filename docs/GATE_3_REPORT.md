@@ -2,10 +2,18 @@
 
 ## Result
 
-**GATE 3 — PASS** for the tested Windows environment: Python 3.14.5,
-Shapely 2.1.2 / GEOS 3.13.1, PyProj 3.7.2 / PROJ 9.5.1, and PyYAML 6.0.3.
-The CLI is a small adapter around the Gate 2 `run_from_config` runner. No
-analysis, policy, or artifact implementation was duplicated.
+**GATE 3 — MODIFY** pending Windows confirmation. The local execution contract
+and the Gate 3B portable artifact-serialization contract (below) are complete,
+and the full suite is **green on Linux** (Python 3.11.15, Shapely 2.1.2 / GEOS
+3.13.1, PyProj 3.7.2 / PROJ 9.5.1, PyYAML 6.0.3). The CLI is a small adapter
+around the Gate 2 `run_from_config` runner; no analysis, policy, or artifact
+implementation was duplicated.
+
+Because Gate 3B changed the artifact serialization contract, the new canonical
+hashes must be re-confirmed on the originally documented Windows environment
+(Python 3.14.5) before a cross-platform PASS can be claimed. That Windows
+re-run was not available in this environment, so Windows confirmation remains
+required. See "Portable artifact canonicalization (Gate 3B)" below.
 
 ## Command and entry point
 
@@ -98,16 +106,24 @@ public packaging quality.
 
 ## Artifact and evidence invariance
 
-Before implementation, direct `run_from_config` on verified `origin/main`
-produced the Gate 2 canonical hashes in the tested environment. The canonical
-BLOCK CLI run produced the same hashes, and a test compared each direct-runner
-artifact to its CLI counterpart byte-for-byte.
+The canonical BLOCK CLI run and direct `run_from_config` produce byte-identical
+artifacts, and a test compares each direct-runner artifact to its CLI
+counterpart byte-for-byte. The current canonical hashes below are produced under
+the Gate 3B portable serialization contract (decision log D-022) and **supersede
+the pre-portable Windows-only hashes** retained in `GATE_2_REPORT.md`:
 
-| Artifact | SHA-256 |
+| Artifact | SHA-256 (portable, Gate 3B) |
 |---|---|
-| `report.json` | `569f018c06ba8ec9fcd7d60c1ac08bab57735978aa0101c1e57cfd285992f872` |
+| `report.json` | `234d31b08c18ed45e8698af2abf7e001b489bcb7efbf34ffb058e2113447388d` |
 | `report.md` | `d161a55cbf1441e078ce1ea3181dbc41d2ee8d73e540b311f5a52690379f202e` |
-| `relationship-regressions.geojson` | `93a00d6255cc20325f54ba6ac79b431ba3432c9c4b2c1d92817ac4bb2530d4a1` |
+| `relationship-regressions.geojson` | `a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978` |
+
+`report.md` is unchanged from the pre-portable record because it embeds no
+coordinates. The pre-portable `report.json`
+(`569f018c06ba8ec9fcd7d60c1ac08bab57735978aa0101c1e57cfd285992f872`) and
+`relationship-regressions.geojson`
+(`93a00d6255cc20325f54ba6ac79b431ba3432c9c4b2c1d92817ac4bb2530d4a1`) are
+recorded here as history, not as the active contract.
 
 The BLOCK and PASS reports preserve exactly the Gate 1 evidence IDs:
 
@@ -122,14 +138,15 @@ differ.
 
 ## Tests
 
-On the originally tested Windows environment the full suite completed with
-**38 passed**. The final audit pass (below) added two tests, for a total of
-**40**. It retains all Gate 1 and Gate 2 tests and adds subprocess coverage for
-required arguments, PASS, BLOCK, expected errors, output completeness,
-canonical hashes, evidence identity, working-directory independence,
-direct-runner byte equality, PASS/BLOCK scientific invariance, and
-clean-environment console-script installation, plus the two
-exception-boundary tests described under the final audit.
+The full suite is **green on Linux with 46 passed** (Python 3.11.15). It retains
+all Gate 1 and Gate 2 tests and adds subprocess coverage for required arguments,
+PASS, BLOCK, expected errors, output completeness, canonical hashes, evidence
+identity, working-directory independence, direct-runner byte equality,
+PASS/BLOCK scientific invariance, and clean-environment console-script
+installation; the two exception-boundary tests from the hardening pass; and the
+Gate 3B canonicalization tests (projected and CRS84 precision bounds, negative
+zero, non-finite rejection, structure preservation, and proof that
+canonicalization touches only artifact representation, not analysis).
 
 ## Final audit (hardening pass)
 
@@ -165,26 +182,67 @@ corrections, not a claim that there were no prior Gate corrections.
   and `*.egg-info/` so local installation proofs do not leave untracked build
   artifacts in the tree.
 
-### Cross-platform reproduction note
+## Portable artifact canonicalization (Gate 3B)
 
-The canonical `report.json` and `relationship-regressions.geojson` SHA-256
-hashes were frozen on the documented Windows environment. On a Linux container
-(same PyProj 3.7.2 / PROJ 9.5.1), the reprojected coordinate serialization
-differs in low-order floating-point digits — operating-system `libm`
-transcendental-math variance, not a PROJ-version difference and not a
-scientific defect. The verdict, changed features, relationship records, and
-evidence IDs are byte-identical across both platforms; only the embedded
-reprojected coordinates differ. Consequently the three byte-hash tests
-(`canonical hashes`, `cwd-independence`, and `clean-venv install`) pass on
-Windows but fail on Linux. This is the known Gate 2 limitation that no
-cross-platform byte determinism is claimed, and it is the reason this gate is
-not yet portable to a Linux CI runner.
+### Root cause
+
+The pre-portable `report.json` and `relationship-regressions.geojson` embedded
+CRS-transformed coordinates serialized at full `repr` precision. On a Linux
+container (same PyProj 3.7.2 / PROJ 9.5.1 as the documented Windows host) those
+coordinates differ from the Windows bytes in their low-order digits —
+operating-system `libm` transcendental-math variance, not a PROJ-version
+difference and not a scientific defect. The verdict, changed features,
+relationship records, scalar measurements, and evidence IDs were already
+byte-identical across platforms; only the embedded coordinate digits drifted,
+so the three byte-hash tests failed on Linux. The exact fields that differed
+were `primary_change.changed_footprint_geometry`,
+`relationship_regressions[*].evidence_geometry` (both EPSG:25830, in
+`report.json`), and the inverse-transformed CRS84 point coordinates in the
+GeoJSON.
+
+### Representation-only fix
+
+Gate 3B bounds the **serialized** coordinate representation at the artifact
+boundary only (decision log D-022). The analysis engine is untouched: WITHIN
+predicates, symmetric difference, area, Hausdorff displacement, regression
+detection, and evidence identity all continue on full-precision double
+geometries. No `shapely.set_precision` is applied to analysis geometry. A small
+standard-library serializer rounds only the numeric ordinates of embedded
+geometries when writing artifacts, preserving geometry type, coordinate order,
+and topology, normalizing `-0.0` to `0.0`, and rejecting non-finite ordinates.
+The inverse CRS transform still runs on full-precision projected geometry; only
+its CRS84 output is rounded. Scalar scientific measurements
+(`changed_footprint_area_m2`, `max_boundary_displacement_m`, counts, thresholds)
+are never rounded.
+
+### Precision policy
+
+| Artifact geometry | CRS | Serialization precision | Resolution |
+|---|---|---|---|
+| `report.json` embedded geometry | EPSG:25830 (metres) | 6 decimal places | 1 µm |
+| `relationship-regressions.geojson` | OGC:CRS84 (degrees) | 8 decimal places | ~mm in Madrid |
+
+These are **serialization** precisions — a representation choice, not the
+precision or accuracy of the source data or the analysis.
+
+### Result
+
+The full suite is green on Linux and artifacts are byte-identical across
+repeated runs, working directories, and copied config locations. Evidence IDs
+and all scientific conclusions are unchanged from the pre-portable serialization.
+A genuine Windows environment was **not** available in this run, so the new
+canonical hashes still require Windows confirmation before a cross-platform PASS
+is asserted: **Linux canonicalization is green; Windows confirmation remains
+required.** No `sys.platform` branching, per-platform expected hashes, skips, or
+weakened hash checks were introduced — there is one canonical representation.
 
 ## Limitations and deferred work
 
-The scientific scope and deterministic report contract remain those of Gates
-1 and 2. This gate makes no claim of cross-platform or cross-version byte
-determinism, general GIS support, or production readiness. No GitHub Actions
-workflow or other CI integration was added; it is explicitly deferred to a
-later gate. The CLI does not expand supported formats, predicates, metrics,
-policies, or CRS behavior.
+The scientific scope remains that of Gates 1 and 2. Gate 3B makes the artifact
+serialization precision-bounded and reproducible on Linux; a full cross-platform
+byte-determinism claim still awaits the Windows re-run described above, and
+cross-version / cross-GEOS/PROJ determinism is not claimed. The gate asserts no
+general GIS support or production readiness. No GitHub Actions workflow or other
+CI integration was added; it is explicitly deferred to a later gate. The CLI
+does not expand supported formats, predicates, metrics, policies, or CRS
+behavior.

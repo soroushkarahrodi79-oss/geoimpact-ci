@@ -47,3 +47,9 @@
 |---|---|---|---|
 | D-020 | Expose the Gate 2 runner through one required-argument `geoimpact analyze --config PATH --out DIRECTORY` console command, with exit 0 for PASS, 1 for completed BLOCK, and 2 for execution or usage errors. | Accepted | A caller can distinguish policy blocking from failure to produce a valid analysis without changing the proven analysis or artifact contract. |
 | D-021 | Keep the PASS fixture identical in spatial inputs and scientific declarations to the canonical BLOCK fixture, changing only threshold 1 to 2. | Accepted | Both successful exit states can be exercised while preserving Gate 1 evidence identity and spatial results. |
+
+## Gate 3B decisions
+
+| ID | Decision | Status | Rationale / consequence |
+|---|---|---|---|
+| D-022 | Bound published artifact coordinate representation to a fixed precision at the serialization boundary only: EPSG:25830 projected geometry to 6 decimal places (1 µm), and derived OGC:CRS84 GeoJSON to 8 decimal places (~mm in Madrid). The spatial analysis — WITHIN predicates, symmetric difference, area, Hausdorff displacement, regression detection, and evidence identity — continues at full internal double precision; rounding is applied only when coordinates cross the artifact boundary, and scalar scientific measurements (areas, displacements, counts, thresholds) are never rounded for hashing. | Accepted | Makes `report.json` and `relationship-regressions.geojson` byte-reproducible across operating systems whose libm differs in the low-order digits of CRS transformations, without altering any scientific conclusion or evidence ID. **Serialization precision is a representation choice, not the precision or accuracy of the source data or the analysis.** The pre-portable Windows-only canonical hashes are superseded; evidence IDs are unchanged because coordinate serialization is not part of evidence identity. |

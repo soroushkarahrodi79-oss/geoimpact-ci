@@ -68,6 +68,15 @@ These are exact `WITHIN` assignment changes under the existing contract, not a
 claim that a particular address or service legally changed its electoral or
 statistical designation on a particular date.
 
+An independent, full-source exploratory join using Shapely's spatial index
+also found 2,112 assignment changes across all 2,450/2,462 sections and all
+161,190 fixed points; 197 points had no `WITHIN` section assignment in either
+version. That cross-check is not a GeoImpact CLI result. A broader CLI attempt
+with 5,480 points in the full change-area polygons and the full section layers
+had not completed after about 2.5 minutes and was stopped before producing
+artifacts. The checked-in footprint subset is the completed product execution;
+it is not evidence that a full-city workload has acceptable runtime.
+
 The exploratory policy threshold in the checked-in config is zero, solely to
 make the observed relationship changes produce a visible `BLOCK`. It is not a
 recommended production policy. The output directory is not committed.
@@ -101,7 +110,8 @@ The three output artifacts from this local run had SHA-256 values:
   address snapshot is from 2026, so the probe asks how the two published
   section versions assign the current fixed address locations; it is not a
   time-aligned historical impact estimate. The probe does not validate legal,
-  electoral, or statistical decisions for individual locations.
+  electoral, or statistical decisions for individual locations. The reason
+  197 portal points lack a `WITHIN` assignment was not investigated.
 
 ## Reproducibility and limits
 
@@ -110,7 +120,9 @@ source register. Rerunning the config should return exit code 1 and produce the
 same 2,112 assignment-change records with the pinned project dependencies.
 Gate 5 did not claim cross-platform canonical hashes for this new dataset.
 The project workflow and Gate 4 tests remain unchanged; the full existing suite
-was run locally after adding the research record.
+was run locally after adding the research record. The longer full-layer CLI
+attempt was not a Gate failure, but it limits this qualification to the
+bounded checked-in case and flags performance as a separate future question.
 
 No source, analysis, predicate, policy implementation, serialization, evidence
 ID, or CI workflow code changed. The only configured predicate remains

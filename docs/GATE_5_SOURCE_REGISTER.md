@@ -75,3 +75,8 @@ removed full geometry; keep all points intersecting that footprint; retain all
 those section IDs in BASE/CANDIDATE. No point was selected by looking at a CLI
 verdict or relationship output. The 2,112 point records are all unique and
 their assignment transitions match the complete-source exploratory join.
+Across all source features and points, the independent join found 2,112
+transitions and 197 points unassigned in both versions. A broader installed-CLI
+attempt (5,480 points, complete section layers) was stopped after about 2.5
+minutes without output; completed CLI evidence is limited to the deterministic
+change-footprint subset.

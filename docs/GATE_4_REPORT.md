@@ -2,9 +2,9 @@
 
 ## Status
 
-**GATE 4 — MODIFY** — implementation is prepared; GitHub-hosted Linux and
-Windows run evidence is pending. This is a CI integration gate, not a GIS
-capability gate.
+**GATE 4 — PASS.** GitHub-hosted Linux and Windows checks completed
+successfully for the implementation commit. This is a CI integration gate, not
+a GIS capability gate.
 
 ## Workflow
 
@@ -51,14 +51,34 @@ The frozen GIS scope remains unchanged: no new formats, predicates, metrics,
 policies, CRS support, or spatial capabilities are introduced. Gate 1–3
 scientific semantics, evidence IDs, and artifact serialization remain fixed.
 
-## Limitations and run evidence
+## GitHub-hosted verification
+
+The first pull-request workflow run completed successfully on both matrix legs:
+
+- Run: [37105965245](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37105965245)
+- Tested implementation commit: `39651cae99543b2b3d0a1612ec612bab78adbb2e`
+- Linux (`ubuntu-latest`, Python 3.11.16): **46 passed**; installed CLI PASS,
+  BLOCK, and ERROR checks passed; all canonical hashes matched; BLOCK evidence
+  upload succeeded.
+- Windows (`windows-latest`, Python 3.14.7): **46 passed**; installed CLI PASS,
+  BLOCK, and ERROR checks passed; all canonical hashes matched; BLOCK evidence
+  upload succeeded.
+
+Each CLI wrapper validated the underlying exit code exactly: PASS `0`, BLOCK
+`1`, ERROR `2`. The canonical BLOCK SHA-256 results matched on both systems:
+
+| Artifact | SHA-256 |
+|---|---|
+| `report.json` | `234d31b08c18ed45e8698af2abf7e001b489bcb7efbf34ffb058e2113447388d` |
+| `report.md` | `d161a55cbf1441e078ce1ea3181dbc41d2ee8d73e540b311f5a52690379f202e` |
+| `relationship-regressions.geojson` | `a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978` |
+
+The uploaded artifacts are [geoimpact-block-linux-py311](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37105965245/artifacts/11267329009)
+and [geoimpact-block-windows-py314](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37105965245/artifacts/11267718859).
+
+## Limitations
 
 This gate establishes automation only for the two declared GitHub-hosted
 environments and the existing pinned project dependencies. It does not claim
 arbitrary-platform or cross-version determinism, production readiness, general
 GIS support, branch protection, or release readiness.
-
-Actual workflow run URLs, commit SHA, per-leg test counts, exit-code checks,
-hash results, and uploaded-artifact confirmation will be recorded here only
-after both GitHub-hosted matrix legs complete successfully. Until then the gate
-remains **GATE 4 — MODIFY**.

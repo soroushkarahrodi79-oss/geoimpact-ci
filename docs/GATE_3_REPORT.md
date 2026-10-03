@@ -2,18 +2,32 @@
 
 ## Result
 
-**GATE 3 — MODIFY** pending Windows confirmation. The local execution contract
-and the Gate 3B portable artifact-serialization contract (below) are complete,
-and the full suite is **green on Linux** (Python 3.11.15, Shapely 2.1.2 / GEOS
-3.13.1, PyProj 3.7.2 / PROJ 9.5.1, PyYAML 6.0.3). The CLI is a small adapter
-around the Gate 2 `run_from_config` runner; no analysis, policy, or artifact
-implementation was duplicated.
+**GATE 3 — PASS**, verified on both Linux and Windows. The local execution
+contract and the Gate 3B portable artifact-serialization contract (below) are
+complete, and the full suite passes on both operating systems with byte-identical
+canonical artifacts:
 
-Because Gate 3B changed the artifact serialization contract, the new canonical
-hashes must be re-confirmed on the originally documented Windows environment
-(Python 3.14.5) before a cross-platform PASS can be claimed. That Windows
-re-run was not available in this environment, so Windows confirmation remains
-required. See "Portable artifact canonicalization (Gate 3B)" below.
+- **Linux:** 46 passed (Python 3.11.15, Shapely 2.1.2 / GEOS 3.13.1,
+  PyProj 3.7.2 / PROJ 9.5.1, PyYAML 6.0.3).
+- **Windows 11:** 46 passed (Python 3.14.5, `sys.platform = win32`).
+
+The CLI is a small adapter around the Gate 2 `run_from_config` runner; no
+analysis, policy, or artifact implementation was duplicated.
+
+This gate was previously **GATE 3 — MODIFY** pending that Windows confirmation.
+Gate 3B intentionally changed the artifact serialization contract, so the new
+canonical hashes had to be re-confirmed on the originally documented Windows
+environment. That Windows run has now been performed and the three canonical
+hashes match the Linux values exactly, closing the verification sequence. See
+"Portable artifact canonicalization (Gate 3B)" below.
+
+PASS here means GeoImpact now has a stable local CLI execution contract,
+PASS/BLOCK/ERROR exit semantics, deterministic file-backed execution,
+precision-bounded artifact serialization, byte-identical canonical artifacts
+across the tested Linux and Windows environments, preserved evidence identity,
+and preserved scientific results. It is **not** a claim of arbitrary-platform
+determinism, production readiness, generalized GIS support, public release
+readiness, or existing CI integration.
 
 ## Command and entry point
 
@@ -227,22 +241,33 @@ precision or accuracy of the source data or the analysis.
 
 ### Result
 
-The full suite is green on Linux and artifacts are byte-identical across
-repeated runs, working directories, and copied config locations. Evidence IDs
-and all scientific conclusions are unchanged from the pre-portable serialization.
-A genuine Windows environment was **not** available in this run, so the new
-canonical hashes still require Windows confirmation before a cross-platform PASS
-is asserted: **Linux canonicalization is green; Windows confirmation remains
-required.** No `sys.platform` branching, per-platform expected hashes, skips, or
-weakened hash checks were introduced — there is one canonical representation.
+The full suite passes on both Linux and Windows and artifacts are byte-identical
+across repeated runs, working directories, and copied config locations. Evidence
+IDs and all scientific conclusions are unchanged from the pre-portable
+serialization.
+
+| Environment | Python / platform | Tests | report.json | report.md | relationship-regressions.geojson |
+|---|---|---:|---|---|---|
+| Linux | 3.11.15 | 46 passed | `234d31b0…447388d` | `d161a55c…79f202e` | `a3557416…42318978` |
+| Windows 11 | 3.14.5 (`win32`) | 46 passed | `234d31b0…447388d` | `d161a55c…79f202e` | `a3557416…42318978` |
+
+Both environments produced the identical full canonical hashes recorded under
+"Artifact and evidence invariance" above; the installed console script worked
+from outside the repository with `PYTHONPATH` unset on both; and the CLI returned
+exit 0 (PASS), 1 (BLOCK), and 2 (expected error) on both. No `sys.platform`
+branching, per-platform expected hashes, skips, or weakened hash checks exist —
+there is one canonical representation, now verified cross-platform under the
+tested pinned Python dependencies. Determinism beyond these two tested
+environments and dependency pins is not claimed.
 
 ## Limitations and deferred work
 
 The scientific scope remains that of Gates 1 and 2. Gate 3B makes the artifact
-serialization precision-bounded and reproducible on Linux; a full cross-platform
-byte-determinism claim still awaits the Windows re-run described above, and
-cross-version / cross-GEOS/PROJ determinism is not claimed. The gate asserts no
-general GIS support or production readiness. No GitHub Actions workflow or other
-CI integration was added; it is explicitly deferred to a later gate. The CLI
-does not expand supported formats, predicates, metrics, policies, or CRS
+serialization precision-bounded and byte-reproducible, now verified on the
+tested Linux and Windows environments under the pinned Python dependencies;
+determinism on arbitrary platforms, Python versions, or GEOS/PROJ builds is not
+claimed. The gate asserts no general GIS support or production readiness. No
+GitHub Actions workflow or other CI integration was added; it is explicitly
+deferred to a later gate. The CLI does not expand supported formats, predicates,
+metrics, policies, or CRS
 behavior.

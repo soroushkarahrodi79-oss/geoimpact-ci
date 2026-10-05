@@ -13,6 +13,7 @@ import math
 from pathlib import Path
 
 import pytest
+from shapely.geometry import shape
 
 from geoimpact.artifacts import (
     GEOGRAPHIC_COORDINATE_DECIMALS,
@@ -116,21 +117,18 @@ def test_canonicalization_preserves_type_order_and_non_coordinate_members() -> N
 
 
 def test_canonicalization_touches_only_artifact_representation_not_analysis(tmp_path: Path) -> None:
-    """The in-memory analysis result keeps full precision; only files are rounded."""
+    """V2 reports a valid fixed-grid footprint and preserves it at serialization."""
     report = run_from_config(BLOCK_CONFIG, tmp_path / "out")
 
-    in_memory = report["primary_change"]["changed_footprint_geometry"]["coordinates"]
-    in_memory_ordinates = _coordinate_ordinates(
-        {"type": "Polygon", "coordinates": in_memory}
-    )
-    # At least one analysis coordinate carries more than the serialized precision,
-    # proving the analysis engine was not down-rounded in place.
-    assert any(
-        ordinate != round(ordinate, PROJECTED_COORDINATE_DECIMALS)
-        for ordinate in in_memory_ordinates
-    )
+    in_memory = shape(report["primary_change"]["changed_footprint_geometry"])
+    assert in_memory.is_valid
+    assert report["primary_change"]["changed_footprint_area_m2"] == in_memory.area
 
     serialized = json.loads((tmp_path / "out" / "report.json").read_text(encoding="utf-8"))
+    assert serialized["report_version"] == "2"
+    changed_footprint = shape(serialized["primary_change"]["changed_footprint_geometry"])
+    assert changed_footprint.is_valid
+    assert changed_footprint.equals(in_memory)
     serialized_ordinates = _coordinate_ordinates(serialized)
     for ordinate in serialized_ordinates:
         assert ordinate == round(ordinate, PROJECTED_COORDINATE_DECIMALS)

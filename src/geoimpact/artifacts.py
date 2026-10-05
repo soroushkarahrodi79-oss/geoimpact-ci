@@ -126,7 +126,7 @@ def build_report(contract: dict[str, Any], analysis_result: dict[str, Any]) -> d
     )
     policy = analysis_result["policy"]
     return {
-        "report_version": "1",
+        "report_version": "2",
         "analysis": {
             "crs": contract["analysis_crs"],
             "primary_dataset": contract["primary"]["dataset"],

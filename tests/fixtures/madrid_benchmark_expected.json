@@ -1,5 +1,5 @@
 {
-  "benchmark_version": 1,
+  "benchmark_version": 2,
   "inputs": {
     "research/madrid-ine-sections-2024-2025/ine-sections-2024-focus.geojson": "9987b42293ffdda93b3cb5a1d897bccea4b084ed1ba0e1bd5eaf7f4eb303c453",
     "research/madrid-ine-sections-2024-2025/ine-sections-2025-focus.geojson": "18956b960c4b8adf5d750c04cf51a5db638ed8054e5e83988003ea59ce4d9da3",
@@ -7,6 +7,7 @@
     "research/madrid-ine-sections-2024-2025/geoimpact.yml": "7395510b1bc4b760dd606f1998d2ec317af0512768d223198544c7b6e52fc5b1"
   },
   "expected": {
+    "report_version": "2",
     "verdict": "BLOCK",
     "relationship_records": 2112,
     "assignment_changed": 2112,
@@ -22,8 +23,8 @@
     "evidence_id_count": 2112,
     "evidence_id_sha256": "d221ee2e751af2b46062fd0cd76581b2aff5307061919e0ba3f6e0f69bfe7cd8",
     "output_sha256": {
-      "report.json": "164b113a8b1c2d69d2bb309b97461dde7c593dfb64cf22a1d45b7945bee813d5",
-      "report.md": "e0fd0ab0ccfcd0261dad7a3bb50e9ac6402e6b34a74929a63f413fb081d2ed92",
+      "report.json": "7cb57ae5b8d4c4fdf33e1e359002ac8cb2c30d05ee5f9509d47f8408a8ee9733",
+      "report.md": "8173dee60053deea746185bf12f3d1caa560907701ee9377db2e5ee78604e57f",
       "relationship-regressions.geojson": "0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf"
     }
   },

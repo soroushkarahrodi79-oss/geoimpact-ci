@@ -166,6 +166,10 @@ def verify_report_and_outputs(
     report: dict[str, Any], manifest: dict[str, Any], output_dir: Path
 ) -> dict[str, Any]:
     expected = manifest["expected"]
+    _assert_equal("report version", report["report_version"], expected["report_version"])
+    footprint = report["primary_change"]["changed_footprint_geometry"]
+    if footprint is None or not shape(footprint).is_valid:
+        raise AssertionError("serialized primary change footprint is missing or invalid")
     relationships = report["relationships"]
     regressions = report["relationship_regressions"]
     histogram = transition_histogram(relationships)

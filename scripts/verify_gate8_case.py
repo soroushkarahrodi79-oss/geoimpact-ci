@@ -187,7 +187,14 @@ def main() -> None:
     check(evidence_digest == EXPECTED["evidence_id_sha256"], "evidence ID digest drift")
 
     output_hashes = {name: sha256(OUT / name) for name in ARTIFACTS}
-    check(output_hashes == EXPECTED["output_sha256"], "artifact output hash drift")
+    check(
+        output_hashes == EXPECTED["output_sha256"],
+        "artifact output hash drift: "
+        + json.dumps(
+            {"expected": EXPECTED["output_sha256"], "observed": output_hashes},
+            sort_keys=True,
+        ),
+    )
     result = {
         "cli_exit": completed.returncode,
         "cli_runtime_seconds": runtime_seconds,

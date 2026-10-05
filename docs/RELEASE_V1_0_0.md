@@ -72,8 +72,17 @@ uses Linux/Python 3.11 and Windows/Python 3.14 and records Shapely/GEOS versions
   content checks, installed into separate fresh virtual environments, reported
   version 1.0.0, and passed installed CLI PASS (0), BLOCK (1), ERROR (2), and
   synthetic BLOCK output hashes.
-- **Hosted CI:** Linux/Python 3.11 and Windows/Python 3.14 results are pending
-  for this release candidate until the Gate 10 branch workflow completes.
+- **Hosted CI:** workflow run
+  [37336921554](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37336921554)
+  passed on both `linux-py311` and `windows-py314`, including full tests,
+  synthetic PASS/BLOCK/ERROR and hashes, Madrid and Sierra verification, and
+  wheel/sdist build and fresh-install qualification.
+- **Security/privacy and hygiene:** no obvious secrets, private/local paths, or
+  unintentional email addresses were found in the proposed tracked files.
+  Generated build, distribution, CI-output, Python cache, and local work paths
+  are ignored and are not part of the proposed diff.
+- **Documentation consistency:** active public material states software 1.0.0
+  and report V3. Gate-era V1/V2 values remain identified as historical records.
 
 ## Research provenance and limits
 
@@ -99,9 +108,11 @@ bounded cases are not comprehensive GIS regression coverage.
   branch, including installed CLI PASS/BLOCK/ERROR and canonical synthetic
   BLOCK hashes.
 - [x] Full local test suite passes (69 tests).
-- [ ] Synthetic, Madrid, Sierra, full test suite, and package qualification
-  pass on Linux/Python 3.11 and Windows/Python 3.14 hosted jobs.
-- [ ] Secret/local-path and documentation consistency audits pass.
+- [x] Synthetic, Madrid, Sierra, full test suite, and package qualification
+  pass on Linux/Python 3.11 and Windows/Python 3.14 in workflow run
+  [37336921554](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37336921554).
+- [x] Secret/local-path, documentation consistency, and repository hygiene
+  audits pass.
 - [ ] Draft PR reviewed and merged by the owner.
 - [ ] Post-merge `main` workflow passes before creating tag/release.
 - [ ] Owner selects a repository-wide software license before describing the

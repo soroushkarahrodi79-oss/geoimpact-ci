@@ -15,7 +15,11 @@ from geoimpact.errors import InputError
 from geoimpact.evidence import relationship_evidence
 from geoimpact.geometry_change import measure_primary_change
 from geoimpact.policy import evaluate_max_relationship_regressions
-from geoimpact.relationships import classify_assignment_change, derive_within_assignments
+from geoimpact.relationships import (
+    PrimarySpatialIndex,
+    classify_assignment_change,
+    derive_within_assignments,
+)
 
 
 FIXTURE_CRS = "EPSG:25830"
@@ -55,6 +59,8 @@ def analyze(
     """Analyze the declared fixed dependencies against BASE and CANDIDATE."""
     base_primary = load_features(base_primary_path, primary_id_field)
     candidate_primary = load_features(candidate_primary_path, primary_id_field)
+    base_index = PrimarySpatialIndex(base_primary)
+    candidate_index = PrimarySpatialIndex(candidate_primary)
     relationship_records: list[dict[str, object]] = []
     regression_evidence: list[dict[str, object]] = []
     boundary_ambiguities: list[dict[str, object]] = []
@@ -62,8 +68,12 @@ def analyze(
     for dependent_dataset in sorted(dependent_sources):
         dependent_path, id_field = dependent_sources[dependent_dataset]
         dependents = load_features(dependent_path, id_field)
-        before_assignments = derive_within_assignments(dependents, base_primary)
-        after_assignments = derive_within_assignments(dependents, candidate_primary)
+        before_assignments = derive_within_assignments(
+            dependents, base_primary, spatial_index=base_index
+        )
+        after_assignments = derive_within_assignments(
+            dependents, candidate_primary, spatial_index=candidate_index
+        )
 
         for dependent_id in sorted(dependents):
             before = before_assignments[dependent_id]["within"]

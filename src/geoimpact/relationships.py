@@ -4,11 +4,32 @@ from __future__ import annotations
 
 from typing import Mapping
 
+from shapely import STRtree
 from shapely.geometry.base import BaseGeometry
 
 
+class PrimarySpatialIndex:
+    """Use STRtree bounds only to find possible exact predicate matches."""
+
+    def __init__(self, primary: Mapping[str, BaseGeometry]) -> None:
+        self._primary = primary
+        self._primary_ids = tuple(sorted(primary))
+        self._geometries = tuple(primary[primary_id] for primary_id in self._primary_ids)
+        self._tree = STRtree(self._geometries) if self._geometries else None
+
+    def candidate_primary_ids(self, geometry: BaseGeometry) -> list[str]:
+        """Return envelope candidates in stable ID order, never as evidence."""
+        if self._tree is None:
+            return []
+        indices = self._tree.query(geometry)
+        return sorted(self._primary_ids[int(index)] for index in indices)
+
+
 def derive_within_assignments(
-    dependents: Mapping[str, BaseGeometry], primary: Mapping[str, BaseGeometry]
+    dependents: Mapping[str, BaseGeometry],
+    primary: Mapping[str, BaseGeometry],
+    *,
+    spatial_index: PrimarySpatialIndex | None = None,
 ) -> dict[str, dict[str, list[str]]]:
     """Derive exact WITHIN assignments and separately report boundary touches.
 
@@ -17,14 +38,18 @@ def derive_within_assignments(
     centroid, or distance-based approximation.
     """
     result: dict[str, dict[str, list[str]]] = {}
+    index = spatial_index or PrimarySpatialIndex(primary)
+    if index._primary is not primary:
+        raise ValueError("spatial_index must be built from the supplied primary mapping")
     for dependent_id in sorted(dependents):
         geometry = dependents[dependent_id]
+        candidates = index.candidate_primary_ids(geometry)
         result[dependent_id] = {
             "within": [
-                primary_id for primary_id in sorted(primary) if geometry.within(primary[primary_id])
+                primary_id for primary_id in candidates if geometry.within(primary[primary_id])
             ],
             "boundary_primary_ids": [
-                primary_id for primary_id in sorted(primary) if geometry.touches(primary[primary_id])
+                primary_id for primary_id in candidates if geometry.touches(primary[primary_id])
             ],
         }
     return result

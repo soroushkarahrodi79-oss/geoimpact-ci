@@ -180,10 +180,11 @@ than the product contract.
 If you use GeoImpact CI in research or applied work, cite the software with
 [`CITATION.cff`](CITATION.cff). No DOI is currently assigned.
 
-No repository-wide software license has yet been declared. The source
-repository does not describe itself as open source; public open-source
-redistribution remains an owner decision. This software-license status is
-separate from the case-specific data attribution and reuse conditions above.
+GeoImpact CI software is released under the [MIT License](LICENSE). Research
+fixtures and third-party source data are not automatically covered by the
+software license; consult [NOTICE.md](NOTICE.md) and the applicable [Madrid
+source register](docs/GATE_5_SOURCE_REGISTER.md) and [Sierra source
+register](docs/GATE_8_SOURCE_REGISTER.md).
 
 ## Repository map
 

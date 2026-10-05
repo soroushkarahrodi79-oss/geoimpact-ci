@@ -125,7 +125,8 @@ artifacts, and a test compares each direct-runner artifact to its CLI
 counterpart byte-for-byte. The hashes below were canonical under the Gate 3B
 portable serialization contract (decision log D-022). They are now
 **historical artifact contract V1** values; report contract V2 is documented in
-`GATE_6_REAL_WORLD_BENCHMARK.md` and its current hashes are enforced by CI.
+`GATE_6_REAL_WORLD_BENCHMARK.md` as historical evidence. Active V3 hashes are
+documented in `GATE_9_DISPLACEMENT_PORTABILITY.md` and enforced by CI.
 
 | Artifact | SHA-256 (portable, Gate 3B) |
 |---|---|

@@ -1,5 +1,8 @@
 # Gate 7 — full-city performance and spatial index qualification
 
+> Historical Gate 7 record: its report and artifact claims use the then-active
+> report V2 contract. Report V3 is the current contract; see the Gate 9 record.
+
 ## Purpose and verified starting state
 
 Gate 7 qualifies relationship-analysis scaling while preserving V2 spatial
@@ -15,7 +18,11 @@ performance benchmark. Generated workloads below are explicitly synthetic and
 are not scientific evidence. Full-city data were downloaded only to temporary
 `work/` storage; they do not become a new canonical product result.
 
-## Existing algorithm and baseline
+## Historical exhaustive baseline and current indexed algorithm
+
+The exhaustive scan described below is the pre-STRtree Gate 7 comparison
+baseline. The active relationship engine uses STRtree candidate filtering and
+the same exact GEOS predicates.
 
 Before optimization, `derive_within_assignments` sorted each dependent ID and
 scanned all primary IDs twice per dependent: exact `within`, then exact
@@ -145,7 +152,7 @@ API and Madrid CKAN DataStore on 2026-10-05. The result is a
 the canonicalized filtered INE source hashes differ from Gate 5 even though
 the section counts match. No live data is a CI dependency.
 
-| Input | Current count | Current canonical source SHA-256 | Gate 5 snapshot SHA-256 |
+| Input | Gate 7 count | Gate 7 canonical source SHA-256 | Gate 5 snapshot SHA-256 |
 |---|---:|---|---|
 | INE Madrid 2024 sections | 2,450 | `2d9d8da28fb722dea502dd477d0bc2dee430df76739915242ba011811507dc6d` | `120692f71460f8cfd12f6542d4d7917337d916a781cac29e918bbd1b0e8946e8` |
 | INE Madrid 2025 sections | 2,462 | `e52cbf3f86ab254be57015e210a9525517cd894b246fde21ac5f2b466b7b534a` | `3ce9184cf5f2ff3f0f9bcaf9211a50ea5826487d2320ee96976d53e00b8eb70d` |
@@ -154,7 +161,7 @@ the section counts match. No live data is a CI dependency.
 The two INE hashes use the Gate 5 canonical format: filtered source
 FeatureCollection, features sorted by `CUSEC`, compact sorted-key JSON and one
 trailing LF. The portal hash covers a sorted full-row DataStore snapshot inside
-a compact metadata-and-records envelope; it is a new current-source hash, not
+a compact metadata-and-records envelope; it is a new Gate 7 source hash, not
 a claim of byte-equivalent canonicalization to the archived Gate 5 source.
 Portal metadata reported update date 2026-09-14. All temporary downloads and
 generated full-city artifacts remained under `work/madrid-current-source/`

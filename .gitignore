@@ -1,5 +1,10 @@
 __pycache__/
 *.py[cod]
 build/
+dist/
 *.egg-info/
 ci-output/
+output/
+.pytest_cache/
+.venv/
+work/

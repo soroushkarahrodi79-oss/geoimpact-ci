@@ -4,14 +4,34 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "geoimpact-ci"
-version = "0.1.0"
+version = "1.0.0"
 description = "Deterministic spatial change evidence for GeoJSON"
+readme = "README.md"
 requires-python = ">=3.11"
+authors = [
+    { name = "Soroush Karahrodi" },
+]
+keywords = ["geospatial", "spatial-analysis", "geojson", "continuous-integration", "research"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: GIS",
+]
 dependencies = [
     "pyproj==3.7.2",
     "PyYAML==6.0.3",
     "shapely==2.1.2",
 ]
+
+[project.urls]
+Repository = "https://github.com/soroushkarahrodi79-oss/geoimpact-ci"
+Documentation = "https://github.com/soroushkarahrodi79-oss/geoimpact-ci/tree/main/docs"
 
 [project.scripts]
 geoimpact = "geoimpact.cli:main"

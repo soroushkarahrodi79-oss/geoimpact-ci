@@ -37,7 +37,8 @@ matches the expected value exactly:
 
 PASS and BLOCK each require all three output artifacts. ERROR must not report a
 verdict or produce output files. At Gate 4, CI checked the then-current Gate 3
-V1 canonical SHA-256 hashes; active V2 hashes are recorded in the Gate 6 report.
+V1 canonical SHA-256 hashes; former V2 hashes are recorded in the Gate 6
+historical report and active V3 hashes are recorded in the Gate 9 report.
 BLOCK files are uploaded per matrix leg as
 `geoimpact-block-linux-py311` and `geoimpact-block-windows-py314`, with seven
 days retention. Upload runs with `if: always()` and fails when the expected

@@ -32,8 +32,8 @@ def _gate4_report() -> dict[str, object]:
     )
 
 
-def test_displacement_contract_is_report_version_three() -> None:
-    assert _gate4_report()["report_version"] == "3"
+def test_displacement_contract_is_report_version_four() -> None:
+    assert _gate4_report()["report_version"] == "4"
 
 
 def test_json_serializes_the_computed_displacement_without_reformatting(tmp_path: Path) -> None:
@@ -44,5 +44,4 @@ def test_json_serializes_the_computed_displacement_without_reformatting(tmp_path
     serialized = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
 
     assert serialized["primary_change"]["max_boundary_displacement_m"] == expected
-    assert serialized["report_version"] == "3"
-
+    assert serialized["report_version"] == "4"

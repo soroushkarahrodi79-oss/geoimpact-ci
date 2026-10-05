@@ -17,8 +17,8 @@ ARTIFACTS = (
     "relationship-regressions.geojson",
 )
 EXPECTED_HASHES = {
-    "report.json": "2bfc39f79dbe11d9dc84d58923bba486ad29763155da905eb273cf0257433188",
-    "report.md": "0a3525f5bf376fd47120175bc161de13769005cbcd194b9d350771a69a63009b",
+    "report.json": "a3245fb06b1a49c9cfec7d7b46cd70871937fdcb40700ad6c9733f470f73df13",
+    "report.md": "222d3e3da2f7dc5c1c466249746022379a1735210792e3165435e49fae40d2f4",
     "relationship-regressions.geojson": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
 }
 

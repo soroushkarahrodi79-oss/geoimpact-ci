@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 from typing import Mapping
 
 from pyproj import Transformer
+from pyproj.exceptions import ProjError
 from shapely.geometry import shape
 from shapely.geometry.base import BaseGeometry
+from shapely.errors import GEOSException
 from shapely.ops import transform
 
 from geoimpact.errors import InputError
@@ -27,20 +30,99 @@ PRIMARY_DATASET = "districts"
 _CRS84_TO_ANALYSIS = Transformer.from_crs("OGC:CRS84", FIXTURE_CRS, always_xy=True)
 
 
-def load_features(path: Path, id_field: str) -> dict[str, BaseGeometry]:
-    """Load the narrow FeatureCollection fixture format with stable IDs."""
-    collection = json.loads(path.read_text(encoding="utf-8"))
+def _finite_coordinates(value: object, *, path: Path, feature_id: str) -> None:
+    if isinstance(value, (list, tuple)):
+        for item in value:
+            _finite_coordinates(item, path=path, feature_id=feature_id)
+        return
+    try:
+        valid_number = (
+            not isinstance(value, bool)
+            and isinstance(value, (int, float))
+            and math.isfinite(float(value))
+        )
+    except OverflowError:
+        valid_number = False
+    if not valid_number:
+        raise InputError(f"{path} has malformed or non-finite coordinates for {feature_id}")
+
+
+def load_features(
+    path: Path,
+    id_field: str,
+    *,
+    geometry_role: str = "primary",
+) -> dict[str, BaseGeometry]:
+    """Load supported GeoJSON features and enforce the narrow geometry contract."""
+    try:
+        raw_json = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as error:
+        raise InputError(f"{path} cannot be read as UTF-8 GeoJSON") from error
+    try:
+        collection = json.loads(raw_json)
+    except json.JSONDecodeError as error:
+        raise InputError(f"{path} contains malformed JSON: {error.msg}") from error
+    except RecursionError as error:
+        raise InputError(f"{path} contains excessively nested JSON") from error
+    if not isinstance(collection, dict):
+        raise InputError(f"{path} must contain a top-level GeoJSON object")
     if collection.get("type") != "FeatureCollection":
         raise InputError(f"{path} is not a FeatureCollection")
+    if "features" not in collection:
+        raise InputError(f"{path} is missing features")
+    collection_features = collection["features"]
+    if not isinstance(collection_features, list):
+        raise InputError(f"{path} features must be a list")
 
     features: dict[str, BaseGeometry] = {}
-    for feature in collection.get("features", []):
-        feature_id = feature.get("properties", {}).get(id_field)
-        if not isinstance(feature_id, str) or not feature_id:
-            raise InputError(f"{path} has a missing stable {id_field}")
+    allowed_types = {"primary": {"Polygon", "MultiPolygon"}, "dependent": {"Point"}}
+    if geometry_role not in allowed_types:
+        raise ValueError(f"unsupported internal geometry role: {geometry_role}")
+    for index, feature in enumerate(collection_features):
+        if not isinstance(feature, dict):
+            raise InputError(f"{path} feature at index {index} must be an object")
+        if feature.get("type") != "Feature":
+            raise InputError(f"{path} feature at index {index} must have type Feature")
+        properties = feature.get("properties")
+        if not isinstance(properties, dict):
+            raise InputError(f"{path} feature at index {index} properties must be an object")
+        feature_id = properties.get(id_field)
+        if not isinstance(feature_id, str) or not feature_id.strip():
+            raise InputError(f"{path} feature at index {index} has a missing or invalid stable {id_field}")
         if feature_id in features:
             raise InputError(f"{path} has duplicate stable ID {feature_id}")
-        geometry = transform(_CRS84_TO_ANALYSIS.transform, shape(feature["geometry"]))
+        if "geometry" not in feature:
+            raise InputError(f"{path} {geometry_role} {feature_id} is missing geometry")
+        geometry_value = feature["geometry"]
+        if not isinstance(geometry_value, dict):
+            raise InputError(f"{path} {geometry_role} {feature_id} geometry must be an object")
+        geometry_type = geometry_value.get("type")
+        if not isinstance(geometry_type, str) or geometry_type not in allowed_types[geometry_role]:
+            expected = "Polygon or MultiPolygon" if geometry_role == "primary" else "Point"
+            raise InputError(
+                f"{geometry_role} {feature_id} must be {expected}, got {geometry_type or 'unknown'}"
+            )
+        if geometry_value.get("coordinates") is None:
+            raise InputError(f"{path} {geometry_role} {feature_id} has missing or null geometry coordinates")
+        try:
+            _finite_coordinates(geometry_value["coordinates"], path=path, feature_id=feature_id)
+        except RecursionError as error:
+            raise InputError(f"{path} has excessively nested coordinates for {feature_id}") from error
+        try:
+            geometry = transform(_CRS84_TO_ANALYSIS.transform, shape(geometry_value))
+        except (
+            KeyError,
+            TypeError,
+            ValueError,
+            IndexError,
+            RecursionError,
+            GEOSException,
+            ProjError,
+        ) as error:
+            raise InputError(f"{path} has malformed geometry for {feature_id}") from error
+        if geometry.geom_type not in allowed_types[geometry_role]:
+            expected = "Polygon or MultiPolygon" if geometry_role == "primary" else "Point"
+            raise InputError(f"{geometry_role} {feature_id} must be {expected}, got {geometry.geom_type}")
         if geometry.is_empty or not geometry.is_valid:
             raise InputError(f"{path} has invalid or empty geometry for {feature_id}")
         features[feature_id] = geometry
@@ -57,8 +139,10 @@ def analyze(
     primary_dataset: str = PRIMARY_DATASET,
 ) -> dict[str, object]:
     """Analyze the declared fixed dependencies against BASE and CANDIDATE."""
-    base_primary = load_features(base_primary_path, primary_id_field)
-    candidate_primary = load_features(candidate_primary_path, primary_id_field)
+    base_primary = load_features(base_primary_path, primary_id_field, geometry_role="primary")
+    candidate_primary = load_features(
+        candidate_primary_path, primary_id_field, geometry_role="primary"
+    )
     base_index = PrimarySpatialIndex(base_primary)
     candidate_index = PrimarySpatialIndex(candidate_primary)
     relationship_records: list[dict[str, object]] = []
@@ -67,7 +151,7 @@ def analyze(
 
     for dependent_dataset in sorted(dependent_sources):
         dependent_path, id_field = dependent_sources[dependent_dataset]
-        dependents = load_features(dependent_path, id_field)
+        dependents = load_features(dependent_path, id_field, geometry_role="dependent")
         before_assignments = derive_within_assignments(
             dependents, base_primary, spatial_index=base_index
         )
@@ -120,7 +204,7 @@ def analyze(
     )
     return {
         "analysis_crs": FIXTURE_CRS,
-        "primary_dataset": PRIMARY_DATASET,
+        "primary_dataset": primary_dataset,
         "primary_geometry_change": measure_primary_change(base_primary, candidate_primary),
         "relationships": relationship_records,
         "relationship_regressions": regression_evidence,

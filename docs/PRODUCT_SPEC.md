@@ -1,3 +1,10 @@
+# Historical design proposal — not the current v1 contract
+
+This Gate 0 proposal records an earlier product direction. The released v1
+contract is documented in [ARCHITECTURE_V1.md](ARCHITECTURE_V1.md) and
+[README.md](../README.md). In particular, GeoParquet, extra predicates, and
+PASS/WARN/BLOCK are not implemented.
+
 # GeoImpact CI — product boundary
 
 Status: Gate 0 proposal. This document specifies no implementation.

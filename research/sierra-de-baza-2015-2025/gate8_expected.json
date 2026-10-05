@@ -5,7 +5,7 @@
     "research/sierra-de-baza-2015-2025/dependencies.geojson": "617d4b71921b8d66692f1c8457a56b9b6224abb0c044bb06ce7608e2524c0f6c",
     "research/sierra-de-baza-2015-2025/geoimpact.yml": "f7e3245517cc5c16d97b34c08b0760e5055cfc25a71a39f1ee847413c0ee2520"
   },
-  "report_version": "3",
+  "report_version": "4",
   "verdict": "PASS",
   "max_boundary_displacement_m": 368.82509547712834,
   "relationship_count": 52,
@@ -24,8 +24,8 @@
   "relationship_identity_sha256": "d57c99dd3f497d57ec3538c66b6aed2be2ef053a638d3fc68962690c8a50539a",
   "evidence_id_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "output_sha256": {
-    "report.json": "be2176458956834eebadb83c422b0e9496d496f3fa6cd1af54b00cec30748cbb",
-    "report.md": "0884e42afc3c3327d1456cf055b9308e1540a8e7259c05cf9ed020fd1d763be7",
+    "report.json": "41c7add0c2f55a8778671661efbc30427ab0856d2e1e68ec5a904e11b8c88fcd",
+    "report.md": "dc522a1fc60cb083669d89b793994d57da8e996c5c667cb1b8a785f5d8beb09e",
     "relationship-regressions.geojson": "a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a"
   }
 }

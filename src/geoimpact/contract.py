@@ -27,6 +27,12 @@ def _required(mapping: dict[str, Any], name: str, parent: str) -> Any:
     return mapping[name]
 
 
+def _only(mapping: dict[str, Any], allowed: set[str], field: str) -> None:
+    unknown = sorted(set(mapping) - allowed)
+    if unknown:
+        raise ContractError(f"{field} has unknown field(s): {', '.join(unknown)}")
+
+
 def _text(value: Any, field: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise ContractError(f"{field} must be a non-empty string")
@@ -48,21 +54,28 @@ def load_contract(config_path: str | Path) -> dict[str, Any]:
     if not config.is_file():
         raise ContractError(f"config file does not exist: {config_path}")
     try:
-        value = yaml.safe_load(config.read_text(encoding="utf-8"))
-    except (yaml.YAMLError, UnicodeError) as error:
+        config_text = config.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as error:
+        raise ContractError(f"config file cannot be read as UTF-8: {config_path}") from error
+    try:
+        value = yaml.safe_load(config_text)
+    except yaml.YAMLError as error:
         raise ContractError(f"invalid YAML in config file: {error}") from error
     root = _mapping(value, "config")
+    _only(root, {"version", "analysis", "primary", "dependencies", "policy"}, "config")
 
     version = _required(root, "version", "config")
     if type(version) is not int or version != 1:
         raise ContractError("version must be the supported integer 1")
 
     analysis = _mapping(_required(root, "analysis", "config"), "analysis")
+    _only(analysis, {"crs"}, "analysis")
     crs = _text(_required(analysis, "crs", "analysis"), "analysis.crs")
     if crs != "EPSG:25830":
         raise ContractError("analysis.crs must be EPSG:25830 for Gate 2")
 
     primary = _mapping(_required(root, "primary", "config"), "primary")
+    _only(primary, {"dataset", "base", "candidate", "id_field"}, "primary")
     primary_name = _text(_required(primary, "dataset", "primary"), "primary.dataset")
     primary_id = _text(_required(primary, "id_field", "primary"), "primary.id_field")
     primary_base = _input_path(
@@ -80,6 +93,7 @@ def load_contract(config_path: str | Path) -> dict[str, Any]:
     for index, item in enumerate(dependencies_value):
         field = f"dependencies[{index}]"
         dependency = _mapping(item, field)
+        _only(dependency, {"dataset", "path", "id_field", "predicate"}, field)
         name = _text(_required(dependency, "dataset", field), f"{field}.dataset")
         if name in names:
             raise ContractError(f"duplicate dependency dataset name: {name}")
@@ -98,10 +112,12 @@ def load_contract(config_path: str | Path) -> dict[str, Any]:
         )
 
     policy = _mapping(_required(root, "policy", "config"), "policy")
+    _only(policy, {"max_relationship_regressions"}, "policy")
     rule = _mapping(
         _required(policy, "max_relationship_regressions", "policy"),
         "policy.max_relationship_regressions",
     )
+    _only(rule, {"threshold", "severity"}, "policy.max_relationship_regressions")
     threshold = _required(rule, "threshold", "policy.max_relationship_regressions")
     if type(threshold) is not int:
         raise ContractError("policy.max_relationship_regressions.threshold must be an integer")

@@ -4,6 +4,7 @@ import random
 from shapely.geometry import MultiPolygon, Point, Polygon, box
 
 from geoimpact.analysis import analyze, load_features
+from geoimpact.artifacts import build_report
 from geoimpact.relationships import PrimarySpatialIndex, derive_within_assignments
 
 
@@ -36,9 +37,37 @@ def test_controlled_mutation_reassigns_declared_dependents() -> None:
     assert result["boundary_ambiguities"] == []
 
 
+def test_custom_primary_dataset_name_flows_to_analysis_evidence_and_report() -> None:
+    dataset_name = "administrative_units_2026"
+    result = analyze(
+        FIXTURES / "districts_base.geojson",
+        FIXTURES / "districts_candidate.geojson",
+        {"hotels": (FIXTURES / "hotels.geojson", "hotel_id")},
+        relationship_threshold=1,
+        primary_dataset=dataset_name,
+    )
+    contract = {
+        "analysis_crs": "EPSG:25830",
+        "primary": {"dataset": dataset_name, "id_field": "district_id"},
+        "dependencies": [
+            {"dataset": "hotels", "id_field": "hotel_id", "predicate": "within"}
+        ],
+    }
+
+    report = build_report(contract, result)
+
+    assert result["primary_dataset"] == dataset_name
+    assert result["relationship_regressions"][0]["primary_dataset"] == dataset_name
+    assert report["analysis"]["primary_dataset"] == dataset_name
+    assert report["report_version"] == "4"
+    assert report["verdict"] == "PASS"
+
+
 def test_within_boundary_and_outside_semantics_are_explicit() -> None:
     districts = load_features(FIXTURES / "districts_candidate.geojson", "district_id")
-    points = load_features(FIXTURES / "edge_case_points.geojson", "point_id")
+    points = load_features(
+        FIXTURES / "edge_case_points.geojson", "point_id", geometry_role="dependent"
+    )
     shared_boundary = districts["chamberi"].boundary.intersection(districts["tetuan"].boundary)
     points["on_shared_boundary"] = shared_boundary.interpolate(0.5, normalized=True)
 

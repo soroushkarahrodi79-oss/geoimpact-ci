@@ -17,13 +17,17 @@ and geometry diffing; it does not replace them.
 
 ## v1 scope
 
-GeoImpact v1 accepts polygon BASE/CANDIDATE GeoJSON with required stable IDs and
-an analysis CRS of EPSG:25830. It detects geometry changes, creates a
-deterministic change footprint, measures maximum boundary displacement, and
-compares fixed dependent point features using exact `WITHIN` predicates. An
-STRtree filters candidates; exact GEOS predicates determine results. Boundary
-`TOUCHES` are reported separately and never count as `WITHIN`. A configured
-relationship-regression policy produces PASS or BLOCK evidence.
+GeoImpact v1 accepts Polygon or MultiPolygon BASE/CANDIDATE GeoJSON with
+required stable IDs and an analysis CRS of EPSG:25830. Each stable ID is
+classified as unchanged, modified, added, or removed. The deterministic change
+footprint includes symmetric differences for modified IDs, the candidate
+geometry for added IDs, and the base geometry for removed IDs. Maximum boundary
+displacement compares only modified IDs present in both snapshots; additions
+and removals have no displacement pair. Fixed dependent Point features are
+compared using exact `WITHIN` predicates. An STRtree filters candidates; exact
+GEOS predicates determine results. Boundary `TOUCHES` are reported separately
+and never count as `WITHIN`. A configured relationship-regression policy
+produces PASS or BLOCK evidence.
 
 v1 does not support arbitrary CRSs or predicates, raster or network analysis,
 database/PostGIS integration, a web UI or API, generalized change scoring,
@@ -106,7 +110,10 @@ verdict was produced.
 
 ## Evidence and numerical contract
 
-The active report contract is V3. GeoJSON inputs are analyzed in EPSG:25830;
+The active report contract is V4. V4 adds first-class stable-ID addition and
+removal statuses, ID lists, and complete footprint contributions. V3 reports
+remain interpretable with their earlier shared-ID-only primary change section.
+GeoJSON inputs are analyzed in EPSG:25830;
 the primary comparison is BASE → CANDIDATE and dependencies are fixed reference
 layers. Relationship assignment uses exact GEOS `within`. `touches` is separate
 boundary-ambiguity evidence. STRtree results only shortlist candidate pairs.
@@ -164,8 +171,8 @@ registry publication, and a UI/API. These are outside v1.
 
 ## Development and research record
 
-Start with the [architecture](docs/ARCHITECTURE.md), [product
-specification](docs/PRODUCT_SPEC.md), [test strategy](docs/TEST_STRATEGY.md),
+Start with the [current v1 architecture](docs/ARCHITECTURE_V1.md), [test
+strategy](docs/TEST_STRATEGY.md),
 [change model](docs/CHANGE_MODEL.md), and [decision log](docs/DECISION_LOG.md).
 Case and qualification records: [Madrid](docs/GATE_5_REAL_WORLD_CASE.md),
 [performance](docs/GATE_7_PERFORMANCE.md), [Sierra case

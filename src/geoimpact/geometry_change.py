@@ -30,55 +30,93 @@ def measure_primary_change(
 ) -> dict[str, object]:
     """Measure fixed-grid footprint and precision-qualified displacement.
 
-    The fixed precision is used for the derived symmetric-difference and union
-    operations and for temporary displacement-measurement copies. Feature
-    equality and relationship analysis retain full-precision source geometries.
+    The fixed precision is used for derived footprint overlays and temporary
+    displacement-measurement copies. Added and removed features contribute
+    their full geometry to the footprint. Feature equality and relationship
+    analysis retain full-precision source geometries.
     """
-    shared_ids = sorted(set(base) & set(candidate))
-    statuses = {
-        feature_id: "unchanged" if base[feature_id].equals(candidate[feature_id]) else "modified"
+    base_ids = set(base)
+    candidate_ids = set(candidate)
+    added_ids = sorted(candidate_ids - base_ids)
+    removed_ids = sorted(base_ids - candidate_ids)
+    shared_ids = sorted(base_ids & candidate_ids)
+    modified_ids = [
+        feature_id
         for feature_id in shared_ids
-    }
-    changed_ids = [feature_id for feature_id in shared_ids if statuses[feature_id] == "modified"]
+        if not base[feature_id].equals(candidate[feature_id])
+    ]
+    statuses: dict[str, str] = {}
+    for feature_id in sorted(base_ids | candidate_ids):
+        if feature_id not in base_ids:
+            statuses[feature_id] = "added"
+        elif feature_id not in candidate_ids:
+            statuses[feature_id] = "removed"
+        elif base[feature_id].equals(candidate[feature_id]):
+            statuses[feature_id] = "unchanged"
+        else:
+            statuses[feature_id] = "modified"
+    changed_ids = sorted(added_ids + removed_ids + modified_ids)
 
-    if not changed_ids:
-        return {
-            "feature_geometry_status": statuses,
-            "changed_feature_ids": [],
-            "changed_footprint_area_m2": 0.0,
-            "changed_footprint_geometry": None,
-            "max_boundary_displacement_m": 0.0,
-        }
-
+    # Snap every contribution on a temporary copy before unioning. In
+    # particular, additions/removals have no overlay operation of their own
+    # that would otherwise place their vertices on the footprint grid.
     feature_footprints = [
+        shapely.set_precision(
+            base[feature_id], grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M
+        )
+        for feature_id in removed_ids
+    ]
+    feature_footprints.extend(
+        shapely.set_precision(
+            candidate[feature_id], grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M
+        )
+        for feature_id in added_ids
+    )
+    feature_footprints.extend(
         shapely.symmetric_difference(
             base[feature_id],
             candidate[feature_id],
             grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M,
         )
-        for feature_id in changed_ids
-    ]
-    footprint = shapely.normalize(
-        shapely.union_all(feature_footprints, grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M)
+        for feature_id in modified_ids
     )
-    maximum_displacement = float(
-        max(
-            shapely.hausdorff_distance(
-                shapely.set_precision(
-                    base[feature_id], grid_size=BOUNDARY_DISPLACEMENT_GRID_SIZE_M
-                ),
-                shapely.set_precision(
-                    candidate[feature_id], grid_size=BOUNDARY_DISPLACEMENT_GRID_SIZE_M
-                ),
-            )
-            for feature_id in changed_ids
+    if feature_footprints:
+        footprint = shapely.normalize(
+            shapely.union_all(feature_footprints, grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M)
         )
+        footprint_area = footprint.area
+        footprint_geometry = _geojson_geometry(footprint)
+    else:
+        footprint_area = 0.0
+        footprint_geometry = None
+
+    # A displacement is defined only for the same stable feature in both
+    # snapshots. Additions and removals have no counterpart to compare.
+    maximum_displacement = (
+        float(
+            max(
+                shapely.hausdorff_distance(
+                    shapely.set_precision(
+                        base[feature_id], grid_size=BOUNDARY_DISPLACEMENT_GRID_SIZE_M
+                    ),
+                    shapely.set_precision(
+                        candidate[feature_id], grid_size=BOUNDARY_DISPLACEMENT_GRID_SIZE_M
+                    ),
+                )
+                for feature_id in modified_ids
+            )
+        )
+        if modified_ids
+        else 0.0
     )
 
     return {
         "feature_geometry_status": statuses,
         "changed_feature_ids": changed_ids,
-        "changed_footprint_area_m2": footprint.area,
-        "changed_footprint_geometry": _geojson_geometry(footprint),
+        "added_feature_ids": added_ids,
+        "removed_feature_ids": removed_ids,
+        "modified_feature_ids": modified_ids,
+        "changed_footprint_area_m2": footprint_area,
+        "changed_footprint_geometry": footprint_geometry,
         "max_boundary_displacement_m": maximum_displacement,
     }

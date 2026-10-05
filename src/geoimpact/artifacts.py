@@ -126,7 +126,7 @@ def build_report(contract: dict[str, Any], analysis_result: dict[str, Any]) -> d
     )
     policy = analysis_result["policy"]
     return {
-        "report_version": "3",
+        "report_version": "4",
         "analysis": {
             "crs": contract["analysis_crs"],
             "primary_dataset": contract["primary"]["dataset"],
@@ -153,9 +153,12 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         "## Primary change",
         "",
-        f"- Modified primary features: {', '.join(change['changed_feature_ids']) or 'none'}",
+        f"- Changed primary features: {', '.join(change['changed_feature_ids']) or 'none'}",
+        f"- Added primary features: {', '.join(change['added_feature_ids']) or 'none'}",
+        f"- Removed primary features: {', '.join(change['removed_feature_ids']) or 'none'}",
+        f"- Modified primary features: {', '.join(change['modified_feature_ids']) or 'none'}",
         f"- Changed footprint area: {change['changed_footprint_area_m2']} m²",
-        f"- Maximum boundary displacement: {change['max_boundary_displacement_m']} m",
+        f"- Maximum boundary displacement (modified shared IDs only): {change['max_boundary_displacement_m']} m",
         "",
         "## Relationship regressions",
         "",

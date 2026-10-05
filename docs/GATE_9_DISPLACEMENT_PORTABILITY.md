@@ -150,8 +150,8 @@ and zero boundary ambiguities, relationship identity
 `d57c99dd3f497d57ec3538c66b6aed2be2ef053a638d3fc68962690c8a50539a`, and
 evidence digest `4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945`.
 The Gate 8 source fixture itself remains external to the permanent Gate 9 CI
-contract. The PR workflow passed on both matrix legs in
-[run 37319963966](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37319963966).
+contract. The final PR-head workflow passed on both matrix legs in
+[run 37321989980](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37321989980).
 The separate frozen Sierra qualification passed on both legs in
 [run 37321556884](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37321556884).
 

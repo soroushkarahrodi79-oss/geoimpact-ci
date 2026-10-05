@@ -1,5 +1,10 @@
 # Gate 6 — real-world regression benchmark
 
+> Historical Gate 6 record: this document records the report V2 footprint
+> contract and its original hashes. Gate 9 supersedes V2 as the active report
+> contract by defining displacement precision in report V3; see
+> [Gate 9 displacement portability](GATE_9_DISPLACEMENT_PORTABILITY.md).
+
 ## Purpose and result
 
 Gate 5 showed that the existing GeoImpact CLI detects a meaningful bounded

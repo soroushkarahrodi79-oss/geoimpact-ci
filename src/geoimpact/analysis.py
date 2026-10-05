@@ -81,6 +81,8 @@ def load_features(
     for index, feature in enumerate(collection_features):
         if not isinstance(feature, dict):
             raise InputError(f"{path} feature at index {index} must be an object")
+        if feature.get("type") != "Feature":
+            raise InputError(f"{path} feature at index {index} must have type Feature")
         properties = feature.get("properties")
         if not isinstance(properties, dict):
             raise InputError(f"{path} feature at index {index} properties must be an object")
@@ -202,7 +204,7 @@ def analyze(
     )
     return {
         "analysis_crs": FIXTURE_CRS,
-        "primary_dataset": PRIMARY_DATASET,
+        "primary_dataset": primary_dataset,
         "primary_geometry_change": measure_primary_change(base_primary, candidate_primary),
         "relationships": relationship_records,
         "relationship_regressions": regression_evidence,

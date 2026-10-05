@@ -171,6 +171,34 @@ def test_malformed_geojson_is_exit_two_without_traceback_or_artifacts(
     assert not output.exists()
 
 
+@pytest.mark.parametrize("feature_type", [None, "NotFeature"])
+def test_non_feature_members_are_exit_two_without_traceback_or_verdict(
+    tmp_path: Path, feature_type: str | None
+) -> None:
+    bundle = _copy_bundle(tmp_path / "bundle")
+    base_path = bundle / "districts_base.geojson"
+    collection = json.loads(base_path.read_text(encoding="utf-8"))
+    if feature_type is None:
+        collection["features"][0].pop("type")
+    else:
+        collection["features"][0]["type"] = feature_type
+    base_path.write_text(json.dumps(collection), encoding="utf-8")
+    contract = yaml.safe_load(BLOCK_CONFIG.read_text(encoding="utf-8"))
+    config = bundle / "bad-feature-type.yml"
+    config.write_text(yaml.safe_dump(contract, sort_keys=False), encoding="utf-8")
+
+    output = tmp_path / "out"
+    result = _run_cli(config, output, cwd=tmp_path)
+
+    assert result.returncode == 2
+    assert result.stderr.startswith("GeoImpact error: ")
+    assert "must have type Feature" in result.stderr
+    assert "Traceback" not in result.stderr
+    assert "Verdict:" not in result.stdout
+    assert result.stdout == ""
+    assert not output.exists()
+
+
 def test_cli_block_artifacts_match_direct_runner_byte_for_byte(tmp_path: Path) -> None:
     direct = tmp_path / "direct"
     via_cli = tmp_path / "cli"

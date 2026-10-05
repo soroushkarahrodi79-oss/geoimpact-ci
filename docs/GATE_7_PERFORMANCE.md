@@ -193,9 +193,18 @@ baseline and is not extrapolated here.
 
 ## Tests, hosted CI, and limitations
 
-Local full suite: **63 passed**. Gate 4 synthetic V2 and Gate 6 Madrid V2
-contracts were checked locally; hosted Linux and Windows verification for the
-final PR HEAD is pending.
+Local full suite: **63 passed**. Hosted workflow run
+[37304072274](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37304072274)
+passed on implementation HEAD `a718dc16586d10a14a48254f6c28290af740d8cd`:
+
+| Job | Result | Full tests | Gate 4 CLI and hashes | Gate 6 Madrid verifier |
+|---|---|---:|---|---|
+| `linux-py311` | success | 63 passed | success | success |
+| `windows-py314` | success | 63 passed | success | success |
+
+Both jobs also uploaded their verified BLOCK and Madrid evidence artifacts.
+The final closeout commit changes documentation only; the PR workflow is run
+again for its HEAD before the Gate 7 closeout is considered final.
 
 The performance benchmark uses controlled disjoint boxes and points; real
 geometries can return more envelope candidates. Index construction consumes
@@ -206,10 +215,11 @@ timing threshold was added to CI.
 
 ## Verdict and next scope
 
-**GATE 7 — MODIFY** until the final PR HEAD passes hosted `linux-py311` and
-`windows-py314` jobs. Local measurements support the smallest justified
-optimization; final hosted correctness and cross-platform artifact proof
-remain required before PASS.
+**GATE 7 — PASS** for the verified implementation: measured hotspot, large
+synthetic and current-source full-city completion, exact semantic and artifact
+equivalence, materially reduced candidate work, and green Linux/Windows
+hosted verification are all established. The final documentation closeout
+commit is checked by the same PR matrix; it does not change implementation.
 
 Recommended Gate 8 scope: qualify one independently selected, bounded
 real-world change case through the installed CLI and deterministic V2 verifier.

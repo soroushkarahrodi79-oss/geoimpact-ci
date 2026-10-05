@@ -7,7 +7,7 @@
     "research/madrid-ine-sections-2024-2025/geoimpact.yml": "7395510b1bc4b760dd606f1998d2ec317af0512768d223198544c7b6e52fc5b1"
   },
   "expected": {
-    "report_version": "2",
+  "report_version": "3",
     "verdict": "BLOCK",
     "relationship_records": 2112,
     "assignment_changed": 2112,
@@ -23,8 +23,8 @@
     "evidence_id_count": 2112,
     "evidence_id_sha256": "d221ee2e751af2b46062fd0cd76581b2aff5307061919e0ba3f6e0f69bfe7cd8",
     "output_sha256": {
-      "report.json": "7cb57ae5b8d4c4fdf33e1e359002ac8cb2c30d05ee5f9509d47f8408a8ee9733",
-      "report.md": "8173dee60053deea746185bf12f3d1caa560907701ee9377db2e5ee78604e57f",
+    "report.json": "9a04ee2dc5c3ec52a55fc12451edc23a573f0030e730d0947c3f1c602d6fadb8",
+    "report.md": "87528179d747c430dfe6726237dfa5510c787329c632e29fb4117e151e667e21",
       "relationship-regressions.geojson": "0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf"
     }
   },

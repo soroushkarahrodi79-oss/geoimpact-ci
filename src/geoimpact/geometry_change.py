@@ -14,6 +14,11 @@ from shapely.geometry.base import BaseGeometry
 # robustness model for the footprint only, not a source-accuracy claim.
 CHANGE_FOOTPRINT_GRID_SIZE_M = 1e-6
 
+# Displacement is a derived measurement in EPSG:25830 metres. Conforming only
+# measurement copies to this grid makes the published scalar deterministic;
+# it is not a claim about the accuracy of source geometries.
+BOUNDARY_DISPLACEMENT_GRID_SIZE_M = 1e-6
+
 
 def _geojson_geometry(geometry: BaseGeometry) -> dict[str, object]:
     """Return a JSON-compatible geometry with deterministic key ordering."""
@@ -23,11 +28,11 @@ def _geojson_geometry(geometry: BaseGeometry) -> dict[str, object]:
 def measure_primary_change(
     base: Mapping[str, BaseGeometry], candidate: Mapping[str, BaseGeometry]
 ) -> dict[str, object]:
-    """Measure the fixed-grid change footprint and full-precision displacement.
+    """Measure fixed-grid footprint and precision-qualified displacement.
 
-    The fixed precision is limited to the derived symmetric-difference and
-    union operations. Feature equality and Hausdorff displacement retain their
-    existing full-precision semantics; relationship analysis is independent.
+    The fixed precision is used for the derived symmetric-difference and union
+    operations and for temporary displacement-measurement copies. Feature
+    equality and relationship analysis retain full-precision source geometries.
     """
     shared_ids = sorted(set(base) & set(candidate))
     statuses = {
@@ -56,8 +61,18 @@ def measure_primary_change(
     footprint = shapely.normalize(
         shapely.union_all(feature_footprints, grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M)
     )
-    maximum_displacement = max(
-        base[feature_id].hausdorff_distance(candidate[feature_id]) for feature_id in changed_ids
+    maximum_displacement = float(
+        max(
+            shapely.hausdorff_distance(
+                shapely.set_precision(
+                    base[feature_id], grid_size=BOUNDARY_DISPLACEMENT_GRID_SIZE_M
+                ),
+                shapely.set_precision(
+                    candidate[feature_id], grid_size=BOUNDARY_DISPLACEMENT_GRID_SIZE_M
+                ),
+            )
+            for feature_id in changed_ids
+        )
     )
 
     return {

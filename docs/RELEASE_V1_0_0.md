@@ -115,16 +115,16 @@ bounded cases are not comprehensive GIS regression coverage.
   audits pass.
 - [ ] Draft PR reviewed and merged by the owner.
 - [ ] Post-merge `main` workflow passes before creating tag/release.
-- [ ] Owner selects a repository-wide software license before describing the
-  software as open source or enabling public open-source redistribution.
+- [x] Owner selected the MIT License for GeoImpact CI software; `LICENSE`
+  and `NOTICE.md` distinguish software licensing from research-data terms.
 
-## Software license status
+## Software license
 
-No repository-wide software license has yet been declared. No license is
-invented by this release candidate. Absence of a license does not prevent a
-private/internal technical release, but public open-source redistribution
-remains an owner decision. It is separate from the data terms recorded in the
-case source registers.
+GeoImpact CI software is released under the MIT License; see [LICENSE](../LICENSE).
+Research fixtures retain their source-specific terms and attribution. Their
+inclusion does not relicense third-party data under MIT. Consult [NOTICE.md](../NOTICE.md)
+and the Madrid and Sierra source registers for applicable provenance, terms,
+and limitations.
 
 ## Future-work boundary
 

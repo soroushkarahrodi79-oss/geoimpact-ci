@@ -179,8 +179,8 @@ Gate 3 serializer.
 | Run | OS / Python | Result | CLI runtime |
 |---|---|---|---:|
 | Local development | Windows / Python 3.12.14 | PASS; CLI exit 1; all assertions and provisional output hashes matched | 4.534 s |
-| GitHub `linux-py311` | Linux / Python 3.11.16 | Full suite and Gate 4 passed; Madrid count/identity assertions passed, output hash failed as described | Runtime logging added for follow-up run |
-| GitHub `windows-py314` | Windows / Python 3.14.7 | Full suite, Gate 4, Madrid assertions, and all provisional hashes passed | 1.287 s |
+| GitHub `linux-py311` | Linux / Python 3.11.16 | Full suite and Gate 4 passed; Madrid count/identity assertions passed, report hashes failed as described | 2.638 s (follow-up run) |
+| GitHub `windows-py314` | Windows / Python 3.14.7 | Full suite, Gate 4, Madrid assertions, and all provisional hashes passed | 1.865 s (follow-up run) |
 
 The initial PR workflow was
 [run 37287236988](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287236988)
@@ -189,7 +189,15 @@ ran **51 tests successfully** and passed the existing Gate 4 contracts. The
 Linux CLI returned 1 / `BLOCK`, as expected; only the real-world output hashes
 failed. The Windows CLI returned 1 / `BLOCK` and passed every assertion. The
 verifier now prints OS, Python version, CLI duration, and exit code before
-assertions so a failed benchmark still records runtime on the follow-up run.
+assertions so a failed benchmark still records runtime.
+
+The diagnostic follow-up was
+[run 37287941216](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287941216)
+for commit `3eeaf8005375f8d476d216924a8dba2ec61662c9`. It again passed all 51
+tests and Gate 4 checks on both platforms. Linux recorded a 2.638 s CLI run and
+reported the same two hash mismatches; Windows recorded 1.865 s and passed all
+three hash assertions. The follow-up verifier logged both observed Linux
+hashes together and uploaded artifacts from both matrix jobs.
 
 Local verification ran the full test suite: **51 passed in 47.41 seconds**.
 Five focused tests cover deterministic digest behavior, pair histogram
@@ -209,9 +217,9 @@ downloaded for this comparison:
 `geoimpact-madrid-benchmark-linux-py311` and
 `geoimpact-madrid-benchmark-windows-py314`.
 
-**GitHub workflow run:** [37287236988](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287236988) (Linux hash failure; Windows success).
+**GitHub workflow runs:** [37287236988](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287236988) and [37287941216](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287941216) (Linux hash failure; Windows success in both).
 
-**Tested commit SHA:** `e77ea64c10cfda6bc818f5e2126d7b9cdcea580e`.
+**Tested commit SHAs:** `e77ea64c10cfda6bc818f5e2126d7b9cdcea580e` and `3eeaf8005375f8d476d216924a8dba2ec61662c9`.
 
 **Canonical cross-platform output hashes:** not promoted; Linux and Windows differ.
 

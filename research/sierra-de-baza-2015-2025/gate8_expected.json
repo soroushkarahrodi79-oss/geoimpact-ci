@@ -1,0 +1,30 @@
+{
+  "inputs": {
+    "research/sierra-de-baza-2015-2025/base.geojson": "eae31120ec45e51c53b48515c0bde6e1d1c269edafea51076f862c16854d2799",
+    "research/sierra-de-baza-2015-2025/candidate.geojson": "4f4b4ff369befb14c8f1d26e902fda4b431de26432f85897d2cd77df9485cc17",
+    "research/sierra-de-baza-2015-2025/dependencies.geojson": "617d4b71921b8d66692f1c8457a56b9b6224abb0c044bb06ce7608e2524c0f6c",
+    "research/sierra-de-baza-2015-2025/geoimpact.yml": "f7e3245517cc5c16d97b34c08b0760e5055cfc25a71a39f1ee847413c0ee2520"
+  },
+  "report_version": "2",
+  "verdict": "PASS",
+  "relationship_count": 52,
+  "relationship_regression_count": 0,
+  "change_type_counts": {
+    "unchanged": 52,
+    "assignment_changed": 0,
+    "assignment_gained": 0,
+    "assignment_lost": 0
+  },
+  "boundary_ambiguity_count": 0,
+  "transition_histogram": [
+    {"from": [], "to": [], "count": 12},
+    {"from": ["69"], "to": ["69"], "count": 40}
+  ],
+  "relationship_identity_sha256": "d57c99dd3f497d57ec3538c66b6aed2be2ef053a638d3fc68962690c8a50539a",
+  "evidence_id_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "output_sha256": {
+    "report.json": "5f25074a325be9a0c504893aa67432c1444775e539e4201110c4a9899f6aefd4",
+    "report.md": "3d56e9c0f3105373b87d3e9a99f639a18a6a99cc70e971be2c1c4182f13794fa",
+    "relationship-regressions.geojson": "a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a"
+  }
+}

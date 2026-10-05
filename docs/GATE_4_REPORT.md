@@ -36,8 +36,9 @@ matches the expected value exactly:
 | ERROR | Missing `tests/fixtures/missing_gate4.yml` | 2 | Controlled operational/input failure was recognized |
 
 PASS and BLOCK each require all three output artifacts. ERROR must not report a
-verdict or produce output files. After BLOCK, CI explicitly checks the three
-Gate 3 canonical SHA-256 hashes. BLOCK files are uploaded per matrix leg as
+verdict or produce output files. At Gate 4, CI checked the then-current Gate 3
+V1 canonical SHA-256 hashes; active V2 hashes are recorded in the Gate 6 report.
+BLOCK files are uploaded per matrix leg as
 `geoimpact-block-linux-py311` and `geoimpact-block-windows-py314`, with seven
 days retention. Upload runs with `if: always()` and fails when the expected
 files are absent; it does not create evidence files.
@@ -58,14 +59,15 @@ The first pull-request workflow run completed successfully on both matrix legs:
 - Run: [37105965245](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37105965245)
 - Tested implementation commit: `39651cae99543b2b3d0a1612ec612bab78adbb2e`
 - Linux (`ubuntu-latest`, Python 3.11.16): **46 passed**; installed CLI PASS,
-  BLOCK, and ERROR checks passed; all canonical hashes matched; BLOCK evidence
+  BLOCK, and ERROR checks passed; all V1 canonical hashes matched; BLOCK evidence
   upload succeeded.
 - Windows (`windows-latest`, Python 3.14.7): **46 passed**; installed CLI PASS,
-  BLOCK, and ERROR checks passed; all canonical hashes matched; BLOCK evidence
+  BLOCK, and ERROR checks passed; all V1 canonical hashes matched; BLOCK evidence
   upload succeeded.
 
 Each CLI wrapper validated the underlying exit code exactly: PASS `0`, BLOCK
-`1`, ERROR `2`. The canonical BLOCK SHA-256 results matched on both systems:
+`1`, ERROR `2`. The historical artifact contract V1 BLOCK SHA-256 results
+matched on both systems:
 
 | Artifact | SHA-256 |
 |---|---|

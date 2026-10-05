@@ -7,10 +7,11 @@ Madrid blast radius. Gate 6 turns that exact observation into a deterministic
 CI contract on the existing Linux and Windows matrix. The benchmark uses the
 installed CLI and the frozen Gate 5 inputs; it adds no GIS capability.
 
-**Status: GATE 6 — MODIFY.** The first GitHub-hosted run passed on Windows but
-failed the Linux artifact hash assertion. The benchmark correctly preserved
-the provisional cross-platform hash contract; no expected value was changed.
-The exact report field difference is isolated below.
+**Status: V2 implementation proof passed on both hosted systems.** The first
+Gate 6 run exposed a Linux/Windows V1 footprint mismatch. Contract V2 now passes
+locally and on both hosted matrix legs. This documentation closeout commit is
+validated by the same PR workflow; PR #6 becomes ready only after both matrix
+legs pass for the closeout commit.
 
 The work started from clean `origin/main` at
 `d5ec31e60d3ee236640a50a04a091ec063c01e95`. PR #5 was merged, Gate 5 was
@@ -128,100 +129,134 @@ d221ee2e751af2b46062fd0cd76581b2aff5307061919e0ba3f6e0f69bfe7cd8
 The verifier also requires the report policy's evidence-ID list to match those
 sorted regression evidence IDs exactly.
 
-## Output artifacts and cross-platform status
+## Artifact Contract V1 → V2 Migration
 
-The artifact SHA-256 values currently match Gate 5's provisional local values
-on the Windows development run:
+The initial Gate 6 run correctly rejected the V1 output hashes on Linux. Windows
+matched them; Linux did not. The changed area differed by 0.000000300 m² and the
+unrestricted-double overlay produced a different MultiPolygon decomposition.
+Relationship assignments, the transition histogram, relationship identity,
+evidence identity, and relationship GeoJSON were unchanged. This is the
+cross-platform overlay difference discovered by the benchmark, not a Madrid
+special case.
 
-| Artifact | SHA-256 |
+The first 1e-6 m fixed-precision experiment also changed Gate 4 report hashes,
+so its existing V1 hash guard failed. That failure showed the derived-footprint
+measurement itself needed a versioned contract; it was not a reason to weaken
+the benchmark silently. The selected V2 computational precision is one
+micrometre in EPSG:25830, applied only to derived per-feature symmetric
+differences and their union, followed by geometry normalization. It is not a
+source-accuracy claim. Relationship predicates, evidence, CRS transformations,
+Hausdorff displacement, and source geometries retain their existing semantics.
+No OS branch or Madrid-specific path was added. The config schema remains v1.
+`report_version` is now `"2"`.
+
+Synthetic Gate 4 equivalence, reconstructed from the same source geometries:
+
+| Measurement | V1 unrestricted-double | V2 fixed precision |
+|---|---:|---:|
+| Footprint area | 8,000.0000001862645 m² | 8,000.0 m² |
+| Components | 1 | 1 |
+| Exterior ring coordinates | 11 | 5 |
+| Valid | yes | yes |
+| Changed primary IDs | 2 (`chamberi`, `tetuan`) | 2 (`chamberi`, `tetuan`) |
+| Symmetric-difference area between footprints | — | 0.0000001862645 m² |
+| Relative area delta | — | -2.328306436484486e-11 |
+
+Madrid V1 areas were 13,463,975.314659253 m² on Windows and
+13,463,975.314658953 m² on Linux. Recomputing the V1 Windows overlay from the
+frozen inputs and comparing it to V2 gives:
+
+| Measurement | V1 Windows | V2 |
+|---|---:|---:|
+| Footprint area | 13,463,975.314659253 m² | 13,463,975.315541148 m² |
+| Components | 47 | 45 |
+| Valid raw geometry | yes | yes |
+| Changed primary IDs | 30 | 30 |
+| Symmetric-difference area between footprints | — | 0.012952276636705937 m² |
+| Absolute area delta | — | +0.0008818954229354858 m² |
+| Relative area delta | — | 6.550037431926211e-11 |
+
+The Linux V1 artifact's rounded geometry had a different component count
+and could be invalid after serialization; its scalar remains a historical
+measurement. Under V2, the serialized synthetic report geometry is valid, and
+the Madrid benchmark verifier reconstructs the serialized `report.json`
+footprint and requires validity. Both platform legs passed that check.
+
+### Historical artifact contract V1 hashes
+
+These values remain historical evidence. They are no longer active assertions
+for report contract V2.
+
+| V1 artifact | SHA-256 |
 |---|---|
-| `report.json` | `164b113a8b1c2d69d2bb309b97461dde7c593dfb64cf22a1d45b7945bee813d5` |
-| `report.md` | `e0fd0ab0ccfcd0261dad7a3bb50e9ac6402e6b34a74929a63f413fb081d2ed92` |
-| `relationship-regressions.geojson` | `0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf` |
+| Synthetic `report.json` | `234d31b08c18ed45e8698af2abf7e001b489bcb7efbf34ffb058e2113447388d` |
+| Synthetic `report.md` | `d161a55cbf1441e078ce1ea3181dbc41d2ee8d73e540b311f5a52690379f202e` |
+| Synthetic `relationship-regressions.geojson` | `a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978` |
+| Madrid `report.json` (Gate 5 / Windows) | `164b113a8b1c2d69d2bb309b97461dde7c593dfb64cf22a1d45b7945bee813d5` |
+| Madrid `report.md` (Gate 5 / Windows) | `e0fd0ab0ccfcd0261dad7a3bb50e9ac6402e6b34a74929a63f413fb081d2ed92` |
+| Madrid `relationship-regressions.geojson` | `0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf` |
 
-They become canonical Gate 6 hashes only after GitHub-hosted Linux and Windows
-produce the same bytes. No per-OS hashes or serialization changes are allowed
-to make a mismatch pass.
+The first hosted Gate 6 V1 Linux diagnostic hashes were
+`d542802f6af63de72de5b35eda0e715da78f1e181d803537f585b85c75a71246`
+(`report.json`) and
+`5ba9c9998556d307cf27ccf4b1e9a431fa568e06d83c5c7c9fdf8fe7bdd5be68`
+(`report.md`). They document the failed V1 portability assertion and are not
+per-platform goldens.
 
-On the first hosted run, Windows produced all three expected hashes. Linux
-produced the expected `relationship-regressions.geojson` bytes, but its
-`report.json` and derived `report.md` differed. The Linux values below are
-recorded only as failure diagnostics; they are not per-OS goldens and are not
-accepted by the verifier:
+### V2 current canonical hashes
 
-| First-run Linux diagnostic artifact | Observed SHA-256 |
+The local V2 outputs and both hosted platforms produced identical bytes. These
+are the active canonical report contract V2 expectations:
+
+| V2 artifact | SHA-256 |
 |---|---|
-| `report.json` | `d542802f6af63de72de5b35eda0e715da78f1e181d803537f585b85c75a71246` |
-| `report.md` | `5ba9c9998556d307cf27ccf4b1e9a431fa568e06d83c5c7c9fdf8fe7bdd5be68` |
-| `relationship-regressions.geojson` | `0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf` |
+| Synthetic `report.json` | `3c34e46927f20864438455bf6bf94daf4c247ffe86bab88e2206ec40642bb076` |
+| Synthetic `report.md` | `0a3525f5bf376fd47120175bc161de13769005cbcd194b9d350771a69a63009b` |
+| Synthetic `relationship-regressions.geojson` | `a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978` |
+| Madrid `report.json` | `7cb57ae5b8d4c4fdf33e1e359002ac8cb2c30d05ee5f9509d47f8408a8ee9733` |
+| Madrid `report.md` | `8173dee60053deea746185bf12f3d1caa560907701ee9377db2e5ee78604e57f` |
+| Madrid `relationship-regressions.geojson` | `0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf` |
 
-The parsed report diff isolates the scalar change to
-`primary_change.changed_footprint_area_m2`: Linux reported
-`13463975.314658953`, while Windows reported `13463975.314659253` (a
-`0.000000300` m² difference). The embedded
-`primary_change.changed_footprint_geometry` also serialized a different
-MultiPolygon decomposition (46 versus 47 components and different coordinate
-sequences); the two decoded geometries compare topologically equal, with zero
-area in their symmetric difference. The Markdown difference is the same area
-scalar. The regression GeoJSON, relationship histogram, relationship identity,
-and evidence identity were byte-identical or digest-identical.
+The synthetic and Madrid relationship GeoJSON hashes are unchanged from V1.
+V2 changes only the primary derived-footprint measurement and the report
+version; the synthetic PASS/BLOCK/ERROR exit semantics and Madrid relationship
+contract remain intact.
 
-The footprint is created in `measure_primary_change` from per-feature Shapely
-`symmetric_difference` operations followed by `unary_union`; its full-precision
-area is then included in JSON and Markdown. The evidence points to a
-cross-platform geometry overlay/union representation and floating-point
-measurement difference, rather than changed affected relationships. Gate 3
-explicitly preserves coordinate topology representation and does not round
-scalar scientific measurements. Gate 6 therefore does not rebaseline these
-hashes, round the area, add platform-specific expected values, or change the
-Gate 3 serializer.
+### Hosted verification and artifacts
 
-| Run | OS / Python | Result | CLI runtime |
-|---|---|---|---:|
-| Local development | Windows / Python 3.12.14 | PASS; CLI exit 1; all assertions and provisional output hashes matched | 4.534 s |
-| GitHub `linux-py311` | Linux / Python 3.11.16 | Full suite and Gate 4 passed; Madrid count/identity assertions passed, report hashes failed as described | 2.638 s (follow-up run) |
-| GitHub `windows-py314` | Windows / Python 3.14.7 | Full suite, Gate 4, Madrid assertions, and all provisional hashes passed | 1.865 s (follow-up run) |
+V2 implementation commit `712687bc1241d933af05dbbe54c7acaa1ad71825` passed
+[GitHub Actions run 37293722848](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37293722848)
+on both jobs:
 
-The initial PR workflow was
-[run 37287236988](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287236988)
-for tested commit `e77ea64c10cfda6bc818f5e2126d7b9cdcea580e`. Both matrix legs
-ran **51 tests successfully** and passed the existing Gate 4 contracts. The
-Linux CLI returned 1 / `BLOCK`, as expected; only the real-world output hashes
-failed. The Windows CLI returned 1 / `BLOCK` and passed every assertion. The
-verifier now prints OS, Python version, CLI duration, and exit code before
-assertions so a failed benchmark still records runtime.
+| Job | Runtime environment | Tests | Madrid CLI exit / verdict | Madrid CLI runtime |
+|---|---|---:|---|---:|
+| `linux-py311` | Linux / Python 3.11.16 | 57 passed | 1 / BLOCK | 2.051 s |
+| `windows-py314` | Windows / Python 3.14.7 | 57 passed | 1 / BLOCK | 2.591 s |
 
-The diagnostic follow-up was
-[run 37287941216](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287941216)
-for commit `3eeaf8005375f8d476d216924a8dba2ec61662c9`. It again passed all 51
-tests and Gate 4 checks on both platforms. Linux recorded a 2.638 s CLI run and
-reported the same two hash mismatches; Windows recorded 1.865 s and passed all
-three hash assertions. The follow-up verifier logged both observed Linux
-hashes together and uploaded artifacts from both matrix jobs.
-
-Local verification ran the full test suite: **51 passed in 47.41 seconds**.
-Five focused tests cover deterministic digest behavior, pair histogram
-construction, frozen-manifest validation, mismatch detection, and identity
-digest stability. The GitHub suite result and CI runtime observations will be
-recorded after the first successful hosted run.
-
-CI uploads the three Madrid outputs under
-`geoimpact-madrid-benchmark-linux-py311` and
-`geoimpact-madrid-benchmark-windows-py314`, each retained for seven days. The
-upload runs when any benchmark output exists, including after a verifier
-failure, and ignores missing files so it cannot replace the original benchmark
-failure with an artifact-not-found failure.
-
-Both expected benchmark artifacts were uploaded from run 37287236988 and
-downloaded for this comparison:
+Both legs passed Gate 4 PASS/BLOCK/ERROR and the exact V2 synthetic hashes.
+Both passed Madrid input hashes, all 2,112 relationship assertions, all 26
+transition pairs, split-like / merge-like classification, both identity digests,
+serialized geometry validity, and the same three V2 Madrid hashes. Each leg
+uploaded all three Madrid outputs (seven-day retention) as
 `geoimpact-madrid-benchmark-linux-py311` and
 `geoimpact-madrid-benchmark-windows-py314`.
 
-**GitHub workflow runs:** [37287236988](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287236988) and [37287941216](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287941216) (Linux hash failure; Windows success in both).
+The earlier V1 runs remain recorded as failure evidence: run
+[37287236988](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287236988)
+showed the Linux hash mismatch and Windows success; diagnostic follow-up
+[37287941216](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287941216)
+reproduced it. The Gate 6 implementation proof is cross-platform green. The documentation
+closeout commit is validated separately by the same PR workflow, and PR #6 is
+marked ready only after both jobs pass for that commit.
 
-**Tested commit SHAs:** `e77ea64c10cfda6bc818f5e2126d7b9cdcea580e` and `3eeaf8005375f8d476d216924a8dba2ec61662c9`.
+## Decision log
 
-**Canonical cross-platform output hashes:** not promoted; Linux and Windows differ.
+Decision **D-030** records the accepted V2 derived-footprint contract: a
+1e-6 metre fixed-precision overlay with normalized output geometry, versioned
+as report contract 2. It preserves the V1 hashes as historical evidence,
+records the Gate 6 portability failure that motivated the migration, makes no
+source-accuracy claim, and leaves relationship predicates and evidence
+semantics unchanged.
 
 ## Scope and limitations
 
@@ -235,11 +270,10 @@ general GIS support, or arbitrary platform determinism.
 
 ## Final verdict
 
-**GATE 6 — MODIFY.** The first actual hosted run exposed a cross-platform
-artifact difference in the changed-footprint area value and geometry
-representation. Windows passed and Linux failed the frozen hash assertion;
-both artifacts were uploaded. The benchmark expectations remain unchanged and
-the PR remains a draft. No merge is authorized by this result.
+**V2 implementation proof: PASS.** The V2 implementation and baselines passed
+locally and in the hosted Linux/Windows matrix. The documentation closeout
+commit is verified by that same workflow; PR #6 becomes ready only after both
+jobs pass for its final commit. The PR remains open and is not merged.
 
 ## Recommended Gate 7 scope
 

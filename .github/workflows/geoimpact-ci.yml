@@ -58,6 +58,10 @@ jobs:
       - name: Verify Madrid real-world benchmark
         run: python scripts/verify_madrid_benchmark.py
 
+      - name: Verify Gate 8 independent case
+        if: github.head_ref == 'research/gate-8-independent-case'
+        run: python scripts/verify_gate8_case.py
+
       - name: Upload BLOCK evidence
         if: always()
         uses: actions/upload-artifact@v7
@@ -79,5 +83,17 @@ jobs:
             ci-output/madrid-benchmark/report.json
             ci-output/madrid-benchmark/report.md
             ci-output/madrid-benchmark/relationship-regressions.geojson
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Upload Gate 8 case evidence
+        if: always() && github.head_ref == 'research/gate-8-independent-case' && hashFiles('ci-output/gate8/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: geoimpact-gate8-${{ matrix.identifier }}
+          path: |
+            ci-output/gate8/report.json
+            ci-output/gate8/report.md
+            ci-output/gate8/relationship-regressions.geojson
           if-no-files-found: ignore
           retention-days: 7

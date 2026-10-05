@@ -1,9 +1,9 @@
 # Gate 8 — Independent Real-World Generalization
 
-**Gate status: MODIFY pending hosted cross-platform qualification; the local
-case produced zero relationship regressions, so it cannot demonstrate a
-nonzero independent blast radius.** This result does not invalidate the
-observed polygon change or the exact zero-transition result.
+**Gate status: MODIFY.** The case produced zero relationship regressions and
+hosted Linux and Windows differ in one unrounded report scalar. This result
+does not invalidate the observed polygon change or the exact zero-transition
+result.
 
 ## Purpose and starting state
 
@@ -150,19 +150,33 @@ change or duplicate the production engine.
 
 ## Artifact and cross-platform status
 
-Local V2 artifact SHA-256 values:
+V2 artifact SHA-256 values by execution environment:
 
-| Artifact | Local SHA-256 |
-|---|---|
-| `report.json` | `5f25074a325be9a0c504893aa67432c1444775e539e4201110c4a9899f6aefd4` |
-| `report.md` | `3d56e9c0f3105373b87d3e9a99f639a18a6a99cc70e971be2c1c4182f13794fa` |
-| `relationship-regressions.geojson` | `a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a` |
+| Artifact | Local Windows 3.12 | Hosted Windows 3.14 | Hosted Linux 3.11 |
+|---|---|---|---|
+| `report.json` | `5f25074a325be9a0c504893aa67432c1444775e539e4201110c4a9899f6aefd4` | `5f25074a325be9a0c504893aa67432c1444775e539e4201110c4a9899f6aefd4` | `21332438c94dd67692c04f61ea5c205c46a264fa2d27b5ffae975761addd6a70` |
+| `report.md` | `3d56e9c0f3105373b87d3e9a99f639a18a6a99cc70e971be2c1c4182f13794fa` | `3d56e9c0f3105373b87d3e9a99f639a18a6a99cc70e971be2c1c4182f13794fa` | `eee743d495bb49f97deaaaeea7126cb869283ea07ca134dd4c5bf468af69e574` |
+| `relationship-regressions.geojson` | `a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a` | `a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a` | `a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a` |
 
-Linux and Windows cross-platform output hashes: **pending hosted workflow**.
-The Gate 8 verifier is conditional on the research branch and leaves ordinary
-CI unchanged on `main`. The existing Gate 4 hashes and Gate 6 Madrid hashes
-have not been rebaselined; their final verification is pending the full test
-and hosted run.
+Cross-platform output bytes are **not equal**. Hosted Linux and Windows have
+identical input hashes, relationship identity, evidence digest, assignments,
+and empty regression GeoJSON. The only report value difference is
+`primary_change.max_boundary_displacement_m`: Windows reports
+`368.8250959451751 m`; Linux reports `368.82509594532814 m`, a difference of
+approximately `1.53e-10 m`. This low-order scalar difference changes the JSON
+and Markdown hashes. The Gate 8 verifier reports this drift rather than
+rebaselining it. Product code and V2 scalar serialization were left unchanged.
+
+The verifier is conditional on `research/gate-8-independent-case`; ordinary
+`main` CI is unchanged. In the hosted run, Linux and Windows each passed the
+63-test full suite, Gate 4 CLI/hash checks, and Gate 6 Madrid benchmark. Gate 8
+exact-hash/reference verification passed on Windows and failed on Linux at the
+artifact hash check. Gate 4 canonical hashes and Gate 6 Madrid hashes/digests
+remain exact on both platforms.
+
+Hosted workflow run [37314122890](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37314122890)
+on PR head `ac2ae14e248ce3940abc3871f0b1db680ebd9998`: `windows-py314`
+success; `linux-py311` failed only the Gate 8 byte-hash comparison.
 
 ## Limitations and final status
 
@@ -174,19 +188,22 @@ historical individual impact. The source data's survey scale, boundary
 precision, and update lineage constrain interpretation. The dependency
 inventory can change over time and was not historically aligned.
 
-**Gate 8 verdict: MODIFY** if hosted Linux and Windows reproduce the local
-hashes, the full suite stays green, and canonical Gate 4/Gate 6 contracts remain
-unchanged. This valid case produced zero relationship regressions, so it does
-not meet the Gate's nonzero independent blast-radius demonstration criterion.
-If any cross-platform or canonical contract check fails, report that additional
-failure without changing the case.
+**Gate 8 verdict: MODIFY.** The case produced zero relationship regressions,
+so it does not meet the nonzero independent blast-radius demonstration
+criterion. Hosted Linux also differs from Windows in the unrounded
+Hausdorff-displacement scalar, so V2 output bytes are not cross-platform equal.
+No fallback, fixture alteration, or product change was made to hide either
+result.
 
 ### Recommended Gate 9 scope
 
-Build a manifest-driven multi-case benchmark harness for frozen source/input
-hashes, installed-CLI execution, V2 artifact and identity digests, and
-independent exhaustive-reference checks across Linux and Windows. Keep
-GeoImpact semantics frozen. Carry Madrid and Sierra de Baza forward as
-separate contracts, and pre-register a new independent case before execution
-if Gate 9 also requires a nonzero blast-radius demonstration. Do not modify
-Gate 9 in this work.
+Gate 9 should first investigate a deterministic cross-platform contract for
+`max_boundary_displacement_m`, which differed by `1.53e-10 m` for the same
+frozen case, without changing the scientific geometry or claim about source
+accuracy. Then establish a manifest-driven multi-case benchmark harness for
+frozen source/input hashes, installed-CLI execution, V2 artifact and identity
+digests, and independent exhaustive-reference checks across Linux and
+Windows. Keep predicate and policy semantics frozen. Carry Madrid and Sierra
+de Baza forward as separate contracts, and pre-register a new independent case
+before execution if a nonzero blast-radius demonstration is still required.
+Do not implement Gate 9 here.

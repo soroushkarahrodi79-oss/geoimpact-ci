@@ -142,7 +142,7 @@ def test_duplicate_dependency_dataset_names_fail_closed(tmp_path: Path) -> None:
 def test_file_backed_report_preserves_gate_1_results_and_verdict(tmp_path: Path) -> None:
     report = run_from_config(CONFIG, tmp_path / "out")
 
-    assert report["report_version"] == "3"
+    assert report["report_version"] == "4"
     assert [(item["dependent_dataset"], item["dependent_id"]) for item in report["relationship_regressions"]] == [
         ("hotels", "hotel_813"),
         ("tourism_pois", "poi_212"),

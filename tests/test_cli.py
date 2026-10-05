@@ -26,12 +26,11 @@ ARTIFACTS = (
     "report.md",
     "relationship-regressions.geojson",
 )
-# Active canonical hashes for report contract v2, which applies the explicit
-# fixed-precision model to derived change footprints. V1 hashes are historical
-# and documented in the Gate 6 migration record.
+# Active canonical hashes for report contract V4. V4 adds complete
+# primary-ID status and footprint semantics; earlier report hashes are history.
 EXPECTED_HASHES = {
-    "report.json": "2bfc39f79dbe11d9dc84d58923bba486ad29763155da905eb273cf0257433188",
-    "report.md": "0a3525f5bf376fd47120175bc161de13769005cbcd194b9d350771a69a63009b",
+    "report.json": "a3245fb06b1a49c9cfec7d7b46cd70871937fdcb40700ad6c9733f470f73df13",
+    "report.md": "222d3e3da2f7dc5c1c466249746022379a1735210792e3165435e49fae40d2f4",
     "relationship-regressions.geojson": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
 }
 EXPECTED_IDS = [
@@ -150,6 +149,26 @@ def test_missing_declared_dataset_is_concise_operational_error(tmp_path: Path) -
     assert "Traceback" not in result.stderr
     assert result.stdout == ""
     assert not (tmp_path / "out").exists()
+
+
+@pytest.mark.parametrize("contents", [b"{", b"\xff"])
+def test_malformed_geojson_is_exit_two_without_traceback_or_artifacts(
+    tmp_path: Path, contents: bytes
+) -> None:
+    bundle = _copy_bundle(tmp_path / "bundle")
+    (bundle / "districts_base.geojson").write_bytes(contents)
+    contract = yaml.safe_load(BLOCK_CONFIG.read_text(encoding="utf-8"))
+    config = bundle / "bad-input.yml"
+    config.write_text(yaml.safe_dump(contract, sort_keys=False), encoding="utf-8")
+
+    output = tmp_path / "out"
+    result = _run_cli(config, output, cwd=tmp_path)
+
+    assert result.returncode == 2
+    assert result.stdout == ""
+    assert result.stderr.startswith("GeoImpact error: ")
+    assert "Traceback" not in result.stderr
+    assert not output.exists()
 
 
 def test_cli_block_artifacts_match_direct_runner_byte_for_byte(tmp_path: Path) -> None:

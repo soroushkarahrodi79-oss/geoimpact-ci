@@ -117,7 +117,7 @@ def test_canonicalization_preserves_type_order_and_non_coordinate_members() -> N
 
 
 def test_canonicalization_touches_only_artifact_representation_not_analysis(tmp_path: Path) -> None:
-    """V3 reports a valid fixed-grid footprint and preserves it at serialization."""
+    """V4 reports a valid fixed-grid footprint and preserves it at serialization."""
     report = run_from_config(BLOCK_CONFIG, tmp_path / "out")
 
     in_memory = shape(report["primary_change"]["changed_footprint_geometry"])
@@ -125,7 +125,7 @@ def test_canonicalization_touches_only_artifact_representation_not_analysis(tmp_
     assert report["primary_change"]["changed_footprint_area_m2"] == in_memory.area
 
     serialized = json.loads((tmp_path / "out" / "report.json").read_text(encoding="utf-8"))
-    assert serialized["report_version"] == "3"
+    assert serialized["report_version"] == "4"
     changed_footprint = shape(serialized["primary_change"]["changed_footprint_geometry"])
     assert changed_footprint.is_valid
     assert changed_footprint.equals(in_memory)

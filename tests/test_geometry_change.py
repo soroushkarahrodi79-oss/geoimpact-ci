@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pytest
 import shapely
+from shapely.geometry import mapping
 from shapely.geometry import box, shape
 
 from geoimpact.analysis import load_features
@@ -14,6 +15,12 @@ from geoimpact.relationships import derive_within_assignments
 
 
 FIXTURES = Path(__file__).parent / "fixtures"
+
+
+def json_geometry(geometry):
+    import json
+
+    return json.loads(json.dumps(mapping(geometry), sort_keys=True))
 
 
 def test_controlled_boundary_mutation_has_documented_measurements() -> None:
@@ -35,10 +42,108 @@ def test_identical_primary_geometries_have_no_change_footprint() -> None:
     assert result == {
         "feature_geometry_status": {"chamberi": "unchanged", "tetuan": "unchanged"},
         "changed_feature_ids": [],
+        "added_feature_ids": [],
+        "removed_feature_ids": [],
+        "modified_feature_ids": [],
         "changed_footprint_area_m2": 0.0,
         "changed_footprint_geometry": None,
         "max_boundary_displacement_m": 0.0,
     }
+
+
+def test_added_removed_and_modified_primary_ids_are_classified_and_sorted() -> None:
+    base = {
+        "z-removed": box(20, 0, 21, 1),
+        "b-modified": box(2, 0, 3, 1),
+        "a-same": box(0, 0, 1, 1),
+    }
+    candidate = {
+        "c-added": box(30, 0, 31, 1),
+        "b-modified": box(2, 0, 3.5, 1),
+        "a-same": box(0, 0, 1, 1),
+    }
+
+    result = measure_primary_change(base, candidate)
+
+    assert result["feature_geometry_status"] == {
+        "a-same": "unchanged",
+        "b-modified": "modified",
+        "c-added": "added",
+        "z-removed": "removed",
+    }
+    assert result["changed_feature_ids"] == ["b-modified", "c-added", "z-removed"]
+    assert result["added_feature_ids"] == ["c-added"]
+    assert result["removed_feature_ids"] == ["z-removed"]
+    assert result["modified_feature_ids"] == ["b-modified"]
+
+
+def test_added_geometry_contributes_full_candidate_geometry() -> None:
+    added = box(10, 0, 12, 3)
+    result = measure_primary_change({}, {"new": added})
+    assert result["added_feature_ids"] == ["new"]
+    assert result["removed_feature_ids"] == result["modified_feature_ids"] == []
+    assert result["changed_footprint_geometry"] == json_geometry(shapely.normalize(added))
+    assert result["changed_footprint_area_m2"] == 6.0
+    assert result["max_boundary_displacement_m"] == 0.0
+
+
+def test_removed_geometry_contributes_full_base_geometry() -> None:
+    removed = box(10, 0, 12, 3)
+    result = measure_primary_change({"old": removed}, {})
+    assert result["removed_feature_ids"] == ["old"]
+    assert result["changed_footprint_area_m2"] == 6.0
+    assert result["changed_footprint_geometry"] == json_geometry(shapely.normalize(removed))
+    assert result["max_boundary_displacement_m"] == 0.0
+
+
+def test_modified_geometry_contributes_symmetric_difference() -> None:
+    base = box(0, 0, 2, 2)
+    candidate = box(1, 0, 3, 2)
+    result = measure_primary_change({"same-id": base}, {"same-id": candidate})
+    expected = shapely.normalize(shapely.symmetric_difference(base, candidate, grid_size=1e-6))
+    assert result["modified_feature_ids"] == ["same-id"]
+    assert result["changed_footprint_geometry"] == json_geometry(expected)
+    assert result["changed_footprint_area_m2"] == 4.0
+
+
+def test_added_only_and_removed_only_have_zero_displacement() -> None:
+    assert measure_primary_change({}, {"new": box(0, 0, 1, 1)})[
+        "max_boundary_displacement_m"
+    ] == 0.0
+    assert measure_primary_change({"old": box(0, 0, 1, 1)}, {})[
+        "max_boundary_displacement_m"
+    ] == 0.0
+
+
+def test_mixed_change_footprint_and_displacement_are_repeatable() -> None:
+    base = {
+        "remove": box(20, 0, 21, 1),
+        "modify": box(0, 0, 1, 1),
+    }
+    candidate = {
+        "add": box(30, 0, 31, 1),
+        "modify": box(0, 0, 1.25, 1),
+    }
+    first = measure_primary_change(base, candidate)
+    second = measure_primary_change(dict(reversed(list(base.items()))), dict(reversed(list(candidate.items()))))
+    expected = shapely.normalize(
+        shapely.union_all(
+            [box(20, 0, 21, 1), box(30, 0, 31, 1), box(1, 0, 1.25, 1)],
+            grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M,
+        )
+    )
+    assert first["changed_footprint_geometry"] == json_geometry(expected)
+    assert first == second
+    assert first["max_boundary_displacement_m"] == 0.25
+
+
+def test_unchanged_and_mixed_status_order_is_independent_of_input_order() -> None:
+    base = {"z": box(0, 0, 1, 1), "a": box(3, 0, 4, 1)}
+    candidate = {"b": box(6, 0, 7, 1), "z": box(0, 0, 1, 1)}
+    forward = measure_primary_change(base, candidate)
+    reverse = measure_primary_change(dict(reversed(list(base.items()))), dict(reversed(list(candidate.items()))))
+    assert list(forward["feature_geometry_status"]) == ["a", "b", "z"]
+    assert forward == reverse
 
 
 def test_change_footprint_uses_explicit_one_micrometre_grid() -> None:

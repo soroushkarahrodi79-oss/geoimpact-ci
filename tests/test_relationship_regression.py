@@ -38,7 +38,9 @@ def test_controlled_mutation_reassigns_declared_dependents() -> None:
 
 def test_within_boundary_and_outside_semantics_are_explicit() -> None:
     districts = load_features(FIXTURES / "districts_candidate.geojson", "district_id")
-    points = load_features(FIXTURES / "edge_case_points.geojson", "point_id")
+    points = load_features(
+        FIXTURES / "edge_case_points.geojson", "point_id", geometry_role="dependent"
+    )
     shared_boundary = districts["chamberi"].boundary.intersection(districts["tetuan"].boundary)
     points["on_shared_boundary"] = shared_boundary.interpolate(0.5, normalized=True)
 

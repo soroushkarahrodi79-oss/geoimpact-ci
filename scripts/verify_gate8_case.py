@@ -105,6 +105,11 @@ def main() -> None:
     report = json.loads((OUT / "report.json").read_text(encoding="utf-8"))
     check(report["report_version"] == EXPECTED["report_version"], "report version drift")
     check(report["verdict"] == EXPECTED["verdict"], "CLI verdict drift")
+    observed_displacement = report["primary_change"]["max_boundary_displacement_m"]
+    check(
+        observed_displacement == EXPECTED["max_boundary_displacement_m"],
+        f"maximum boundary displacement drift: {observed_displacement}",
+    )
     check(len(report["relationships"]) == EXPECTED["relationship_count"], "relationship count drift")
     check(len(report["relationship_regressions"]) == EXPECTED["relationship_regression_count"], "regression count drift")
     check(len(report["boundary_ambiguities"]) == EXPECTED["boundary_ambiguity_count"], "boundary count drift")
@@ -200,6 +205,7 @@ def main() -> None:
         "cli_runtime_seconds": runtime_seconds,
         "report_version": report["report_version"],
         "verdict": report["verdict"],
+        "max_boundary_displacement_m": observed_displacement,
         "relationships": len(report["relationships"]),
         "regressions": len(report["relationship_regressions"]),
         "boundary_ambiguities": len(report["boundary_ambiguities"]),

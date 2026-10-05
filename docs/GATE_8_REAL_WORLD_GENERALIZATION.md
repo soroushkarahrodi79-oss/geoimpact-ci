@@ -1,9 +1,12 @@
 # Gate 8 — Independent Real-World Generalization
 
-**Gate status: MODIFY.** The case produced zero relationship regressions and
-hosted Linux and Windows differ in one unrounded report scalar. This result
-does not invalidate the observed polygon change or the exact zero-transition
-result.
+**Gate status: MODIFY. Research record: ACCEPTED.** The unchanged case
+produced zero relationship regressions, so the original nonzero-demonstration
+criterion remains unmet. Its independent negative-control result is accepted
+as a reproducible research record. The original V2 Linux/Windows displacement
+drift is preserved below; Gate 9 fixed that generic portability defect, and
+the unchanged case now reproduces byte-identical V3 artifacts across both
+platforms.
 
 ## Purpose and starting state
 
@@ -148,7 +151,7 @@ CANDIDATE assignment(s), and change type, sorted deterministically and hashed
 as canonical JSON. The preparation and one-off reference scripts do not
 change or duplicate the production engine.
 
-## Artifact and cross-platform status
+## Original V2 artifact and cross-platform status
 
 V2 artifact SHA-256 values by execution environment:
 
@@ -188,14 +191,14 @@ historical individual impact. The source data's survey scale, boundary
 precision, and update lineage constrain interpretation. The dependency
 inventory can change over time and was not historically aligned.
 
-**Gate 8 verdict: MODIFY.** The case produced zero relationship regressions,
-so it does not meet the nonzero independent blast-radius demonstration
-criterion. Hosted Linux also differs from Windows in the unrounded
-Hausdorff-displacement scalar, so V2 output bytes are not cross-platform equal.
-No fallback, fixture alteration, or product change was made to hide either
-result.
+**Original Gate 8 verdict: MODIFY.** The case produced zero relationship
+regressions, so it did not meet the nonzero independent blast-radius
+demonstration criterion. Hosted Linux also differed from Windows in the
+unrounded Hausdorff-displacement scalar, so original V2 output bytes were not
+cross-platform equal. No fallback, fixture alteration, or product change was
+made to hide either result.
 
-### Recommended Gate 9 scope
+### Gate 9 follow-up at the time
 
 Gate 9 should first investigate a deterministic cross-platform contract for
 `max_boundary_displacement_m`, which differed by `1.53e-10 m` for the same
@@ -206,4 +209,50 @@ digests, and independent exhaustive-reference checks across Linux and
 Windows. Keep predicate and policy semantics frozen. Carry Madrid and Sierra
 de Baza forward as separate contracts, and pre-register a new independent case
 before execution if a nonzero blast-radius demonstration is still required.
-Do not implement Gate 9 here.
+Gate 9 subsequently addressed the displacement portability defect and was
+merged. The details and V3 reconciliation are recorded below.
+
+## Gate 8 reconciliation on report contract V3
+
+Gate 9 changed the active report contract to V3 and defined maximum boundary
+displacement on temporary geometry copies conformed to the explicit
+`1e-6 m` grid. This preserves full-precision relationship predicates and does
+not mutate any source or fixture geometry. PR #8 was rebased onto Gate 9's
+merged main (`fc78007df9969d67d849d2a5f9179fc9b62ab4ed`). The conflict in the
+decision log was resolved by preserving Gate 9's D-032 exactly; D-033 records
+acceptance of this research record without changing the original Gate verdict.
+
+All four committed Sierra inputs retain their original SHA-256 values listed
+above. The unchanged case was rerun under V3 with report version **3** and
+maximum boundary displacement **368.82509547712834 m**. Results remain:
+
+- GeoImpact policy verdict: **PASS** (the configured regression threshold is
+  zero and observed regressions are zero).
+- Relationships: **52**; unchanged **52**; assignment changed **0**; gained
+  **0**; lost **0**.
+- Transition histogram: **12** records with `[] -> []`; **40** records with
+  `["69"] -> ["69"]`.
+- Boundary ambiguities: **0**.
+- Relationship identity SHA-256:
+  `d57c99dd3f497d57ec3538c66b6aed2be2ef053a638d3fc68962690c8a50539a`.
+- Evidence-ID SHA-256 (empty evidence list):
+  `4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945`.
+- V3 `report.json`: `be2176458956834eebadb83c422b0e9496d496f3fa6cd1af54b00cec30748cbb`.
+- V3 `report.md`: `0884e42afc3c3327d1456cf055b9308e1540a8e7259c05cf9ed020fd1d763be7`.
+- V3 `relationship-regressions.geojson`:
+  `a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a`.
+
+The Gate 8 verifier continues to check the frozen input hashes, installed CLI,
+exit code, V3 report contract, full transition semantics, exact artifact
+hashes, and equality with an independent exhaustive all-pairs reference.
+Hosted Linux and Windows must each pass this verifier and the existing suite,
+Gate 4 V3 contracts, and Madrid V3 benchmark before the PR is ready for review.
+
+**Final Gate 8 verdict: MODIFY. Research record: ACCEPTED.** Sierra is a
+reproducible independent negative control. Its zero-transition result remains
+valid and does not meet the predeclared nonzero blast-radius criterion. The PR
+is accepted as a research record because it preserves an independently
+selected and validated real-world case, frozen attributed inputs, and the
+reproducible portability defect that led to Gate 9. Acceptance of the record
+does not mean the Gate passed and does not claim a successful nonzero
+demonstration.

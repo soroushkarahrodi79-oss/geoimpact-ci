@@ -239,10 +239,21 @@ def verify_report_and_outputs(
     )
 
     output_hashes: dict[str, str] = {}
+    output_hash_mismatches: dict[str, dict[str, str]] = {}
     for name in OUTPUT_NAMES:
         observed = hashlib.sha256((output_dir / name).read_bytes()).hexdigest()
         output_hashes[name] = observed
-        _assert_equal(f"output hash {name}", observed, expected["output_sha256"][name])
+        expected_hash = expected["output_sha256"][name]
+        if observed != expected_hash:
+            output_hash_mismatches[name] = {
+                "expected": expected_hash,
+                "actual": observed,
+            }
+    if output_hash_mismatches:
+        raise AssertionError(
+            "output hash mismatch: "
+            + json.dumps(output_hash_mismatches, sort_keys=True)
+        )
 
     return {
         "relationship_records": len(regressions),
@@ -291,6 +302,12 @@ def run_benchmark() -> dict[str, Any]:
     started = time.perf_counter()
     result = subprocess.run(command, cwd=ROOT, check=False)
     duration_seconds = time.perf_counter() - started
+    print(
+        "Madrid CLI observation: "
+        f"os={platform.system()} python={platform.python_version()} "
+        f"duration_seconds={duration_seconds:.3f} exit={result.returncode}",
+        flush=True,
+    )
     if result.returncode != 1:
         raise AssertionError(
             f"installed CLI exit mismatch: expected 1 (BLOCK), got {result.returncode}"

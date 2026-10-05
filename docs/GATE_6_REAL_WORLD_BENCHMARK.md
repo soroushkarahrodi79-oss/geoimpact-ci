@@ -7,9 +7,10 @@ Madrid blast radius. Gate 6 turns that exact observation into a deterministic
 CI contract on the existing Linux and Windows matrix. The benchmark uses the
 installed CLI and the frozen Gate 5 inputs; it adds no GIS capability.
 
-**Status: implementation complete; GitHub-hosted Linux/Windows verification
-pending. Gate 6 is not PASS until both matrix legs and the final documentation
-commit have succeeded and uploaded their benchmark artifacts.**
+**Status: GATE 6 — MODIFY.** The first GitHub-hosted run passed on Windows but
+failed the Linux artifact hash assertion. The benchmark correctly preserved
+the provisional cross-platform hash contract; no expected value was changed.
+The exact report field difference is isolated below.
 
 The work started from clean `origin/main` at
 `d5ec31e60d3ee236640a50a04a091ec063c01e95`. PR #5 was merged, Gate 5 was
@@ -142,11 +143,53 @@ They become canonical Gate 6 hashes only after GitHub-hosted Linux and Windows
 produce the same bytes. No per-OS hashes or serialization changes are allowed
 to make a mismatch pass.
 
+On the first hosted run, Windows produced all three expected hashes. Linux
+produced the expected `relationship-regressions.geojson` bytes, but its
+`report.json` and derived `report.md` differed. The Linux values below are
+recorded only as failure diagnostics; they are not per-OS goldens and are not
+accepted by the verifier:
+
+| First-run Linux diagnostic artifact | Observed SHA-256 |
+|---|---|
+| `report.json` | `d542802f6af63de72de5b35eda0e715da78f1e181d803537f585b85c75a71246` |
+| `report.md` | `5ba9c9998556d307cf27ccf4b1e9a431fa568e06d83c5c7c9fdf8fe7bdd5be68` |
+| `relationship-regressions.geojson` | `0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf` |
+
+The parsed report diff isolates the scalar change to
+`primary_change.changed_footprint_area_m2`: Linux reported
+`13463975.314658953`, while Windows reported `13463975.314659253` (a
+`0.000000300` m² difference). The embedded
+`primary_change.changed_footprint_geometry` also serialized a different
+MultiPolygon decomposition (46 versus 47 components and different coordinate
+sequences); the two decoded geometries compare topologically equal, with zero
+area in their symmetric difference. The Markdown difference is the same area
+scalar. The regression GeoJSON, relationship histogram, relationship identity,
+and evidence identity were byte-identical or digest-identical.
+
+The footprint is created in `measure_primary_change` from per-feature Shapely
+`symmetric_difference` operations followed by `unary_union`; its full-precision
+area is then included in JSON and Markdown. The evidence points to a
+cross-platform geometry overlay/union representation and floating-point
+measurement difference, rather than changed affected relationships. Gate 3
+explicitly preserves coordinate topology representation and does not round
+scalar scientific measurements. Gate 6 therefore does not rebaseline these
+hashes, round the area, add platform-specific expected values, or change the
+Gate 3 serializer.
+
 | Run | OS / Python | Result | CLI runtime |
 |---|---|---|---:|
 | Local development | Windows / Python 3.12.14 | PASS; CLI exit 1; all assertions and provisional output hashes matched | 4.534 s |
-| GitHub `linux-py311` | Pending | Pending actual PR workflow | Pending |
-| GitHub `windows-py314` | Pending | Pending actual PR workflow | Pending |
+| GitHub `linux-py311` | Linux / Python 3.11.16 | Full suite and Gate 4 passed; Madrid count/identity assertions passed, output hash failed as described | Runtime logging added for follow-up run |
+| GitHub `windows-py314` | Windows / Python 3.14.7 | Full suite, Gate 4, Madrid assertions, and all provisional hashes passed | 1.287 s |
+
+The initial PR workflow was
+[run 37287236988](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287236988)
+for tested commit `e77ea64c10cfda6bc818f5e2126d7b9cdcea580e`. Both matrix legs
+ran **51 tests successfully** and passed the existing Gate 4 contracts. The
+Linux CLI returned 1 / `BLOCK`, as expected; only the real-world output hashes
+failed. The Windows CLI returned 1 / `BLOCK` and passed every assertion. The
+verifier now prints OS, Python version, CLI duration, and exit code before
+assertions so a failed benchmark still records runtime on the follow-up run.
 
 Local verification ran the full test suite: **51 passed in 47.41 seconds**.
 Five focused tests cover deterministic digest behavior, pair histogram
@@ -161,9 +204,16 @@ upload runs when any benchmark output exists, including after a verifier
 failure, and ignores missing files so it cannot replace the original benchmark
 failure with an artifact-not-found failure.
 
-**GitHub workflow run:** pending.  
-**Tested commit SHA:** pending.  
-**Canonical cross-platform output hashes:** pending.
+Both expected benchmark artifacts were uploaded from run 37287236988 and
+downloaded for this comparison:
+`geoimpact-madrid-benchmark-linux-py311` and
+`geoimpact-madrid-benchmark-windows-py314`.
+
+**GitHub workflow run:** [37287236988](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37287236988) (Linux hash failure; Windows success).
+
+**Tested commit SHA:** `e77ea64c10cfda6bc818f5e2126d7b9cdcea580e`.
+
+**Canonical cross-platform output hashes:** not promoted; Linux and Windows differ.
 
 ## Scope and limitations
 
@@ -177,11 +227,11 @@ general GIS support, or arbitrary platform determinism.
 
 ## Final verdict
 
-**Pending actual GitHub-hosted Linux and Windows verification and final
-documentation-commit CI.** Gate 6 may be marked PASS only after both matrix legs
-pass the frozen assertions, all three output hashes match on both systems, the
-two benchmark artifacts are uploaded, and the final documentation commit is
-green. Do not merge automatically.
+**GATE 6 — MODIFY.** The first actual hosted run exposed a cross-platform
+artifact difference in the changed-footprint area value and geometry
+representation. Windows passed and Linux failed the frozen hash assertion;
+both artifacts were uploaded. The benchmark expectations remain unchanged and
+the PR remains a draft. No merge is authorized by this result.
 
 ## Recommended Gate 7 scope
 

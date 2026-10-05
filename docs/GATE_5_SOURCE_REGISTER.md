@@ -49,7 +49,7 @@ separate from the project's source-code licensing.
 | `ine-sections-2024-focus.geojson` | 93,124 | `9987b42293ffdda93b3cb5a1d897bccea4b084ed1ba0e1bd5eaf7f4eb303c453` |
 | `ine-sections-2025-focus.geojson` | 97,139 | `18956b960c4b8adf5d750c04cf51a5db638ed8054e5e83988003ea59ce4d9da3` |
 | `madrid-portals-change-footprint.geojson` | 290,181 | `a8ad452cb74dcc77cdfe43fb040b5e4b6ecee38c63710932e3de4209f74f6ec0` |
-| `geoimpact.yml` | 391 | `9e1ee2405109829f81aa91e81332757e1bdcf96a0ccaa3b39d8566dd32987fd4` |
+| `geoimpact.yml` | 390 | `7395510b1bc4b760dd606f1998d2ec317af0512768d223198544c7b6e52fc5b1` |
 
 ## Other candidates investigated
 

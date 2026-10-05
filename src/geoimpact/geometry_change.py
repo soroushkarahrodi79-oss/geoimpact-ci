@@ -57,8 +57,21 @@ def measure_primary_change(
             statuses[feature_id] = "modified"
     changed_ids = sorted(added_ids + removed_ids + modified_ids)
 
-    feature_footprints = [base[feature_id] for feature_id in removed_ids]
-    feature_footprints.extend(candidate[feature_id] for feature_id in added_ids)
+    # Snap every contribution on a temporary copy before unioning. In
+    # particular, additions/removals have no overlay operation of their own
+    # that would otherwise place their vertices on the footprint grid.
+    feature_footprints = [
+        shapely.set_precision(
+            base[feature_id], grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M
+        )
+        for feature_id in removed_ids
+    ]
+    feature_footprints.extend(
+        shapely.set_precision(
+            candidate[feature_id], grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M
+        )
+        for feature_id in added_ids
+    )
     feature_footprints.extend(
         shapely.symmetric_difference(
             base[feature_id],

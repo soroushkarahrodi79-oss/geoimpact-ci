@@ -87,6 +87,15 @@ def test_added_geometry_contributes_full_candidate_geometry() -> None:
     assert result["max_boundary_displacement_m"] == 0.0
 
 
+def test_added_geometry_is_grid_conformed_on_a_copy() -> None:
+    added = box(10.0000004, 0, 12.0000004, 3)
+    original = added.wkb
+    result = measure_primary_change({}, {"new": added})
+    expected = shapely.set_precision(added, grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M)
+    assert shape(result["changed_footprint_geometry"]).equals(expected)
+    assert added.wkb == original
+
+
 def test_removed_geometry_contributes_full_base_geometry() -> None:
     removed = box(10, 0, 12, 3)
     result = measure_primary_change({"old": removed}, {})

@@ -37,6 +37,9 @@ jobs:
       - name: Install project and test dependencies
         run: python -m pip install ".[test]"
 
+      - name: Record geometry engine versions
+        run: python -c "import shapely; print(f'Shapely {shapely.__version__}; GEOS {shapely.geos_version_string}')"
+
       - name: Run full test suite
         run: python -m pytest
 

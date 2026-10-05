@@ -52,6 +52,9 @@ jobs:
       - name: Verify BLOCK artifact hashes
         run: python scripts/verify_ci_contract.py hashes
 
+      - name: Verify Madrid real-world benchmark
+        run: python scripts/verify_madrid_benchmark.py
+
       - name: Upload BLOCK evidence
         if: always()
         uses: actions/upload-artifact@v7
@@ -62,4 +65,16 @@ jobs:
             ci-output/block/report.md
             ci-output/block/relationship-regressions.geojson
           if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload Madrid benchmark evidence
+        if: always() && hashFiles('ci-output/madrid-benchmark/**') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: geoimpact-madrid-benchmark-${{ matrix.identifier }}
+          path: |
+            ci-output/madrid-benchmark/report.json
+            ci-output/madrid-benchmark/report.md
+            ci-output/madrid-benchmark/relationship-regressions.geojson
+          if-no-files-found: ignore
           retention-days: 7

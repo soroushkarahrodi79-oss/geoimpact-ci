@@ -67,3 +67,11 @@
 |---|---|---|---|
 | D-025 | Qualify the INE Madrid 2024-to-2025 census-section transition with the Ayuntamiento's fixed portal-address inventory as the first real-world case. | Verified (existing CLI) | The official annual polygon pair and stable address IDs produced 2,112 observed `WITHIN` assignment changes across 26 old-to-new section-ID pairs; this establishes one concrete spatial blast-radius case without expanding analysis semantics. |
 | D-026 | Freeze only the reproducible change-footprint subset as a compact, attributed research fixture, keeping the sources' licenses distinct. | Accepted | A fixed input subset makes the observed case repeatable without checking in the 156 MB point snapshot or changing the code/test surface; the subset does not claim full-city coverage or a time-aligned historical address impact. |
+
+## Gate 6 decisions
+
+| ID | Decision | Status | Rationale / consequence |
+|---|---|---|---|
+| D-027 | Turn the bounded Gate 5 Madrid case into an installed-CLI regression benchmark on the existing Linux/Windows matrix, while retaining the synthetic Gate 4 contracts. | Accepted | The real-world case becomes continuously enforced without changing analysis semantics or replacing the controlled synthetic tests. |
+| D-028 | Freeze aggregate results, all old-to-new transition counts, derived transition-pattern counts, and deterministic relationship/evidence identity digests. | Accepted | A future change cannot pass by reproducing only the same total count while changing affected locations or evidence identity. |
+| D-029 | Treat Gate 5 output hashes as provisional until GitHub-hosted Linux and Windows reproduce identical artifact bytes. | Accepted | Cross-platform artifact hashes become canonical only after both required environments pass the same byte-level assertions. |

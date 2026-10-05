@@ -22,8 +22,7 @@ overlay are outside the change.
 
 ## Existing measurement semantics
 
-The project pins Shapely 2.1.2. The local Windows wheel used GEOS 3.13.1; CI
-logs the Shapely and GEOS versions for both hosted matrix legs. In Shapely
+The project pins Shapely 2.1.2. Both hosted CI runners used GEOS 3.13.1. In Shapely
 2.1.2, `Geometry.hausdorff_distance(other)` delegates to
 `shapely.hausdorff_distance(self, other)`, so these spellings use the same
 operation for this code path. Shapely documents the result as *discrete*
@@ -57,11 +56,12 @@ separate semantics and can evolve independently.
 The frozen Sierra case was used only to make a small engineering reproducer and
 to qualify the result. The checked-in
 [`displacement_portability_pair.geojson`](../tests/fixtures/displacement_portability_pair.geojson)
-contains two 400 m crops around the maximum-displacement witness pair after
-projection. It has 71 coordinates in total and is 7,439 bytes. It contains no
-dependent inventory or full research case. On the current Windows run, the
-reproducer's full-precision value is 368.8250959451751 m and the grid-qualified
-value is 368.82509547712834 m.
+contains two 400 m crops around the maximum-displacement witness pair. The
+cropped geometries are stored in OGC:CRS84 and projected to EPSG:25830 by the
+test, preserving the production transformation step. It has 71 coordinates in
+total and is 7,517 bytes. It contains no dependent inventory or full research
+case. On Windows, the reproducer's full-precision value is
+368.8250959451751 m and the grid-qualified value is 368.82509547712834 m.
 
 ## Scientific delta
 
@@ -127,12 +127,33 @@ The frozen Sierra source hashes remain those recorded by Gate 8:
 | `dependencies.geojson` | `617d4b71921b8d66692f1c8457a56b9b6224abb0c044bb06ce7608e2524c0f6c` |
 | `geoimpact.yml` | `f7e3245517cc5c16d97b34c08b0760e5055cfc25a71a39f1ee847413c0ee2520` |
 
-The qualification must continue to yield 52 relationships, all unchanged, zero
-regressions and zero boundary ambiguities, relationship identity
+Hosted qualification passed on Linux/Python 3.11 and Windows/Python 3.14, both
+with Shapely 2.1.2 and GEOS 3.13.1. The compact CRS84 fixture reproduced the
+original drift in the full-precision metric:
+
+| Hosted environment | Compact pair, full precision | Compact pair, 1e-6 m grid |
+|---|---:|---:|
+| Windows | 368.8250959451751 m | 368.82509547712834 m |
+| Linux | 368.82509594532814 m | 368.82509547712834 m |
+
+The full frozen case yielded byte-identical V3 reports and regression
+GeoJSON on both systems:
+
+| Sierra V3 artifact | SHA-256 on both systems |
+|---|---|
+| `report.json` | `be2176458956834eebadb83c422b0e9496d496f3fa6cd1af54b00cec30748cbb` |
+| `report.md` | `0884e42afc3c3327d1456cf055b9308e1540a8e7259c05cf9ed020fd1d763be7` |
+| `relationship-regressions.geojson` | `a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a` |
+
+The qualification yielded 52 relationships, all unchanged, zero regressions
+and zero boundary ambiguities, relationship identity
 `d57c99dd3f497d57ec3538c66b6aed2be2ef053a638d3fc68962690c8a50539a`, and
 evidence digest `4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945`.
 The Gate 8 source fixture itself remains external to the permanent Gate 9 CI
-contract.
+contract. The PR workflow passed on both matrix legs in
+[run 37319963966](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37319963966).
+The separate frozen Sierra qualification passed on both legs in
+[run 37321556884](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/37321556884).
 
 ## Decision D-032
 

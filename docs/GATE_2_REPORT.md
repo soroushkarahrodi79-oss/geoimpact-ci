@@ -106,8 +106,9 @@ temporary root or absolute local path in any artifact.
 > low-order digits of CRS-transformed coordinates vary with the platform's libm.
 > Gate 3B introduced a precision-bounded artifact serialization contract (decision
 > log D-022) that superseded these values at Gate 3; the V1 hashes are
-> recorded in `GATE_3_REPORT.md` as historical evidence. Active V2 hashes are in
-> `GATE_6_REAL_WORLD_BENCHMARK.md`. These original values are retained here
+> recorded in `GATE_3_REPORT.md` as historical evidence. The former V2 hashes
+> are retained in `GATE_6_REAL_WORLD_BENCHMARK.md`; active V3 hashes are in
+> `GATE_9_DISPLACEMENT_PORTABILITY.md`. These original values are retained here
 > as Gate 2 evidence, not as the active contract. The scientific results,
 > verdict, and evidence IDs are unchanged between the two serializations.
 

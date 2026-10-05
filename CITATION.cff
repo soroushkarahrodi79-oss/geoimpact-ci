@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use GeoImpact CI in research or applied work, please cite this software."
+type: software
+title: GeoImpact CI
+version: 1.0.0
+authors:
+  - family-names: Karahrodi
+    given-names: Soroush
+repository-code: "https://github.com/soroushkarahrodi79-oss/geoimpact-ci"

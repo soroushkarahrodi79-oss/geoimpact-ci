@@ -190,7 +190,7 @@ footprint and requires validity. Both platform legs passed that check.
 ### Historical artifact contract V1 hashes
 
 These values remain historical evidence. They are no longer active assertions
-for report contract V2.
+for report contract V2, which has itself been superseded by V3.
 
 | V1 artifact | SHA-256 |
 |---|---|
@@ -208,10 +208,13 @@ The first hosted Gate 6 V1 Linux diagnostic hashes were
 (`report.md`). They document the failed V1 portability assertion and are not
 per-platform goldens.
 
-### V2 current canonical hashes
+### Historical V2 canonical hashes (superseded by report V3)
+
+These hashes preserve the Gate 6 V2 record. The active synthetic and Madrid
+V3 hashes are listed in the [Gate 9 displacement portability record](GATE_9_DISPLACEMENT_PORTABILITY.md).
 
 The local V2 outputs and both hosted platforms produced identical bytes. These
-are the active canonical report contract V2 expectations:
+are the historical canonical report contract V2 expectations:
 
 | V2 artifact | SHA-256 |
 |---|---|

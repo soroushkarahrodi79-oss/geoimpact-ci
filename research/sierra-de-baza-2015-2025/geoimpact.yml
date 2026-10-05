@@ -1,0 +1,21 @@
+version: 1
+
+analysis:
+  crs: EPSG:25830
+
+primary:
+  dataset: sierra-de-baza-natural-park
+  base: base.geojson
+  candidate: candidate.geojson
+  id_field: CODIGOESPA
+
+dependencies:
+  - dataset: rediam-public-use-equipment-reference-2026-10-05
+    path: dependencies.geojson
+    id_field: CODIGOEQUI
+    predicate: within
+
+policy:
+  max_relationship_regressions:
+    threshold: 0
+    severity: block

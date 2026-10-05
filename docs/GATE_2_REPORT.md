@@ -39,8 +39,9 @@ artifacts. Existing Gate 1 functions remain directly testable.
 
 ## Canonical report schema and serialization
 
-`report.json` is authoritative and has `report_version: "1"`. Its semantic
-areas are:
+`report.json` was authoritative at Gate 2 and had `report_version: "1"`
+(report contract V1, now historical; Gate 6 introduces report contract V2).
+Its semantic areas are:
 
 - `analysis`: analysis CRS, primary dataset and ID field, and declared
   dependency identities/predicates (no file paths);
@@ -104,9 +105,10 @@ temporary root or absolute local path in any artifact.
 > hashes** and are not reproducible across operating systems, because the
 > low-order digits of CRS-transformed coordinates vary with the platform's libm.
 > Gate 3B introduced a precision-bounded artifact serialization contract (decision
-> log D-022) that supersedes these values; the current canonical hashes are
-> recorded in `GATE_3_REPORT.md`. These historical values are retained here as the
-> original Gate 2 evidence, not as the active contract. The scientific results,
+> log D-022) that superseded these values at Gate 3; the V1 hashes are
+> recorded in `GATE_3_REPORT.md` as historical evidence. Active V2 hashes are in
+> `GATE_6_REAL_WORLD_BENCHMARK.md`. These original values are retained here
+> as Gate 2 evidence, not as the active contract. The scientific results,
 > verdict, and evidence IDs are unchanged between the two serializations.
 
 ## Canonical fixture result and tests

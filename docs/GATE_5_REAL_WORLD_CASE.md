@@ -99,7 +99,9 @@ The exploratory policy threshold in the checked-in config is zero, solely to
 make the observed relationship changes produce a visible `BLOCK`. It is not a
 recommended production policy. The output directory is not committed.
 
-The three output artifacts from this local run had SHA-256 values:
+The three output artifacts from this local run had SHA-256 values under
+historical artifact contract V1. Gate 6 introduced report contract V2; these
+values remain the Gate 5 observation and are not the active V2 CI expectations:
 
 | Artifact | SHA-256 |
 |---|---|

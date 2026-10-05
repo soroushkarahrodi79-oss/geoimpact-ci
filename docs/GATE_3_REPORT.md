@@ -122,9 +122,10 @@ public packaging quality.
 
 The canonical BLOCK CLI run and direct `run_from_config` produce byte-identical
 artifacts, and a test compares each direct-runner artifact to its CLI
-counterpart byte-for-byte. The current canonical hashes below are produced under
-the Gate 3B portable serialization contract (decision log D-022) and **supersede
-the pre-portable Windows-only hashes** retained in `GATE_2_REPORT.md`:
+counterpart byte-for-byte. The hashes below were canonical under the Gate 3B
+portable serialization contract (decision log D-022). They are now
+**historical artifact contract V1** values; report contract V2 is documented in
+`GATE_6_REAL_WORLD_BENCHMARK.md` and its current hashes are enforced by CI.
 
 | Artifact | SHA-256 (portable, Gate 3B) |
 |---|---|

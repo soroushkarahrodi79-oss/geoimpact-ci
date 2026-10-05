@@ -1,13 +1,18 @@
-"""Geometry measurements for the Gate 1 controlled polygon mutation."""
+"""Geometry measurements for the primary-layer change footprint."""
 
 from __future__ import annotations
 
 import json
 from typing import Mapping
 
+import shapely
 from shapely.geometry import mapping
 from shapely.geometry.base import BaseGeometry
-from shapely.ops import unary_union
+
+
+# The derived overlay is in EPSG:25830 metres. This is a representation and
+# robustness model for the footprint only, not a source-accuracy claim.
+CHANGE_FOOTPRINT_GRID_SIZE_M = 1e-6
 
 
 def _geojson_geometry(geometry: BaseGeometry) -> dict[str, object]:
@@ -18,11 +23,11 @@ def _geojson_geometry(geometry: BaseGeometry) -> dict[str, object]:
 def measure_primary_change(
     base: Mapping[str, BaseGeometry], candidate: Mapping[str, BaseGeometry]
 ) -> dict[str, object]:
-    """Measure changed polygon footprint and discrete Hausdorff displacement.
+    """Measure the fixed-grid change footprint and full-precision displacement.
 
-    The Gate 1 fixture contains the same two stable primary IDs in both states.
-    A feature is spatially unchanged exactly when Shapely's topological
-    ``equals`` predicate is true, matching the Gate 0 change model.
+    The fixed precision is limited to the derived symmetric-difference and
+    union operations. Feature equality and Hausdorff displacement retain their
+    existing full-precision semantics; relationship analysis is independent.
     """
     shared_ids = sorted(set(base) & set(candidate))
     statuses = {
@@ -41,10 +46,16 @@ def measure_primary_change(
         }
 
     feature_footprints = [
-        base[feature_id].symmetric_difference(candidate[feature_id])
+        shapely.symmetric_difference(
+            base[feature_id],
+            candidate[feature_id],
+            grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M,
+        )
         for feature_id in changed_ids
     ]
-    footprint = unary_union(feature_footprints)
+    footprint = shapely.normalize(
+        shapely.union_all(feature_footprints, grid_size=CHANGE_FOOTPRINT_GRID_SIZE_M)
+    )
     maximum_displacement = max(
         base[feature_id].hausdorff_distance(candidate[feature_id]) for feature_id in changed_ids
     )

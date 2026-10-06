@@ -1,3 +1,5 @@
+tests/fixtures/*.geojson text eol=lf
+tests/fixtures/*.yml text eol=lf
 research/madrid-ine-sections-2024-2025/ine-sections-2024-focus.geojson text eol=lf
 research/madrid-ine-sections-2024-2025/ine-sections-2025-focus.geojson text eol=lf
 research/madrid-ine-sections-2024-2025/madrid-portals-change-footprint.geojson text eol=lf

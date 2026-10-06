@@ -79,8 +79,8 @@ qualification cases.
 
 | Case and artifact | V4 SHA-256 | V5 SHA-256 | Reason / evidence status |
 |---|---|---|---|
-| Synthetic `report.json` | `a3245fb06b1a49c9cfec7d7b46cd70871937fdcb40700ad6c9733f470f73df13` | `0357b51a5686ad8d35bdd951f471a91dd593d475d8ccab418aa54d83ef71c167` | V5 version and provenance; science unchanged |
-| Synthetic `report.md` | `222d3e3da2f7dc5c1c466249746022379a1735210792e3165435e49fae40d2f4` | `3ee3627179d55dab90ccb00f9a302444985e7dca94277e9c30a3d552ff651d70` | Provenance summary added |
+| Synthetic `report.json` | `a3245fb06b1a49c9cfec7d7b46cd70871937fdcb40700ad6c9733f470f73df13` | `7c30c65f1228197e0fd457084c509911d40446f4b6e281907b167c30e47985ab` | V5 version and provenance; science unchanged |
+| Synthetic `report.md` | `222d3e3da2f7dc5c1c466249746022379a1735210792e3165435e49fae40d2f4` | `0ae2da4f039b9a4dc1b7545deae2bcd968fdc401c5bb9874eaaae9648333d2ec` | Provenance summary added |
 | Synthetic relationship GeoJSON | `a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978` | `a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978` | Unchanged |
 | Madrid `report.json` | `2657b69c8e173e8997fcca10e50df36a96e80ec5226f57299039fe3c817c8d2b` | `d79a9bc7cf9780ee86fae4f4bb2302d0ed87a3e12bda64bdd9c033e67d42d374` | V5 version and provenance; science unchanged |
 | Madrid `report.md` | `74ce6c7f7e614bcec7ad94203747dce0f59dbda4e4e1e4fb0522e515665531d1` | `f0a943bad800cba1360c6a74714d295dfe341de63a05f56d812de20fcac31a43` | Provenance summary added |

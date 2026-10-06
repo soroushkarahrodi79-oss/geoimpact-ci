@@ -1,6 +1,6 @@
 # GeoImpact CI — current v1 architecture and contract
 
-Status: current implementation contract, report schema V4. GeoImpact is a
+Status: current implementation contract, report schema V5. GeoImpact is a
 deterministic local geospatial regression tool. Given a BASE and CANDIDATE
 primary GeoJSON layer and fixed dependent point layers, it reports which
 declared `within` assignments change and applies the configured PASS/BLOCK
@@ -69,8 +69,11 @@ V4 retains the V3 top-level sections and relationship semantics. Its
 `modified_feature_ids`, `changed_footprint_area_m2`,
 `changed_footprint_geometry`, and `max_boundary_displacement_m`. V3 had status
 and footprint data only for shared IDs; V4 expands that section to represent
-the complete primary ID universe. See [REPORT_V4_MIGRATION.md](REPORT_V4_MIGRATION.md)
-for the migration rationale and canonical output implications.
+the complete primary ID universe. V5 adds deterministic raw-byte SHA-256
+identities for config, primary, and dependency inputs, along with GeoImpact,
+Shapely/GEOS, and PyProj/PROJ versions. It does not change scientific
+semantics. See [REPORT_V4_MIGRATION.md](REPORT_V4_MIGRATION.md) and
+[REPORT_V5_MIGRATION.md](REPORT_V5_MIGRATION.md) for migration details.
 
 JSON is canonical and is the source for Markdown and relationship GeoJSON.
 Output IDs and records are sorted deterministically under the pinned runtime

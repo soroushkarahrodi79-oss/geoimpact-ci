@@ -49,13 +49,16 @@ def _input_path(value: Any, field: str, config_directory: Path) -> Path:
     return path
 
 
-def load_contract(config_path: str | Path) -> GeoImpactContract:
+def load_contract(
+    config_path: str | Path, *, source_bytes: bytes | None = None
+) -> GeoImpactContract:
     """Load and validate the v1 contract; resolve inputs from its directory."""
     config = Path(config_path).expanduser().resolve()
     if not config.is_file():
         raise ContractError(f"config file does not exist: {config_path}")
     try:
-        config_text = config.read_text(encoding="utf-8")
+        raw_config = config.read_bytes() if source_bytes is None else source_bytes
+        config_text = raw_config.decode("utf-8")
     except (OSError, UnicodeError) as error:
         raise ContractError(f"config file cannot be read as UTF-8: {config_path}") from error
     try:

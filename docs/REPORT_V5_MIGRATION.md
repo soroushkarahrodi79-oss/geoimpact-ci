@@ -1,7 +1,7 @@
 # Report V5 migration record
 
-Status: development report contract introduced after v1.1.0. The package
-version and the historical `v1.1.0` release remain unchanged.
+Status: report contract introduced after v1.1.0 and packaged for the v1.2.0
+release. The historical `v1.1.0` tag and release remain unchanged.
 
 ## Why V5 adds provenance
 

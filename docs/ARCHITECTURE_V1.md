@@ -58,6 +58,11 @@ rename. Exact boundary touches are reported separately and do not count as
 
 ## Report and compatibility
 
+Internal module boundaries use explicit standard-library type contracts for
+the stable configuration, analysis, policy, evidence, and report structures.
+These annotations describe the existing dictionaries; they do not change the
+serialized or public contract.
+
 V4 retains the V3 top-level sections and relationship semantics. Its
 `primary_change` section includes `feature_geometry_status`,
 `changed_feature_ids`, `added_feature_ids`, `removed_feature_ids`,

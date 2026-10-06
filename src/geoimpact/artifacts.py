@@ -11,6 +11,8 @@ from pyproj import Transformer
 from shapely.geometry import shape, mapping
 from shapely.ops import transform
 
+from geoimpact.models import AnalysisResult, GeoImpactContract, GeoImpactReport
+
 
 _ANALYSIS_TO_CRS84 = Transformer.from_crs(
     "EPSG:25830", "OGC:CRS84", always_xy=True
@@ -103,7 +105,9 @@ def canonical_json_bytes(value: Any) -> bytes:
     ).encode("utf-8")
 
 
-def build_report(contract: dict[str, Any], analysis_result: dict[str, Any]) -> dict[str, Any]:
+def build_report(
+    contract: GeoImpactContract, analysis_result: AnalysisResult
+) -> GeoImpactReport:
     dependencies = [
         {
             "dataset": dependency["dataset"],
@@ -142,7 +146,7 @@ def build_report(contract: dict[str, Any], analysis_result: dict[str, Any]) -> d
     }
 
 
-def render_markdown(report: dict[str, Any]) -> str:
+def render_markdown(report: GeoImpactReport) -> str:
     """Render the reviewer summary solely from the canonical report object."""
     change = report["primary_change"]
     policy = report["policy"]
@@ -192,7 +196,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def build_relationship_geojson(report: dict[str, Any]) -> dict[str, Any]:
+def build_relationship_geojson(report: GeoImpactReport) -> dict[str, Any]:
     features: list[dict[str, Any]] = []
     for item in report["relationship_regressions"]:
         analysis_geometry = shape(item["evidence_geometry"])
@@ -226,7 +230,7 @@ def build_relationship_geojson(report: dict[str, Any]) -> dict[str, Any]:
     return {"type": "FeatureCollection", "features": features}
 
 
-def write_artifacts(report: dict[str, Any], output_directory: str | Path) -> dict[str, Path]:
+def write_artifacts(report: GeoImpactReport, output_directory: str | Path) -> dict[str, Path]:
     output = Path(output_directory)
     output.mkdir(parents=True, exist_ok=True)
     paths = {

@@ -8,6 +8,7 @@ from typing import Any
 import yaml
 
 from geoimpact.errors import GeoImpactError
+from geoimpact.models import GeoImpactContract
 
 
 class ContractError(GeoImpactError, ValueError):
@@ -48,7 +49,7 @@ def _input_path(value: Any, field: str, config_directory: Path) -> Path:
     return path
 
 
-def load_contract(config_path: str | Path) -> dict[str, Any]:
+def load_contract(config_path: str | Path) -> GeoImpactContract:
     """Load and validate the v1 contract; resolve inputs from its directory."""
     config = Path(config_path).expanduser().resolve()
     if not config.is_file():

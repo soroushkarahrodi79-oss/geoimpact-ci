@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from geoimpact.models import PolicyResult
+
 
 def evaluate_max_relationship_regressions(
     observed_value: int, threshold: int, evidence_ids: list[str]
-) -> dict[str, object]:
+) -> PolicyResult:
     """Evaluate the fixed max_relationship_regressions BLOCK rule."""
     return {
         "rule": "max_relationship_regressions",

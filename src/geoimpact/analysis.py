@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import math
 from pathlib import Path
-from typing import Mapping
+from typing import Literal, Mapping
 
 from pyproj import Transformer
 from pyproj.exceptions import ProjError
@@ -17,6 +17,12 @@ from shapely.ops import transform
 from geoimpact.errors import InputError
 from geoimpact.evidence import relationship_evidence
 from geoimpact.geometry_change import measure_primary_change
+from geoimpact.models import (
+    AnalysisResult,
+    BoundaryAmbiguity,
+    RelationshipRecord,
+    RelationshipRegression,
+)
 from geoimpact.policy import evaluate_max_relationship_regressions
 from geoimpact.relationships import (
     PrimarySpatialIndex,
@@ -25,7 +31,7 @@ from geoimpact.relationships import (
 )
 
 
-FIXTURE_CRS = "EPSG:25830"
+FIXTURE_CRS: Literal["EPSG:25830"] = "EPSG:25830"
 PRIMARY_DATASET = "districts"
 _CRS84_TO_ANALYSIS = Transformer.from_crs("OGC:CRS84", FIXTURE_CRS, always_xy=True)
 
@@ -137,7 +143,7 @@ def analyze(
     relationship_threshold: int,
     primary_id_field: str = "district_id",
     primary_dataset: str = PRIMARY_DATASET,
-) -> dict[str, object]:
+) -> AnalysisResult:
     """Analyze the declared fixed dependencies against BASE and CANDIDATE."""
     base_primary = load_features(base_primary_path, primary_id_field, geometry_role="primary")
     candidate_primary = load_features(
@@ -145,9 +151,9 @@ def analyze(
     )
     base_index = PrimarySpatialIndex(base_primary)
     candidate_index = PrimarySpatialIndex(candidate_primary)
-    relationship_records: list[dict[str, object]] = []
-    regression_evidence: list[dict[str, object]] = []
-    boundary_ambiguities: list[dict[str, object]] = []
+    relationship_records: list[RelationshipRecord] = []
+    regression_evidence: list[RelationshipRegression] = []
+    boundary_ambiguities: list[BoundaryAmbiguity] = []
 
     for dependent_dataset in sorted(dependent_sources):
         dependent_path, id_field = dependent_sources[dependent_dataset]

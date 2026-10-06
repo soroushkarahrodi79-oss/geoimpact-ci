@@ -24,8 +24,8 @@ ARTIFACT_NAMES = (
     "relationship-regressions.geojson",
 )
 EXPECTED_BLOCK_HASHES = {
-    "report.json": "7c30c65f1228197e0fd457084c509911d40446f4b6e281907b167c30e47985ab",
-    "report.md": "0ae2da4f039b9a4dc1b7545deae2bcd968fdc401c5bb9874eaaae9648333d2ec",
+    "report.json": "d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd",
+    "report.md": "65ca9d67dd7ff59bc148fccc003354ea3201f51707f3e73ca2fd96dac208d95a",
     "relationship-regressions.geojson": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
 }
 

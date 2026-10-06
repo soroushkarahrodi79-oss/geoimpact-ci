@@ -1,16 +1,22 @@
-# GeoImpact CI v1.2.0 — release candidate
+# GeoImpact CI v1.2.0 — final release record
 
-**Proposed tag:** `v1.2.0`
+**Published tag:** `v1.2.0`
 
-**Proposed GitHub release title:** `GeoImpact CI v1.2.0 — reproducible provenance`
+**GitHub release:** [GeoImpact CI v1.2.0 — reproducible provenance](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/releases/tag/v1.2.0)
 
 This release packages report contract V5, introduced through PR #15, without
 expanding GeoImpact into a broader GIS platform or changing the underlying
 spatial relationship semantics.
 
-The release tag must be created only after this release-preparation PR is merged
-and the post-merge `main` workflow passes. The tag target must be that verified
-final `main` SHA. Existing `v1.0.0` and `v1.1.0` tags must not move.
+The release-preparation PR was merged and the post-merge `main` workflow
+passed before publication. The annotated `v1.2.0` tag targets the verified
+final release commit:
+
+`45237d7caaea2aa4b81359e46f1623918645078c`
+
+GitHub Release `v1.2.0` was published on 2026-10-06 as a stable release
+(`draft=false`, `prerelease=false`). Existing `v1.0.0` and `v1.1.0`
+tags were not moved.
 
 ## Release scope
 
@@ -105,17 +111,19 @@ network analysis, PostGIS/database integration, web UI/API, QGIS integration,
 AI, scoring, automatic repair, fuzzy identity matching, or simultaneous
 dependent-layer transitions.
 
-## Release checklist
+## Release closure
 
-- [x] PR #15 merged.
-- [x] PR #15 post-merge workflow passed on Linux and Windows.
-- [x] v1.2.0 package version prepared.
-- [x] v1.2.0 citation version prepared.
-- [x] CHANGELOG updated with V5 provenance scope.
-- [x] Release qualification script points to v1.2.0.
+- [x] PR #15 merged and its post-merge workflow passed on Linux and Windows.
+- [x] Package and citation metadata set to v1.2.0.
+- [x] CHANGELOG and V5 migration documentation updated.
 - [x] Final v1.2.0 canonical report hashes pinned and explained.
-- [ ] Release-preparation PR CI passes on Linux and Windows.
-- [ ] Release-preparation PR merged.
-- [ ] Post-merge main CI passes.
-- [ ] Tag v1.2.0 created at the verified final main SHA.
-- [ ] GitHub Release published as non-draft and non-prerelease.
+- [x] Release-preparation PR #16 passed Linux/Python 3.11 and Windows/Python 3.14.
+- [x] Release-preparation PR #16 merged.
+- [x] Post-merge main workflow `37445179013` passed.
+- [x] Wheel and sdist qualification passed with installed package version 1.2.0.
+- [x] Annotated tag `v1.2.0` created at `45237d7caaea2aa4b81359e46f1623918645078c`.
+- [x] GitHub Release published as non-draft and non-prerelease.
+
+The tag is an unsigned annotated tag. It is immutable for this release and
+must not be moved or recreated. Signed tags may be considered for future
+releases without rewriting v1.2.0.

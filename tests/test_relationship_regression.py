@@ -9,6 +9,18 @@ from geoimpact.relationships import PrimarySpatialIndex, derive_within_assignmen
 
 
 FIXTURES = Path(__file__).parent / "fixtures"
+PROVENANCE = {
+    "hash_algorithm": "sha256",
+    "inputs": {
+        "config": {"sha256": "0" * 64, "size_bytes": 0},
+        "primary": {
+            "base": {"dataset": "districts", "sha256": "0" * 64, "size_bytes": 0},
+            "candidate": {"dataset": "districts", "sha256": "0" * 64, "size_bytes": 0},
+        },
+        "dependencies": [],
+    },
+    "engine": {"geoimpact_ci": "1.1.0", "shapely": "x", "geos": "x", "pyproj": "x", "proj": "x"},
+}
 
 
 def test_controlled_mutation_reassigns_declared_dependents() -> None:
@@ -54,12 +66,12 @@ def test_custom_primary_dataset_name_flows_to_analysis_evidence_and_report() -> 
         ],
     }
 
-    report = build_report(contract, result)
+    report = build_report(contract, result, PROVENANCE)
 
     assert result["primary_dataset"] == dataset_name
     assert result["relationship_regressions"][0]["primary_dataset"] == dataset_name
     assert report["analysis"]["primary_dataset"] == dataset_name
-    assert report["report_version"] == "4"
+    assert report["report_version"] == "5"
     assert report["verdict"] == "PASS"
 
 

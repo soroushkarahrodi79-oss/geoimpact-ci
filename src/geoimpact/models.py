@@ -101,6 +101,44 @@ class AnalysisResult(TypedDict):
     policy: PolicyResult
 
 
+class ContentIdentity(TypedDict):
+    sha256: str
+    size_bytes: int
+
+
+class PrimaryDatasetIdentity(ContentIdentity):
+    dataset: str
+
+
+class PrimaryInputProvenance(TypedDict):
+    base: PrimaryDatasetIdentity
+    candidate: PrimaryDatasetIdentity
+
+
+class DependencyInputProvenance(PrimaryDatasetIdentity):
+    pass
+
+
+class InputProvenance(TypedDict):
+    config: ContentIdentity
+    primary: PrimaryInputProvenance
+    dependencies: list[DependencyInputProvenance]
+
+
+class EngineProvenance(TypedDict):
+    geoimpact_ci: str
+    shapely: str
+    geos: str
+    pyproj: str
+    proj: str
+
+
+class Provenance(TypedDict):
+    hash_algorithm: Literal["sha256"]
+    inputs: InputProvenance
+    engine: EngineProvenance
+
+
 class ReportAnalysisSection(TypedDict):
     crs: Literal["EPSG:25830"]
     primary_dataset: str
@@ -115,7 +153,8 @@ class ReportDependency(TypedDict):
 
 
 class GeoImpactReport(TypedDict):
-    report_version: Literal["4"]
+    report_version: Literal["5"]
+    provenance: Provenance
     analysis: ReportAnalysisSection
     primary_change: PrimaryChange
     relationships: list[RelationshipRecord]

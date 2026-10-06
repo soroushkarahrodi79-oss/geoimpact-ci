@@ -110,9 +110,13 @@ verdict was produced.
 
 ## Evidence and numerical contract
 
-The active report contract is V4. V4 adds first-class stable-ID addition and
+The active report contract is V5. V4 added first-class stable-ID addition and
 removal statuses, ID lists, and complete footprint contributions. V3 reports
 remain interpretable with their earlier shared-ID-only primary change section.
+V5 adds deterministic raw-byte SHA-256 identities for the config, BASE,
+CANDIDATE, and dependencies, together with GeoImpact CI, Shapely/GEOS, and
+PyProj/PROJ versions. It includes no local paths or timestamps; V4 reports
+remain valid V4 documents. See the [V5 migration record](docs/REPORT_V5_MIGRATION.md).
 GeoJSON inputs are analyzed in EPSG:25830;
 the primary comparison is BASE → CANDIDATE and dependencies are fixed reference
 layers. Relationship assignment uses exact GEOS `within`. `touches` is separate

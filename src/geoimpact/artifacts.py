@@ -11,7 +11,12 @@ from pyproj import Transformer
 from shapely.geometry import shape, mapping
 from shapely.ops import transform
 
-from geoimpact.models import AnalysisResult, GeoImpactContract, GeoImpactReport
+from geoimpact.models import (
+    AnalysisResult,
+    GeoImpactContract,
+    GeoImpactReport,
+    Provenance,
+)
 
 
 _ANALYSIS_TO_CRS84 = Transformer.from_crs(
@@ -106,7 +111,9 @@ def canonical_json_bytes(value: Any) -> bytes:
 
 
 def build_report(
-    contract: GeoImpactContract, analysis_result: AnalysisResult
+    contract: GeoImpactContract,
+    analysis_result: AnalysisResult,
+    provenance: Provenance,
 ) -> GeoImpactReport:
     dependencies = [
         {
@@ -130,7 +137,8 @@ def build_report(
     )
     policy = analysis_result["policy"]
     return {
-        "report_version": "4",
+        "report_version": "5",
+        "provenance": provenance,
         "analysis": {
             "crs": contract["analysis_crs"],
             "primary_dataset": contract["primary"]["dataset"],
@@ -150,6 +158,8 @@ def render_markdown(report: GeoImpactReport) -> str:
     """Render the reviewer summary solely from the canonical report object."""
     change = report["primary_change"]
     policy = report["policy"]
+    provenance = report["provenance"]
+    inputs = provenance["inputs"]
     lines = [
         "# GeoImpact CI",
         "",
@@ -193,6 +203,24 @@ def render_markdown(report: GeoImpactReport) -> str:
     )
     if not report["relationship_regressions"]:
         lines.append("- none")
+    lines += [
+        "",
+        "## Provenance",
+        "",
+        f"- Config SHA-256: {inputs['config']['sha256']}",
+        f"- BASE ({inputs['primary']['base']['dataset']}) SHA-256: {inputs['primary']['base']['sha256']}",
+        f"- CANDIDATE ({inputs['primary']['candidate']['dataset']}) SHA-256: {inputs['primary']['candidate']['sha256']}",
+    ]
+    lines.extend(
+        f"- Dependency {item['dataset']} SHA-256: {item['sha256']}"
+        for item in inputs["dependencies"]
+    )
+    engine = provenance["engine"]
+    lines += [
+        f"- GeoImpact CI: {engine['geoimpact_ci']}",
+        f"- Shapely / GEOS: {engine['shapely']} / {engine['geos']}",
+        f"- PyProj / PROJ: {engine['pyproj']} / {engine['proj']}",
+    ]
     return "\n".join(lines) + "\n"
 
 

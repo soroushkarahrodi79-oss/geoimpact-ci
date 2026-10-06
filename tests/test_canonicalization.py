@@ -125,7 +125,7 @@ def test_canonicalization_touches_only_artifact_representation_not_analysis(tmp_
     assert report["primary_change"]["changed_footprint_area_m2"] == in_memory.area
 
     serialized = json.loads((tmp_path / "out" / "report.json").read_text(encoding="utf-8"))
-    assert serialized["report_version"] == "4"
+    assert serialized["report_version"] == "5"
     changed_footprint = shape(serialized["primary_change"]["changed_footprint_geometry"])
     assert changed_footprint.is_valid
     assert changed_footprint.equals(in_memory)

@@ -2,6 +2,8 @@
 
 **Know the spatial blast radius before you merge.**
 
+**Current stable release:** [v1.2.0 — reproducible provenance](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/releases/tag/v1.2.0) · Report V5 · MIT
+
 GeoImpact CI compares BASE and CANDIDATE polygon GeoJSON files and measures how
 geometry changes alter declared spatial relationships with fixed dependent
 features. It writes deterministic evidence and a PASS or BLOCK result for a CI

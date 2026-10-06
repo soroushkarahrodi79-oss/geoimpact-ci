@@ -1,4 +1,4 @@
-"""Fail-closed loader for the deliberately narrow Gate 2 YAML contract."""
+"""Fail-closed loader for the deliberately narrow v1 YAML contract."""
 
 from __future__ import annotations
 
@@ -76,7 +76,7 @@ def load_contract(
     _only(analysis, {"crs"}, "analysis")
     crs = _text(_required(analysis, "crs", "analysis"), "analysis.crs")
     if crs != "EPSG:25830":
-        raise ContractError("analysis.crs must be EPSG:25830 for Gate 2")
+        raise ContractError("analysis.crs must be EPSG:25830 for contract version 1")
 
     primary = _mapping(_required(root, "primary", "config"), "primary")
     _only(primary, {"dataset", "base", "candidate", "id_field"}, "primary")
@@ -110,7 +110,7 @@ def load_contract(
             _required(dependency, "predicate", field), f"{field}.predicate"
         )
         if predicate != "within":
-            raise ContractError(f"{field}.predicate must be within for Gate 2")
+            raise ContractError(f"{field}.predicate must be within for contract version 1")
         dependencies.append(
             {"dataset": name, "path": path, "id_field": id_field, "predicate": predicate}
         )

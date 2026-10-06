@@ -1,4 +1,9 @@
-# GeoImpact CI v1.0.0 — release candidate
+# Historical release-preparation record — GeoImpact CI v1.0.0
+
+This file preserves the pre-publication checklist as it stood at that time;
+its proposed/pending statuses are not the present release status. The release
+is published. See the [v1.0.0 release](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/releases/tag/v1.0.0)
+and subsequent [v1.2.0 final release record](RELEASE_V1_2_0.md).
 
 **Proposed tag:** `v1.0.0`
 

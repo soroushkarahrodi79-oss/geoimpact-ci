@@ -1,4 +1,4 @@
-"""Canonical report and deterministic derived Gate 2 artifacts."""
+"""Canonical report and deterministic derived evidence artifacts."""
 
 from __future__ import annotations
 

@@ -23,9 +23,14 @@ and geometry diffing; it does not replace them.
 
 ## v1 scope
 
-GeoImpact v1 accepts Polygon or MultiPolygon BASE/CANDIDATE GeoJSON with
-required stable IDs and an analysis CRS of EPSG:25830. Each stable ID is
-classified as unchanged, modified, added, or removed. The deterministic change
+GeoImpact v1 accepts GeoJSON FeatureCollections with Polygon or MultiPolygon
+BASE/CANDIDATE geometries, Point dependent geometries, required unique,
+non-empty string stable IDs, and an analysis CRS of EPSG:25830.
+GeoJSON coordinates are interpreted as OGC:CRS84 and transformed to that fixed
+analysis CRS; arbitrary CRS declarations or inference are not supported. Each
+stable ID is matched only to the same ID in both snapshots; GeoImpact does not
+infer renames or feature identity. Each ID is classified as unchanged,
+modified, added, or removed. The deterministic change
 footprint includes symmetric differences for modified IDs, the candidate
 geometry for added IDs, and the base geometry for removed IDs. Maximum boundary
 displacement compares only modified IDs present in both snapshots; additions
@@ -43,9 +48,20 @@ establish that source data are correct or that a real-world impact occurred.
 
 ## Quick start
 
-Requires Python 3.11 or later. From a clean clone:
+Requires Python 3.11 or later. The supported installation path is the tagged
+source release or a clean repository clone. To install v1.2.0 directly from
+its version tag:
+
+```text
+python -m pip install "git+https://github.com/soroushkarahrodi79-oss/geoimpact-ci.git@v1.2.0"
+```
+
+To work from a clean clone and run the included examples:
 
 ```powershell
+git clone https://github.com/soroushkarahrodi79-oss/geoimpact-ci.git
+cd geoimpact-ci
+git checkout v1.2.0
 python -m venv .venv
 ```
 
@@ -53,13 +69,21 @@ Activate the environment (`.venv\Scripts\Activate.ps1` in PowerShell, or
 `source .venv/bin/activate` on Linux/macOS), then run:
 
 ```text
-python -m pip install --upgrade pip
 python -m pip install .
 geoimpact analyze --config tests/fixtures/geoimpact.yml --out output
 ```
 
 The fixture intentionally BLOCKs (exit code 1). A PASS fixture is available at
 `tests/fixtures/geoimpact-pass.yml`.
+
+For an editable development install with the test suite, use
+`python -m pip install -e ".[test]"`. To build wheel and source distributions,
+install the `build` frontend and run `python -m build`; the archives are written
+to `dist/`. For v1.2.0, install the wheel with
+`python -m pip install dist/geoimpact_ci-1.2.0-py3-none-any.whl` or the source
+archive with `python -m pip install dist/geoimpact_ci-1.2.0.tar.gz`. The
+repository's `scripts/verify_release_candidate.py` qualifies both archives in
+fresh environments.
 
 ## Configuration
 
@@ -157,6 +181,11 @@ the [Madrid source register](docs/GATE_5_SOURCE_REGISTER.md) and [Sierra source
 register](docs/GATE_8_SOURCE_REGISTER.md). The project does not claim ownership
 or grant rights over those datasets.
 
+From a clone with the project and test dependencies installed, reproduce the
+frozen real-world checks with `python scripts/verify_madrid_benchmark.py` and
+`python scripts/verify_gate8_case.py`. Both commands run the installed CLI and
+compare the resulting outputs with their committed case expectations.
+
 ## Performance qualification
 
 On the controlled Gate 7 large synthetic relationship benchmark (300 primary
@@ -215,3 +244,17 @@ The GitHub Actions workflow runs the full suite and PASS/BLOCK/ERROR contracts,
 checks canonical synthetic, Madrid, and Sierra outputs, then builds and
 qualifies wheel and source-distribution installs on Linux/Python 3.11 and
 Windows/Python 3.14.
+
+An adopting repository can run the same installed CLI from its own workflow by
+installing a tagged source release and invoking `geoimpact analyze` with its
+version-controlled config. For example, after checking out that repository and
+setting up Python:
+
+```yaml
+- run: python -m pip install "git+https://github.com/soroushkarahrodi79-oss/geoimpact-ci.git@v1.2.0"
+- run: geoimpact analyze --config geoimpact.yml --out geoimpact-evidence
+```
+
+The command's exit code makes BLOCK and ERROR fail the job; the three output
+files are written to the requested directory. GeoImpact does not currently
+provide a reusable GitHub Action or a package-registry release.

@@ -1,3 +1,10 @@
+# Historical V0 scope proposal — not the current product contract
+
+This document preserves a pre-implementation design. Its format, geometry,
+predicate, and policy proposals are not current acceptance requirements. The
+released v1 contract is documented in [ARCHITECTURE_V1.md](ARCHITECTURE_V1.md)
+and [README.md](../README.md).
+
 # V0 scope and relationship regression
 
 ## Fixed V0 inputs

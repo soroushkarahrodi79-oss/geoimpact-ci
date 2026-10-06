@@ -1,4 +1,8 @@
-# Gate 0 decision log
+# Historical Gate 0 decision log
+
+This log preserves decisions and proposals from the development sequence,
+including options that were later rejected or superseded. It is not the current
+product contract; see [ARCHITECTURE_V1.md](ARCHITECTURE_V1.md).
 
 | ID | Decision | Status | Rationale / consequence |
 |---|---|---|---|

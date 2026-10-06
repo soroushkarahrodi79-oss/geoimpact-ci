@@ -1,4 +1,4 @@
-"""Gate 3B: portable artifact-coordinate canonicalization.
+"""Portable artifact-coordinate canonicalization.
 
 These tests pin the serialization-boundary precision contract. They prove the
 published artifact coordinates are bounded to a declared precision (so the
@@ -117,7 +117,7 @@ def test_canonicalization_preserves_type_order_and_non_coordinate_members() -> N
 
 
 def test_canonicalization_touches_only_artifact_representation_not_analysis(tmp_path: Path) -> None:
-    """V4 reports a valid fixed-grid footprint and preserves it at serialization."""
+    """The V5 report preserves its valid fixed-grid footprint at serialization."""
     report = run_from_config(BLOCK_CONFIG, tmp_path / "out")
 
     in_memory = shape(report["primary_change"]["changed_footprint_geometry"])

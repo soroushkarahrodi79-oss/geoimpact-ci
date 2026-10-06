@@ -1,4 +1,4 @@
-"""Topological WITHIN assignments for the Gate 1 vertical slice."""
+"""Exact topological WITHIN assignments for dependent point features."""
 
 from __future__ import annotations
 

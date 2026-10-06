@@ -1,4 +1,4 @@
-"""Local command-line adapter for the Gate 2 analysis runner."""
+"""Command-line interface for a declared GeoImpact analysis."""
 
 from __future__ import annotations
 
@@ -14,13 +14,13 @@ def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="geoimpact")
     commands = parser.add_subparsers(dest="command", required=True)
     analyze = commands.add_parser("analyze", help="analyze a declared dataset change")
-    analyze.add_argument("--config", required=True, type=Path, help="Gate 2 YAML contract")
+    analyze.add_argument("--config", required=True, type=Path, help="v1 YAML config file")
     analyze.add_argument("--out", required=True, type=Path, help="artifact output directory")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Run one declared analysis and return its frozen Gate 3 exit status."""
+    """Run one declared analysis and return its PASS/BLOCK/ERROR exit status."""
     arguments = _parser().parse_args(argv)
     try:
         report = run_from_config(arguments.config, arguments.out)

@@ -1,4 +1,4 @@
-"""The single explicit Gate 1 policy rule."""
+"""Evaluation of the configured relationship-regression policy."""
 
 from __future__ import annotations
 

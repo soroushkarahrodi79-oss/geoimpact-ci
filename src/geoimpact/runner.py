@@ -3,14 +3,16 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
 
 from geoimpact.analysis import analyze
 from geoimpact.artifacts import build_report, write_artifacts
 from geoimpact.contract import load_contract
+from geoimpact.models import GeoImpactReport
 
 
-def run_from_config(config_path: str | Path, output_directory: str | Path) -> dict[str, Any]:
+def run_from_config(
+    config_path: str | Path, output_directory: str | Path
+) -> GeoImpactReport:
     """Run Gate 1 from a declared v1 contract and write deterministic files."""
     contract = load_contract(config_path)
     dependency_sources = {

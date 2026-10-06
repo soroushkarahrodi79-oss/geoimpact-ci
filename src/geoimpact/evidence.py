@@ -9,6 +9,8 @@ from typing import Any
 from shapely.geometry import mapping
 from shapely.geometry.base import BaseGeometry
 
+from geoimpact.models import RelationshipChange, RelationshipRegression
+
 
 def _canonical_json(value: Any) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
@@ -22,8 +24,8 @@ def relationship_evidence(
     dependent_geometry: BaseGeometry,
     before: list[str],
     after: list[str],
-    change_type: str,
-) -> dict[str, object]:
+    change_type: RelationshipChange,
+) -> RelationshipRegression:
     """Build content-addressed, reviewable evidence for one relationship delta."""
     primary_feature_ids = sorted(set(before) | set(after))
     identity = {

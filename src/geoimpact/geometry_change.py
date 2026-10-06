@@ -9,6 +9,8 @@ import shapely
 from shapely.geometry import mapping
 from shapely.geometry.base import BaseGeometry
 
+from geoimpact.models import FeatureGeometryStatus, PrimaryChange
+
 
 # The derived overlay is in EPSG:25830 metres. This is a representation and
 # robustness model for the footprint only, not a source-accuracy claim.
@@ -27,7 +29,7 @@ def _geojson_geometry(geometry: BaseGeometry) -> dict[str, object]:
 
 def measure_primary_change(
     base: Mapping[str, BaseGeometry], candidate: Mapping[str, BaseGeometry]
-) -> dict[str, object]:
+) -> PrimaryChange:
     """Measure fixed-grid footprint and precision-qualified displacement.
 
     The fixed precision is used for derived footprint overlays and temporary
@@ -45,7 +47,7 @@ def measure_primary_change(
         for feature_id in shared_ids
         if not base[feature_id].equals(candidate[feature_id])
     ]
-    statuses: dict[str, str] = {}
+    statuses: dict[str, FeatureGeometryStatus] = {}
     for feature_id in sorted(base_ids | candidate_ids):
         if feature_id not in base_ids:
             statuses[feature_id] = "added"

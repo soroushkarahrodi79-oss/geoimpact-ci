@@ -7,6 +7,8 @@ from typing import Mapping
 from shapely import STRtree
 from shapely.geometry.base import BaseGeometry
 
+from geoimpact.models import RelationshipChange, WithinAssignment
+
 
 class PrimarySpatialIndex:
     """Use STRtree bounds only to find possible exact predicate matches."""
@@ -30,14 +32,14 @@ def derive_within_assignments(
     primary: Mapping[str, BaseGeometry],
     *,
     spatial_index: PrimarySpatialIndex | None = None,
-) -> dict[str, dict[str, list[str]]]:
+) -> dict[str, WithinAssignment]:
     """Derive exact WITHIN assignments and separately report boundary touches.
 
     A geometry which merely touches a primary boundary is never put in
     ``within``. This is a direct GEOS topological predicate, not a bounds,
     centroid, or distance-based approximation.
     """
-    result: dict[str, dict[str, list[str]]] = {}
+    result: dict[str, WithinAssignment] = {}
     index = spatial_index or PrimarySpatialIndex(primary)
     if index._primary is not primary:
         raise ValueError("spatial_index must be built from the supplied primary mapping")
@@ -55,7 +57,7 @@ def derive_within_assignments(
     return result
 
 
-def classify_assignment_change(before: list[str], after: list[str]) -> str:
+def classify_assignment_change(before: list[str], after: list[str]) -> RelationshipChange:
     """Name a relationship delta without imposing a one-to-one assignment."""
     if before == after:
         return "unchanged"

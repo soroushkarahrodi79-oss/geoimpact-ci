@@ -17,7 +17,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_VERSION = "1.0.0"
+EXPECTED_VERSION = "1.1.0"
 ARTIFACT_NAMES = (
     "report.json",
     "report.md",
@@ -45,14 +45,16 @@ def run(
 def require_release_metadata() -> None:
     metadata = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     if metadata["project"]["version"] != EXPECTED_VERSION:
-        raise RuntimeError("pyproject.toml version is not 1.0.0")
+        raise RuntimeError(
+            f"pyproject.toml version is not {EXPECTED_VERSION}"
+        )
     if metadata["project"].get("readme") != "README.md":
         raise RuntimeError("README.md is not configured as package metadata")
     for relative in (
         "README.md",
         "CHANGELOG.md",
         "CITATION.cff",
-        "docs/RELEASE_V1_0_0.md",
+        "docs/RELEASE_V1_1_0.md",
         "docs/ARCHITECTURE_V1.md",
         "docs/REPORT_V4_MIGRATION.md",
         "docs/TEST_STRATEGY.md",
@@ -78,7 +80,7 @@ def verify_archives(wheel: Path, sdist: Path) -> None:
             raise RuntimeError(f"Wheel is missing modules: {sorted(required - names)}")
         metadata_name = next(name for name in names if name.endswith(".dist-info/METADATA"))
         metadata = archive.read(metadata_name).decode("utf-8")
-        if "Version: 1.0.0" not in metadata or "# GeoImpact CI" not in metadata:
+        if f"Version: {EXPECTED_VERSION}" not in metadata or "# GeoImpact CI" not in metadata:
             raise RuntimeError("Wheel metadata lacks version or embedded README")
 
     with tarfile.open(sdist, "r:gz") as archive:
@@ -118,7 +120,9 @@ def install_and_check(archive: Path, label: str, work: Path) -> None:
         text=True,
     ).strip()
     if version != EXPECTED_VERSION:
-        raise RuntimeError(f"Installed {label} reports version {version!r}, expected 1.0.0")
+        raise RuntimeError(
+            f"Installed {label} reports version {version!r}, expected {EXPECTED_VERSION}"
+        )
 
     executable = cli_in(environment)
     if not executable.is_file():

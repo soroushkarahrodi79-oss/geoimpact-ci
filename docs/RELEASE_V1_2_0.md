@@ -52,11 +52,20 @@ Development V5 under package version 1.1.0 produced:
 | Madrid | `d79a9bc7cf9780ee86fae4f4bb2302d0ed87a3e12bda64bdd9c033e67d42d374` | `f0a943bad800cba1360c6a74714d295dfe341de63a05f56d812de20fcac31a43` | `0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf` |
 | Sierra | `bde8bd26982e776c589286d277e51f1ef123d7091d245a579f500c61bffec3a9` | `920a27b275147fd04cf6a17e9f64212e6bec111673798d1e0e549688bf80f834` | `a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a` |
 
-The v1.2.0 package version is itself part of V5 engine provenance, so final
-v1.2.0 report JSON/Markdown hashes are expected to differ from those
-development hashes. They must be recalculated and pinned by CI before release.
-Relationship-regression GeoJSON is expected to remain unchanged. Any other
-scientific drift is a release blocker.
+The v1.2.0 package version is itself part of V5 engine provenance, so the
+release report JSON/Markdown hashes intentionally differ from the development
+V5 hashes above. Hosted Linux and Windows qualification produced the same final
+v1.2.0 hashes:
+
+| Case | report.json | report.md | relationship GeoJSON |
+|---|---|---|---|
+| Synthetic | `d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd` | `65ca9d67dd7ff59bc148fccc003354ea3201f51707f3e73ca2fd96dac208d95a` | `a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978` |
+| Madrid | `29a9337a90c7a1c591f7c05c109ee29b8c38b33324e0bb02867c1fb6a6b272df` | `ec7124260275f8ae473a9eea00da59eca2866527a8cf57714ae5bb0d681b5253` | `0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf` |
+| Sierra | `b17899f1472500567bb2d2eb7d0a2a9c91731a3d7827896f5635a3ef353f7cf1` | `907db7fd57c1091927277b55f624d51fb7087b453facf9cc35bdffdea44d3a89` | `a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a` |
+
+Only the report JSON/Markdown identities moved because the engine provenance
+now records GeoImpact CI 1.2.0. The relationship-regression GeoJSON is unchanged
+for all three qualification cases.
 
 ## Frozen scientific results
 
@@ -104,7 +113,7 @@ dependent-layer transitions.
 - [x] v1.2.0 citation version prepared.
 - [x] CHANGELOG updated with V5 provenance scope.
 - [x] Release qualification script points to v1.2.0.
-- [ ] Final v1.2.0 canonical report hashes pinned and explained.
+- [x] Final v1.2.0 canonical report hashes pinned and explained.
 - [ ] Release-preparation PR CI passes on Linux and Windows.
 - [ ] Release-preparation PR merged.
 - [ ] Post-merge main CI passes.

@@ -1,27 +1,48 @@
 # External Validation V1 — facilitator script
 
-Use this script with the frozen [protocol](EXTERNAL_VALIDATION_V1_PROTOCOL.md).
-The facilitator records observations but does not act as an evaluator. The
-author may facilitate a session but must not be counted among the evaluators.
+Use this script with protocol version 1.1. The facilitator records observations
+but does not act as an evaluator. The author may facilitate a session but must
+not be counted among the evaluators.
 
 ## Before the session
 
 1. Confirm the evaluator meets the protocol's skill and independence
    requirements without asking for names, employer, CV, or sensitive details.
-2. Create an anonymous ID and blank [record](EXTERNAL_VALIDATION_V1_RECORD_TEMPLATE.md).
-3. Prepare the task-6 invalid config by copying
+2. Use GeoImpact CI v1.2.0 / Report V5, tag target
+   `45237d7caaea2aa4b81359e46f1623918645078c`. Use public README/docs at the
+   frozen documentation commit `f4745f934e7929b8b96278ba0460bc5c033c1da5` as
+   adoption instructions. Do not use the tag checkout's README or mutable
+   `main` as the documentation-under-test.
+3. Prepare the Task 1 starting link:
+   `https://github.com/soroushkarahrodi79-oss/geoimpact-ci/blob/f4745f934e7929b8b96278ba0460bc5c033c1da5/README.md`.
+   Create an anonymous ID and blank [record](EXTERNAL_VALIDATION_V1_RECORD_TEMPLATE.md);
+   record both frozen identifiers and PR #20's final head SHA.
+4. Before Task 1, ask about prior exposure to the protocol, this script,
+   previous evaluator records, or internal scoring/rubric material. Record
+   which material, when it was read, and which tasks may be contaminated.
+5. Prepare the Task 6 invalid config by copying
    `tests/fixtures/geoimpact.yml` from tag `v1.2.0` and changing only its
    top-level `version: 1` to `version: 2`. Keep it hidden until Task 6.
-4. Do not prepare or select the evaluator's new case. The evaluator selects or
+6. Do not prepare or select the evaluator's new case. The evaluator selects or
    brings it under the protocol rule. Do not prepare a new-case expected result.
-5. Do not display this script, internal answer rubric, other evaluator notes,
+7. Do not display this script, internal answer rubric, other evaluator notes,
    or private expected outcomes. Do not modify the release or task wording.
 
 ## Opening — read verbatim
 
 > Thanks for taking part. Today we are evaluating the GeoImpact v1.2.0
-> software and its public instructions, not testing you. Please say what you
-> are thinking when that is comfortable, including when something is unclear.
+> software using the public README and documentation frozen at repository
+> commit f4745f934e7929b8b96278ba0460bc5c033c1da5. These are separate frozen
+> inputs: the software is the v1.2.0 tag, and the documentation is that
+> repository commit. I will first give you a pinned README link. Please use
+> only product documentation at that commit as instructions. Please do not
+> read EXTERNAL_VALIDATION_V1_PROTOCOL.md,
+> EXTERNAL_VALIDATION_V1_FACILITATOR.md, prior evaluator records, or internal
+> scoring/rubric material until you finish Tasks 1–7 and give your initial
+> answers. Those files may be publicly discoverable; we cannot make them
+> inaccessible, so please tell me if you have already seen any of them. We are
+> evaluating the software and instructions, not testing you. Please say what
+> you are thinking when comfortable, including when something is unclear.
 > I will not explain GeoImpact or correct your interpretation during the
 > tasks. If you get stuck, say so; I will record the problem before offering
 > any allowed help. You may pause, skip a task, or stop at any time. Please do
@@ -32,13 +53,15 @@ author may facilitate a session but must not be counted among the evaluators.
 > product feedback?
 
 If they decline permission to retain feedback, stop note collection and end
-the session. Do not treat this as a negative finding.
+the session. Do not treat this as a negative finding. Record a withdrawal
+without attributing it to product performance.
 
 ## Task prompts and facilitator behavior
 
 ### Task 1 — product understanding
 
-Give only the repository URL. Say:
+Give only the pinned README permalink listed above. Do not give the mutable
+repository homepage or a link to this protocol. Say:
 
 > Please use the repository landing page and tell me, in your own words, what
 > GeoImpact does, what inputs it compares, what PASS and BLOCK mean, and one
@@ -59,18 +82,21 @@ Say:
 Do not suggest commands, troubleshoot, or tell them how to verify the version
 before the problem and attempted steps are recorded. Record OS, Python
 version, commands, time if practical, and each error. Do not silently update
-Python, packages, Git settings, or environment variables.
+Python, packages, Git settings, or environment variables. If the checkout's
+README differs, continue using the documentation snapshot at f4745f.
 
 ### Task 3 — known fixture
 
 Say:
 
-> From the v1.2.0 checkout, please reproduce the included fixture described in
-> the README. Tell me when execution has finished and explain what you think
-> happened.
+> From the v1.2.0 checkout, please reproduce the included fixture using the
+> command in the pinned README at commit
+> f4745f934e7929b8b96278ba0460bc5c033c1da5. Tell me when execution has
+> finished and explain what you think happened.
 
 Do not tell them the expected exit status or verdict. Let them locate the
-command, run it, inspect the output, and identify the output directory. Record
+command in the frozen documentation, run it with the v1.2.0 software, inspect
+the output, and identify the output directory. Record
 whether they see all three artifacts and whether they understand a completed
 BLOCK can return a nonzero process code.
 
@@ -84,6 +110,9 @@ Say:
 
 Do not paraphrase the report for them or validate their answer during the
 task. Record which fields they use and their uncorrected interpretation.
+If the evaluator saw rubric or answer material before this task, record
+whether their interpretation was materially contaminated; do not count it
+toward an unassisted-comprehension record when it was.
 
 ### Task 5 — new case and config
 
@@ -93,7 +122,8 @@ Say:
 > scientific validation case. Before running GeoImpact on that case, tell me
 > the source and why you selected it, then save the inputs and config you plan
 > to use. Please create or adapt the config and run the tagged release using
-> the public documentation. A zero result is fine.
+> the public documentation frozen at commit
+> f4745f934e7929b8b96278ba0460bc5c033c1da5. A zero result is fine.
 
 Do not suggest candidate datasets, field names, config values, filters,
 expected outputs, or a likely verdict. Confirm only whether the case is one of
@@ -120,7 +150,9 @@ Do not point out the changed field. Record whether they distinguish an
 operational/configuration ERROR from a completed BLOCK, whether they
 understand no policy verdict was produced, and their explanation of all three
 outcomes. Ask the follow-up only after their initial ERROR explanation has
-been recorded.
+been recorded. If they saw the answer rubric before this task, record whether
+their interpretation was materially contaminated; it cannot count toward
+unassisted-comprehension evidence when it was.
 
 ### Task 7 — usefulness
 
@@ -150,6 +182,10 @@ them and record it. Then:
   issue is recorded. State the exact intervention and record it. Mark that
   task rescued, not unassisted.
 
+Any Level 2 rescue on Tasks 1, 2, 3, 4, 6, or 7 means that evaluator cannot
+contribute a qualifying core-workflow record. A Level 2 rescue on Task 5 is
+recorded separately and cannot establish unassisted config comprehension.
+
 Do not coach, debug silently, operate the evaluator's computer, show a
 successful terminal, or explain expected results. Never change the
 pre-registered thresholds or case rule during a session.
@@ -170,14 +206,16 @@ commands/error before offering rescue. Do not patch the installation or switch
 to another branch. Ask whether they prefer to stop or continue with tasks that
 do not require that installation. Mark dependent execution tasks not run or
 rescued; do not count a facilitator-provided install as an unassisted success.
-If they stop, retain the installation finding and do not pressure them to
-continue.
+If they stop, retain the record; voluntary withdrawal is not a product
+finding, though it may leave the evidence below the PASS minimum. Do not
+pressure them to continue or recruit a replacement based on their outcome.
 
 Stop immediately if the evaluator asks, if confidential data is exposed, or if
 the session would require revealing a new-case expected result. Record only a
 minimal deviation and do not retain exposed private data. A task may be skipped
 without penalty. Do not select a replacement evaluator based on whether this
-person succeeded.
+person succeeded. A skipped or unfinished core task means the evaluator has
+no qualifying core-workflow record, but does not by itself imply BLOCK.
 
 ## Close
 

@@ -2,21 +2,34 @@
 
 | Field | Value |
 |---|---|
-| Protocol version | 1.0 |
-| Protocol status | Pre-registered; frozen by the first public commit containing this file |
+| Protocol version | 1.1 |
+| Protocol status | Final protocol freeze is the final PR #20 head after review hardening; record its full SHA for each evaluator |
 | Pre-registration date | 2026-10-06 |
-| Repository baseline | `f4745f934e7929b8b96278ba0460bc5c033c1da5` (`origin/main`) |
-| Stable release under test | GeoImpact CI `v1.2.0`, Report V5 |
-| Release tag target | `45237d7caaea2aa4b81359e46f1623918645078c` |
-| External Validation V1 result | **PENDING — no independent evaluator has participated.** |
+| Initial protocol candidate | Version 1.0 at `11cd26f8614734588756e97ebeb429225c21f0e1`; draft only, no evaluator participated under it |
+| Software under test | GeoImpact CI `v1.2.0`, Report V5; tag target `45237d7caaea2aa4b81359e46f1623918645078c` |
+| Documentation/adoption surface under test | Repository commit `f4745f934e7929b8b96278ba0460bc5c033c1da5`, the post-coherence baseline immediately before this protocol PR |
+| External Validation V1 result | **PENDING — zero evaluators participated before this final protocol freeze.** |
 
 ## Purpose and scope
 
-This protocol evaluates whether an independent geospatial user can discover,
-install, run, configure, and interpret the frozen GeoImpact CI v1.2.0 release.
-It tests adoption and interpretation of the documented product contract. It
-does not establish universal scientific validity, source-data correctness,
-causality, or real-world impact.
+This protocol evaluates external adoption of GeoImpact CI v1.2.0 using the
+frozen post-coherence public documentation surface at commit
+`f4745f934e7929b8b96278ba0460bc5c033c1da5`. Software and documentation are
+separate frozen inputs: the executable and fixtures come from the v1.2.0 tag;
+the README and other public adoption instructions come from the specified
+repository commit. Checking out the release tag does not select the
+documentation-under-test. Do not use mutable `main` for evaluator instructions.
+
+The initial v1.0 protocol candidate was committed as
+`11cd26f8614734588756e97ebeb429225c21f0e1`. It was not an executed protocol:
+no evaluator participated under it. Version 1.1 incorporates methodological
+hardening during PR review before recruitment. The final freeze point is the
+final head commit of PR #20 after these corrections; record that full SHA for
+every evaluator. **Zero evaluators participated before this final freeze.**
+
+The evaluation tests adoption and interpretation of the documented product
+contract. It does not establish universal scientific validity, source-data
+correctness, causality, or real-world impact.
 
 GeoImpact compares BASE and CANDIDATE Polygon/MultiPolygon GeoJSON states with
 fixed dependent Point GeoJSON features, using stable string IDs, OGC:CRS84
@@ -62,22 +75,60 @@ as explicitly non-qualifying observations, with no identifying details.
 
 ## Frozen setup
 
-1. Give each eligible evaluator an anonymous ID (`EV1`, `EV2`, …). Record the
-   protocol version and the exact Git commit that first publishes this
-   protocol.
-2. Test only the `v1.2.0` tag/release. Use a clean environment and the public
-   installation instructions. Do not use `main`, this documentation branch,
-   an editable install from a modified checkout, or a later release.
-3. Keep the same task wording and order below for every evaluator. Do not show
-   them the facilitator's script, this protocol's answer rubric, expected
-   fixture outcomes, or another evaluator's record during the session.
-4. Before the new-case analysis, write down the source and selection basis,
-   freeze the chosen inputs and config, and record hashes or another
-   reproducible identity for each file. The selection basis must not use a
-   GeoImpact result.
-5. The Madrid census-section case and Sierra de Baza case are excluded from
-   the new-case task. They may be used only as optional reproduction exercises
-   after the new-case selection and run are preserved.
+1. Record an anonymous evaluator ID (`EV1`, `EV2`, …), protocol version `1.1`,
+   the final PR #20 head SHA, the software identifier, and the documentation
+   commit identifier for every evaluator.
+2. Use GeoImpact CI `v1.2.0` only (tag target
+   `45237d7caaea2aa4b81359e46f1623918645078c`) in a clean environment. Use the
+   public installation instructions from the pinned documentation surface
+   below. The source checkout used for fixtures must be the v1.2.0 tag. Do not
+   install `main`, this PR branch, a modified checkout, or a later release.
+3. The documentation/adoption surface is the repository snapshot at
+   `f4745f934e7929b8b96278ba0460bc5c033c1da5`. Give the evaluator the pinned
+   README permalink for Task 1 and use the README and other public docs at this
+   commit as the authoritative instructions for Tasks 2–7. Do not rely on the
+   mutable `main` README or substitute the v1.2.0 tag's README as the
+   documentation-under-test.
+4. Keep task wording and order the same for every evaluator. Before Task 1,
+   check for prior exposure using the contamination procedure below. Do not
+   share prior evaluator records, facilitator/scoring material, or expected
+   fixture and new-case results before all tasks and initial interpretations
+   are recorded.
+5. Before running a new case, record its source and selection basis; freeze
+   inputs and config; and record hashes or equivalent reproducible identities.
+   Selection must not use a GeoImpact result.
+6. Madrid census sections and Sierra de Baza are excluded from Task 5. They
+   may be reproduction exercises only after the new-case selection and run are
+   preserved.
+
+### Frozen documentation links
+
+- **Task 1 starting surface:** [README at the frozen documentation commit](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/blob/f4745f934e7929b8b96278ba0460bc5c033c1da5/README.md)
+- **Other public documentation at that same commit:** [frozen `docs/` tree](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/tree/f4745f934e7929b8b96278ba0460bc5c033c1da5/docs)
+
+### Protocol and rubric exposure
+
+The controlled Task 1 surface is the pinned README permalink above. Do not
+prominently link the validation protocol from that landing surface. Public
+discoverability cannot be eliminated: the protocol and support files may still
+be found through the repository or PR. Ask about exposure and record it; do
+not claim these materials are hidden.
+
+Before completing Tasks 1–7 and recording initial answers, evaluators must not
+read `EXTERNAL_VALIDATION_V1_PROTOCOL.md`,
+`EXTERNAL_VALIDATION_V1_FACILITATOR.md`, evaluator records from previous
+sessions, or internal scoring/rubric material. These restrictions do not
+prevent use of the public product README and documentation frozen at
+`f4745f934e7929b8b96278ba0460bc5c033c1da5`.
+
+At the start, ask whether the evaluator saw any named material before the
+session or during an earlier task. Record which material, when, and whether it
+contained task answers or scoring criteria. Exposure that reveals or
+materially previews the intended interpretations for Task 1, Task 4, or Task 6
+contaminates that task's unaided-comprehension evidence. Preserve the session
+record, but a contaminated evaluator cannot supply a qualifying
+unassisted-comprehension record for PASS. An evaluator who has not read the
+rubric is not contaminated merely because the files are publicly available.
 
 ## Tasks and ordering
 
@@ -89,23 +140,26 @@ the [record template](EXTERNAL_VALIDATION_V1_RECORD_TEMPLATE.md).
 
 ### Task 1 — Understand the product from the landing page
 
-Provide only the public repository URL. Ask the evaluator to use the landing
-page and explain in their own words what GeoImpact does, what inputs it
+Provide only the pinned README permalink above, not the mutable repository
+homepage or a link to this protocol. Ask the evaluator to use that landing
+surface and explain in their own words what GeoImpact does, what inputs it
 compares, what PASS and BLOCK mean, and one major limitation. Record this
 before they navigate elsewhere or receive clarification.
 
 ### Task 2 — Install the frozen release
 
-Ask the evaluator to install v1.2.0 using the public README instructions in a
-clean Python environment. Use the tagged source release/clone path. Record OS,
-Python version, commands attempted, errors, whether any undocumented fix was
-needed, and approximate time to a working v1.2.0 installation. Do not resolve
-environment problems for them before recording them.
+Ask the evaluator to install the v1.2.0 software using the public instructions
+in the pinned documentation snapshot. Use the tagged source release/clone path
+and a clean Python environment. Record OS, Python version, commands attempted,
+errors, whether any undocumented fix was needed, and approximate time to a
+working installation. Do not resolve environment problems before recording
+them.
 
 ### Task 3 — Run an included fixture
 
 Ask the evaluator to reproduce the included `tests/fixtures/geoimpact.yml`
-example from the v1.2.0 checkout. Record how they find the command, whether
+example using fixture files from the v1.2.0 checkout and command instructions
+from the pinned documentation snapshot. Record how they find the command, whether
 execution completes, the process exit status, whether the three documented
 artifacts appear in the requested output directory, and how they interpret
 those observations. In particular, record whether they treat exit code 1 as a
@@ -124,8 +178,8 @@ they use to support the interpretation.
 
 The evaluator selects or brings a compatible case before seeing any GeoImpact
 output for that case. Ask them to create or adapt a valid `geoimpact.yml` using
-public documentation and to execute v1.2.0 on the new case. This task also measures
-configuration comprehension: record whether they can identify required
+the pinned public documentation and to execute the v1.2.0 software. This task
+also measures configuration comprehension: record whether they can identify required
 fields, IDs, paths, CRS and predicate constraints, and policy threshold without
 undocumented GeoImpact-specific help.
 
@@ -258,23 +312,33 @@ incomplete, and zero-regression outcomes.
 
 PASS requires all of the following:
 
-1. At least **2 genuinely independent eligible evaluators** complete the
-   protocol tasks or have every incomplete task fully explained in the record.
-2. At least one evaluator completes the full workflow primarily at Level 0;
-   any Level 1 clarification is logged and does not supply a missing
-   GeoImpact-specific answer. No Level 2 task counts toward this condition.
-3. No unresolved CRITICAL finding remains, and no confirmed MAJOR finding
-   requiring a product or documentation change has been found. A confirmed
-   MAJOR finding yields MODIFY pending a new evaluation of the change.
-4. Both evaluators correctly distinguish PASS, BLOCK, and ERROR after using
-   only public documentation: PASS is a completed policy result within
-   threshold, BLOCK is a completed policy result over threshold, and ERROR is
-   no policy verdict; they do not interpret PASS as proof of data correctness
-   or real-world causality.
-5. At least one genuinely new compatible case is executed and its result,
-   including zero if zero, is preserved.
-6. No scientific interpretation error is traceable to misleading project
-   documentation, and the v1.2.0 known fixture is reproducible.
+1. At least **two genuinely independent eligible evaluators** each contribute
+   a qualifying core-workflow record. A qualifying record requires completion
+   of Tasks 1, 2, 3, 4, 6, and 7.
+2. Neither qualifying evaluator needed Level 2 rescue on any core task. Level 0
+   public-doc use is the default; a permitted, logged Level 1 clarification may
+   be used only after the difficulty is recorded and must not supply a missing
+   GeoImpact-specific answer.
+3. The initial comprehension evidence for Tasks 1, 4, and 6 in both qualifying
+   records is not materially contaminated by prior exposure to the protocol,
+   facilitator script, previous evaluator records, or scoring/rubric material.
+   The evaluators may use the frozen public product documentation at commit
+   `f4745f934e7929b8b96278ba0460bc5c033c1da5`.
+4. Both qualifying evaluators correctly distinguish PASS, BLOCK, and ERROR
+   after using only that public documentation: PASS is a completed policy
+   result within threshold, BLOCK is a completed policy result over threshold,
+   and ERROR is no policy verdict. They do not interpret PASS as proof of data
+   correctness or real-world causality.
+5. At least one eligible evaluator successfully executes and preserves a
+   genuinely new compatible Task 5 case, with its input/config identities and
+   result recorded regardless of zero or nonzero regressions. The other
+   evaluator's inability to find or prepare a case is retained as evidence but
+   does not by itself cause BLOCK. Task 5 assistance is recorded; Level 2
+   assistance cannot count as unassisted configuration comprehension.
+6. No unresolved CRITICAL finding remains, no confirmed MAJOR finding
+   requiring a product or documentation change has been found, no scientific
+   interpretation error is traceable to misleading documentation, and the
+   v1.2.0 fixture is reproducible using the pinned adoption instructions.
 
 ### MODIFY
 
@@ -300,6 +364,25 @@ change these thresholds after seeing results to obtain PASS. The V1 result
 describes this small falsification/usability exercise and is not a statistical
 population estimate.
 
+### Skips, withdrawal, and incomplete records
+
+Evaluators remain free to skip any task or withdraw at any time. Voluntary
+withdrawal is not itself a product finding. A skipped, withdrawn, or
+uncompleted core task remains in the record but does not create a qualifying
+core-workflow record. PASS still requires two qualifying records from two
+independent eligible evaluators; an explanation for a missing task does not
+substitute for completion. If the evidentiary minimum is not met, report
+INCOMPLETE/PENDING rather than BLOCK solely for insufficient participation.
+
+The fixed eligibility rules and all records apply; retain incomplete and
+negative records and do not select only successful evaluators. If more people
+are needed to reach the minimum, recruit using the same eligibility criteria
+without choosing candidates based on prior task outcomes. Task 5 is separate
+from the core sequence: at least one successful, preserved new-case execution
+is required for PASS. A second evaluator's case-selection/preparation failure
+must be recorded and assessed under the severity rules but does not
+automatically cause BLOCK.
+
 ## Protocol deviations and result handling
 
 Record each deviation with evaluator ID, task, what changed, why, who decided,
@@ -315,6 +398,11 @@ Keep earlier records attached to the version they followed; do not
 retroactively score them under the new wording. Retain failures, skipped tasks,
 negative findings, and zero results. Do not select only successful evaluators
 or suppress findings.
+
+Version 1.0 at `11cd26f8614734588756e97ebeb429225c21f0e1` is retained as the
+initial protocol candidate only; it was not executed. Version 1.1 is the
+review-hardened protocol frozen at PR #20's final head commit before
+recruitment. The record template captures both version and exact freeze SHA.
 
 ## Materials
 

@@ -12,10 +12,14 @@ data.
 |---|---|
 | Anonymous evaluator ID | `EV__` |
 | Session date (`YYYY-MM-DD`) | |
-| Protocol version | `1.0` |
-| Protocol freeze commit SHA | |
-| Repository baseline SHA | `f4745f934e7929b8b96278ba0460bc5c033c1da5` |
-| Release/tag tested | `GeoImpact CI v1.2.0` / `v1.2.0` |
+| Protocol version | `1.1` |
+| Initial protocol candidate | `1.0` / `11cd26f8614734588756e97ebeb429225c21f0e1`; no evaluator participated under it |
+| Final protocol freeze commit SHA (final PR #20 head) | |
+| Software under test | `GeoImpact CI v1.2.0`, Report V5 |
+| Software tag target SHA | `45237d7caaea2aa4b81359e46f1623918645078c` |
+| Documentation/adoption surface commit SHA | `f4745f934e7929b8b96278ba0460bc5c033c1da5` |
+| Pinned README permalink | `https://github.com/soroushkarahrodi79-oss/geoimpact-ci/blob/f4745f934e7929b8b96278ba0460bc5c033c1da5/README.md` |
+| Documentation tree permalink | `https://github.com/soroushkarahrodi79-oss/geoimpact-ci/tree/f4745f934e7929b8b96278ba0460bc5c033c1da5/docs` |
 | Eligible under protocol? | Yes / No / Unclear |
 | Exclusion check completed before tasks? | Yes / No |
 | Broad role category | GIS analyst / researcher / spatial-data engineer / research software / data analyst / other broad category |
@@ -27,6 +31,11 @@ data.
 | Prior GeoImpact knowledge/use | None / read public docs / used release / other; describe without personal detail |
 | New-case source familiarity before run | None / general / familiar; no expected GeoImpact output known? Yes / No |
 | New-case prior GeoImpact run or expected output known? | No / Yes (if yes, case task is non-qualifying) |
+| Prior exposure to `EXTERNAL_VALIDATION_V1_PROTOCOL.md`? | No / Yes; when and which material: |
+| Prior exposure to `EXTERNAL_VALIDATION_V1_FACILITATOR.md`? | No / Yes; when and which material: |
+| Prior exposure to previous evaluator records? | No / Yes; when and which material: |
+| Prior exposure to internal scoring/rubric material? | No / Yes; when and which material: |
+| Contamination assessment for Tasks 1, 4, and 6 | None / Task 1 / Task 4 / Task 6 / multiple; explain: |
 | Consent to retain anonymized product feedback | Yes / No |
 | Consent to publish anonymized quotes (optional) | Yes / No |
 
@@ -87,7 +96,7 @@ do not omit negative outcomes.
 - Distinct from Madrid and Sierra? Yes / No:
 - Route used: evaluator-owned / evaluator-selected public / pre-registered blind:
 - Source/version/snapshot date or private-data note:
-- Selection basis recorded before any GeoImpact output? Yes / No:
+- Selection basis recorded before any GeoImpact output for this case? Yes / No:
 - Config and input identities/hashes recorded before run? Yes / No:
 - CRS84 primary and dependency inputs; EPSG:25830 analysis; polygon/point types; stable IDs; fixed dependency; exact `within` confirmed? Yes / No / Unknown:
 - Config fields/semantics understood without undocumented GeoImpact help? Yes / No; details:
@@ -147,8 +156,13 @@ do not omit negative outcomes.
 ## Evaluator-level conclusion
 
 - Eligible result included in V1 sample? Yes / No; reason:
-- Full workflow completed primarily at Level 0? Yes / No:
+- Core tasks 1, 2, 3, 4, 6, and 7 all completed? Yes / No:
+- Any Level 2 rescue on a core task? Yes / No; task(s):
+- Tasks 1, 4, and 6 free of material rubric contamination? Yes / No; details:
+- Qualifying core-workflow record for PASS? Yes / No; reason:
 - PASS/BLOCK/ERROR distinguished correctly after public documentation? Yes / No:
 - New compatible case executed and preserved? Yes / No:
+- Did this evaluator's new case count toward the one-case PASS criterion? Yes / No:
 - Unresolved CRITICAL or MAJOR findings:
 - Evaluator record status: complete / incomplete / non-qualifying:
+- Voluntary withdrawal? Yes / No; record that withdrawal alone is not a product finding:

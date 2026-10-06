@@ -2,9 +2,13 @@
 
 ## Short invitation
 
-I am looking for two independent GIS or geospatial users to evaluate GeoImpact
-CI v1.2.0, an open-source research demonstrator for comparing changes in
-polygon GeoJSON against declared relationships with fixed point features.
+I am looking for two independent GIS or geospatial users to evaluate external
+adoption of GeoImpact CI v1.2.0 (Report V5), an open-source research
+demonstrator for comparing changes in polygon GeoJSON against declared
+relationships with fixed point features. The software is the v1.2.0 tag
+target `45237d7caaea2aa4b81359e46f1623918645078c`; the public adoption
+instructions are frozen at repository commit
+`f4745f934e7929b8b96278ba0460bc5c033c1da5`.
 This is an evaluation of the software and its documentation, not a request to
 endorse it. Negative feedback and cases where the tool is not useful are
 valuable.

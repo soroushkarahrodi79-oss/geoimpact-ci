@@ -208,6 +208,12 @@ could consider additional predicates and CRSs, GeoParquet, database
 integration, a reusable multi-case verifier, broader real-world cases, package
 registry publication, and a UI/API. These are outside v1.
 
+## External validation status
+
+External Validation V1 is **pending**. Its pre-registered protocol and
+execution materials are in the [validation protocol](docs/EXTERNAL_VALIDATION_V1_PROTOCOL.md).
+No external evaluator result is claimed yet.
+
 ## Development and research record
 
 Start with the [current v1 architecture](docs/ARCHITECTURE_V1.md), [test

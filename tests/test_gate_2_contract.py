@@ -228,7 +228,7 @@ def test_evidence_geojson_is_crs84_and_has_no_legacy_crs_member(tmp_path: Path) 
     expected = Transformer.from_crs("EPSG:25830", "OGC:CRS84", always_xy=True).transform(
         *source_point
     )
-    # Gate 3B: the inverse transform runs at full precision, then the published
+    # The inverse transform runs at full precision, then the published
     # coordinate is rounded to the declared CRS84 serialization precision.
     expected_canonical = [round(value, GEOGRAPHIC_COORDINATE_DECIMALS) for value in expected]
     assert first["geometry"]["coordinates"] == expected_canonical

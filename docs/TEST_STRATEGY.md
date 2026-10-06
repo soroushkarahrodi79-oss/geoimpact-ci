@@ -1,4 +1,10 @@
-# Test strategy — specified before implementation
+# Historical test strategy proposal — specified before implementation
+
+This document records proposed tests from the V0 design stage. Its GeoParquet,
+WARN, and cross-format parity cases are not requirements for the released v1
+contract. Current behavior and qualification are defined by
+[ARCHITECTURE_V1.md](ARCHITECTURE_V1.md), the tests under `tests/`, and the
+commands in [`.github/workflows/geoimpact-ci.yml`](../.github/workflows/geoimpact-ci.yml).
 
 ## Test principles
 

@@ -1,4 +1,4 @@
-"""File-backed Gate 2 orchestration entry point."""
+"""File-backed orchestration entry point for the GeoImpact CLI."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from geoimpact.provenance import build_provenance
 def run_from_config(
     config_path: str | Path, output_directory: str | Path
 ) -> GeoImpactReport:
-    """Run Gate 1 from a declared v1 contract and write deterministic files."""
+    """Run a declared v1 analysis and write deterministic artifacts."""
     # Parse and hash the same captured config bytes so provenance identifies
     # the exact declaration used to construct the resolved contract.
     resolved_config = Path(config_path).expanduser().resolve()

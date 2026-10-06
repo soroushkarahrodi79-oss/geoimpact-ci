@@ -1,4 +1,4 @@
-"""Small deterministic orchestration for the Gate 1 fixture only."""
+"""Deterministic primary-geometry change analysis."""
 
 from __future__ import annotations
 

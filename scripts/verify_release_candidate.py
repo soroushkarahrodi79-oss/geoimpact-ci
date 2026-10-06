@@ -17,7 +17,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_VERSION = "1.1.0"
+EXPECTED_VERSION = "1.2.0"
 ARTIFACT_NAMES = (
     "report.json",
     "report.md",
@@ -54,7 +54,7 @@ def require_release_metadata() -> None:
         "README.md",
         "CHANGELOG.md",
         "CITATION.cff",
-        "docs/RELEASE_V1_1_0.md",
+        "docs/RELEASE_V1_2_0.md",
         "docs/ARCHITECTURE_V1.md",
         "docs/REPORT_V4_MIGRATION.md",
         "docs/REPORT_V5_MIGRATION.md",

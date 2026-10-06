@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 750" role="img" aria-labelledby="title desc">
+  <title id="title">GeoImpact CI geometry and relationship regression flow</title>
+  <desc id="desc">A conceptual stable-ID polygon change is compared against fixed dependent points. The geometry change can cause a point relationship to remain unchanged, be gained, or be lost. A regression report applies the declared policy and returns pass or block.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526579"/></marker>
+    <style>
+      text { font-family: Inter, Segoe UI, Arial, sans-serif; fill: #182735; }
+      .label { font-size: 20px; font-weight: 700; letter-spacing: .03em; }
+      .small { font-size: 16px; font-weight: 600; }
+      .step { font-size: 15px; font-weight: 700; }
+      .muted { fill: #526579; font-size: 15px; }
+      .panel { fill: #fff; stroke: #bac6d0; stroke-width: 2; }
+      .arrow { stroke: #526579; stroke-width: 2.5; marker-end: url(#arrow); }
+      .base { fill: #e8eff5; stroke: #315d7d; stroke-width: 4; }
+      .candidate { fill: #dcebe6; stroke: #176b57; stroke-width: 4; }
+      .change { fill: #f7e8c8; stroke: #96651a; stroke-width: 2.5; stroke-dasharray: 8 7; }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1318" height="748" rx="12" fill="#f5f7f8" stroke="#d4dde3" stroke-width="2"/>
+  <text x="36" y="46" class="label">GEOMETRY CHANGE → DECLARED RELATIONSHIP REGRESSION</text>
+  <text x="36" y="75" class="muted">Conceptual example · fixed dependent points · exact declared spatial predicate</text>
+
+  <rect x="36" y="105" width="500" height="348" rx="10" class="panel"/>
+  <text x="60" y="143" class="label">POLYGON STATE</text>
+  <text x="60" y="174" class="small" fill="#315d7d">BASE · stable ID: zone-17</text>
+  <text x="298" y="174" class="small" fill="#176b57">CANDIDATE · same ID</text>
+  <path d="M90 232 L210 207 L251 260 L224 343 L117 353 L78 297 Z" class="base"/>
+  <path d="M322 222 L449 204 L485 260 L462 338 L354 351 L309 290 Z" class="candidate"/>
+  <text x="90" y="392" class="muted">polygon before change</text>
+  <text x="322" y="392" class="muted">polygon after change</text>
+  <path d="M251 279 C270 264 290 264 308 279" fill="none" class="arrow"/>
+  <text x="265" y="239" class="small" text-anchor="middle">edit</text>
+  <line x1="60" y1="415" x2="511" y2="415" stroke="#d4dde3" stroke-width="2"/>
+  <text x="60" y="439" class="muted">The difference footprint is derived from the two states.</text>
+
+  <rect x="562" y="105" width="220" height="348" rx="10" class="panel"/>
+  <text x="584" y="143" class="label">CHANGE</text>
+  <path d="M616 238 L720 217 L744 263 L723 324 L642 333 L605 285 Z" fill="#e8eff5" stroke="#315d7d" stroke-width="3"/>
+  <path d="M660 222 L739 211 L761 259 L745 305 L683 313 L650 276 Z" fill="#dcebe6" fill-opacity=".65" stroke="#176b57" stroke-width="3"/>
+  <path d="M616 238 L660 222 L650 276 L605 285 Z" class="change"/>
+  <path d="M723 324 L745 305 L761 259 L744 263 Z" class="change"/>
+  <text x="672" y="369" class="muted" text-anchor="middle">derived footprint</text>
+  <text x="672" y="396" class="muted" text-anchor="middle">symmetric difference</text>
+
+  <rect x="808" y="105" width="476" height="348" rx="10" class="panel"/>
+  <text x="832" y="143" class="label">DEPENDENT POINTS</text>
+  <path d="M859 208 L1023 183 L1069 245 L1047 351 L910 365 L844 292 Z" class="base"/>
+  <path d="M967 208 L1132 183 L1178 245 L1156 351 L1019 365 L953 292 Z" class="candidate"/>
+  <circle cx="1004" cy="268" r="11" fill="#315d7d" stroke="#fff" stroke-width="3"/>
+  <circle cx="920" cy="268" r="11" fill="#96651a" stroke="#fff" stroke-width="3"/>
+  <circle cx="1124" cy="318" r="11" fill="#176b57" stroke="#fff" stroke-width="3"/>
+  <text x="832" y="406" class="small">unchanged</text>
+  <text x="970" y="406" class="small">lost</text>
+  <text x="1083" y="406" class="small">gained</text>
+  <circle cx="844" cy="432" r="6" fill="#315d7d"/><text x="857" y="438" class="muted">in both</text>
+  <circle cx="962" cy="432" r="6" fill="#96651a"/><text x="975" y="438" class="muted">BASE only</text>
+  <circle cx="1091" cy="432" r="6" fill="#176b57"/><text x="1104" y="438" class="muted">CANDIDATE only</text>
+
+  <line x1="536" y1="279" x2="559" y2="279" class="arrow"/>
+  <line x1="782" y1="279" x2="805" y2="279" class="arrow"/>
+
+  <text x="36" y="507" class="label">REPRODUCIBLE CI PATH</text>
+  <g>
+    <rect x="36" y="528" width="178" height="74" rx="8" class="panel"/><text x="125" y="558" class="step" text-anchor="middle">BASE</text><text x="125" y="581" class="step" text-anchor="middle">GEOMETRY</text>
+    <line x1="214" y1="565" x2="235" y2="565" class="arrow"/>
+    <rect x="239" y="528" width="178" height="74" rx="8" class="panel"/><text x="328" y="558" class="step" text-anchor="middle">CANDIDATE</text><text x="328" y="581" class="step" text-anchor="middle">GEOMETRY</text>
+    <line x1="417" y1="565" x2="438" y2="565" class="arrow"/>
+    <rect x="442" y="528" width="178" height="74" rx="8" class="panel"/><text x="531" y="558" class="step" text-anchor="middle">GEOMETRY</text><text x="531" y="581" class="step" text-anchor="middle">CHANGE</text>
+    <line x1="620" y1="565" x2="641" y2="565" class="arrow"/>
+    <rect x="645" y="528" width="198" height="74" rx="8" class="panel"/><text x="744" y="558" class="step" text-anchor="middle">DEPENDENT SPATIAL</text><text x="744" y="581" class="step" text-anchor="middle">RELATIONSHIPS</text>
+    <line x1="843" y1="565" x2="864" y2="565" class="arrow"/>
+    <rect x="868" y="528" width="178" height="74" rx="8" class="panel"/><text x="957" y="558" class="step" text-anchor="middle">REGRESSION</text><text x="957" y="581" class="step" text-anchor="middle">REPORT</text>
+    <line x1="1046" y1="565" x2="1067" y2="565" class="arrow"/>
+    <rect x="1071" y="528" width="213" height="74" rx="8" fill="#eef2f5" stroke="#526579" stroke-width="2"/><text x="1177" y="575" class="label" text-anchor="middle">PASS / BLOCK</text>
+  </g>
+  <text x="36" y="654" class="muted">Policy result depends on the configured relationship regression rule; a report describes declared inputs and predicates.</text>
+  <text x="36" y="682" class="muted">It does not imply every spatial impact, arbitrary predicate, or real-world consequence is detected.</text>
+</svg>

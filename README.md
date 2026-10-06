@@ -10,6 +10,10 @@ features. It writes deterministic evidence and a PASS or BLOCK result for a CI
 job. It is a first stable, reproducible research demonstrator with a deliberately
 narrow contract.
 
+![Conceptual GeoImpact CI flow: a BASE polygon and a changed CANDIDATE polygon produce a geometry-change footprint; fixed dependent points are classified as unchanged, gained, or lost, then a regression report yields PASS or BLOCK.](docs/assets/geoimpact-ci-concept.svg)
+
+_Conceptual geometry example. GeoImpact CI compares stable-ID polygon states and reports declared downstream spatial-relationship changes before merge; the result is bounded by the configured geometries, predicates, and policy._
+
 ## The question it answers
 
 A normal validator asks, “Is this dataset valid?” GeoImpact asks, “If I merge

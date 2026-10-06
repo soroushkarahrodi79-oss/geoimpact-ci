@@ -1,5 +1,57 @@
 # Changelog
 
+## 1.2.0 — 2026-10-06
+
+Reproducibility and provenance release for the narrow v1 contract. The CLI,
+YAML configuration schema, spatial predicates, and scientific relationship
+semantics remain unchanged; the report schema advances from V4 to V5.
+
+### Added
+
+- Deterministic top-level report provenance for the exact raw bytes of the
+  config, BASE, CANDIDATE, and dependency inputs using SHA-256 plus byte size.
+- Qualified engine identities for GeoImpact CI, Shapely, GEOS, PyProj, and
+  PROJ.
+- Path-free provenance rendering in the Markdown report.
+- A V4-to-V5 migration record documenting the schema and canonical-output
+  implications.
+- Standard-library TypedDict contracts for the active in-memory/report models.
+
+### Reproducibility
+
+- Config provenance is calculated from the same captured bytes that are decoded
+  and parsed for the run.
+- Input hashes identify raw bytes rather than normalized GeoJSON; formatting
+  differences therefore remain observable.
+- Dependency provenance is emitted in deterministic dataset-name order.
+- Reports contain no local paths, usernames, timestamps, hostnames, runner
+  names, working directories, or environment values.
+- Line endings for committed qualification fixtures are pinned where necessary
+  so Linux and Windows produce the same canonical identities.
+- Because V5 provenance includes the GeoImpact package version, the v1.2.0
+  release intentionally has new report JSON/Markdown hashes relative to the
+  development V5 state under package version 1.1.0. Relationship-regression
+  GeoJSON evidence remains scientifically unchanged.
+
+### Research validation
+
+- Madrid retains 2,112 relationship changes across 26 transition pairs, with
+  1,768 split-like and 344 merge-like patterns, zero gained/lost assignments,
+  and zero boundary ambiguities.
+- Sierra de Baza retains 52 relationships, zero regressions, zero boundary
+  ambiguities, and maximum displacement 368.82509547712834 m.
+
+### Compatibility and limits
+
+- Existing v1 YAML configuration remains version 1 and the CLI contract remains
+  PASS=0, BLOCK=1, ERROR=2.
+- V4 reports remain valid V4 documents; consumers should branch on
+  report_version.
+- SHA-256 identities identify bytes but do not embed or authenticate the source
+  files, and inputs are expected to remain stable during one analysis run.
+- Scope remains intentionally narrow: GeoJSON Polygon/MultiPolygon primaries,
+  Point dependencies, EPSG:25830 analysis, and exact WITHIN relationships.
+
 ## 1.1.0 — 2026-10-06
 
 Correctness-hardening release for the narrow v1 contract. The CLI and config

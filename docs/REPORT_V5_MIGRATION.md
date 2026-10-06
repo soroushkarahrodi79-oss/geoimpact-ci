@@ -1,7 +1,7 @@
 # Report V5 migration record
 
-Status: development report contract introduced after v1.1.0. The package
-version and the historical `v1.1.0` release remain unchanged.
+Status: report contract introduced after v1.1.0 and packaged for the v1.2.0
+release. The historical `v1.1.0` tag and release remain unchanged.
 
 ## Why V5 adds provenance
 
@@ -94,3 +94,27 @@ relationship changes across 26 transition pairs (1,768 split-like, 344
 merge-like, zero gained, zero lost, and zero boundary ambiguities). Sierra has
 52 relationships, zero regressions, zero boundary ambiguities, and maximum
 displacement of 368.82509547712834 m. No administrative intent is inferred.
+
+## v1.2.0 release-version qualification
+
+V5 provenance includes the GeoImpact CI package version. Therefore changing the
+package from 1.1.0 to 1.2.0 intentionally changes report JSON and Markdown
+bytes even when the scientific result is identical. Hosted Linux/Python 3.11
+and Windows/Python 3.14 qualification agree on the following v1.2.0 hashes:
+
+| Case and artifact | v1.2.0 SHA-256 |
+|---|---|
+| Synthetic `report.json` | `d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd` |
+| Synthetic `report.md` | `65ca9d67dd7ff59bc148fccc003354ea3201f51707f3e73ca2fd96dac208d95a` |
+| Synthetic relationship GeoJSON | `a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978` |
+| Madrid `report.json` | `29a9337a90c7a1c591f7c05c109ee29b8c38b33324e0bb02867c1fb6a6b272df` |
+| Madrid `report.md` | `ec7124260275f8ae473a9eea00da59eca2866527a8cf57714ae5bb0d681b5253` |
+| Madrid relationship GeoJSON | `0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf` |
+| Sierra `report.json` | `b17899f1472500567bb2d2eb7d0a2a9c91731a3d7827896f5635a3ef353f7cf1` |
+| Sierra `report.md` | `907db7fd57c1091927277b55f624d51fb7087b453facf9cc35bdffdea44d3a89` |
+| Sierra relationship GeoJSON | `a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a` |
+
+The unchanged relationship GeoJSON hashes demonstrate that this release-version
+change affects provenance-bearing report artifacts, not the relationship
+evidence geometry or scientific relationship result.
+

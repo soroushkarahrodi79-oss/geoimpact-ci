@@ -20,6 +20,9 @@ const catalog=JSON.parse(await readFile(path.join(web,'catalog.json'),'utf8'));
 const hasSierra=catalog.cases.some(c=>c.id==='sierra-local');
 async function open(viewport={width:1440,height:1000},overrides=new Map()) {
   const context=await browser.newContext({viewport,reducedMotion:'reduce'});
+  // These regression checks exercise the normal review workspace, not first visit.
+  // Dedicated onboarding acceptance starts with genuinely empty storage instead.
+  await context.addInitScript(() => localStorage.setItem('geoimpact:review-studio:onboarding:v1', JSON.stringify({status:'dismissed'})));
   await context.route('**/*',async route=>{
     const url=new URL(route.request().url());
     if(url.origin!==new URL(base).origin){external.push(url.origin);await route.abort();return;}

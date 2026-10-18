@@ -1,5 +1,6 @@
 import { catalogHash } from './trust.js';
 import { loadCatalog, loadCase, rowKey, pairKey } from './reader.js';
+import { installOnboarding } from './onboarding.js';
 
 const $ = id => document.getElementById(id);
 const words = {
@@ -19,6 +20,37 @@ function el(tag, attrs = {}, ...children) {
   return node;
 }
 const svg = (tag, attrs = {}) => { const node = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const [k,v] of Object.entries(attrs)) node.setAttribute(k, String(v)); return node; };
+// Read-only UI bridge: onboarding observes existing verified records; it cannot edit them.
+const onboarding = installOnboarding({
+  language: () => state.lang,
+  setLanguage: language => {
+    if (!['es','en'].includes(language)) return;
+    $('language').value = language;
+    $('language').dispatchEvent(new Event('change', { bubbles:true }));
+  },
+  returnToCase: id => {
+    if (!state.catalog?.cases.some(entry => entry.id === id)) return;
+    $('case').value = id;
+    $('case').dispatchEvent(new Event('change', { bubbles:true }));
+  },
+  snapshot: () => {
+    const b = state.bundle, row = b?.rows?.get(state.selected);
+    const source = document.querySelector('[data-source-file="report.json"]');
+    const rect = source?.getBoundingClientRect(), dock = $('guide-panel');
+    return {
+      valid: Boolean(b?.report && !$('completed').hidden && !state.error),
+      caseId: b?.manifest?.id || $('case').value,
+      caseIds: state.catalog?.cases.map(entry => entry.id) || [],
+      reportVersion: b?.report?.report_version, verdict:b?.report?.verdict,
+      observed:b?.report?.policy.observed_value, threshold:b?.report?.policy.threshold,
+      search:$('search').value, visibleKeys:[...document.querySelectorAll('[data-row-key]')].map(element => element.dataset.rowKey),
+      selected:row ? { dependent_dataset:row.dependent_dataset, dependent_id:row.dependent_id, before:[...row.before], after:[...row.after] } : null,
+      evidenceId:b?.regressionByRow?.get(state.selected)?.evidence_id || null,
+      sourceIdentityVisible:Boolean(rect && rect.bottom > 0 && rect.top < (dock && !dock.hidden ? dock.getBoundingClientRect().top : innerHeight)),
+      versionCount:$('versions').children.length
+    };
+  }
+});
 function localize() {
   document.documentElement.lang = state.lang;
   document.querySelectorAll('[data-i18n]').forEach(node => { node.textContent = t(node.dataset.i18n); });
@@ -27,6 +59,7 @@ function localize() {
   if (state.bundle?.report) render();
   else if (state.error) showProblem(state.error);
   else if (state.bundle) showAnalysisError();
+  onboarding.languageChanged();
 }
 function download(role, label) {
   const entry = state.bundle.manifest.files[role];
@@ -36,15 +69,18 @@ function field(label, value, code = false) { return el('div', {class:'field'}, e
 function showProblem(error) {
   $('completed').hidden = true; $('loading').hidden = true; $('problem').hidden = false;
   $('problem').replaceChildren(el('span',{class:'eyebrow'},t('loadError')),el('h2',{},t('unsupported')),el('p',{},t('loadMeaning')),el('p',{},el('code',{},`${error.code || 'LOAD_ERROR'} · ${error.file || 'catalog.json'}`)),el('button',{type:'button',onclick:() => state.catalog ? changeCase() : location.reload()},t('retry')));
+  onboarding.update();
 }
 function showAnalysisError() {
   $('completed').hidden = true; $('loading').hidden = true; $('problem').hidden = false;
   $('problem').replaceChildren(el('span',{class:'eyebrow'},t('analysisError')),el('h2',{},t('noScientific')),el('p',{},t('analysisMeaning')),el('p',{},el('code',{},state.bundle.manifest.stderr)));
+  onboarding.update();
 }
 async function changeCase() {
   const epoch = ++state.epoch;
   state.bundle = null; state.selected = null; state.primary = null; state.view = null; state.page = 0; state.error = null; state.returnKey = null;
   $('completed').hidden = true; $('problem').hidden = true; $('loading').hidden = false;
+  onboarding.update();
   // Clear stale scientific content immediately, including elements hidden from view.
   for (const id of ['verdict','stats','base-map','candidate-map','relation-list','evidence-body','geometry-body','input-files','versions','sources','config-raw']) $(id).replaceChildren();
   $('search').value = ''; $('filter').value = 'all'; $('points-toggle').checked = true; $('polygons-toggle').checked = true;
@@ -57,6 +93,7 @@ async function changeCase() {
     $('transition').replaceChildren(el('option',{value:''},t('all')), ...pairs.map(pair => { const [before,after] = JSON.parse(pair); return el('option',{value:pair},`${JSON.stringify(before)} → ${JSON.stringify(after)}`); }));
     state.view = fullExtent(); render(); $('loading').hidden = true; $('completed').hidden = false;
     $('live').textContent = `${loaded.manifest.title[state.lang]}. ${loaded.report.verdict}. ${loaded.report.relationships.length} ${t('assignments')}.`;
+    onboarding.update();
   } catch (error) { if (state.epoch === epoch) { state.error = error; showProblem(error); } }
 }
 function stat(label, value, pointer) { return el('div',{class:'stat'},el('strong',{},number(value)),el('span',{},label),el('small',{},pointer)); }
@@ -83,7 +120,7 @@ function filteredRows() {
 function renderList() {
   const rows = filteredRows(), pages = Math.max(1,Math.ceil(rows.length / 8)); state.page = Math.min(state.page,pages-1);
   $('row-count').textContent = `${rows.length} ${t('visible')} / ${state.bundle.rows.size} ${t('total')}`;
-  $('relation-list').replaceChildren(...rows.slice(state.page*8,state.page*8+8).map(row => el('li',{},el('button', {type:'button',class:'row', 'data-row-key':rowKey(row),'aria-pressed':state.selected === rowKey(row),onclick:() => selectRow(rowKey(row),true)},
+  $('relation-list').replaceChildren(...rows.slice(state.page*8,state.page*8+8).map(row => el('li',{},el('button', {type:'button',class:'row', 'data-row-key':rowKey(row),'data-dependent-dataset':row.dependent_dataset,'data-dependent-id':row.dependent_id,'aria-pressed':state.selected === rowKey(row),onclick:() => selectRow(rowKey(row),true)},
     el('span',{},el('strong',{},row.dependent_id),el('small',{},row.dependent_dataset)), el('span',{class:'transition-code'},`${JSON.stringify(row.before)} → ${JSON.stringify(row.after)}`),el('span',{class:`state-pill ${row.change_type}`},t(row.change_type))))));
   $('page-label').textContent = `${t('page')} ${state.page+1} ${t('of')} ${pages}`;
   $('previous').disabled = state.page === 0; $('next').disabled = state.page+1 >= pages;
@@ -96,6 +133,7 @@ function selectRow(key, restore = false) {
   renderList(); renderMaps(); renderEvidence(); renderGeometry();
   $('live').textContent = `${t('selected')}: ${state.bundle.rows.get(key).dependent_id}`;
   if (restore) [...document.querySelectorAll('[data-row-key]')].find(node => node.dataset.rowKey === key)?.focus({preventScroll:true});
+  onboarding.update();
 }
 function renderEvidence() {
   const body = $('evidence-body'), key = state.selected;
@@ -121,7 +159,7 @@ function renderGeometry() {
 function renderProvenance() {
   const b = state.bundle;
   $('versions').replaceChildren(...Object.entries(b.report.provenance.engine).map(([name,version])=>el('div',{class:'version'},el('small',{},name),version)));
-  $('input-files').replaceChildren(...Object.entries(b.manifest.files).map(([role,entry])=>el('div',{class:'file-row'},el('strong',{},role),el('div',{},el('code',{},entry.sha256),el('small',{},`${entry.size_bytes} ${t('bytes')} · SHA-256 · ${t('verified')}`)),download(role))));
+  $('input-files').replaceChildren(...Object.entries(b.manifest.files).map(([role,entry])=>el('div',{class:'file-row','data-source-file':role,...(role === 'report.json' ? {'data-tour-target':'report-file'} : {})},el('strong',{},role),el('div',{},el('code',{},entry.sha256),el('small',{},`${entry.size_bytes} ${t('bytes')} · SHA-256 · ${t('verified')}`)),download(role))));
   $('config-raw').textContent = new TextDecoder().decode(b.bytes.get('config'));
   $('sources').replaceChildren(el('p',{class:'credit'},b.manifest.attribution),el('ul',{},b.manifest.sources.map(source=>{
     const url = new URL(source.url); if (url.protocol !== 'https:') return el('li',{},source.title);

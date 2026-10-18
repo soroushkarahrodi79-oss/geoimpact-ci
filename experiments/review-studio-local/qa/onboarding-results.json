@@ -1,0 +1,131 @@
+{
+  "tested_at_utc": "2026-10-18T20:32:11.020Z",
+  "browser": "153.0.8010.12",
+  "playwright": "1.56.1",
+  "platform": "win32",
+  "node": "v24.11.0",
+  "physical_devices": false,
+  "screen_reader_tested": false,
+  "human_comprehension_tested": false,
+  "records": [
+    {
+      "name": "Welcome waits for verified ready, is opt-in, and Not now postpones only this session",
+      "status": "PASS"
+    },
+    {
+      "name": "Explore and Skip persist dismissal; Help restarts after dismissal; Escape never marks completion",
+      "status": "PASS"
+    },
+    {
+      "name": "Eight-step tour / bilingual / focus / targets / Help at 1440x900",
+      "status": "PASS",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "physical_device": false
+    },
+    {
+      "name": "Eight-step tour / bilingual / focus / targets / Help at 1440x1000",
+      "status": "PASS",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "physical_device": false
+    },
+    {
+      "name": "Eight-step tour / bilingual / focus / targets / Help at 834x1112",
+      "status": "PASS",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "physical_device": false
+    },
+    {
+      "name": "Eight-step tour / bilingual / focus / targets / Help at 375x812",
+      "status": "PASS",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "physical_device": false
+    },
+    {
+      "name": "Eight-step tour / bilingual / focus / targets / Help at 390x844",
+      "status": "PASS",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "physical_device": false
+    },
+    {
+      "name": "Eight-step tour / bilingual / focus / targets / Help at 320x812",
+      "status": "PASS",
+      "viewport": {
+        "width": 320,
+        "height": 812
+      },
+      "physical_device": false
+    },
+    {
+      "name": "Hidden/missing targets pause without crashes or false completion; valid recovery retains the step",
+      "status": "PASS"
+    },
+    {
+      "name": "ERROR never launches welcome; Help stays safe; active tours pause on analysis ERROR",
+      "status": "PASS"
+    },
+    {
+      "name": "Real hotel_813 practice gates search, selection, interpretation and provenance; restores previous case",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual practice, language, evidence and source navigation at 390px",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual practice, language, evidence and source navigation at 320px",
+      "status": "PASS"
+    },
+    {
+      "name": "Welcome Escape postpones; Help information, limits and resume are reachable by keyboard",
+      "status": "PASS"
+    },
+    {
+      "name": "Practice skip/escape and Help close restore focus without completing the exercise",
+      "status": "PASS"
+    },
+    {
+      "name": "Sierra tour preserves meaningful zero, original 52 points, selection and absence of regression IDs",
+      "status": "PASS"
+    },
+    {
+      "name": "200% CSS zoom, resize mid-tour, reduced motion and blocked storage",
+      "status": "PASS"
+    },
+    {
+      "name": "No external runtime requests, uncaught errors, data mutations or non-state persistence",
+      "status": "PASS"
+    }
+  ],
+  "external_requests": [],
+  "uncaught_errors": [],
+  "ordinary_console_errors": [],
+  "scientific_bytes_unchanged": true,
+  "screenshots": [
+    "help-mobile.png",
+    "practice-block-mobile.png",
+    "practice-complete-desktop.png",
+    "practice-evidence-mobile.png",
+    "practice-intro-desktop.png",
+    "practice-selection-desktop.png",
+    "tour-limitations-desktop.png",
+    "tour-maps-desktop.png",
+    "tour-maps-mobile.png",
+    "welcome-desktop.png",
+    "welcome-mobile.png"
+  ]
+}

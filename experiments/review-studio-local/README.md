@@ -151,6 +151,43 @@ and filters records. `serve.py` serves only `web/` on 127.0.0.1, with no directo
 listing, remote Host access or mutation API. Generated data/catalog/trust and
 local logs are ignored. No application code imports `src/geoimpact`.
 
+### Guided onboarding V1
+
+After a valid case finishes loading and verification, a first-visit welcome
+offers **Iniciar recorrido / Start guided tour**, independent exploration or
+postponement. The header **Ayuda / Help** always remains available, including
+safe information on ERROR. It contains the eight-step tour, the optional real
+synthetic exercise, policy explanations, an eleven-term glossary, provenance
+navigation and a project support link. ES/EN can change without resetting a
+tour step. No extra runtime dependency or external request is introduced.
+
+The exercise uses the released `hotel_813` record: search, select and inspect
+`["chamberi"]` → `["tetuan"]`, interpret the retained BLOCK/2/1 result, then
+locate the original report identity. Check step cannot replace those actions.
+It does not calculate or edit evidence. Case changes use the existing selector
+and an explicit return action; no case change happens silently.
+
+The versioned browser key `geoimpact:review-studio:onboarding:v1` stores only
+completion/dismissal in localStorage and a session-only `seen` marker in
+sessionStorage. Explore/Skip tour persist dismissal; Not now/close/Escape
+postpone welcome until a future session. Finishing the tour or completing the
+actual exercise records completion. Help can restart either at any time with
+a valid case. No dataset, hash, case choice or personal identifier is stored.
+
+```powershell
+npm test
+npm run test:browser
+npm run test:onboarding
+```
+
+Run the browser commands sequentially against the local server. The original
+workspace suite explicitly dismisses first visit in its isolated test contexts;
+the onboarding suite starts fresh and tests persistence separately. Details,
+semantic anchors, storage behavior and novice acceptance objectives are in
+[ONBOARDING](ONBOARDING.md). [VALIDATION](VALIDATION.md) includes actual results
+and [onboarding screenshots](qa/screenshots/onboarding/). These tests do not
+establish human comprehension or screen-reader/device qualification.
+
 The native SVG renderer uses an affine CRS84 longitude/latitude display with
 inverted y. It supports original Polygon/MultiPolygon rings and holes, with
 no simplification, topology, metric accuracy or area-preservation claim.

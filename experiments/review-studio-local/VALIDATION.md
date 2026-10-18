@@ -1,4 +1,86 @@
-# Local prototype validation — executed 2026-10-18
+# Local prototype and guided onboarding validation — 2026-10-18
+
+## Guided onboarding V1: current increment
+
+**GO for the bounded local onboarding. R1 OPEN / full Madrid viewer HOLD.**
+Welcome, eight-step tour, genuine synthetic exercise and persistent header
+Help/glossary are implemented in ES/EN. Source inspection, stable DOM targets,
+action gates, storage and interpretation limits are documented in
+[ONBOARDING](ONBOARDING.md). Only the standalone experiment changed.
+
+| Executed command | Final result |
+|---|---|
+| `npm test` | **26 passed**, 0 failed/skipped: 22 original reader checks plus 4 onboarding state/copy/practice groups. |
+| `npm run test:browser` | **12 acceptance groups passed**; original cases, filters, maps, evidence, downloads, failure and meaningful-zero behavior retained. First visit is explicitly dismissed in these isolated regression contexts. |
+| `npm run test:onboarding` | **18 acceptance groups passed**, including all eight steps at all six viewport sizes and actual desktop/390px/320px exercise flows. |
+| `python -m pytest -q` at functional checkout | **113 passed**, 63.01 s; scientific tests unchanged. |
+| `python scripts/verify_ci_contract.py pass`, `block`, `error`, `hashes` from exported v1.2.0 | Each verifier exit **0**; underlying CLI PASS/0, BLOCK/1 and expected ERROR/2 preserved, three synthetic canonical hashes identical. |
+| `python scripts/verify_madrid_benchmark.py` from exported v1.2.0 | Exit **0**; three original Madrid output hashes identical. Scientific regression check only; no Madrid geometry in the static viewer. |
+| `python scripts/verify_gate8_case.py` from exported v1.2.0 | Exit **0**; three Sierra output hashes identical, 52 relationships / 0 regressions. No Sierra geometry or screenshot committed. |
+
+Actual structured browser output is retained in
+[qa/onboarding-results.json](qa/onboarding-results.json) and
+[qa/onboarding-workspace-results.json](qa/onboarding-workspace-results.json).
+[qa/onboarding-commands.json](qa/onboarding-commands.json) retains the three
+Node commands, their successful exits and actual console output.
+[qa/onboarding-engine-checks.json](qa/onboarding-engine-checks.json) records
+commands, exits and actual stdout/stderr; absolute workspace paths alone are
+replaced by labels. [qa/onboarding-validation.json](qa/onboarding-validation.json)
+pins the tested source, screenshot bytes and protected-scope comparisons
+against functional baseline `339b7cdf64d2ca27db1690dfb18b22a885b128e7`.
+Generated source/config/report bytes were also compared with the before-work
+snapshot; none changed. The reader and its original tests are byte-identical.
+
+Chromium **153.0.8010.12**, headless on Windows, Playwright **1.56.1**, Node
+**24.11.0**. Viewports **1440×900, 1440×1000, 834×1112, 375×812, 390×844,
+320×812** passed bounds/overflow and highlighted-target checks. The 200% check
+sets CSS `zoom: 2` and resizes during the active tour. This is **CSS zoom and
+viewport emulation**, not browser-chrome zoom or physical-device testing.
+
+Coverage includes welcome after delayed file verification; persistent
+dismissal/completion and session postponement; Start/Back/Next/Skip/Finish,
+Help restart and Escape; modal focus boundaries/restoration and normal map
+keyboard behavior; ES/EN at each tour step and within practice; missing and
+hidden targets; active-tour ERROR pause/recovery; safe Help on integrity/analysis
+ERROR; deliberate false exercise attempts; explicit previous-case return;
+Sierra selection without invented evidence; reduced motion and unavailable
+storage. All ordinary flows produced **0 external runtime requests, 0 uncaught
+errors and 0 ordinary console errors**. Deliberately intercepted faults stay
+separate from ordinary runtime errors.
+
+Engineering visual QA inspected real captures of welcome, map tour, selected
+evidence, policy exercise and mobile Help. It found and corrected a literal
+empty-footer artefact, excessive dock space and offscreen selected evidence;
+final captures were regenerated. Earlier diagnostic runs are not passing
+acceptance evidence: one initial copy assertion was corrected to the supplied
+approved wording and focus/placement checks drove fixes. Earlier long-running
+browser runs encountered intermittent case-load timeouts with the server's
+captured console. After restarting that server with logs redirected to ignored
+files, the final commands completed serially. No concurrency qualification is
+claimed.
+
+Current synthetic-only implementation captures:
+
+- [Desktop welcome](qa/screenshots/onboarding/welcome-desktop.png) and [mobile welcome](qa/screenshots/onboarding/welcome-mobile.png).
+- [Desktop maps tour](qa/screenshots/onboarding/tour-maps-desktop.png), [mobile maps tour](qa/screenshots/onboarding/tour-maps-mobile.png) and [actual limitations target](qa/screenshots/onboarding/tour-limitations-desktop.png).
+- [Practice introduction](qa/screenshots/onboarding/practice-intro-desktop.png), [actual selected evidence](qa/screenshots/onboarding/practice-selection-desktop.png) and [completion](qa/screenshots/onboarding/practice-complete-desktop.png).
+- [Mobile evidence practice](qa/screenshots/onboarding/practice-evidence-mobile.png), [mobile BLOCK question](qa/screenshots/onboarding/practice-block-mobile.png) and [persistent mobile Help](qa/screenshots/onboarding/help-mobile.png).
+
+This is an engineering self-review, not independent human approval. Automation
+proves interaction/state objectives; it does not establish novice comprehension.
+No real-user, physical-device, screen-reader, cross-browser or WCAG certification
+claim. Long mobile explanations can require internal scrolling; oversized
+sections use a real heading/control as their visual connection. Scientific
+and source limitations remain visible. No blocking defect is identified for
+local synthetic onboarding; **R1 OPEN** blocks Madrid/the full two-real-case
+viewer. No merge, deployment, public demo or INE correspondence.
+
+## Retained baseline qualification before onboarding
+
+The following results, source digests and screenshots describe the previous
+functional prototype at baseline `339b7cdf64d2ca27db1690dfb18b22a885b128e7`.
+They are retained for traceability, not relabelled as current onboarding
+screenshots. Current source identities and captures are linked above.
 
 **GO for the bounded local prototype. R1 OPEN; full Madrid + Sierra viewer
 HOLD.** No merge, public demo or deployment. This record describes implemented

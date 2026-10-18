@@ -1,0 +1,108 @@
+{
+  "browser_validation": "not performed; no viewer implemented",
+  "cases": {
+    "madrid": {
+      "artifact_bytes": {
+        "relationship-regressions.geojson": 1228043,
+        "report.json": 2303114,
+        "report.md": 308513
+      },
+      "artifact_sha256": {
+        "relationship-regressions.geojson": "0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf",
+        "report.json": "29a9337a90c7a1c591f7c05c109ee29b8c38b33324e0bb02867c1fb6a6b272df",
+        "report.md": "ec7124260275f8ae473a9eea00da59eca2866527a8cf57714ae5bb0d681b5253"
+      },
+      "boundary_ambiguities": 0,
+      "changed_footprint_area_m2": 13463975.784613162,
+      "checks": [
+        "frozen artifact hashes",
+        "V5 raw input identities",
+        "primary ID universe",
+        "complete dependent ID joins",
+        "before/after primary references",
+        "regression and policy evidence IDs",
+        "GeoJSON evidence property joins"
+      ],
+      "engine": {
+        "geoimpact_ci": "1.2.0",
+        "geos": "3.13.1",
+        "proj": "9.5.1",
+        "pyproj": "3.7.2",
+        "shapely": "2.1.2"
+      },
+      "input_bytes": 480834,
+      "input_features": {
+        "base": 37,
+        "candidate": 49,
+        "dependencies": 2112
+      },
+      "max_boundary_displacement_m": 2937.635066605893,
+      "policy": {
+        "observed_value": 2112,
+        "rule": "max_relationship_regressions",
+        "status": "BLOCK",
+        "threshold": 0
+      },
+      "primary_status_counts": {
+        "added": 19,
+        "modified": 30,
+        "removed": 7
+      },
+      "relationship_records": 2112,
+      "relationship_regressions": 2112,
+      "verdict": "BLOCK"
+    },
+    "sierra": {
+      "artifact_bytes": {
+        "relationship-regressions.geojson": 52,
+        "report.json": 837612,
+        "report.md": 1022
+      },
+      "artifact_sha256": {
+        "relationship-regressions.geojson": "a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a",
+        "report.json": "b17899f1472500567bb2d2eb7d0a2a9c91731a3d7827896f5635a3ef353f7cf1",
+        "report.md": "907db7fd57c1091927277b55f624d51fb7087b453facf9cc35bdffdea44d3a89"
+      },
+      "boundary_ambiguities": 0,
+      "changed_footprint_area_m2": 2003072.010849763,
+      "checks": [
+        "frozen artifact hashes",
+        "V5 raw input identities",
+        "primary ID universe",
+        "complete dependent ID joins",
+        "before/after primary references",
+        "regression and policy evidence IDs",
+        "GeoJSON evidence property joins"
+      ],
+      "engine": {
+        "geoimpact_ci": "1.2.0",
+        "geos": "3.13.1",
+        "proj": "9.5.1",
+        "pyproj": "3.7.2",
+        "shapely": "2.1.2"
+      },
+      "input_bytes": 327163,
+      "input_features": {
+        "base": 1,
+        "candidate": 1,
+        "dependencies": 52
+      },
+      "max_boundary_displacement_m": 368.82509547712834,
+      "policy": {
+        "observed_value": 0,
+        "rule": "max_relationship_regressions",
+        "status": "PASS",
+        "threshold": 0
+      },
+      "primary_status_counts": {
+        "modified": 1
+      },
+      "relationship_records": 52,
+      "relationship_regressions": 0,
+      "verdict": "PASS"
+    }
+  },
+  "implementation_gate": "HOLD: Madrid reuse conditions unresolved",
+  "probe_version": 1,
+  "scope": "two retained V5 cases; no scientific recomputation"
+}

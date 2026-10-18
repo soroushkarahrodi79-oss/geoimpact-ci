@@ -1,0 +1,100 @@
+[
+  {
+    "id": "INE-2024",
+    "url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2024?f=text%2Fhtml",
+    "retrieved_at_utc": "2026-10-18T19:17:52.883253+00:00",
+    "response_sha256": "ff4c9b171f611fa4656b94d417399a2d1bbf9292641a282d3b19a47441fe9377",
+    "bytes": 11975,
+    "content_type": "text/html",
+    "footer_BY_SA": true,
+    "targets": [
+      "https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
+    ]
+  },
+  {
+    "id": "INE-2025",
+    "url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2025?f=text%2Fhtml",
+    "retrieved_at_utc": "2026-10-18T19:17:52.876761+00:00",
+    "response_sha256": "c4db4d69866487f6b9fb8363cb71bc32cffada831399ac86922e21d29f37a1d6",
+    "bytes": 11833,
+    "content_type": "text/html",
+    "footer_BY_SA": true,
+    "targets": [
+      "https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
+    ]
+  },
+  {
+    "id": "REDIAM-BOUNDARY",
+    "url": "https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_RENPA?service=WFS&request=GetCapabilities",
+    "retrieved_at_utc": "2026-10-18T19:17:52.533321+00:00",
+    "response_sha256": "5f9e87ce9f4bde07ec66aa94f4457309a9a38c66908fd0a593ab08d94e613a97",
+    "bytes": 37456,
+    "content_type": "text/xml; charset=UTF-8",
+    "fields": {
+      "ProviderName": [
+        "Consejería de Sostenibilidad y Medio Ambiente. Junta de Andalucía"
+      ],
+      "Fees": [
+        "Gratuito"
+      ]
+    },
+    "layer_names": [
+      "ms:eennpp",
+      "ms:humedales_ramsar",
+      "ms:red_natura_2000",
+      "ms:reservas_biosfera",
+      "ms:ZEPIM",
+      "ms:patrimonio_humanidad",
+      "ms:geoparques",
+      "ms:diploma_europeo",
+      "ms:Toponimos"
+    ],
+    "positive_free_use_condition": true,
+    "condition_excerpt": "siempre que se mencione a los autores y propietarios de la información"
+  },
+  {
+    "id": "REDIAM-EQUIPMENT",
+    "url": "https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_Patrimonio_Natural?service=WFS&request=GetCapabilities",
+    "retrieved_at_utc": "2026-10-18T19:17:52.579288+00:00",
+    "response_sha256": "39cf5f6ca4ba157aa5f794680c960d4cdf94df8a64fed62462c328b97f5fbb02",
+    "bytes": 54713,
+    "content_type": "text/xml; charset=UTF-8",
+    "fields": {
+      "ProviderName": [
+        "Consejería de Sostenibilidad y Medio Ambiente. Junta de Andalucía"
+      ],
+      "Fees": [
+        "Gratuito"
+      ]
+    },
+    "layer_names": [
+      "ms:EENNPP",
+      "ms:diploma_europeo",
+      "ms:geoparques",
+      "ms:patrimonio_humanidad",
+      "ms:humedales_ramsar",
+      "ms:RedNatura2000",
+      "ms:reservas_biosfera",
+      "ms:ZEPIM",
+      "ms:montes_publicos",
+      "ms:senderos",
+      "ms:equipamientos_uso_publico",
+      "ms:humedales_IHA",
+      "ms:ZIAE",
+      "ms:inventario_vvpp",
+      "ms:lugares_vvpp",
+      "ms:linea_base_deslindada"
+    ],
+    "positive_free_use_condition": true,
+    "condition_excerpt": "siempre que se mencione a los autores y propietarios de la información"
+  },
+  {
+    "id": "REDIAM-2015",
+    "url": "https://www.juntadeandalucia.es/datosabiertos/portal/dataset/limites-de-los-espacios-naturales-protegidos-de-andalucia-eennpp-2015",
+    "retrieved_at_utc": "2026-10-18T19:17:52.494391+00:00",
+    "response_sha256": "30876501d4e7399807d7379e3dc81c3fb83200e3370ecdb358d08cc3dae98d2c",
+    "bytes": 19269,
+    "content_type": "text/html; charset=utf-8",
+    "CC_BY_4_0": true
+  }
+]

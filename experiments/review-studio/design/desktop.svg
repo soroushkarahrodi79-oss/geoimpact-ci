@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" role="img" aria-labelledby="title desc">
+  <title id="title">GeoImpact Review Studio — diseño de escritorio, no implementado</title>
+  <desc id="desc">Diseño original de GeoImpact Review Studio. No es una aplicación, captura de navegador ni cartografía real. Controles ilustrados sin interacción.</desc>
+  <g font-family="Arial, sans-serif">
+    <rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F3F6F4" stroke="#F3F6F4" />
+    <rect x="0" y="0" width="1440" height="36" rx="0" fill="#FFF0D7" stroke="#FFF0D7" />
+    <text x="32" y="24" font-size="12" fill="#6B4715" font-weight="700">DISEÑO PROPUESTO · NO IMPLEMENTADO · No es una captura de pantalla</text>
+    <rect x="0" y="36" width="1440" height="86" rx="0" fill="#122B39" stroke="#122B39" />
+    <rect x="28" y="58" width="42" height="42" rx="9" fill="#166B61" stroke="#166B61" />
+    <text x="37" y="86" font-size="18" fill="white" font-weight="700">GI</text>
+    <text x="86" y="75" font-size="23" fill="white" font-weight="700">GeoImpact</text>
+    <text x="86" y="99" font-size="12" fill="#B5D9D0" font-weight="700">REVIEW STUDIO</text>
+    <text x="344" y="84" font-size="17" fill="#E1EBE9" font-weight="400">Revisión de relaciones espaciales</text>
+    <text x="1080" y="84" font-size="14" fill="white" font-weight="400">Solo lectura    ·    V5    ·    ES / EN</text>
+    <text x="32" y="159" font-size="12" fill="#526B75" font-weight="600">CASO REPRODUCIBLE / CONTROL NEGATIVO</text>
+    <text x="32" y="193" font-size="32" fill="#183542" font-weight="700">Sierra de Baza</text>
+    <text x="32" y="222" font-size="15" fill="#526B75" font-weight="400">Límites 2015 → 2025 · inventario fijo recuperado el 05 oct 2026 · subconjunto retenido</text>
+    <rect x="1115" y="166" width="293" height="40" rx="7" fill="white" stroke="#D3DEDC" />
+    <text x="1129" y="191" font-size="14" fill="#183542" font-weight="600">Caso: Sierra de Baza  ▾</text>
+    <rect x="32" y="246" width="1376" height="106" rx="12" fill="white" stroke="#D3DEDC" />
+    <rect x="52" y="267" width="86" height="38" rx="7" fill="#DDEFE6" stroke="#BDDCCA" />
+    <text x="71" y="293" font-size="18" fill="#135538" font-weight="700">PASS</text>
+    <text x="160" y="282" font-size="18" fill="#183542" font-weight="700">La política configurada no bloqueó las regresiones observadas</text>
+    <text x="160" y="311" font-size="15" fill="#526B75" font-weight="400">Observado: 0  /  Umbral: 0     ·     No acredita corrección de datos ni efectos reales</text>
+    <text x="1100" y="282" font-size="15" fill="#183542" font-weight="600">1 geometría modificada</text>
+    <text x="1100" y="310" font-size="15" fill="#166B61" font-weight="600">0 cambios de relación</text>
+    <text x="32" y="383" font-size="12" fill="#526B75" font-weight="600">COMPARACIÓN / MISMA VISTA</text>
+    <rect x="681" y="363" width="135" height="40" rx="7" fill="white" stroke="#D3DEDC" />
+    <text x="695" y="388" font-size="14" fill="#183542" font-weight="600">Ajustar todo</text>
+    <rect x="828" y="363" width="208" height="40" rx="7" fill="white" stroke="#D3DEDC" />
+    <text x="842" y="388" font-size="14" fill="#183542" font-weight="600">BASE / CANDIDATE</text>
+    <rect x="32" y="419" width="494" height="310" rx="10" fill="#EAF0EE" stroke="#D3DEDC" />
+    <path d="M56 467L56 681" stroke="#DCE5E2" />
+    <path d="M94 467L94 681" stroke="#DCE5E2" />
+    <path d="M132 467L132 681" stroke="#DCE5E2" />
+    <path d="M170 467L170 681" stroke="#DCE5E2" />
+    <path d="M208 467L208 681" stroke="#DCE5E2" />
+    <path d="M246 467L246 681" stroke="#DCE5E2" />
+    <path d="M284 467L284 681" stroke="#DCE5E2" />
+    <path d="M322 467L322 681" stroke="#DCE5E2" />
+    <path d="M360 467L360 681" stroke="#DCE5E2" />
+    <path d="M398 467L398 681" stroke="#DCE5E2" />
+    <path d="M436 467L436 681" stroke="#DCE5E2" />
+    <path d="M474 467L474 681" stroke="#DCE5E2" />
+    <path d="M512 467L512 681" stroke="#DCE5E2" />
+    <path d="M44 477H514" stroke="#DCE5E2" />
+    <path d="M44 515H514" stroke="#DCE5E2" />
+    <path d="M44 553H514" stroke="#DCE5E2" />
+    <path d="M44 591H514" stroke="#DCE5E2" />
+    <path d="M44 629H514" stroke="#DCE5E2" />
+    <path d="M44 667H514" stroke="#DCE5E2" />
+    <rect x="48" y="435" width="230" height="30" rx="5" fill="white" stroke="#D3DEDC" />
+    <text x="60" y="456" font-size="13" fill="#183542" font-weight="700">BASE · mayo 2015</text>
+    <text x="56" y="569" font-size="16" fill="#183542" font-weight="600">Área cartográfica reservada</text>
+    <text x="56" y="597" font-size="13" fill="#526B75" font-weight="400">Sin cartografía en esta maqueta</text>
+    <text x="50" y="709" font-size="12" fill="#526B75" font-weight="400">Vectores retenidos · sin mapa base</text>
+    <rect x="542" y="419" width="494" height="310" rx="10" fill="#EAF0EE" stroke="#D3DEDC" />
+    <path d="M566 467L566 681" stroke="#DCE5E2" />
+    <path d="M604 467L604 681" stroke="#DCE5E2" />
+    <path d="M642 467L642 681" stroke="#DCE5E2" />
+    <path d="M680 467L680 681" stroke="#DCE5E2" />
+    <path d="M718 467L718 681" stroke="#DCE5E2" />
+    <path d="M756 467L756 681" stroke="#DCE5E2" />
+    <path d="M794 467L794 681" stroke="#DCE5E2" />
+    <path d="M832 467L832 681" stroke="#DCE5E2" />
+    <path d="M870 467L870 681" stroke="#DCE5E2" />
+    <path d="M908 467L908 681" stroke="#DCE5E2" />
+    <path d="M946 467L946 681" stroke="#DCE5E2" />
+    <path d="M984 467L984 681" stroke="#DCE5E2" />
+    <path d="M1022 467L1022 681" stroke="#DCE5E2" />
+    <path d="M554 477H1024" stroke="#DCE5E2" />
+    <path d="M554 515H1024" stroke="#DCE5E2" />
+    <path d="M554 553H1024" stroke="#DCE5E2" />
+    <path d="M554 591H1024" stroke="#DCE5E2" />
+    <path d="M554 629H1024" stroke="#DCE5E2" />
+    <path d="M554 667H1024" stroke="#DCE5E2" />
+    <rect x="558" y="435" width="230" height="30" rx="5" fill="white" stroke="#D3DEDC" />
+    <text x="570" y="456" font-size="13" fill="#183542" font-weight="700">CANDIDATE · dic 2025</text>
+    <text x="566" y="569" font-size="16" fill="#183542" font-weight="600">Área cartográfica reservada</text>
+    <text x="566" y="597" font-size="13" fill="#526B75" font-weight="400">Sin cartografía en esta maqueta</text>
+    <text x="560" y="709" font-size="12" fill="#526B75" font-weight="400">Vectores retenidos · sin mapa base</text>
+    <text x="32" y="756" font-size="13" fill="#526B75" font-weight="400">— BASE     - - CANDIDATE     ○ Referencia fija</text>
+    <text x="32" y="781" font-size="14" fill="#183542" font-weight="600">La geometría modificada no implica una relación alterada.</text>
+    <rect x="1060" y="374" width="348" height="528" rx="12" fill="white" stroke="#D3DEDC" />
+    <text x="1084" y="410" font-size="20" fill="#183542" font-weight="700">Evidencia y procedencia</text>
+    <text x="1084" y="447" font-size="12" fill="#526B75" font-weight="600">RELACIÓN SELECCIONADA</text>
+    <text x="1084" y="474" font-size="16" fill="#183542" font-weight="600">Equipamiento 1032 · within</text>
+    <text x="1084" y="504" font-size="14" fill="#526B75" font-weight="400">BASE: [69]  →  CANDIDATE: [69]</text>
+    <text x="1084" y="533" font-size="14" fill="#166B61" font-weight="400">unchanged · sin ID de regresión</text>
+    <path d="M1084 552H1384" stroke="#D3DEDC" />
+    <text x="1084" y="580" font-size="12" fill="#526B75" font-weight="600">MEDIDA DEL INFORME</text>
+    <text x="1084" y="615" font-size="30" fill="#183542" font-weight="700">368,825 m</text>
+    <text x="1084" y="642" font-size="13" fill="#526B75" font-weight="400">Máximo; IDs compartidos modificados</text>
+    <text x="1084" y="668" font-size="13" fill="#526B75" font-weight="400">Original: 368.82509547712834 m</text>
+    <path d="M1084 689H1384" stroke="#D3DEDC" />
+    <text x="1084" y="719" font-size="14" fill="#183542" font-weight="600">Huella cartográfica: no disponible</text>
+    <text x="1084" y="747" font-size="13" fill="#526B75" font-weight="400">Sin recalcular geometría ni métricas</text>
+    <text x="1084" y="785" font-size="15" fill="#166B61" font-weight="600">Entradas y configuración   ↗</text>
+    <text x="1084" y="817" font-size="15" fill="#166B61" font-weight="600">Versiones y hashes   ↗</text>
+    <text x="1084" y="849" font-size="15" fill="#166B61" font-weight="600">Fuentes y limitaciones   ↗</text>
+    <rect x="32" y="810" width="1004" height="130" rx="12" fill="white" stroke="#D3DEDC" />
+    <text x="54" y="843" font-size="20" fill="#183542" font-weight="700">Relaciones</text>
+    <text x="715" y="842" font-size="14" fill="#526B75" font-weight="400">52 registros · 0 regresiones</text>
+    <path d="M54 858H1014" stroke="#D3DEDC" />
+    <text x="54" y="885" font-size="12" fill="#526B75" font-weight="600">ID dependiente</text>
+    <text x="275" y="885" font-size="12" fill="#526B75" font-weight="600">BASE</text>
+    <text x="448" y="885" font-size="12" fill="#526B75" font-weight="600">CANDIDATE</text>
+    <text x="695" y="885" font-size="12" fill="#526B75" font-weight="600">Estado</text>
+    <text x="54" y="918" font-size="16" fill="#183542" font-weight="600">1032</text>
+    <text x="275" y="918" font-size="15" fill="#183542" font-weight="400">[69]</text>
+    <text x="448" y="918" font-size="15" fill="#183542" font-weight="400">[69]</text>
+    <text x="695" y="918" font-size="15" fill="#166B61" font-weight="400">unchanged</text>
+    <text x="32" y="972" font-size="12" fill="#526B75" font-weight="400">Fuente: REDIAM, Junta de Andalucía · Inventario fijo; no acredita existencia del equipamiento en 2015.</text>
+  </g>
+</svg>

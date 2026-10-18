@@ -2,7 +2,8 @@
 
 2026-10-18. This is the controlling scope addendum. PR #22 remains a **Draft,
 documentation/design/probe PR**. Functional development belongs to a separate
-Draft PR on `experiment/review-studio-local-v0-1`, linked when created. No merge,
+[Draft PR #23](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/pull/23)
+on `experiment/review-studio-local-v0-1`. No merge,
 deployment, Madrid visual distribution or INE correspondence is authorized.
 
 ## Retained requirements and traceability

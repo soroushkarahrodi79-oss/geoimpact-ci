@@ -1,5 +1,10 @@
 # Product design — proposed, not implemented
 
+
+> Scope update (2026-10-18): see [RECONCILIATION](RECONCILIATION.md).
+> This PR remains documentary. Synthetic functional work and conditional local
+> Sierra work belong to a separate Draft PR. Madrid stays HOLD; R1 OPEN.
+
 **Status: design under HOLD.** Wireframes are illustrations, not screenshots
 or tested interfaces. Any numbers shown below come from the reproduced
 reports; abstract map placeholders are not real geography.

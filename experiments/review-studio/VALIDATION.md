@@ -1,5 +1,10 @@
 # Reproduction and validation record
 
+
+> Scope update (2026-10-18): see [RECONCILIATION](RECONCILIATION.md).
+> This PR remains documentary. Synthetic functional work and conditional local
+> Sierra work belong to a separate Draft PR. Madrid stays HOLD; R1 OPEN.
+
 **Executed 2026-10-18.** Technical proof only; implementation remains HOLD.
 All result claims below refer to executed commands or the retained output
 hashes, not the visual wireframes.

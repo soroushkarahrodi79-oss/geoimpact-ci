@@ -1,5 +1,10 @@
 # Feasibility audit and architecture decisions
 
+
+> Scope update (2026-10-18): see [RECONCILIATION](RECONCILIATION.md).
+> This PR remains documentary. Synthetic functional work and conditional local
+> Sierra work belong to a separate Draft PR. Madrid stays HOLD; R1 OPEN.
+
 Audit date: 2026-10-18. Baselines and scope: [README](README.md).
 
 ## Decision and release verification

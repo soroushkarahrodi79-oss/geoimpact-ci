@@ -1,0 +1,399 @@
+{
+  "audit_date": "2026-10-18",
+  "generated_at_utc": "2026-10-18T19:05:17.856082+00:00",
+  "method": "Read-only HTTP metadata and GitHub reads, plus official Creative Commons legal text through the web tool. Direct-HTTP failures preserved. Response hashes are observations, not publisher authentication; no full upstream pages or source geometry retained.",
+  "local_start_commit": "48f31f62b1ccabe7107d42cc17c4c0980d33f4d9",
+  "release_commit": "45237d7caaea2aa4b81359e46f1623918645078c",
+  "sources": [
+    {
+      "id": "INE-2024-HTML",
+      "requested_url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2024?f=text%2Fhtml",
+      "retrieved_at_utc": "2026-10-18T19:05:05.894152+00:00",
+      "status": 200,
+      "resolved_url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2024?f=text%2Fhtml",
+      "content_type": "text/html",
+      "response_bytes": 11975,
+      "response_sha256": "ff4c9b171f611fa4656b94d417399a2d1bbf9292641a282d3b19a47441fe9377",
+      "license_link_targets": [
+        "https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
+      ],
+      "footer_contains_CC_BY_SA_4_0": true
+    },
+    {
+      "id": "INE-2025-HTML",
+      "requested_url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2025?f=text%2Fhtml",
+      "retrieved_at_utc": "2026-10-18T19:05:05.894827+00:00",
+      "status": 200,
+      "resolved_url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2025?f=text%2Fhtml",
+      "content_type": "text/html",
+      "response_bytes": 11833,
+      "response_sha256": "c4db4d69866487f6b9fb8363cb71bc32cffada831399ac86922e21d29f37a1d6",
+      "license_link_targets": [
+        "https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1"
+      ],
+      "footer_contains_CC_BY_SA_4_0": true
+    },
+    {
+      "id": "INE-2024-JSON",
+      "requested_url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2024?f=application%2Fjson",
+      "retrieved_at_utc": "2026-10-18T19:05:05.896395+00:00",
+      "status": 200,
+      "resolved_url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2024?f=application%2Fjson",
+      "content_type": "application/json",
+      "response_bytes": 365085,
+      "response_sha256": "9e6cbee37dff5bb4bb62fbd1a5ebf88f8d7a015765405edc746066c3f6287f0f",
+      "collection_id": "WMS_INE_SECCIONES_G01:Secciones_2024",
+      "top_level_keys": [
+        "id",
+        "title",
+        "description",
+        "extent",
+        "links",
+        "crs",
+        "storageCrs"
+      ],
+      "explicit_rights_fields": {},
+      "explicit_rights_links": []
+    },
+    {
+      "id": "INE-2025-JSON",
+      "requested_url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2025?f=application%2Fjson",
+      "retrieved_at_utc": "2026-10-18T19:05:05.897779+00:00",
+      "status": 200,
+      "resolved_url": "https://www.ine.es/geoserver/ogc/features/v1/collections/WMS_INE_SECCIONES_G01:Secciones_2025?f=application%2Fjson",
+      "content_type": "application/json",
+      "response_bytes": 365031,
+      "response_sha256": "6d69f74c7c8ad5232f4b47f1e278126ae27a9dc254d20ee99dc3b67e57703771",
+      "collection_id": "WMS_INE_SECCIONES_G01:Secciones_2025",
+      "top_level_keys": [
+        "id",
+        "title",
+        "extent",
+        "links",
+        "crs",
+        "storageCrs"
+      ],
+      "explicit_rights_fields": {},
+      "explicit_rights_links": []
+    },
+    {
+      "id": "INE-INDEX",
+      "requested_url": "https://www.ine.es/geoserver/ogc/features/v1/collections?f=text%2Fhtml",
+      "retrieved_at_utc": "2026-10-18T19:05:06.121303+00:00",
+      "status": 200,
+      "resolved_url": "https://www.ine.es/geoserver/ogc/features/v1/collections?f=text%2Fhtml",
+      "content_type": "text/html",
+      "response_bytes": 78574,
+      "response_sha256": "3266a7aa43a614139325abd0a93b590efbf858e8857d77bd0010688359823b1c"
+    },
+    {
+      "id": "INE-LEGAL",
+      "requested_url": "https://www.ine.es/dyngs/AYU/index.htm?cid=125",
+      "retrieved_at_utc": "2026-10-18T19:05:06.266110+00:00",
+      "status": 200,
+      "resolved_url": "https://www.ine.es/dyngs/AYU/index.htm?cid=125",
+      "content_type": "text/html;charset=UTF-8",
+      "response_bytes": 36396,
+      "response_sha256": "e0a9d02ef4215a7772d52bd2ca5dd108a2e2eae7d774aee7a9efde24115994f8"
+    },
+    {
+      "id": "INE-OPEN-DATA",
+      "requested_url": "https://www.ine.es/datosabiertos/",
+      "retrieved_at_utc": "2026-10-18T19:05:06.453902+00:00",
+      "status": 200,
+      "resolved_url": "https://www.ine.es/datosabiertos/",
+      "content_type": "text/html",
+      "response_bytes": 173,
+      "response_sha256": "42971b3a5dc1ee970c4a6ccb803bb5697d0e1164a00ffdbb5e86f7119ca578dd"
+    },
+    {
+      "id": "INE-WFS",
+      "requested_url": "https://www.ine.es/geoserver/WMS_INE_SECCIONES_G01/wfs?service=WFS&request=GetCapabilities&version=2.0.0",
+      "retrieved_at_utc": "2026-10-18T19:05:06.749960+00:00",
+      "status": 200,
+      "resolved_url": "https://www.ine.es/geoserver/WMS_INE_SECCIONES_G01/wfs?service=WFS&request=GetCapabilities&version=2.0.0",
+      "content_type": "application/xml",
+      "response_bytes": 110482,
+      "response_sha256": "7ab02b6ad7a14f346268307308797d830ff7da93f58bed5c66e30e4c6e63eac3",
+      "service_fields": {
+        "Fees": [
+          "NONE"
+        ],
+        "AccessConstraints": [
+          "NONE"
+        ],
+        "ProviderName": [
+          "Instituto Nacional de Estadística"
+        ]
+      }
+    },
+    {
+      "id": "INE-GUIDE",
+      "requested_url": "https://ine.es/geoserver/www/guias/OGC_API_Feature_Seccionado.pdf",
+      "retrieved_at_utc": "2026-10-18T19:05:09.806784+00:00",
+      "status": 200,
+      "resolved_url": "https://ine.es/geoserver/www/guias/OGC_API_Feature_Seccionado.pdf",
+      "content_type": "application/pdf;charset=UTF-8",
+      "response_bytes": 1823776,
+      "response_sha256": "86e836b5849309126c2aaff03e77d17d450a0af4bcff3af9ee31169d4e54923d"
+    },
+    {
+      "id": "CC-BY",
+      "requested_url": "https://creativecommons.org/licenses/by/4.0/legalcode.es",
+      "retrieved_at_utc": "2026-10-18T19:05:09.811921+00:00",
+      "direct_http_attempt": {
+        "error": "HTTP Error 403: Forbidden",
+        "retrieved_at_utc": "2026-10-18T19:05:09.811921+00:00"
+      },
+      "review_method": "Official legal-code text retrieved through web search/open tool; direct urllib request blocked with HTTP 403. No response-byte hash retained for this source.",
+      "text_reviewed": true,
+      "review_scope": "Sections 1 to 4: definitions, licensed uses, technical modifications, attribution, adaptation and database rights."
+    },
+    {
+      "id": "CC-BY-SA",
+      "requested_url": "https://creativecommons.org/licenses/by-sa/4.0/legalcode.es",
+      "retrieved_at_utc": "2026-10-18T19:05:09.871416+00:00",
+      "direct_http_attempt": {
+        "error": "HTTP Error 403: Forbidden",
+        "retrieved_at_utc": "2026-10-18T19:05:09.871416+00:00"
+      },
+      "review_method": "Official legal-code text retrieved through web search/open tool; direct urllib request blocked with HTTP 403. No response-byte hash retained for this source.",
+      "text_reviewed": true,
+      "review_scope": "Sections 1 to 4: definitions, licensed uses, technical modifications, attribution, adaptation and database rights."
+    },
+    {
+      "id": "REDIAM-2015",
+      "requested_url": "https://www.juntadeandalucia.es/datosabiertos/portal/dataset/limites-de-los-espacios-naturales-protegidos-de-andalucia-eennpp-2015",
+      "retrieved_at_utc": "2026-10-18T19:05:09.913592+00:00",
+      "status": 200,
+      "resolved_url": "https://www.juntadeandalucia.es/datosabiertos/portal/dataset/limites-de-los-espacios-naturales-protegidos-de-andalucia-eennpp-2015",
+      "content_type": "text/html; charset=utf-8",
+      "response_bytes": 19269,
+      "response_sha256": "30876501d4e7399807d7379e3dc81c3fb83200e3370ecdb358d08cc3dae98d2c",
+      "license_links": [
+        "http://creativecommons.org/licenses/by/4.0/deed.es_ES"
+      ]
+    },
+    {
+      "id": "REDIAM-BOUNDARY-WFS",
+      "requested_url": "https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_RENPA?service=WFS&request=GetCapabilities",
+      "retrieved_at_utc": "2026-10-18T19:05:10.049616+00:00",
+      "status": 200,
+      "resolved_url": "https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_RENPA?service=WFS&request=GetCapabilities",
+      "content_type": "text/xml; charset=UTF-8",
+      "response_bytes": 37456,
+      "response_sha256": "5f9e87ce9f4bde07ec66aa94f4457309a9a38c66908fd0a593ab08d94e613a97",
+      "service_free_use_with_author_owner_attribution": true,
+      "provider": [
+        "Consejería de Sostenibilidad y Medio Ambiente. Junta de Andalucía"
+      ],
+      "fees": [
+        "Gratuito"
+      ],
+      "condition_excerpt": "siempre que se mencione a los autores y propietarios de la información"
+    },
+    {
+      "id": "REDIAM-EQUIPMENT-WFS",
+      "requested_url": "https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_Patrimonio_Natural?service=WFS&request=GetCapabilities",
+      "retrieved_at_utc": "2026-10-18T19:05:10.051865+00:00",
+      "status": 200,
+      "resolved_url": "https://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WFS_Patrimonio_Natural?service=WFS&request=GetCapabilities",
+      "content_type": "text/xml; charset=UTF-8",
+      "response_bytes": 54713,
+      "response_sha256": "39cf5f6ca4ba157aa5f794680c960d4cdf94df8a64fed62462c328b97f5fbb02",
+      "service_free_use_with_author_owner_attribution": true,
+      "provider": [
+        "Consejería de Sostenibilidad y Medio Ambiente. Junta de Andalucía"
+      ],
+      "fees": [
+        "Gratuito"
+      ],
+      "condition_excerpt": "siempre que se mencione a los autores y propietarios de la información"
+    }
+  ],
+  "pull_requests": [
+    {
+      "baseRefName": "main",
+      "body": "## Scope\nDocumentation-only feasibility gate for an isolated read-only GeoImpact Review Studio. V5 authoritative outputs, Madrid positive case, Sierra de Baza negative control, CRS/data-rights risks, read-only architecture, acceptance criteria and GO/HOLD gates.\n\n**No change to engine, CLI, dependencies, fixtures, report contract, tests or released versions.** No frontend implemented. No merge or deployment requested.\n\n### Verdict\n- **CONDITIONAL GO:** F1 pinned artifact reproduction then F2 isolated read-only viewer adapter.\n- **HOLD:** publicly published demo, INE redistribution, unvalidated external-user or accessibility claims.\n\nNote: assessment is source/document review only, not an independent runtime reproduction; see limitations in the spec.\n\nFor independent review; leave this PR **Draft**.",
+      "commits": [
+        {
+          "authoredDate": "2026-10-18T18:43:31Z",
+          "committedDate": "2026-10-18T18:43:31Z",
+          "messageBody": "",
+          "messageHeadline": "docs: define GeoImpact Review Studio V0.1 feasibility and F1/F2 gates",
+          "oid": "ae0244fae0032dba7f5a890476897056c7ef4cf5"
+        }
+      ],
+      "files": [
+        {
+          "path": "docs/REVIEW_STUDIO_FEASIBILITY_V0_1.md",
+          "additions": 191,
+          "deletions": 0,
+          "changeType": "ADDED"
+        }
+      ],
+      "headRefName": "docs/review-studio-feasibility-v0-1",
+      "headRefOid": "ae0244fae0032dba7f5a890476897056c7ef4cf5",
+      "isDraft": true,
+      "number": 21,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-18T18:44:38Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/39155477173/job/117757697660",
+          "name": "linux-py311",
+          "startedAt": "2026-10-18T18:43:39Z",
+          "status": "COMPLETED",
+          "workflowName": "GeoImpact CI contract"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-18T18:45:33Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/39155477173/job/117757696969",
+          "name": "windows-py314",
+          "startedAt": "2026-10-18T18:43:40Z",
+          "status": "COMPLETED",
+          "workflowName": "GeoImpact CI contract"
+        }
+      ],
+      "title": "docs: GeoImpact Review Studio feasibility V0.1 (V5 + two real cases)",
+      "url": "https://github.com/soroushkarahrodi79-oss/geoimpact-ci/pull/21",
+      "issue_comments": [],
+      "reviews": [],
+      "inline_comments": []
+    },
+    {
+      "baseRefName": "main",
+      "body": "GeoImpact CI V5 can support a standalone static review surface, but the requested two-case viewer remains on HOLD: the Madrid source register explicitly leaves INE redistribution conditions unresolved. The official collection footer and general legal notice still expose differing license labels. Following the requested stop rule, this experiment delivers design and a reproducible technical proof without implementing or presenting a finished viewer.\n\nAll ten additions are confined to `experiments/review-studio/`:\n\n- Evidence-backed audit of released v1.2.0, V5, actual regenerated outputs, source rights and existing features; eight proposed architecture decisions.\n- Desktop, tablet and mobile SVG designs, explicitly labelled as designs rather than screenshots, with ES/EN copy and measurable J1–J5 acceptance criteria.\n- Standard-library display-readiness probe, retained metadata summary and eight failure-mode tests. No spatial predicates, metric computation or policy execution are introduced.\n- Reproduction instructions, professional utility/risk assessment and exact criteria for reopening implementation.\n\nValidation completed locally on Linux/Python 3.12.14: released suite 113 passed; existing experiment-branch suite 113 passed; eight probe tests passed; PASS/BLOCK/ERROR contracts and synthetic hashes matched; Madrid and Sierra existing verifiers passed with all six frozen output hashes. Original inputs and evidence join successfully by declared IDs. SVGs were locally rasterized and inspected.\n\nNo functional UI, browser viewport tests, physical-device tests, UI screenshots or human user research are claimed. These remain explicit later gates. No source geometry is duplicated into a web bundle. CLI, algorithms, policies, deterministic serialization, reference fixtures, public contracts, dependencies, packaging and existing CI remain untouched. No merge or deployment.\n\nStart at [the experiment README](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/blob/experiment/review-studio-feasibility/experiments/review-studio/README.md). R1 requires retained authoritative dataset-specific reuse evidence for the exact INE snapshots and their derived display/redistribution; inclusion in this repository and attribution alone do not close that recorded ambiguity.",
+      "commits": [
+        {
+          "authoredDate": "2026-10-18T18:48:28Z",
+          "committedDate": "2026-10-18T18:48:28Z",
+          "messageBody": "…tion on data rights",
+          "messageHeadline": "docs(experiment): audit Review Studio feasibility and gate implementa…",
+          "oid": "447b17db96f4358ec5e35542d2148c03cd0f5306"
+        }
+      ],
+      "files": [
+        {
+          "path": "experiments/review-studio/AUDIT.md",
+          "additions": 172,
+          "deletions": 0,
+          "changeType": "ADDED"
+        },
+        {
+          "path": "experiments/review-studio/DESIGN.md",
+          "additions": 144,
+          "deletions": 0,
+          "changeType": "ADDED"
+        },
+        {
+          "path": "experiments/review-studio/README.md",
+          "additions": 51,
+          "deletions": 0,
+          "changeType": "ADDED"
+        },
+        {
+          "path": "experiments/review-studio/VALIDATION.md",
+          "additions": 149,
+          "deletions": 0,
+          "changeType": "ADDED"
+        },
+        {
+          "path": "experiments/review-studio/design/desktop.svg",
+          "additions": 115,
+          "deletions": 0,
+          "changeType": "ADDED"
+        },
+        {
+          "path": "experiments/review-studio/design/mobile.svg",
+          "additions": 58,
+          "deletions": 0,
+          "changeType": "ADDED"
+        },
+        {
+          "path": "experiments/review-studio/design/tablet.svg",
+          "additions": 81,
+          "deletions": 0,
+          "changeType": "ADDED"
+        },
+        {
+          "path": "experiments/review-studio/evidence-summary.json",
+          "additions": 108,
+          "deletions": 0,
+          "changeType": "ADDED"
+        },
+        {
+          "path": "experiments/review-studio/probe.py",
+          "additions": 182,
+          "deletions": 0,
+          "changeType": "ADDED"
+        },
+        {
+          "path": "experiments/review-studio/test_probe.py",
+          "additions": 88,
+          "deletions": 0,
+          "changeType": "ADDED"
+        }
+      ],
+      "headRefName": "experiment/review-studio-feasibility",
+      "headRefOid": "447b17db96f4358ec5e35542d2148c03cd0f5306",
+      "isDraft": true,
+      "number": 22,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-18T18:49:51Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/39155882822/job/117758892356",
+          "name": "linux-py311",
+          "startedAt": "2026-10-18T18:48:54Z",
+          "status": "COMPLETED",
+          "workflowName": "GeoImpact CI contract"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-18T18:50:26Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/soroushkarahrodi79-oss/geoimpact-ci/actions/runs/39155882822/job/117758892118",
+          "name": "windows-py314",
+          "startedAt": "2026-10-18T18:48:54Z",
+          "status": "COMPLETED",
+          "workflowName": "GeoImpact CI contract"
+        }
+      ],
+      "title": "experiment: Review Studio feasibility and design — HOLD on Madrid reuse",
+      "url": "https://github.com/soroushkarahrodi79-oss/geoimpact-ci/pull/22",
+      "issue_comments": [],
+      "reviews": [],
+      "inline_comments": []
+    }
+  ],
+  "verification": {
+    "six_retained_PR22_output_hashes_match_release_manifests": true,
+    "runtime_reproduction_rerun_this_audit": false,
+    "expected_output_sha256": {
+      "madrid": {
+        "report.json": "29a9337a90c7a1c591f7c05c109ee29b8c38b33324e0bb02867c1fb6a6b272df",
+        "report.md": "ec7124260275f8ae473a9eea00da59eca2866527a8cf57714ae5bb0d681b5253",
+        "relationship-regressions.geojson": "0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf"
+      },
+      "sierra": {
+        "report.json": "b17899f1472500567bb2d2eb7d0a2a9c91731a3d7827896f5635a3ef353f7cf1",
+        "report.md": "907db7fd57c1091927277b55f624d51fb7087b453facf9cc35bdffdea44d3a89",
+        "relationship-regressions.geojson": "a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a"
+      }
+    },
+    "browser_test_performed": false,
+    "implementation_performed": false
+  },
+  "publication_redaction": {
+    "original_local_document_sha256": "557fa7c6d7faf2c5bce720a18cd199ba17dcee2b419ec0f5fff7a230eb939678",
+    "removed_fields": "pull_requests[].commits[].authors (email, name, login and account ID); commit OIDs and official URLs retained",
+    "reason": "Unnecessary personal metadata omitted from publishable documentation."
+  }
+}

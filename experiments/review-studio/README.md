@@ -1,5 +1,10 @@
 # GeoImpact Review Studio — feasibility experiment
 
+
+> Scope update (2026-10-18): see [RECONCILIATION](RECONCILIATION.md).
+> This PR remains documentary. Synthetic functional work and conditional local
+> Sierra work belong to a separate Draft PR. Madrid stays HOLD; R1 OPEN.
+
 **Decision, 2026-10-18: technical GO; implementation HOLD.**
 
 A static, read-only review surface is technically possible from the retained

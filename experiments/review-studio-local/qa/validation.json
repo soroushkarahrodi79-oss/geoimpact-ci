@@ -1,0 +1,55 @@
+{
+  "scope": "Local prototype, R1 OPEN, full two-real-case viewer HOLD",
+  "source_sha256": {
+    "web/index.html": "30e5fca43eae5840f98841b06420aa9a0867f4462f864017b563be016d5174b2",
+    "web/style.css": "4a961299dfd5c30106364bb3929eca26521e9fb46bf4f44273e72ab1127f6a34",
+    "web/app.js": "f146b6f00f545d2d37fccccfb682ce2891576dbf2984105b557ba89ead8cd809",
+    "web/reader.js": "a09f1e4545631a5235917b571e61ead2af64828ac780b27d00370bf7520fe9d8",
+    "tests/reader.test.mjs": "951ae160794d24e8cf2bf8224c3904da94a311bd48d149ffbe488dc85b6f4381",
+    "tests/browser.mjs": "f335bcba26190b7b0bc132a97eeb98fa9831b423083950e440ae793f0ba0a231",
+    "prepare.py": "40199f14d5284d966ed3410a9c8d4d50fa42fe03d52d65ea9871dfeff2175586",
+    "serve.py": "e60dd3e727f6a449803cd15f0cd7172e2d795f020b2186069bfef78d86ccd777",
+    "rights/sierra-local.json": "44d9e1585c6fdd92e98fb78489b27d78eb50f5e607a1c4502f1c7b1a7041e950",
+    "package.json": "b9176f50436bb77dcc66738a3caf5998dfb994c8d8ec9d3f67b88b5a5957b272",
+    "package-lock.json": "8fa211788a563da0e5b77795a48fef2d73ff7329d67ea33460893e9c8468d774"
+  },
+  "unit_tests": {
+    "passed": 22,
+    "failed": 0,
+    "skipped": 0,
+    "sierra_local_included": true
+  },
+  "current_checkout_existing_tests": {
+    "passed": 113,
+    "seconds": 58.26
+  },
+  "exported_release_existing_tests": {
+    "passed": 113,
+    "seconds": 62.54
+  },
+  "browser_groups_passed": 12,
+  "scientific_outputs": "synthetic 3 + Madrid 3 + Sierra 3 hashes unchanged via release verifiers",
+  "protected_tracked_diff_from_main": [],
+  "runtime_external_requests": 0,
+  "physical_devices_tested": false,
+  "screen_reader_tested": false,
+  "independent_human_review": false,
+  "screenshots": {
+    "analysis-error.png": "5605bc9df5c472913eb39b2fde8061b0df7ba8f2cca16b0a6480a59253e7ed25",
+    "integrity-error.png": "8aede6524e9214fb1e74f9f65a3aad2c180d52f083eff0bc16d24448d8e9ad7a",
+    "synthetic-1440x1000.png": "6955c066fc237dc10a4f9f75cfa1892853e58a02b0c871e5bc79886414c0e22b",
+    "synthetic-1440x900.png": "01d01d97a041a1384619ace436b1d93b445d8f0c541b372e4df7e94fd02c5ac1",
+    "synthetic-320x812.png": "0a92ed1824747534eeca2cd5d1f0398ad21b60b1791dce98fbb34838849bae1e",
+    "synthetic-375x812.png": "4592c586d61a664268eb1ca0b193de652d6635ac01ed7714d17b0ea6dd4a9cb1",
+    "synthetic-390x844.png": "47b8f6bd790ff0068564283bcfcb6ce81fb7aa2a536bbd270b932b8bbe5c851b",
+    "synthetic-834x1112.png": "574e718fc352ff658dd2d50c712e293d20162a85d1b3c97faea2254f39b359b3",
+    "synthetic-mobile-evidence.png": "f999185e1c2da2824c385c208dc50cdfc46d0d69143b341b2accf781e913d8c1",
+    "synthetic-mobile-full.png": "2158b64c6844f2c3b03fb1ea3740bd4eece143c531b97223045793c2ed9351ea",
+    "synthetic-mobile-review.png": "b3e0ffd6c153b74d010e527ad6e9bc55a62229f643fa9a0d2831b240005df4d1",
+    "synthetic-zoom-200.png": "bacb5db7e205d0b5c4e82a71ecf04e62e059cdbdc5b057413a46c175425c1e69"
+  },
+  "local_only_sierra_screenshots": [
+    "sierra-mobile.png",
+    "sierra-zero-desktop.png"
+  ]
+}

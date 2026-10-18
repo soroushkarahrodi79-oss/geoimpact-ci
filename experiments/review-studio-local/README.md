@@ -12,7 +12,8 @@ names as IDs; they are mathematical fixtures, **not INE geometry**. See the
 [original construction](../../docs/GATE_1_REPORT.md).
 
 Documentary/design [Draft PR #22](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/pull/22)
-is separate from the functional PR on `experiment/review-studio-local-v0-1`.
+is separate from [functional Draft PR #23](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/pull/23)
+on `experiment/review-studio-local-v0-1`.
 The [requirements reconciliation](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/blob/experiment/review-studio-feasibility/experiments/review-studio/RECONCILIATION.md)
 retains the complete #21 specification, transition filter, JSON traceability,
 five viewports and F1 evidence. #21 remains open. No merge or deployment.

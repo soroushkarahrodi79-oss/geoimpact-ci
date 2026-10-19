@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Local read-only inspection of pinned GeoImpact CI V5 evidence.">
+  <meta name="description" content="Private academic demonstration of pinned GeoImpact CI V5 evidence using synthetic data.">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
   <title>GeoImpact · Review Studio</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="style.css">
@@ -14,14 +15,14 @@
   <a class="skip" href="#review" data-i18n="skip">Ir a la revisión</a>
   <header class="masthead">
     <div class="brand"><span class="brand-mark" aria-hidden="true">◈</span><div><strong>GeoImpact</strong><span>REVIEW STUDIO</span></div></div>
-    <div class="header-meta"><span class="local-tag" data-i18n="local">LOCAL · SOLO LECTURA</span><span>v0.1 · Report V5</span></div>
+    <div class="header-meta"><span class="local-tag" data-i18n="local">DEMO ACADÉMICA · DATOS SINTÉTICOS</span><span>v0.1 · Report V5</span></div>
     <button id="help-button" type="button" class="help-button" aria-haspopup="dialog">Ayuda</button>
     <label class="language"><span data-i18n="language">Idioma</span><select id="language"><option value="es">ES</option><option value="en">EN</option></select></label>
   </header>
   <main>
     <section class="intro" aria-labelledby="heading">
-      <div><p class="eyebrow" data-i18n="eyebrow">EVIDENCIA ESPACIAL / REVISIÓN LOCAL</p><h1 data-tour-target="purpose" id="heading" data-i18n="heading">Un cambio de límite.<br>La evidencia, a la vista.</h1><p class="intro-copy" data-i18n="intro">Compara las geometrías originales y sigue cada relación hasta su informe.</p></div>
-      <div class="case-control"><label for="case" data-i18n="case">Caso de revisión</label><select data-tour-target="case" id="case" disabled><option data-i18n="loading">Verificando archivos…</option></select><p class="scope-note" data-i18n="scope">Prototipo local · R1 OPEN · visor completo HOLD</p></div>
+      <div><p class="eyebrow" data-i18n="eyebrow">EVIDENCIA ESPACIAL / DEMOSTRACIÓN ACADÉMICA</p><h1 data-tour-target="purpose" id="heading" data-i18n="heading">Un cambio de límite.<br>La evidencia, a la vista.</h1><p class="intro-copy" data-i18n="intro">Compara las geometrías originales y sigue cada relación hasta su informe.</p></div>
+      <div class="case-control"><label for="case" data-i18n="case">Caso de revisión</label><select data-tour-target="case" id="case" disabled><option data-i18n="loading">Verificando archivos…</option></select><p class="scope-note" data-i18n="scope">Demo académica privada · datos sintéticos</p></div>
     </section>
     <div id="live" role="status" aria-live="polite" class="sr-only"></div>
     <section id="problem" class="problem" role="alert" hidden></section>
@@ -58,7 +59,7 @@
       </div>
       <section data-tour-target="provenance" id="provenance" class="card provenance" aria-labelledby="provenance-title"><div class="section-head"><div><span class="eyebrow">04 / <span data-i18n="verify">VERIFICAR</span></span><h2 id="provenance-title" data-i18n="provenance">Procedencia y límites</h2></div><span class="verified" data-i18n="verified">Bytes verificados</span></div><p class="provenance-note" data-i18n="hashMeaning">Coincidencia con el manifiesto retenido y las identidades V5. No autentica al proveedor ni acredita derechos o exactitud.</p><div id="versions" class="versions"></div><div id="input-files"></div><details><summary data-i18n="config">Configuración original · solo lectura</summary><pre id="config-raw"></pre></details><div class="source-grid"><div><h3 data-i18n="sources">Fuentes y condiciones</h3><div id="sources"></div></div><div id="interpretation-limits" data-tour-target="limitations" aria-labelledby="limitations-title"><h3 id="limitations-title" data-i18n="limitations">Límites de interpretación</h3><p id="limitations"></p><p data-i18n="footprint">Huella EPSG:25830 no representada. No se calculan métricas ni relaciones en este visor.</p><p data-i18n="scientificMeaning">La modificación de una geometría no implica una relación alterada. El resultado no acredita efectos reales ni corrección de los datos.</p></div></div></section>
     </div>
-    <footer><span>GeoImpact Review Studio · <span data-i18n="prototype">prototipo local, no producto terminado</span></span><span>R1 OPEN / <span data-i18n="fullHold">visor completo HOLD</span></span></footer>
+    <footer><span>GeoImpact Review Studio · <span data-i18n="prototype">demostración académica privada con datos sintéticos</span></span><span>R1 OPEN / <span data-i18n="fullHold">visor completo HOLD</span></span></footer>
   </main>
   <script type="module" src="app.js"></script>
 </body>

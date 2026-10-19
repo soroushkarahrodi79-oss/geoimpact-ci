@@ -41,8 +41,8 @@ export async function loadCatalog(expectedHash, fetcher = fetch) {
   const bytes = await response.arrayBuffer();
   fail(await sha256(bytes) === expectedHash, 'HASH_MISMATCH', 'catalog.json');
   const catalog = json(bytes, 'catalog.json');
-  fail(catalog.studio_version === '0.1.0-local' && catalog.R1 === 'OPEN' && catalog.full_viewer === 'HOLD' && array(catalog.cases), 'UNSUPPORTED_CATALOG', 'catalog.json');
-  const allowed = new Set(['synthetic-block', 'synthetic-pass', 'synthetic-error', 'sierra-local']);
+  fail(catalog.studio_version === '0.1.0-academic-demo' && catalog.R1 === 'OPEN' && catalog.full_viewer === 'HOLD' && array(catalog.cases), 'UNSUPPORTED_CATALOG', 'catalog.json');
+  const allowed = new Set(['synthetic-block', 'synthetic-pass', 'synthetic-error']);
   fail(catalog.cases.length > 0 && new Set(catalog.cases.map(x => x.id)).size === catalog.cases.length && catalog.cases.every(x => allowed.has(x.id)), 'CASE_NOT_ALLOWED', 'catalog.json');
   return catalog;
 }
@@ -143,7 +143,7 @@ export async function loadCase(entry, fetcher = fetch) {
     return { manifest };
   }
   fail(manifest.kind === 'completed' && object(manifest.files) && array(manifest.dependencies) && manifest.release_commit === '45237d7caaea2aa4b81359e46f1623918645078c', 'UNSUPPORTED_BUNDLE', 'manifest');
-  fail(object(manifest.title) && ['es','en'].every(k => id(manifest.title[k]) && id(manifest.limitations?.[k])) && array(manifest.editions) && manifest.editions.length === 2 && manifest.editions.every(id) && id(manifest.attribution) && id(manifest.inventory_date) && ['synthetic','local-only'].includes(manifest.category) && array(manifest.sources) && manifest.sources.every(s => id(s.title) && id(s.terms) && typeof s.url === 'string' && s.url.startsWith('https://')), 'INVALID_SOURCE_METADATA', 'manifest');
+  fail(object(manifest.title) && ['es','en'].every(k => id(manifest.title[k]) && id(manifest.limitations?.[k])) && array(manifest.editions) && manifest.editions.length === 2 && manifest.editions.every(id) && id(manifest.attribution) && id(manifest.inventory_date) && manifest.category === 'synthetic' && array(manifest.sources) && manifest.sources.every(s => id(s.title) && id(s.terms) && typeof s.url === 'string' && s.url.startsWith('https://')), 'INVALID_SOURCE_METADATA', 'manifest');
   const roles = ['config', 'base', 'candidate', 'report.json', 'report.md', 'relationship-regressions.geojson', ...manifest.dependencies.map((_, i) => `dependency-${i}`)];
   fail(setSame(new Set(roles), new Set(Object.keys(manifest.files))), 'MISSING_FILES', 'manifest');
   const data = {}, bytes = new Map();

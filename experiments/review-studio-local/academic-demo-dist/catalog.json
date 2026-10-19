@@ -1,0 +1,37 @@
+{
+  "studio_version": "0.1.0-academic-demo",
+  "R1": "OPEN",
+  "full_viewer": "HOLD",
+  "cases": [
+    {
+      "id": "synthetic-block",
+      "title": {
+        "es": "Límites sintéticos · BLOCK",
+        "en": "Synthetic boundaries · BLOCK"
+      },
+      "path": "data/synthetic-block/manifest.json",
+      "sha256": "45840143923429ac8136eb86be5ca76f4268c20a4a3121e5af1f0e55fed83029",
+      "size_bytes": 3026
+    },
+    {
+      "id": "synthetic-pass",
+      "title": {
+        "es": "Mismos límites · PASS",
+        "en": "Same boundaries · PASS"
+      },
+      "path": "data/synthetic-pass/manifest.json",
+      "sha256": "b57b8d4f7376d0978be3ec7844ce0f4b16c7b05880f1a3a08cd603c477e416f5",
+      "size_bytes": 3010
+    },
+    {
+      "id": "synthetic-error",
+      "title": {
+        "es": "Error de análisis · sin informe",
+        "en": "Analysis error · no report"
+      },
+      "path": "data/synthetic-error/manifest.json",
+      "sha256": "a9a207871da02235dc5221512914973baf62a3dfc6a1b3e9329afc8ee338aac4",
+      "size_bytes": 375
+    }
+  ]
+}

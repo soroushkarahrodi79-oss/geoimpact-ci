@@ -1,0 +1,15 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"hotel_id": "hotel_813"},
+      "geometry": {"type": "Point", "coordinates": [-3.7058845397999263, 40.37888268983383]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"hotel_id": "hotel_unchanged"},
+      "geometry": {"type": "Point", "coordinates": [-3.7064735198506127, 40.37887909312531]}
+    }
+  ]
+}

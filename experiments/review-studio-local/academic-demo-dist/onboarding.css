@@ -1,0 +1,126 @@
+/* Onboarding is isolated from map/evidence styling and contains no remote assets. */
+.help-button {
+  color: #eef6f3;
+  background: #1c3947;
+  border-color: #87a8a5;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.help-button:hover { color: white; background: #285264; }
+.onboarding-dialog {
+  color: #183542;
+  background: #fff;
+  padding: 0;
+  border: 1px solid #a9c4b9;
+  border-radius: 14px;
+  width: min(620px, var(--onboarding-dialog-width, calc(100% - 32px)));
+  max-height: var(--onboarding-dialog-height, calc(100dvh - 32px));
+  overflow: hidden;
+  box-shadow: 0 22px 70px #122b3940;
+}
+.onboarding-dialog[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+.onboarding-dialog::backdrop { background: #122b397a; }
+.onboarding-modal-top, .guide-panel-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #d5e2dc;
+}
+.onboarding-modal-top > .eyebrow { margin-right: auto; font-size: 10px; }
+.onboarding-language { display: inline-flex; align-items: center; flex: 0 0 auto; }
+.onboarding-language select { width: 70px; font-size: 13px; padding: 7px 9px; }
+.onboarding-close { font-size: 23px; font-weight: 400; width: 44px; padding: 0; flex-shrink: 0; }
+.onboarding-modal-body { padding: 22px 26px; overflow-y: auto; overscroll-behavior: contain; }
+.onboarding-modal-body h2 { font-size: 25px; line-height: 1.25; margin-bottom: 20px; }
+.onboarding-modal-body p { font-size: 15px; line-height: 1.65; margin: 13px 0; }
+.onboarding-notice {
+  background: #f3f6ed;
+  color: #334c3a;
+  border-left: 3px solid #697948;
+  padding: 12px 14px;
+  border-radius: 0 5px 5px 0;
+}
+.onboarding-modal-actions, .guide-panel-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 22px;
+  border-top: 1px solid #d5e2dc;
+  background: #f7faf8;
+}
+.onboarding-modal-actions button, .guide-panel-actions button { font-size: 13px; }
+.onboarding-primary { background: #166b61; border-color: #166b61; color: white; }
+.onboarding-primary:hover { background: #10554c; border-color: #10554c; color: white; }
+.onboarding-menu { display: grid; gap: 8px; margin-bottom: 20px; }
+.onboarding-menu button { text-align: left; padding: 12px 14px; font-weight: 600; }
+.onboarding-modal-body > a { display: inline-flex; min-height: 44px; align-items: center; font-size: 13px; }
+.onboarding-glossary { margin: 0; }
+.onboarding-glossary > div { border-top: 1px solid #d9e4de; padding: 13px 0; }
+.onboarding-glossary dt { font-weight: 650; font-size: 14px; }
+.onboarding-glossary dd { margin: 5px 0 0; font-size: 14px; line-height: 1.65; }
+.guide-panel {
+  position: fixed;
+  inset: auto 16px 12px;
+  z-index: 20;
+  max-width: 1160px;
+  margin-inline: auto;
+  height: auto;
+  max-height: var(--guide-max-height, 43dvh);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  color: #183542;
+  background: #fff;
+  border: 2px solid #166b61;
+  border-radius: 12px;
+  box-shadow: 0 -8px 35px #122b392e;
+  overflow: hidden;
+}
+.guide-panel-top { padding: 6px 16px; }
+.guide-panel-top > p { margin-right: auto; font-size: 12px; letter-spacing: .3px; font-weight: 650; color: #185b50; }
+.guide-panel-body { padding: 12px 18px; overflow-y: auto; overscroll-behavior: contain; }
+.guide-panel-body h2 { font-size: 20px; line-height: 1.3; margin: 0 0 8px; }
+.guide-panel-body p { font-size: 14px; line-height: 1.6; margin: 8px 0; }
+.guide-panel-body .onboarding-notice { font-size: 13px; padding: 8px 12px; }
+.guide-panel-body .onboarding-note { font-size: 12px; color: #486765; }
+.guide-panel-body summary { cursor: pointer; color: #165e53; font-size: 13px; padding-block: 9px; }
+.guide-panel-actions { padding: 8px 16px; }
+.guide-panel-actions button { padding: 7px 12px; }
+.guide-panel-actions [data-guide-action="skip"] { margin-left: auto; }
+.guide-highlight { outline: 3px solid #a56708 !important; outline-offset: 5px; }
+.guide-open main { padding-bottom: var(--guide-space, 390px); }
+.guide-open [data-tour-target] { scroll-margin-bottom: var(--guide-space, 390px); }
+.onboarding-question { border: 1px solid #adc6b8; border-radius: 6px; margin: 14px 0 0; padding: 10px 13px; }
+.onboarding-question legend { font-size: 13px; font-weight: 650; }
+.onboarding-question label { display: flex; align-items: center; gap: 9px; font-size: 13px; min-height: 44px; }
+.onboarding-question input { width: 18px; min-height: 18px; flex-shrink: 0; accent-color: #166b61; }
+@media(max-width: 700px) {
+  .masthead { gap: 10px; }
+  .masthead .language { margin-left: 0; }
+  .help-button { margin-left: auto; padding: 7px 10px; }
+  .guide-panel { inset-inline: 8px; bottom: 8px; }
+  .guide-panel-top { padding: 5px 10px; gap: 7px; }
+  .guide-panel-body { padding: 10px 12px; }
+  .guide-panel-body h2 { font-size: 18px; }
+  .guide-panel-body p { font-size: 13px; }
+  .guide-panel-actions { padding: 7px 10px; gap: 6px; }
+  .guide-panel-actions button { font-size: 12px; padding: 6px 9px; }
+  .guide-panel-actions [data-guide-action="skip"] { margin-left: 0; }
+  .onboarding-modal-top { padding: 8px 12px; gap: 7px; }
+  .onboarding-modal-top > .eyebrow { font-size: 9px; letter-spacing: .8px; }
+  .onboarding-modal-body { padding: 16px; }
+  .onboarding-modal-body h2 { font-size: 22px; }
+  .onboarding-modal-body p { font-size: 14px; }
+  .onboarding-modal-actions { padding: 12px 16px; }
+  .onboarding-modal-actions button { flex: 1 1 100%; }
+}
+@media(max-width: 370px) {
+  .masthead .brand-mark { display: none; }
+  .masthead .brand strong { font-size: 18px; }
+  .masthead .brand div > span { font-size: 8px; }
+  .onboarding-modal-top > .eyebrow { letter-spacing: 0; font-size: 8px; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .guide-panel, .onboarding-dialog, .guide-highlight { animation: none; transition: none; scroll-behavior: auto; }
+}

@@ -1,0 +1,142 @@
+{
+  "base_commit": "4133c2262fb16546a0dd41f09dd5a6a92b64c100",
+  "base_pr": 23,
+  "cases": [
+    "synthetic-block",
+    "synthetic-pass",
+    "synthetic-error"
+  ],
+  "demo": "GeoImpact Review Studio — Private Academic Demo V1",
+  "engine_commit": "45237d7caaea2aa4b81359e46f1623918645078c",
+  "engine_release": "GeoImpact CI 1.2.0",
+  "files": {
+    "LICENSE.txt": {
+      "sha256": "960b8f17a38e3b6b232d94aee77fab7fca8d6a0df3bb37f0dcb25dd63964e869",
+      "size_bytes": 1074
+    },
+    "_headers": {
+      "sha256": "f9fc8a7fe3d81c3abedb76e8f41405fe5fa2e760faac447227896716c9858315",
+      "size_bytes": 851
+    },
+    "app.js": {
+      "sha256": "3781d3872f95aaba69fa8c6528328d3e6437239c4ca2b726e6a34686e1c0d9b6",
+      "size_bytes": 29368
+    },
+    "catalog.json": {
+      "sha256": "7e4ced1dbf716bc85366aca4be60da1510802d0a312e32467d6cf34dc65db149",
+      "size_bytes": 1063
+    },
+    "data/synthetic-block/districts_base.geojson": {
+      "sha256": "fe2621c4defed71287355595ecd428fd8c1f7fddee822a37dddff4fe71b23837",
+      "size_bytes": 803
+    },
+    "data/synthetic-block/districts_candidate.geojson": {
+      "sha256": "a3ef49590971c5cf5dc45c33ece307d0d77d300f4aba374a6947e56b3198e19c",
+      "size_bytes": 803
+    },
+    "data/synthetic-block/geoimpact.yml": {
+      "sha256": "17d97b90f4484be8b4244651441b4d5eea35e2f953b630f34429334af14f5df1",
+      "size_bytes": 450
+    },
+    "data/synthetic-block/hotels.geojson": {
+      "sha256": "b92889469f7c14863963ec8242b86cd215497db13af4ea60f88ece81f77b06f4",
+      "size_bytes": 416
+    },
+    "data/synthetic-block/manifest.json": {
+      "sha256": "45840143923429ac8136eb86be5ca76f4268c20a4a3121e5af1f0e55fed83029",
+      "size_bytes": 3026
+    },
+    "data/synthetic-block/relationship-regressions.geojson": {
+      "sha256": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
+      "size_bytes": 1196
+    },
+    "data/synthetic-block/report.json": {
+      "sha256": "d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd",
+      "size_bytes": 4914
+    },
+    "data/synthetic-block/report.md": {
+      "sha256": "65ca9d67dd7ff59bc148fccc003354ea3201f51707f3e73ca2fd96dac208d95a",
+      "size_bytes": 1303
+    },
+    "data/synthetic-block/tourism_pois.geojson": {
+      "sha256": "ac93115affcf7db76f768785eb932b3d289a3d2da8d323f4d242566c96210257",
+      "size_bytes": 227
+    },
+    "data/synthetic-error/manifest.json": {
+      "sha256": "a9a207871da02235dc5221512914973baf62a3dfc6a1b3e9329afc8ee338aac4",
+      "size_bytes": 375
+    },
+    "data/synthetic-pass/districts_base.geojson": {
+      "sha256": "fe2621c4defed71287355595ecd428fd8c1f7fddee822a37dddff4fe71b23837",
+      "size_bytes": 803
+    },
+    "data/synthetic-pass/districts_candidate.geojson": {
+      "sha256": "a3ef49590971c5cf5dc45c33ece307d0d77d300f4aba374a6947e56b3198e19c",
+      "size_bytes": 803
+    },
+    "data/synthetic-pass/geoimpact-pass.yml": {
+      "sha256": "1ecd53d2f6ba5402d1e2f0b23de60749fa3d6de7224c10663e15685b19bca0a9",
+      "size_bytes": 450
+    },
+    "data/synthetic-pass/hotels.geojson": {
+      "sha256": "b92889469f7c14863963ec8242b86cd215497db13af4ea60f88ece81f77b06f4",
+      "size_bytes": 416
+    },
+    "data/synthetic-pass/manifest.json": {
+      "sha256": "b57b8d4f7376d0978be3ec7844ce0f4b16c7b05880f1a3a08cd603c477e416f5",
+      "size_bytes": 3010
+    },
+    "data/synthetic-pass/relationship-regressions.geojson": {
+      "sha256": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
+      "size_bytes": 1196
+    },
+    "data/synthetic-pass/report.json": {
+      "sha256": "187e22c76d13de6902794c92d70e633fb98f9eb0c4f76f806a47709f498df5a4",
+      "size_bytes": 4912
+    },
+    "data/synthetic-pass/report.md": {
+      "sha256": "ad19ab07fc9bdd8e62b6f9dd9d95d952e8d1fca1540e1dacd3443e0b6d60b1f7",
+      "size_bytes": 1301
+    },
+    "data/synthetic-pass/tourism_pois.geojson": {
+      "sha256": "ac93115affcf7db76f768785eb932b3d289a3d2da8d323f4d242566c96210257",
+      "size_bytes": 227
+    },
+    "index.html": {
+      "sha256": "52a504c7c098a2eefc620e75797fc422ac9d110fa51deae11651625ec833b2d4",
+      "size_bytes": 9835
+    },
+    "onboarding-copy.js": {
+      "sha256": "5430de710ff9c874671e64cc7af0a7399504eb29563032cf0ca915174fe69388",
+      "size_bytes": 18566
+    },
+    "onboarding.css": {
+      "sha256": "ba5b999b6cd6c3fc77c27c9d92507d2f853e01d852a137d1b919ec7d7b229c2a",
+      "size_bytes": 5810
+    },
+    "onboarding.js": {
+      "sha256": "a504158f7a998fb620ef74c9be58400354dbc03c72924b4de54fade240fb0af3",
+      "size_bytes": 24126
+    },
+    "reader.js": {
+      "sha256": "e609ad0ca5b120b1bb815f0ff95f5c5e840473f4aca13fb23f30b7e52c8b00a7",
+      "size_bytes": 13675
+    },
+    "robots.txt": {
+      "sha256": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1",
+      "size_bytes": 26
+    },
+    "style.css": {
+      "sha256": "4a961299dfd5c30106364bb3929eca26521e9fb46bf4f44273e72ab1127f6a34",
+      "size_bytes": 16069
+    },
+    "trust.js": {
+      "sha256": "357c06e2303876555eda7835871567da9376337ebea269c3d580faba33b65b02",
+      "size_bytes": 95
+    }
+  },
+  "report_version": "5",
+  "rights": "MIT repository code and synthetic fixtures only; no third-party media",
+  "runtime": "static files only; no Python server or analysis backend",
+  "schema_version": 1
+}

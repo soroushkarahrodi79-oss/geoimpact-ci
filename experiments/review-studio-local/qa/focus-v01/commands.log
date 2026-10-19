@@ -1,0 +1,197 @@
+$ npm test
+
+> geoimpact-review-studio-local@0.1.0 test
+> node --test tests/reader.test.mjs tests/onboarding-state.test.mjs
+
+✔ persistence contains only a versioned completion/dismissal enum (3.237ms)
+✔ disabled, malformed and unknown storage cannot block help or treat a visit as complete (0.7849ms)
+✔ copy is complete in both languages, with eight semantic targets and eleven glossary meanings (0.7233ms)
+✔ practice gates use an actual released V5 report and observable actions; they cannot issue a new verdict (108.9331ms)
+✔ released BLOCK has complete composite joins and exact two evidence records (7.3787ms)
+✔ real PASS report retains two regressions with a permissive configured threshold (64.6834ms)
+✔ recorded CLI ERROR has no report, geometry, input manifest or invented verdict (4.0588ms)
+✔ raw byte changes reject even semantically equivalent JSON (11.4511ms)
+✔ missing files are not empty valid results (7.3202ms)
+✔ remote, parent-traversal, cross-case and unsafe bundle paths cannot be loaded (0.6625ms)
+✔ catalog itself is bound to a retained digest (7.4717ms)
+✔ unsupported V4 is rejected without upgrading (1.3844ms)
+✔ unknown report and display CRS cannot be drawn (1.4455ms)
+✔ V5 config identities are independently checked after bundle hashes (1.1314ms)
+✔ same dependent ID in different datasets remains a separate composite key (0.463ms)
+✔ duplicate and orphan relationship rows reject (1.2755ms)
+✔ missing records cannot silently reduce the observed inventory (0.7104ms)
+✔ before/after cannot reference absent source primary IDs (0.4954ms)
+✔ primary added/removed declarations must agree with presence in original snapshots (0.4318ms)
+✔ regression primary dataset and referenced identity set must match the original relationship (0.4956ms)
+✔ source geometry must be original geographic Polygon/MultiPolygon with closed rings (0.6695ms)
+✔ export evidence properties must agree with report and original fixed coordinates (1.0645ms)
+✔ policy status contradictions fail closed, without executing threshold logic (0.4406ms)
+✔ regression evidence cannot be attached to an unchanged row or omitted (0.9458ms)
+✔ Sierra: exact frozen hashes, 52 unchanged rows, 40 assigned / 12 unassigned, empty regression collection (58.1215ms)
+✔ the browser source has no GIS or policy execution and serves only its own root (7.2516ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 658.0351
+
+[exit 0]
+
+$ npm run test:browser
+
+> geoimpact-review-studio-local@0.1.0 test:browser
+> node tests/browser.mjs
+
+PASS J1–J4 / 1440x900 viewport emulation
+PASS J1–J4 / 1440x1000 viewport emulation
+PASS J1–J4 / 834x1112 viewport emulation
+PASS J1–J4 / 375x812 viewport emulation
+PASS J1–J4 / 390x844 viewport emulation
+PASS J1–J4 / 320x812 viewport emulation
+PASS PASS can contain regressions / recorded ERROR clears previous evidence
+PASS Point selection, primary selection, layers, zoom and keyboard exit
+PASS J5 / missing, whitespace-tampered report and unsupported V4 fail closed
+PASS Sierra local / J1–J5 meaningful zero and complete inventory
+PASS 200% CSS zoom reflow emulation / 320px reflow / contrast / skip link
+PASS Static serving boundary and zero external runtime requests
+
+[exit 0]
+
+$ npm run test:onboarding
+
+> geoimpact-review-studio-local@0.1.0 test:onboarding
+> node tests/onboarding.mjs
+
+PASS Welcome waits for verified ready, is opt-in, and Not now postpones only this session
+PASS Explore and Skip persist dismissal; Help restarts after dismissal; Escape never marks completion
+PASS Eight-step tour / bilingual / focus / targets / Help at 1440x900
+PASS Eight-step tour / bilingual / focus / targets / Help at 1440x1000
+PASS Eight-step tour / bilingual / focus / targets / Help at 834x1112
+PASS Eight-step tour / bilingual / focus / targets / Help at 375x812
+PASS Eight-step tour / bilingual / focus / targets / Help at 390x844
+PASS Eight-step tour / bilingual / focus / targets / Help at 320x812
+PASS Hidden/missing targets pause without crashes or false completion; valid recovery retains the step
+PASS ERROR never launches welcome; Help stays safe; active tours pause on analysis ERROR
+PASS Real hotel_813 practice gates search, selection, interpretation and provenance; restores previous case
+PASS Actual practice, language, evidence and source navigation at 390px
+PASS Actual practice, language, evidence and source navigation at 320px
+PASS Welcome Escape postpones; Help information, limits and resume are reachable by keyboard
+PASS Practice skip/escape and Help close restore focus without completing the exercise
+PASS Sierra tour preserves meaningful zero, original 52 points, selection and absence of regression IDs
+PASS 200% CSS zoom, resize mid-tour, reduced motion and blocked storage
+PASS No external runtime requests, uncaught errors, data mutations or non-state persistence
+
+[exit 0]
+
+$ npm run test:focus -- --baseline
+BASELINE 1440x900 historical-forward: 8 hidden/offscreen focus events
+BASELINE 1440x900 historical-reverse: 0 hidden/offscreen focus events
+BASELINE 1440x1000 historical-forward: 0 hidden/offscreen focus events
+BASELINE 1440x1000 historical-reverse: 0 hidden/offscreen focus events
+BASELINE 834x1112 historical-forward: 4 hidden/offscreen focus events
+BASELINE 834x1112 historical-reverse: 0 hidden/offscreen focus events
+BASELINE 375x812 historical-forward: 15 hidden/offscreen focus events
+BASELINE 375x812 historical-reverse: 0 hidden/offscreen focus events
+BASELINE 390x844 historical-forward: 15 hidden/offscreen focus events
+BASELINE 390x844 historical-reverse: 0 hidden/offscreen focus events
+BASELINE 320x812 historical-forward: 17 hidden/offscreen focus events
+BASELINE 320x812 historical-reverse: 0 hidden/offscreen focus events
+
+[exit 0]
+
+$ npm run test:focus
+
+> geoimpact-review-studio-local@0.1.0 test:focus
+> node tests/focus.mjs
+
+PASS 1440x900 historical-forward: 0 hidden/offscreen focus events
+PASS 1440x900 historical-reverse: 0 hidden/offscreen focus events
+PASS 1440x900 after-manual-scroll: 0 hidden/offscreen focus events
+PASS 1440x900 after-page-up: 0 hidden/offscreen focus events
+PASS 1440x900 map-step-forward: 0 hidden/offscreen focus events
+PASS 1440x900 map-step-reverse: 0 hidden/offscreen focus events
+PASS 1440x900 resized-forward: 0 hidden/offscreen focus events
+PASS 1440x900 resized-reverse: 0 hidden/offscreen focus events
+PASS 1440x900 zoom-200-forward: 0 hidden/offscreen focus events
+PASS 1440x900 zoom-200-reverse: 0 hidden/offscreen focus events
+PASS 1440x900 english-forward: 0 hidden/offscreen focus events
+PASS 1440x900 english-reverse: 0 hidden/offscreen focus events
+PASS 1440x900 practice-forward: 0 hidden/offscreen focus events
+PASS 1440x900 practice-reverse: 0 hidden/offscreen focus events
+PASS 1440x1000 historical-forward: 0 hidden/offscreen focus events
+PASS 1440x1000 historical-reverse: 0 hidden/offscreen focus events
+PASS 1440x1000 after-manual-scroll: 0 hidden/offscreen focus events
+PASS 1440x1000 after-page-up: 0 hidden/offscreen focus events
+PASS 1440x1000 map-step-forward: 0 hidden/offscreen focus events
+PASS 1440x1000 map-step-reverse: 0 hidden/offscreen focus events
+PASS 1440x1000 resized-forward: 0 hidden/offscreen focus events
+PASS 1440x1000 resized-reverse: 0 hidden/offscreen focus events
+PASS 1440x1000 zoom-200-forward: 0 hidden/offscreen focus events
+PASS 1440x1000 zoom-200-reverse: 0 hidden/offscreen focus events
+PASS 1440x1000 english-forward: 0 hidden/offscreen focus events
+PASS 1440x1000 english-reverse: 0 hidden/offscreen focus events
+PASS 1440x1000 practice-forward: 0 hidden/offscreen focus events
+PASS 1440x1000 practice-reverse: 0 hidden/offscreen focus events
+PASS 834x1112 historical-forward: 0 hidden/offscreen focus events
+PASS 834x1112 historical-reverse: 0 hidden/offscreen focus events
+PASS 834x1112 after-manual-scroll: 0 hidden/offscreen focus events
+PASS 834x1112 after-page-up: 0 hidden/offscreen focus events
+PASS 834x1112 map-step-forward: 0 hidden/offscreen focus events
+PASS 834x1112 map-step-reverse: 0 hidden/offscreen focus events
+PASS 834x1112 resized-forward: 0 hidden/offscreen focus events
+PASS 834x1112 resized-reverse: 0 hidden/offscreen focus events
+PASS 834x1112 zoom-200-forward: 0 hidden/offscreen focus events
+PASS 834x1112 zoom-200-reverse: 0 hidden/offscreen focus events
+PASS 834x1112 english-forward: 0 hidden/offscreen focus events
+PASS 834x1112 english-reverse: 0 hidden/offscreen focus events
+PASS 834x1112 practice-forward: 0 hidden/offscreen focus events
+PASS 834x1112 practice-reverse: 0 hidden/offscreen focus events
+PASS 375x812 historical-forward: 0 hidden/offscreen focus events
+PASS 375x812 historical-reverse: 0 hidden/offscreen focus events
+PASS 375x812 after-manual-scroll: 0 hidden/offscreen focus events
+PASS 375x812 after-page-up: 0 hidden/offscreen focus events
+PASS 375x812 map-step-forward: 0 hidden/offscreen focus events
+PASS 375x812 map-step-reverse: 0 hidden/offscreen focus events
+PASS 375x812 resized-forward: 0 hidden/offscreen focus events
+PASS 375x812 resized-reverse: 0 hidden/offscreen focus events
+PASS 375x812 zoom-200-forward: 0 hidden/offscreen focus events
+PASS 375x812 zoom-200-reverse: 0 hidden/offscreen focus events
+PASS 375x812 english-forward: 0 hidden/offscreen focus events
+PASS 375x812 english-reverse: 0 hidden/offscreen focus events
+PASS 375x812 practice-forward: 0 hidden/offscreen focus events
+PASS 375x812 practice-reverse: 0 hidden/offscreen focus events
+PASS 390x844 historical-forward: 0 hidden/offscreen focus events
+PASS 390x844 historical-reverse: 0 hidden/offscreen focus events
+PASS 390x844 after-manual-scroll: 0 hidden/offscreen focus events
+PASS 390x844 after-page-up: 0 hidden/offscreen focus events
+PASS 390x844 map-step-forward: 0 hidden/offscreen focus events
+PASS 390x844 map-step-reverse: 0 hidden/offscreen focus events
+PASS 390x844 resized-forward: 0 hidden/offscreen focus events
+PASS 390x844 resized-reverse: 0 hidden/offscreen focus events
+PASS 390x844 zoom-200-forward: 0 hidden/offscreen focus events
+PASS 390x844 zoom-200-reverse: 0 hidden/offscreen focus events
+PASS 390x844 english-forward: 0 hidden/offscreen focus events
+PASS 390x844 english-reverse: 0 hidden/offscreen focus events
+PASS 390x844 practice-forward: 0 hidden/offscreen focus events
+PASS 390x844 practice-reverse: 0 hidden/offscreen focus events
+PASS 320x812 historical-forward: 0 hidden/offscreen focus events
+PASS 320x812 historical-reverse: 0 hidden/offscreen focus events
+PASS 320x812 after-manual-scroll: 0 hidden/offscreen focus events
+PASS 320x812 after-page-up: 0 hidden/offscreen focus events
+PASS 320x812 map-step-forward: 0 hidden/offscreen focus events
+PASS 320x812 map-step-reverse: 0 hidden/offscreen focus events
+PASS 320x812 resized-forward: 0 hidden/offscreen focus events
+PASS 320x812 resized-reverse: 0 hidden/offscreen focus events
+PASS 320x812 zoom-200-forward: 0 hidden/offscreen focus events
+PASS 320x812 zoom-200-reverse: 0 hidden/offscreen focus events
+PASS 320x812 english-forward: 0 hidden/offscreen focus events
+PASS 320x812 english-reverse: 0 hidden/offscreen focus events
+PASS 320x812 practice-forward: 0 hidden/offscreen focus events
+PASS 320x812 practice-reverse: 0 hidden/offscreen focus events
+PASS 1440x1000 native-zoom-200-forward: 0 hidden/offscreen focus events
+PASS 1440x1000 native-zoom-200-reverse: 0 hidden/offscreen focus events
+
+[exit 0]

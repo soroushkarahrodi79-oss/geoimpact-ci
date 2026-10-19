@@ -1,0 +1,61 @@
+{
+  "at_utc": "2026-10-18T19:30:09.912677+00:00",
+  "scope": "exported v1.2.0; no Madrid outputs bundled in web",
+  "commands": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_ci_contract.py",
+        "pass"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_ci_contract.py",
+        "block"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_ci_contract.py",
+        "error"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_ci_contract.py",
+        "hashes"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_madrid_benchmark.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "python",
+        "scripts/verify_gate8_case.py"
+      ],
+      "exit": 0
+    }
+  ]
+}

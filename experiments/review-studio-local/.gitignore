@@ -1,0 +1,6 @@
+web/data/
+web/catalog.json
+web/trust.js
+qa/local/
+node_modules/
+test-results/

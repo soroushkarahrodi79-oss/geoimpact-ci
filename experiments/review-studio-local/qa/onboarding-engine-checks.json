@@ -1,0 +1,82 @@
+{
+  "executed_at_utc": "2026-10-18T20:21:07.690208+00:00",
+  "output_redaction": "Absolute workspace/release paths replaced with labels; no scientific values changed.",
+  "records": [
+    {
+      "scope": "checkout",
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 65.11,
+      "output": "........................................................................ [ 63%]\n.........................................                                [100%]\n113 passed in 63.01s (0:01:03)\n"
+    },
+    {
+      "scope": "release",
+      "command": [
+        "python",
+        "scripts/verify_ci_contract.py",
+        "pass"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.16,
+      "output": "GeoImpact CI\nVerdict: PASS\nReport: [release]\\ci-output\\pass\\report.json\nMarkdown: [release]\\ci-output\\pass\\report.md\nEvidence: [release]\\ci-output\\pass\\relationship-regressions.geojson\nVerified PASS CLI exit code and output contract.\n"
+    },
+    {
+      "scope": "release",
+      "command": [
+        "python",
+        "scripts/verify_ci_contract.py",
+        "block"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.07,
+      "output": "GeoImpact CI\nVerdict: BLOCK\nReport: [release]\\ci-output\\block\\report.json\nMarkdown: [release]\\ci-output\\block\\report.md\nEvidence: [release]\\ci-output\\block\\relationship-regressions.geojson\nVerified BLOCK CLI exit code and output contract.\n"
+    },
+    {
+      "scope": "release",
+      "command": [
+        "python",
+        "scripts/verify_ci_contract.py",
+        "error"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.03,
+      "output": "Verified ERROR CLI exit code and output contract.\nGeoImpact error: config file does not exist: [release]\\tests\\fixtures\\missing_gate4.yml\n"
+    },
+    {
+      "scope": "release",
+      "command": [
+        "python",
+        "scripts/verify_ci_contract.py",
+        "hashes"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.18,
+      "output": "SHA-256 report.json: d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd\nSHA-256 report.md: 65ca9d67dd7ff59bc148fccc003354ea3201f51707f3e73ca2fd96dac208d95a\nSHA-256 relationship-regressions.geojson: a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978\nAll canonical BLOCK artifact hashes match.\n"
+    },
+    {
+      "scope": "release",
+      "command": [
+        "python",
+        "scripts/verify_madrid_benchmark.py"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 2.5,
+      "output": "GeoImpact CI\nVerdict: BLOCK\nReport: [release]\\ci-output\\madrid-benchmark\\report.json\nMarkdown: [release]\\ci-output\\madrid-benchmark\\report.md\nEvidence: [release]\\ci-output\\madrid-benchmark\\relationship-regressions.geojson\nMadrid CLI observation: os=Windows python=3.14.5 duration_seconds=1.805 exit=1\nMadrid real-world benchmark PASS\n{\n  \"cli_exit\": 1,\n  \"duration_seconds\": 1.805,\n  \"evidence_id_sha256\": \"d221ee2e751af2b46062fd0cd76581b2aff5307061919e0ba3f6e0f69bfe7cd8\",\n  \"gained\": 0,\n  \"input_sha256\": {\n    \"research/madrid-ine-sections-2024-2025/geoimpact.yml\": \"7395510b1bc4b760dd606f1998d2ec317af0512768d223198544c7b6e52fc5b1\",\n    \"research/madrid-ine-sections-2024-2025/ine-sections-2024-focus.geojson\": \"9987b42293ffdda93b3cb5a1d897bccea4b084ed1ba0e1bd5eaf7f4eb303c453\",\n    \"research/madrid-ine-sections-2024-2025/ine-sections-2025-focus.geojson\": \"18956b960c4b8adf5d750c04cf51a5db638ed8054e5e83988003ea59ce4d9da3\",\n    \"research/madrid-ine-sections-2024-2025/madrid-portals-change-footprint.geojson\": \"a8ad452cb74dcc77cdfe43fb040b5e4b6ecee38c63710932e3de4209f74f6ec0\"\n  },\n  \"lost\": 0,\n  \"merge_like\": 344,\n  \"os\": \"Windows\",\n  \"output_sha256\": {\n    \"relationship-regressions.geojson\": \"0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf\",\n    \"report.json\": \"29a9337a90c7a1c591f7c05c109ee29b8c38b33324e0bb02867c1fb6a6b272df\",\n    \"report.md\": \"ec7124260275f8ae473a9eea00da59eca2866527a8cf57714ae5bb0d681b5253\"\n  },\n  \"python\": \"3.14.5\",\n  \"relationship_identity_sha256\": \"4b1eac48876a66599a4eb0a8013625f81a64a1f7fedf47539324d4556d85ee38\",\n  \"relationship_records\": 2112,\n  \"split_like\": 1768,\n  \"transition_pairs\": 26,\n  \"transitions\": [\n    {\n      \"count\": 96,\n      \"from\": \"2807901124\",\n      \"to\": \"2807901123\"\n    },\n    {\n      \"count\": 55,\n      \"from\": \"2807903070\",\n      \"to\": \"2807903069\"\n    },\n    {\n      \"count\": 8,\n      \"from\": \"2807903088\",\n      \"to\": \"2807903087\"\n    },\n    {\n      \"count\": 15,\n      \"from\": \"2807908087\",\n      \"to\": \"2807908088\"\n    },\n    {\n      \"count\": 34,\n      \"from\": \"2807908160\",\n      \"to\": \"2807908192\"\n    },\n    {\n      \"count\": 205,\n      \"from\": \"2807908176\",\n      \"to\": \"2807908193\"\n    },\n    {\n      \"count\": 158,\n      \"from\": \"2807910004\",\n      \"to\": \"2807910003\"\n    },\n    {\n      \"count\": 19,\n      \"from\": \"2807911182\",\n      \"to\": \"2807911201\"\n    },\n    {\n      \"count\": 29,\n      \"from\": \"2807913056\",\n      \"to\": \"2807913218\"\n    },\n    {\n      \"count\": 55,\n      \"from\": \"2807913206\",\n      \"to\": \"2807913219\"\n    },\n    {\n      \"count\": 7,\n      \"from\": \"2807914006\",\n      \"to\": \"2807914005\"\n    },\n    {\n      \"count\": 34,\n      \"from\": \"2807916114\",\n      \"to\": \"2807916135\"\n    },\n    {\n      \"count\": 30,\n      \"from\": \"2807916124\",\n      \"to\": \"2807916136\"\n    },\n    {\n      \"count\": 41,\n      \"from\": \"2807916131\",\n      \"to\": \"2807916137\"\n    },\n    {\n      \"count\": 37,\n      \"from\": \"2807917106\",\n      \"to\": \"2807917120\"\n    },\n    {\n      \"count\": 35,\n      \"from\": \"2807917113\",\n      \"to\": \"2807917119\"\n    },\n    {\n      \"count\": 35,\n      \"from\": \"2807918054\",\n      \"to\": \"2807918074\"\n    },\n    {\n      \"count\": 114,\n      \"from\": \"2807918057\",\n      \"to\": \"2807918075\"\n    },\n    {\n      \"count\": 328,\n      \"from\": \"2807918058\",\n      \"to\": \"2807918076\"\n    },\n    {\n      \"count\": 58,\n      \"from\": \"2807919002\",\n      \"to\": \"2807919057\"\n    },\n    {\n      \"count\": 48,\n      \"from\": \"2807919052\",\n      \"to\": \"2807919058\"\n    },\n    {\n      \"count\": 269,\n      \"from\": \"2807919053\",\n      \"to\": \"2807919059\"\n    },\n    {\n      \"count\": 200,\n      \"from\": \"2807919054\",\n      \"to\": \"2807919060\"\n    },\n    {\n      \"count\": 172,\n      \"from\": \"2807919054\",\n      \"to\": \"2807919061\"\n    },\n    {\n      \"count\": 5,\n      \"from\": \"2807920016\",\n      \"to\": \"2807920017\"\n    },\n    {\n      \"count\": 25,\n      \"from\": \"2807920121\",\n      \"to\": \"2807920129\"\n    }\n  ]\n}\n"
+    },
+    {
+      "scope": "release",
+      "command": [
+        "python",
+        "scripts/verify_gate8_case.py"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 2.61,
+      "output": "{\"boundary_ambiguities\": 0, \"cli_exit\": 0, \"cli_runtime_seconds\": 1.75638710000203, \"evidence_id_sha256\": \"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\", \"exhaustive_reference\": \"exact equality\", \"max_boundary_displacement_m\": 368.82509547712834, \"output_sha256\": {\"relationship-regressions.geojson\": \"a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a\", \"report.json\": \"b17899f1472500567bb2d2eb7d0a2a9c91731a3d7827896f5635a3ef353f7cf1\", \"report.md\": \"907db7fd57c1091927277b55f624d51fb7087b453facf9cc35bdffdea44d3a89\"}, \"regressions\": 0, \"relationship_identity_sha256\": \"d57c99dd3f497d57ec3538c66b6aed2be2ef053a638d3fc68962690c8a50539a\", \"relationships\": 52, \"report_version\": \"5\", \"runtime\": \"win32\", \"verdict\": \"PASS\"}\n"
+    }
+  ]
+}

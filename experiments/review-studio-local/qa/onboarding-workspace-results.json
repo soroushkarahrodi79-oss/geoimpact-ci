@@ -1,0 +1,119 @@
+{
+  "tested_at_utc": "2026-10-18T20:31:32.453Z",
+  "browser": "153.0.8010.12",
+  "playwright": "1.56.1",
+  "platform": "win32",
+  "node": "v24.11.0",
+  "source_base_commit": "339b7cdf64d2ca27db1690dfb18b22a885b128e7",
+  "working_tree": "UI files under test may be uncommitted; final validation records the source tree digest",
+  "physical_devices": false,
+  "screen_reader_tested": false,
+  "Sierra": "local only",
+  "records": [
+    {
+      "name": "J1â€“J4 / 1440x900 viewport emulation",
+      "status": "PASS",
+      "duration_ms": 2040,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "cold_load_ms": 648,
+      "device": "CSS viewport emulation; no physical device"
+    },
+    {
+      "name": "J1â€“J4 / 1440x1000 viewport emulation",
+      "status": "PASS",
+      "duration_ms": 1189,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "cold_load_ms": 313,
+      "device": "CSS viewport emulation; no physical device"
+    },
+    {
+      "name": "J1â€“J4 / 834x1112 viewport emulation",
+      "status": "PASS",
+      "duration_ms": 1168,
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "cold_load_ms": 342,
+      "device": "CSS viewport emulation; no physical device"
+    },
+    {
+      "name": "J1â€“J4 / 375x812 viewport emulation",
+      "status": "PASS",
+      "duration_ms": 1235,
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "cold_load_ms": 320,
+      "device": "CSS viewport emulation; no physical device"
+    },
+    {
+      "name": "J1â€“J4 / 390x844 viewport emulation",
+      "status": "PASS",
+      "duration_ms": 1469,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cold_load_ms": 413,
+      "device": "CSS viewport emulation; no physical device"
+    },
+    {
+      "name": "J1â€“J4 / 320x812 viewport emulation",
+      "status": "PASS",
+      "duration_ms": 1182,
+      "viewport": {
+        "width": 320,
+        "height": 812
+      },
+      "cold_load_ms": 300,
+      "device": "CSS viewport emulation; no physical device"
+    },
+    {
+      "name": "PASS can contain regressions / recorded ERROR clears previous evidence",
+      "status": "PASS",
+      "duration_ms": 1036
+    },
+    {
+      "name": "Point selection, primary selection, layers, zoom and keyboard exit",
+      "status": "PASS",
+      "duration_ms": 927
+    },
+    {
+      "name": "J5 / missing, whitespace-tampered report and unsupported V4 fail closed",
+      "status": "PASS",
+      "duration_ms": 2045
+    },
+    {
+      "name": "Sierra local / J1â€“J5 meaningful zero and complete inventory",
+      "status": "PASS",
+      "duration_ms": 2283
+    },
+    {
+      "name": "200% CSS zoom reflow emulation / 320px reflow / contrast / skip link",
+      "status": "PASS",
+      "duration_ms": 1087,
+      "zoom": "200% CSS zoom emulation",
+      "body_text_contrast": 11.86,
+      "screen_reader": "not tested"
+    },
+    {
+      "name": "Static serving boundary and zero external runtime requests",
+      "status": "PASS",
+      "duration_ms": 75
+    }
+  ],
+  "external_requests": [],
+  "uncaught_errors": [],
+  "console_errors": [],
+  "expected_injected_fault_console_errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

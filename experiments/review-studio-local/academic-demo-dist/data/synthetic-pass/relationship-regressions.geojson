@@ -1,0 +1,51 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -3.70588454,
+          40.37888269
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "after": [
+          "tetuan"
+        ],
+        "before": [
+          "chamberi"
+        ],
+        "change_type": "assignment_changed",
+        "dependent_dataset": "hotels",
+        "dependent_id": "hotel_813",
+        "evidence_id": "relationship-regression-526712f2a3cfcdb0b86e03e9b060807c34ec8909095e5bb87cd57ab47e3cde49",
+        "predicate": "within"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -3.70601174,
+          40.37978282
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "after": [
+          "tetuan"
+        ],
+        "before": [
+          "chamberi"
+        ],
+        "change_type": "assignment_changed",
+        "dependent_dataset": "tourism_pois",
+        "dependent_id": "poi_212",
+        "evidence_id": "relationship-regression-b9209f0fa3ca1ab124fd412de95dc593c002219a36c5053a94071855602a0c68",
+        "predicate": "within"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

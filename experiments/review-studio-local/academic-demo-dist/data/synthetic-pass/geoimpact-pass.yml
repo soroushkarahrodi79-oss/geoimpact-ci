@@ -1,0 +1,25 @@
+version: 1
+
+analysis:
+  crs: EPSG:25830
+
+primary:
+  dataset: districts
+  base: districts_base.geojson
+  candidate: districts_candidate.geojson
+  id_field: district_id
+
+dependencies:
+  - dataset: hotels
+    path: hotels.geojson
+    id_field: hotel_id
+    predicate: within
+  - dataset: tourism_pois
+    path: tourism_pois.geojson
+    id_field: poi_id
+    predicate: within
+
+policy:
+  max_relationship_regressions:
+    threshold: 2
+    severity: block

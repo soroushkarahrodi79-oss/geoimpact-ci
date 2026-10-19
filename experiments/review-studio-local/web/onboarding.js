@@ -134,7 +134,7 @@ export function installOnboarding(api) {
       'data-help-action':['about','tour','practice','status','glossary','limits'][i],
       ...((i === 1 || i === 2 || i === 5) && !view.valid || i === 2 && !view.caseIds.includes('synthetic-block') ? { disabled:'' } : {})
     }))), !view.valid ? node('p', { class:'onboarding-notice', role:'status' }, c.unsafe) : null,
-    node('a', { href:'https://github.com/soroushkarahrodi79-oss/geoimpact-ci/issues', target:'_blank', rel:'noopener noreferrer' }, c.support),
+    node('p', { class:'onboarding-note' }, c.support),
     button(c.welcomeLink, () => showDialog('welcome'), { 'data-help-action':'welcome', ...(!view.valid ? { disabled:'' } : {}) })];
   }
   function renderDialog() {
@@ -190,7 +190,9 @@ export function installOnboarding(api) {
     const zoom = Number(getComputedStyle(document.documentElement).zoom) || 1;
     const height = (window.visualViewport?.height || innerHeight) / zoom;
     document.documentElement.style.setProperty('--guide-max-height', `${Math.min(350, height * .43)}px`);
-    const space = panel.getBoundingClientRect().height / zoom + 40;
+    // Reserve enough scroll range for the last focusable controls to clear the
+    // fixed guide dock after PageUp/native focus scrolling on narrow screens.
+    const space = panel.getBoundingClientRect().height / zoom + 120;
     document.documentElement.style.setProperty('--guide-space', `${space}px`);
   }
   function fitDialog() {
@@ -340,7 +342,7 @@ export function installOnboarding(api) {
     if (state.step === 4 && event.target.closest('[data-source-file="report.json"], [data-provenance-link]')) state.actions.provenance = true;
   });
   new MutationObserver(scheduleRefresh).observe(document.querySelector('main'), { subtree:true, childList:true, attributes:true, attributeFilter:['hidden','style','data-tour-target'] });
-  document.addEventListener('focusin', () => requestAnimationFrame(revealFocusedControl));
+  document.addEventListener('focusin', () => requestAnimationFrame(() => requestAnimationFrame(revealFocusedControl)));
   const resize = () => { fitDialog(); if (state.mode && !dialog.open) { resizeSpace(); connect({ scroll:true }); revealFocusedControl(); } };
   window.addEventListener('resize', resize);
   window.visualViewport?.addEventListener('resize', resize);

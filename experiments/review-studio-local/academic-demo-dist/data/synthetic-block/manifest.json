@@ -1,0 +1,81 @@
+{
+  "bundle_version": 1,
+  "id": "synthetic-block",
+  "kind": "completed",
+  "release_commit": "45237d7caaea2aa4b81359e46f1623918645078c",
+  "display_crs": "OGC:CRS84",
+  "files": {
+    "config": {
+      "path": "data/synthetic-block/geoimpact.yml",
+      "sha256": "17d97b90f4484be8b4244651441b4d5eea35e2f953b630f34429334af14f5df1",
+      "size_bytes": 450
+    },
+    "base": {
+      "path": "data/synthetic-block/districts_base.geojson",
+      "sha256": "fe2621c4defed71287355595ecd428fd8c1f7fddee822a37dddff4fe71b23837",
+      "size_bytes": 803
+    },
+    "candidate": {
+      "path": "data/synthetic-block/districts_candidate.geojson",
+      "sha256": "a3ef49590971c5cf5dc45c33ece307d0d77d300f4aba374a6947e56b3198e19c",
+      "size_bytes": 803
+    },
+    "dependency-0": {
+      "path": "data/synthetic-block/hotels.geojson",
+      "sha256": "b92889469f7c14863963ec8242b86cd215497db13af4ea60f88ece81f77b06f4",
+      "size_bytes": 416
+    },
+    "dependency-1": {
+      "path": "data/synthetic-block/tourism_pois.geojson",
+      "sha256": "ac93115affcf7db76f768785eb932b3d289a3d2da8d323f4d242566c96210257",
+      "size_bytes": 227
+    },
+    "report.json": {
+      "path": "data/synthetic-block/report.json",
+      "sha256": "d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd",
+      "size_bytes": 4914
+    },
+    "report.md": {
+      "path": "data/synthetic-block/report.md",
+      "sha256": "65ca9d67dd7ff59bc148fccc003354ea3201f51707f3e73ca2fd96dac208d95a",
+      "size_bytes": 1303
+    },
+    "relationship-regressions.geojson": {
+      "path": "data/synthetic-block/relationship-regressions.geojson",
+      "sha256": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
+      "size_bytes": 1196
+    }
+  },
+  "dependencies": [
+    {
+      "dataset": "hotels",
+      "file": "hotels.geojson"
+    },
+    {
+      "dataset": "tourism_pois",
+      "file": "tourism_pois.geojson"
+    }
+  ],
+  "title": {
+    "es": "Límites sintéticos · BLOCK",
+    "en": "Synthetic boundaries · BLOCK"
+  },
+  "category": "synthetic",
+  "editions": [
+    "BASE · fixture",
+    "CANDIDATE · fixture"
+  ],
+  "inventory_date": "Fixture sintético / synthetic fixture",
+  "attribution": "GeoImpact CI contributors · MIT · synthetic fixtures, not official administrative data",
+  "sources": [
+    {
+      "title": "Gate 1 · construction and limitations",
+      "url": "https://github.com/soroushkarahrodi79-oss/geoimpact-ci/blob/45237d7caaea2aa4b81359e46f1623918645078c/docs/GATE_1_REPORT.md",
+      "terms": "MIT; controlled synthetic rectangles"
+    }
+  ],
+  "limitations": {
+    "es": "Geometrías artificiales de Gate 1; los nombres conservan los IDs originales. No son secciones INE ni límites administrativos oficiales. PASS/BLOCK describe la política configurada, no daños ni corrección de los datos.",
+    "en": "Artificial Gate 1 geometry; labels retain original IDs. These are not INE sections or official boundaries. PASS/BLOCK describes configured policy, not harm or data correctness."
+  }
+}

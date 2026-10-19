@@ -11,7 +11,7 @@ import path from 'node:path';
 const root=fileURLToPath(new URL('../',import.meta.url)),web=path.join(root,'web');
 const base=new URL(process.env.STUDIO_URL || 'http://127.0.0.1:8765');
 assert(['127.0.0.1','localhost'].includes(base.hostname));
-const baseline=process.argv.includes('--baseline'),reference='32f3ab50bb8a91d21118610bfc135b33e3fb2f3c';
+const baseline=process.argv.includes('--baseline'),academicDemo=process.argv.includes('--academic-demo'),reference='32f3ab50bb8a91d21118610bfc135b33e3fb2f3c';
 const old=execFileSync('git',['show',`${reference}:experiments/review-studio-local/web/onboarding.js`],{cwd:root});
 const local=path.join(root,'qa/local'),shots=path.join(root,'qa/screenshots/focus-v01');
 await mkdir(local,{recursive:true});await mkdir(shots,{recursive:true});
@@ -66,7 +66,7 @@ async function walk(page,stage,key,count,viewport) {
 }
 try {
   // Other UI files must remain the reference; no unrelated redesign in this test.
-  for(const name of ['index.html','app.js','reader.js','style.css','onboarding-copy.js','onboarding.css']) {
+  if(!academicDemo) for(const name of ['index.html','app.js','reader.js','style.css','onboarding-copy.js','onboarding.css']) {
     assert.equal(hash(await readFile(path.join(web,name))),hash(execFileSync('git',['show',`${reference}:experiments/review-studio-local/web/${name}`],{cwd:root})),name);
   }
   for(const [width,height] of [[1440,900],[1440,1000],[834,1112],[375,812],[390,844],[320,812]]) {

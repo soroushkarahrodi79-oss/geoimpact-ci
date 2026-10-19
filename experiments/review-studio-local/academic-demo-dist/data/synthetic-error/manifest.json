@@ -1,0 +1,12 @@
+{
+  "bundle_version": 1,
+  "id": "synthetic-error",
+  "kind": "analysis-error",
+  "exit_code": 2,
+  "stderr": "GeoImpact error: config file does not exist: [intentionally-missing.yml]",
+  "stderr_redaction": "Absolute config path replaced with a filename placeholder",
+  "title": {
+    "es": "Error de análisis · sin informe",
+    "en": "Analysis error · no report"
+  }
+}

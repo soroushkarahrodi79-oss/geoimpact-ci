@@ -1,0 +1,1 @@
+export const catalogHash = "7e4ced1dbf716bc85366aca4be60da1510802d0a312e32467d6cf34dc65db149";

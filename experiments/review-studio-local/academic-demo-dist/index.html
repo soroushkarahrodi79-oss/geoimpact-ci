@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Private academic demonstration of pinned GeoImpact CI V5 evidence using synthetic data.">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <title>GeoImpact · Review Studio</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+  <a class="skip" href="#review" data-i18n="skip">Ir a la revisión</a>
+  <header class="masthead">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">◈</span><div><strong>GeoImpact</strong><span>REVIEW STUDIO</span></div></div>
+    <div class="header-meta"><span class="local-tag" data-i18n="local">DEMO ACADÉMICA · DATOS SINTÉTICOS</span><span>v0.1 · Report V5</span></div>
+    <button id="help-button" type="button" class="help-button" aria-haspopup="dialog">Ayuda</button>
+    <label class="language"><span data-i18n="language">Idioma</span><select id="language"><option value="es">ES</option><option value="en">EN</option></select></label>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="heading">
+      <div><p class="eyebrow" data-i18n="eyebrow">EVIDENCIA ESPACIAL / DEMOSTRACIÓN ACADÉMICA</p><h1 data-tour-target="purpose" id="heading" data-i18n="heading">Un cambio de límite.<br>La evidencia, a la vista.</h1><p class="intro-copy" data-i18n="intro">Compara las geometrías originales y sigue cada relación hasta su informe.</p></div>
+      <div class="case-control"><label for="case" data-i18n="case">Caso de revisión</label><select data-tour-target="case" id="case" disabled><option data-i18n="loading">Verificando archivos…</option></select><p class="scope-note" data-i18n="scope">Demo académica privada · datos sintéticos</p></div>
+    </section>
+    <div id="live" role="status" aria-live="polite" class="sr-only"></div>
+    <section id="problem" class="problem" role="alert" hidden></section>
+    <div id="loading" class="loading" role="status" data-i18n="loading">Verificando archivos…</div>
+    <div id="completed" hidden>
+      <section class="case-strip"><span id="category" class="category"></span><span id="editions"></span><span id="inventory"></span><span class="verified" id="identity-status"></span></section>
+      <div id="policy-summary" data-tour-target="verdict">
+      <section data-tour-target="verdict-strip" class="verdict-strip" aria-label="Resultado / Result"><div><span class="eyebrow" data-i18n="policyResult">RESULTADO DE LA POLÍTICA</span><strong id="verdict"></strong></div><p id="verdict-meaning"></p><a href="#provenance" data-provenance-link data-i18n="auditLink">Ver procedencia ↗</a></section>
+      <div id="stats" class="stats"></div>
+      </div>
+      <div class="workspace">
+        <div class="review-column">
+          <section data-tour-target="maps" id="review" class="card maps-card" tabindex="-1" aria-labelledby="map-title">
+            <div class="section-head"><div><span class="eyebrow">01 / <span data-i18n="compare">COMPARAR</span></span><h2 id="map-title" data-i18n="originalGeometry">Geometrías originales</h2></div><span class="quiet-tag">CRS84 · lon/lat</span></div>
+            <div class="map-tools" data-tour-target="map-controls"><div class="button-group"><button id="zoom-in" type="button" data-i18n-aria="zoomIn" aria-label="Acercar">+</button><button id="zoom-out" type="button" data-i18n-aria="zoomOut" aria-label="Alejar">−</button><button id="fit-all" type="button" data-i18n="fitAll">Encuadrar todo</button><button id="fit-selection" type="button" data-i18n="fitSelection" disabled>Ver selección</button></div><div class="layer-tools"><label><input id="polygons-toggle" type="checkbox" checked><span data-i18n="polygons">Polígonos</span></label><label><input id="points-toggle" type="checkbox" checked><span data-i18n="points">Inventario fijo</span></label></div></div>
+            <div class="primary-control"><label for="primary" data-i18n="primary">Geometría primaria</label><select id="primary"></select></div>
+            <div class="snapshot-tabs" role="group" aria-label="Snapshot"><button id="base-tab" type="button" aria-pressed="true">BASE</button><button id="candidate-tab" type="button" aria-pressed="false">CANDIDATE</button></div>
+            <div class="maps"><figure class="map-frame" id="base-frame"><figcaption><strong class="base-dot">BASE</strong><span id="base-date"></span></figcaption><svg id="base-map" class="map" tabindex="0" role="img" aria-label="BASE · geometrías y puntos originales"></svg><span class="north" aria-hidden="true">↑ N</span></figure><figure class="map-frame" id="candidate-frame"><figcaption><strong class="candidate-dot">CANDIDATE</strong><span id="candidate-date"></span></figcaption><svg id="candidate-map" class="map" tabindex="0" role="img" aria-label="CANDIDATE · geometrías y puntos originales"></svg><span class="north" aria-hidden="true">↑ N</span></figure></div>
+            <div class="map-bottom"><div class="legend"><span><i class="line-base"></i>BASE</span><span><i class="line-candidate"></i>CANDIDATE</span><span><i class="symbol-change">◆</i><span data-i18n="regression">Regresión</span></span><span><i class="symbol-unchanged">●</i><span data-i18n="unchanged">Sin cambio</span></span><span><i>□</i><span data-i18n="boundary">Frontera</span></span></div><p data-i18n="mapHelp">Sin mapa base · coordenadas originales. Flechas para desplazar con el mapa enfocado; +/− para zoom. Lista equivalente debajo.</p><p id="selection-summary" hidden></p><p class="credit" id="map-credit"></p></div>
+          </section>
+          <section data-tour-target="relationships" id="relationships" class="card relationships" aria-labelledby="relations-title">
+            <div class="section-head"><div><span class="eyebrow">02 / <span data-i18n="inspect">INSPECCIONAR</span></span><h2 id="relations-title" data-i18n="relationships">Relaciones espaciales</h2></div><span id="row-count" class="quiet-tag"></span></div>
+            <div class="filters"><label><span data-i18n="search">Buscar ID o dataset</span><input data-tour-target="search" id="search" type="search" autocomplete="off" placeholder="hotel_813"></label><label><span data-i18n="show">Mostrar</span><select id="filter"><option value="all" data-i18n="all">Todas</option><option value="regressions" data-i18n="regressions">Regresiones</option><option value="unchanged" data-i18n="unchanged">Sin cambio</option></select></label><label><span data-i18n="transition">Transición before → after</span><select id="transition"></select></label></div>
+            <p class="table-help" data-i18n="filtersHelp">Los filtros cambian las filas visibles; el resultado científico permanece intacto.</p>
+            <div class="table-head" aria-hidden="true"><span data-i18n="identity">IDENTIDAD</span><span>BEFORE → AFTER</span><span data-i18n="state">ESTADO</span></div>
+            <ul data-tour-target="relationship-list" id="relation-list" class="relation-list"></ul><div id="empty" class="empty" hidden></div>
+            <div class="pagination"><button id="previous" type="button" data-i18n="previous">Anterior</button><span id="page-label"></span><button id="next" type="button" data-i18n="next">Siguiente</button></div>
+          </section>
+        </div>
+        <aside class="evidence-column">
+          <section data-tour-target="evidence" id="evidence" class="card evidence" aria-labelledby="evidence-title"><div class="section-head"><div><span class="eyebrow">03 / <span data-i18n="trace">TRAZAR</span></span><h2 id="evidence-title" data-i18n="evidence">Evidencia de relación</h2></div><button id="clear-selection" type="button" data-i18n-aria="clear" aria-label="Limpiar selección">×</button></div><div id="evidence-body"></div></section>
+          <section class="card geometry-card"><h2 data-i18n="geometryRecord">Registro geométrico</h2><div id="geometry-body"></div></section>
+        </aside>
+      </div>
+      <section data-tour-target="provenance" id="provenance" class="card provenance" aria-labelledby="provenance-title"><div class="section-head"><div><span class="eyebrow">04 / <span data-i18n="verify">VERIFICAR</span></span><h2 id="provenance-title" data-i18n="provenance">Procedencia y límites</h2></div><span class="verified" data-i18n="verified">Bytes verificados</span></div><p class="provenance-note" data-i18n="hashMeaning">Coincidencia con el manifiesto retenido y las identidades V5. No autentica al proveedor ni acredita derechos o exactitud.</p><div id="versions" class="versions"></div><div id="input-files"></div><details><summary data-i18n="config">Configuración original · solo lectura</summary><pre id="config-raw"></pre></details><div class="source-grid"><div><h3 data-i18n="sources">Fuentes y condiciones</h3><div id="sources"></div></div><div id="interpretation-limits" data-tour-target="limitations" aria-labelledby="limitations-title"><h3 id="limitations-title" data-i18n="limitations">Límites de interpretación</h3><p id="limitations"></p><p data-i18n="footprint">Huella EPSG:25830 no representada. No se calculan métricas ni relaciones en este visor.</p><p data-i18n="scientificMeaning">La modificación de una geometría no implica una relación alterada. El resultado no acredita efectos reales ni corrección de los datos.</p></div></div></section>
+    </div>
+    <footer><span>GeoImpact Review Studio · <span data-i18n="prototype">demostración académica privada con datos sintéticos</span></span><span>R1 OPEN / <span data-i18n="fullHold">visor completo HOLD</span></span></footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

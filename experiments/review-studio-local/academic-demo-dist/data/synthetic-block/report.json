@@ -1,0 +1,209 @@
+{
+  "analysis": {
+    "crs": "EPSG:25830",
+    "dependencies": [
+      {
+        "dataset": "hotels",
+        "id_field": "hotel_id",
+        "predicate": "within"
+      },
+      {
+        "dataset": "tourism_pois",
+        "id_field": "poi_id",
+        "predicate": "within"
+      }
+    ],
+    "primary_dataset": "districts",
+    "primary_id_field": "district_id"
+  },
+  "boundary_ambiguities": [],
+  "policy": {
+    "evidence_ids": [
+      "relationship-regression-526712f2a3cfcdb0b86e03e9b060807c34ec8909095e5bb87cd57ab47e3cde49",
+      "relationship-regression-b9209f0fa3ca1ab124fd412de95dc593c002219a36c5053a94071855602a0c68"
+    ],
+    "observed_value": 2,
+    "rule": "max_relationship_regressions",
+    "status": "BLOCK",
+    "threshold": 1
+  },
+  "primary_change": {
+    "added_feature_ids": [],
+    "changed_feature_ids": [
+      "chamberi",
+      "tetuan"
+    ],
+    "changed_footprint_area_m2": 8000.0,
+    "changed_footprint_geometry": {
+      "coordinates": [
+        [
+          [
+            440060.0,
+            4470000.0
+          ],
+          [
+            440060.0,
+            4470200.0
+          ],
+          [
+            440100.0,
+            4470200.0
+          ],
+          [
+            440100.0,
+            4470000.0
+          ],
+          [
+            440060.0,
+            4470000.0
+          ]
+        ]
+      ],
+      "type": "Polygon"
+    },
+    "feature_geometry_status": {
+      "chamberi": "modified",
+      "tetuan": "modified"
+    },
+    "max_boundary_displacement_m": 40.0,
+    "modified_feature_ids": [
+      "chamberi",
+      "tetuan"
+    ],
+    "removed_feature_ids": []
+  },
+  "provenance": {
+    "engine": {
+      "geoimpact_ci": "1.2.0",
+      "geos": "3.13.1",
+      "proj": "9.5.1",
+      "pyproj": "3.7.2",
+      "shapely": "2.1.2"
+    },
+    "hash_algorithm": "sha256",
+    "inputs": {
+      "config": {
+        "sha256": "17d97b90f4484be8b4244651441b4d5eea35e2f953b630f34429334af14f5df1",
+        "size_bytes": 450
+      },
+      "dependencies": [
+        {
+          "dataset": "hotels",
+          "sha256": "b92889469f7c14863963ec8242b86cd215497db13af4ea60f88ece81f77b06f4",
+          "size_bytes": 416
+        },
+        {
+          "dataset": "tourism_pois",
+          "sha256": "ac93115affcf7db76f768785eb932b3d289a3d2da8d323f4d242566c96210257",
+          "size_bytes": 227
+        }
+      ],
+      "primary": {
+        "base": {
+          "dataset": "districts",
+          "sha256": "fe2621c4defed71287355595ecd428fd8c1f7fddee822a37dddff4fe71b23837",
+          "size_bytes": 803
+        },
+        "candidate": {
+          "dataset": "districts",
+          "sha256": "a3ef49590971c5cf5dc45c33ece307d0d77d300f4aba374a6947e56b3198e19c",
+          "size_bytes": 803
+        }
+      }
+    }
+  },
+  "relationship_regressions": [
+    {
+      "after": [
+        "tetuan"
+      ],
+      "before": [
+        "chamberi"
+      ],
+      "change_type": "assignment_changed",
+      "dependent_dataset": "hotels",
+      "dependent_id": "hotel_813",
+      "evidence_geometry": {
+        "coordinates": [
+          440080.0,
+          4470050.0
+        ],
+        "type": "Point"
+      },
+      "evidence_geometry_crs": "EPSG:25830",
+      "evidence_id": "relationship-regression-526712f2a3cfcdb0b86e03e9b060807c34ec8909095e5bb87cd57ab47e3cde49",
+      "predicate": "within",
+      "primary_dataset": "districts",
+      "primary_feature_ids": [
+        "chamberi",
+        "tetuan"
+      ]
+    },
+    {
+      "after": [
+        "tetuan"
+      ],
+      "before": [
+        "chamberi"
+      ],
+      "change_type": "assignment_changed",
+      "dependent_dataset": "tourism_pois",
+      "dependent_id": "poi_212",
+      "evidence_geometry": {
+        "coordinates": [
+          440070.0,
+          4470150.0
+        ],
+        "type": "Point"
+      },
+      "evidence_geometry_crs": "EPSG:25830",
+      "evidence_id": "relationship-regression-b9209f0fa3ca1ab124fd412de95dc593c002219a36c5053a94071855602a0c68",
+      "predicate": "within",
+      "primary_dataset": "districts",
+      "primary_feature_ids": [
+        "chamberi",
+        "tetuan"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "after": [
+        "tetuan"
+      ],
+      "before": [
+        "chamberi"
+      ],
+      "change_type": "assignment_changed",
+      "dependent_dataset": "hotels",
+      "dependent_id": "hotel_813",
+      "predicate": "within"
+    },
+    {
+      "after": [
+        "chamberi"
+      ],
+      "before": [
+        "chamberi"
+      ],
+      "change_type": "unchanged",
+      "dependent_dataset": "hotels",
+      "dependent_id": "hotel_unchanged",
+      "predicate": "within"
+    },
+    {
+      "after": [
+        "tetuan"
+      ],
+      "before": [
+        "chamberi"
+      ],
+      "change_type": "assignment_changed",
+      "dependent_dataset": "tourism_pois",
+      "dependent_id": "poi_212",
+      "predicate": "within"
+    }
+  ],
+  "report_version": "5",
+  "verdict": "BLOCK"
+}

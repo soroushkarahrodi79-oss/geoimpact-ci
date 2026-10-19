@@ -198,6 +198,18 @@ export function installOnboarding(api) {
     document.documentElement.style.setProperty('--onboarding-dialog-height', `${(window.visualViewport?.height || innerHeight) / zoom - 32}px`);
     document.documentElement.style.setProperty('--onboarding-dialog-width', `${(window.visualViewport?.width || innerWidth) / zoom - 32}px`);
   }
+  function revealFocusedControl() {
+    if (!state.mode || panel.hidden || dialog.open) return;
+    const target = document.activeElement;
+    if (!visible(target) || panel.contains(target) || !target.matches('button,input,select,a[href],summary,[tabindex]')) return;
+    const rect = target.getBoundingClientRect(), top = 8;
+    const bottom = Math.min(panel.getBoundingClientRect().top, innerHeight) - 8;
+    // Native focus scrolling uses the viewport, which includes our fixed dock.
+    // Reveal the actual focus above it, without moving focus or handling Tab.
+    // A map taller than the available space keeps its top/keyboard focus visible.
+    const delta = rect.height > bottom - top || rect.top < top ? rect.top - top : Math.max(0, rect.bottom - bottom);
+    if (delta) window.scrollBy({ top:delta, behavior:'instant' });
+  }
   function chooseFocus(target) {
     const available = panel.getBoundingClientRect().top - 34;
     if (target.getBoundingClientRect().height <= available) return target;
@@ -328,7 +340,8 @@ export function installOnboarding(api) {
     if (state.step === 4 && event.target.closest('[data-source-file="report.json"], [data-provenance-link]')) state.actions.provenance = true;
   });
   new MutationObserver(scheduleRefresh).observe(document.querySelector('main'), { subtree:true, childList:true, attributes:true, attributeFilter:['hidden','style','data-tour-target'] });
-  const resize = () => { fitDialog(); if (state.mode && !dialog.open) { resizeSpace(); connect({ scroll:true }); } };
+  document.addEventListener('focusin', () => requestAnimationFrame(revealFocusedControl));
+  const resize = () => { fitDialog(); if (state.mode && !dialog.open) { resizeSpace(); connect({ scroll:true }); revealFocusedControl(); } };
   window.addEventListener('resize', resize);
   window.visualViewport?.addEventListener('resize', resize);
   help.textContent = text().help;

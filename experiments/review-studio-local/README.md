@@ -1,5 +1,9 @@
 # GeoImpact Review Studio — local prototype 0.1
 
+V01 / P1-01 focus-visibility patch: see [scope, before/after evidence and
+reproduction](FOCUS_V01.md). The nonmodal tour now reveals the actual focused
+control above its dock. Historical onboarding QA below predates this patch.
+
 A standalone, static, read-only review of **existing GeoImpact CI v1.2.0 / V5
 artifacts**. Compare original BASE/CANDIDATE, select fixed relationships, inspect
 before/after, follow evidence IDs and verify bytes. No application backend,

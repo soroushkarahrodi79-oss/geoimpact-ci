@@ -1,5 +1,14 @@
 # Local prototype and guided onboarding validation — 2026-10-18
 
+## V01 / P1-01 correction — 2026-10-19
+
+The [focused-control regression record](FOCUS_V01.md) supersedes the original
+focus-visibility claim for this defect only: 59 covered focus events reproduced
+on `32f3ab5`; zero after correction. All earlier records below remain historical.
+The new evidence separately identifies CSS zoom and native Chromium page zoom.
+The study protocol in Draft PR #24 pins the exact corrected functional commit;
+its original audit, traces and `covered-focus-*` screenshots are preserved.
+
 ## Guided onboarding V1: current increment
 
 **GO for the bounded local onboarding. R1 OPEN / full Madrid viewer HOLD.**

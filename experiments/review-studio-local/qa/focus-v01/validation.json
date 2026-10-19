@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-19",
+  "reference_commit": "32f3ab50bb8a91d21118610bfc135b33e3fb2f3c",
+  "release_commit": "45237d7caaea2aa4b81359e46f1623918645078c",
+  "protected_scopes": [
+    "src/geoimpact",
+    "tests",
+    "scripts",
+    "research",
+    "pyproject.toml",
+    ".github",
+    "LICENSE"
+  ],
+  "protected_diff_against_reference": "empty",
+  "release_export_protected_files_match_tag": true,
+  "release_export_checked_files": 54,
+  "release_vs_checkout_note": "Pre-existing wording/help-string differences in the functional baseline are not changed by this patch. Canonical verification uses the exact exported release.",
+  "changed_interface_files": [
+    "onboarding.js"
+  ],
+  "source_sha256": {
+    "app.js": "fdf43f7bf06b490af5bc7f7925a562390047b2fa2e1cc04ab11b975afc628edd",
+    "catalog.json": "59975af774a1c65dab6eefe21bffcf3b3ad16b556dc55d3ff128e4c1777f4885",
+    "index.html": "a79aaf6eb1edee0cbbbfa806f08473ac8aa57c3ec805c11e03c23984795784ad",
+    "onboarding-copy.js": "c8d8d084c8ccaca6e585771ec508a6bd319e2536838eeb531842917841c3f19f",
+    "onboarding.css": "ba5b999b6cd6c3fc77c27c9d92507d2f853e01d852a137d1b919ec7d7b229c2a",
+    "onboarding.js": "9303d07389f07347a8d88d6869d96e53a49694f5ec1f2be48c298d4a2229de58",
+    "reader.js": "a09f1e4545631a5235917b571e61ead2af64828ac780b27d00370bf7520fe9d8",
+    "style.css": "4a961299dfd5c30106364bb3929eca26521e9fb46bf4f44273e72ab1127f6a34",
+    "trust.js": "05f152398429aea90d890d780654d0310e3e35fe15409865564d5afc0bd1f679"
+  },
+  "scientific_bytes_before_and_after_identical": true,
+  "generated_file_count": 27,
+  "generated_sha256": {
+    "data/sierra-local/base.geojson": "eae31120ec45e51c53b48515c0bde6e1d1c269edafea51076f862c16854d2799",
+    "data/sierra-local/candidate.geojson": "4f4b4ff369befb14c8f1d26e902fda4b431de26432f85897d2cd77df9485cc17",
+    "data/sierra-local/dependencies.geojson": "617d4b71921b8d66692f1c8457a56b9b6224abb0c044bb06ce7608e2524c0f6c",
+    "data/sierra-local/geoimpact.yml": "f7e3245517cc5c16d97b34c08b0760e5055cfc25a71a39f1ee847413c0ee2520",
+    "data/sierra-local/manifest.json": "350ae19b5bbae62e2986c07d8330b0a101884f391749e1fc84d5e9e3f3769ee5",
+    "data/sierra-local/relationship-regressions.geojson": "a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a",
+    "data/sierra-local/report.json": "b17899f1472500567bb2d2eb7d0a2a9c91731a3d7827896f5635a3ef353f7cf1",
+    "data/sierra-local/report.md": "907db7fd57c1091927277b55f624d51fb7087b453facf9cc35bdffdea44d3a89",
+    "data/synthetic-block/districts_base.geojson": "fe2621c4defed71287355595ecd428fd8c1f7fddee822a37dddff4fe71b23837",
+    "data/synthetic-block/districts_candidate.geojson": "a3ef49590971c5cf5dc45c33ece307d0d77d300f4aba374a6947e56b3198e19c",
+    "data/synthetic-block/geoimpact.yml": "17d97b90f4484be8b4244651441b4d5eea35e2f953b630f34429334af14f5df1",
+    "data/synthetic-block/hotels.geojson": "b92889469f7c14863963ec8242b86cd215497db13af4ea60f88ece81f77b06f4",
+    "data/synthetic-block/manifest.json": "45840143923429ac8136eb86be5ca76f4268c20a4a3121e5af1f0e55fed83029",
+    "data/synthetic-block/relationship-regressions.geojson": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
+    "data/synthetic-block/report.json": "d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd",
+    "data/synthetic-block/report.md": "65ca9d67dd7ff59bc148fccc003354ea3201f51707f3e73ca2fd96dac208d95a",
+    "data/synthetic-block/tourism_pois.geojson": "ac93115affcf7db76f768785eb932b3d289a3d2da8d323f4d242566c96210257",
+    "data/synthetic-error/manifest.json": "a9a207871da02235dc5221512914973baf62a3dfc6a1b3e9329afc8ee338aac4",
+    "data/synthetic-pass/districts_base.geojson": "fe2621c4defed71287355595ecd428fd8c1f7fddee822a37dddff4fe71b23837",
+    "data/synthetic-pass/districts_candidate.geojson": "a3ef49590971c5cf5dc45c33ece307d0d77d300f4aba374a6947e56b3198e19c",
+    "data/synthetic-pass/geoimpact-pass.yml": "1ecd53d2f6ba5402d1e2f0b23de60749fa3d6de7224c10663e15685b19bca0a9",
+    "data/synthetic-pass/hotels.geojson": "b92889469f7c14863963ec8242b86cd215497db13af4ea60f88ece81f77b06f4",
+    "data/synthetic-pass/manifest.json": "b57b8d4f7376d0978be3ec7844ce0f4b16c7b05880f1a3a08cd603c477e416f5",
+    "data/synthetic-pass/relationship-regressions.geojson": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
+    "data/synthetic-pass/report.json": "187e22c76d13de6902794c92d70e633fb98f9eb0c4f76f806a47709f498df5a4",
+    "data/synthetic-pass/report.md": "ad19ab07fc9bdd8e62b6f9dd9d95d952e8d1fca1540e1dacd3443e0b6d60b1f7",
+    "data/synthetic-pass/tourism_pois.geojson": "ac93115affcf7db76f768785eb932b3d289a3d2da8d323f4d242566c96210257"
+  },
+  "canonical_output_sha256": {
+    "synthetic": {
+      "report.json": "d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd",
+      "report.md": "65ca9d67dd7ff59bc148fccc003354ea3201f51707f3e73ca2fd96dac208d95a",
+      "relationship-regressions.geojson": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978"
+    },
+    "madrid": {
+      "report.json": "29a9337a90c7a1c591f7c05c109ee29b8c38b33324e0bb02867c1fb6a6b272df",
+      "report.md": "ec7124260275f8ae473a9eea00da59eca2866527a8cf57714ae5bb0d681b5253",
+      "relationship-regressions.geojson": "0689f0983441f4c3c745690c9f7bf409347862f93d94754a2ef15826c49e6bcf"
+    },
+    "sierra": {
+      "report.json": "b17899f1472500567bb2d2eb7d0a2a9c91731a3d7827896f5635a3ef353f7cf1",
+      "report.md": "907db7fd57c1091927277b55f624d51fb7087b453facf9cc35bdffdea44d3a89",
+      "relationship-regressions.geojson": "a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a"
+    }
+  },
+  "test_sha256": "55258624f9f707b516b50c867ac3f095f9f6efb4bff30dc49187cd89dfb1919c",
+  "screenshots_sha256": {
+    "after-1440x900.png": "4894a219bf9f9bfe98e498eace38b67cabd882624d67b7256481fa8bd717b468",
+    "after-390x844.png": "38d6330cdc5bd07a6a58589122f5f1d259245430c57eef2009aff3e716138ddc",
+    "after-834x1112.png": "88874f4584e8e5e1e76903305d0272291844de3e590d06fd0caa17f0c6503332",
+    "after-native-zoom-200.png": "90959fd7d61ad8249ec291d677771d7c16d05deb15b9bbf2df6f970ff5c64d62",
+    "before-1440x900.png": "43393343d4b5a86e75f3b0766ad8c9d595dfe3472573db136b2a7204c6648cc4",
+    "before-390x844.png": "00b7bc59a0fc6bdff497aca7660d4de80a4deab7cd105ba96d8f7e97c1c282c6",
+    "before-834x1112.png": "23203abc6041773cf3df2ca0c7b287a5adb64f3da6c68ea10f7db6fe3c4c359c"
+  },
+  "record_sha256": {
+    "after.json": "d3c7f6c91b0797b1fd3d75c86a348a93769aabb832593d166c11001b58bb6962",
+    "before.json": "df213528357437b51b73c255d5ff5cf5f06c0d3064da438b6a72130b897b343b",
+    "commands.log": "318eaf2a0ad214110e6336ae9d9bc9972b07e9f7ff016a6b21b06886f8a0bed4",
+    "engine-checks.json": "08a68049e569eb74f7096682a3d9f40c87c2b5c156cf8d0d36d9426675e39e01"
+  },
+  "human_sessions": 0,
+  "physical_devices": false,
+  "screen_reader_tested": false,
+  "historical_pr24_evidence": "Not modified; remains on its original documentary branch"
+}

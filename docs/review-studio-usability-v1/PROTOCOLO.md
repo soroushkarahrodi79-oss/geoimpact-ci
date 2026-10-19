@@ -4,6 +4,27 @@ Estado: **PREPARADO, NO EJECUTADO**. Se planifican cuatro personas; no hay
 reclutamiento, citas, respuestas ni tiempos humanos registrados. No compartir
 este documento con participantes: contiene las respuestas de referencia.
 
+## Versión para las próximas sesiones — 2026-10-19
+
+Usar exclusivamente el commit funcional corregido de PR #23:
+**`4133c2262fb16546a0dd41f09dd5a6a92b64c100`**. La auditoría original de este
+paquete corresponde a **`32f3ab50bb8a91d21118610bfc135b33e3fb2f3c`**; sus trazas,
+capturas `covered-focus-*` y manifiesto permanecen históricos, sin sobrescribir.
+La corrección V01/P1-01 y las pruebas/capturas antes/después están en
+[FOCUS_V01.md del commit corregido](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/blob/4133c2262fb16546a0dd41f09dd5a6a92b64c100/experiments/review-studio-local/FOCUS_V01.md).
+Registrar ese SHA completo en cada ficha futura; no mezclar versiones en una
+ronda ni tratar resultados automatizados como comprensión humana.
+
+Servir el checkout funcional exacto según su README. Desde esta rama documental,
+conservar/fetch ese objeto Git y pasar siempre
+`--reference 4133c2262fb16546a0dd41f09dd5a6a92b64c100` a `open-session.mjs`, tanto
+en `normal` como en `load-error`. Antes de la sesión ejecutar ambos con
+`--self-check`; la utilidad compara los siete archivos servidos con ese commit.
+Su valor por defecto sigue siendo la versión histórica para reproducirla.
+`probe.mjs` sigue fijado a la auditoría original: no usarlo como preflight del
+parche. El manifiesto original identifica el paquete anterior; no certifica
+esta actualización del protocolo/utilidad. Ver [comprobación de versión](evidence/v01-version-check.json).
+
 ## Preguntas y diseño
 
 Determinar si una primera visita permite comprender el propósito, vincular
@@ -68,15 +89,15 @@ contarlo en la muestra ni anticipar respuestas a futuros participantes.
 
 Antes de cada sesión:
 
-1. Verificar el commit/bytes con el probe, servidor loopback y ausencia de
+1. Verificar el commit/bytes corregido con ambos self-checks, servidor loopback y ausencia de
    Madrid. Preparar solo sintéticos salvo decisión previa de usar Sierra local.
-2. Abrir un contexto efímero nuevo con `open-session.mjs --scenario normal`.
+2. Abrir un contexto efímero nuevo con `open-session.mjs --scenario normal` y el `--reference` indicado arriba.
    No usar el navegador personal del participante, sesiones de desarrollador,
    cookies previas o onboarding ya completado. Establecer el idioma acordado
    mediante `--lang`; anotar ese ajuste, no evaluarlo como descubrimiento.
 3. Preparar una segunda ventana `--scenario load-error` para T5 y dejarla
    fuera de vista hasta la tarea. Ningún fallo altera archivos originales.
-4. Confirmar Escape, Ayuda y salida del tour; V01 es conocido. No ensayar
+4. Confirmar Escape, Ayuda, salida y foco visible al tabular durante el tour. No ensayar
    previamente el recorrido con la persona ni ocultar los fallos al puntuar.
 5. Usar solo notas locales por defecto. Cualquier grabación requiere permiso
    independiente y carpeta privada fuera del repositorio. Desactivar avisos
@@ -232,9 +253,10 @@ Parar por retirada, malestar, problema de acceso sin recuperación o incidencia
 de privacidad. HOLD técnico si los bytes/versión no son los fijados, aparece
 Madrid, se muestra evidencia inválida tras ERROR o se detectan valores ajenos
 al reporte. Corregir el entorno antes de continuar; no ocultarlo en la puntuación.
-V01: si el foco se pierde bajo el panel, observar brevemente, ofrecer Escape
-como ayuda explícita si hace falta y anotar la tarea afectada; no forzar que
-continúe a ciegas ni atribuir el problema a falta de habilidad.
+V01 histórico debe estar corregido. Si reaparece foco oculto por el panel,
+parar la tarea afectada, ofrecer Escape y registrar defecto/ayuda/versión;
+no continuar a ciegas ni puntuar éxito sin asistencia. Investigar antes de
+retomar esa tarea; no atribuirlo a falta de habilidad.
 
 Cierre: pedir explicación del mayor obstáculo, algo útil y algo incierto;
 no preguntar «¿te gustó?» como medida principal. Repasar las limitaciones

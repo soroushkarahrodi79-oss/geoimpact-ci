@@ -13,7 +13,9 @@ assert(['normal','load-error'].includes(scenario));assert(['es','en'].includes(l
 assert(Number.isFinite(width)&&width>=320&&Number.isFinite(height)&&height>=600);
 const base=new URL(process.env.STUDIO_URL || 'http://127.0.0.1:8765');
 assert(['127.0.0.1','localhost'].includes(base.hostname));
-const reference='32f3ab50bb8a91d21118610bfc135b33e3fb2f3c';
+// Default preserves the historical audit; future sessions must pin their version.
+const reference=value('--reference','32f3ab50bb8a91d21118610bfc135b33e3fb2f3c');
+assert(/^[0-9a-f]{40}$/.test(reference),'Use a complete, exact study commit');
 const root=fileURLToPath(new URL('../../../',import.meta.url));
 const hash=b=>createHash('sha256').update(b).digest('hex');
 for(const name of ['index.html','app.js','reader.js','style.css','onboarding.js','onboarding-copy.js','onboarding.css']) {

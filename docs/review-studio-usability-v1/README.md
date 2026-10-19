@@ -5,7 +5,14 @@ con los defectos y reglas de parada descritos aquí.** No es un GO de producto,
 de accesibilidad ni del visor completo. **R1 OPEN; Madrid permanece HOLD.**
 No se ha reclutado a nadie ni se ha celebrado ninguna sesión.
 
-Se evalúa [Draft PR #23](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/pull/23),
+**Actualización V01/P1-01, 2026-10-19:** futuras sesiones deben utilizar PR #23,
+commit corregido **`4133c2262fb16546a0dd41f09dd5a6a92b64c100`**, según la
+[versión y preflight del protocolo](PROTOCOLO.md#versión-para-las-próximas-sesiones--2026-10-19).
+La evidencia original de este PR permanece sin sobrescribir y describe la
+versión anterior. El [registro de comprobación](evidence/v01-version-check.json)
+distingue ambas identidades. No se modifica ningún otro hallazgo UX.
+
+La auditoría histórica evalúa [Draft PR #23](https://github.com/soroushkarahrodi79-oss/geoimpact-ci/pull/23),
 commit **`32f3ab50bb8a91d21118610bfc135b33e3fb2f3c`**. El trabajo está en una
 rama documental separada: `docs/review-studio-usability-v1`. No cambia la
 aplicación, el motor v1.2.0, Report V5, geometrías, fixtures ni resultados.
@@ -57,6 +64,9 @@ archivos de la interfaz coincidan byte a byte con el commit de referencia.
 
 Desde la raíz de la rama documental, en PowerShell:
 
+Este probe reproduce **solo la auditoría histórica en 32f3ab5**. Para las
+próximas sesiones usar los self-checks con referencia corregida indicados abajo.
+
 ```powershell
 npm --prefix experiments/review-studio-local ci --ignore-scripts
 npx --prefix experiments/review-studio-local playwright install chromium
@@ -94,8 +104,8 @@ Abre Chromium visible con almacenamiento efímero y sin grabación, contra el
 servidor local ya preparado. Cerrar la ventana termina el proceso.
 
 ```powershell
-node docs/review-studio-usability-v1/evidence/open-session.mjs --scenario normal --lang es --width 1440 --height 900
-node docs/review-studio-usability-v1/evidence/open-session.mjs --scenario load-error --lang es --width 1440 --height 900
+node docs/review-studio-usability-v1/evidence/open-session.mjs --reference 4133c2262fb16546a0dd41f09dd5a6a92b64c100 --scenario normal --lang es --width 1440 --height 900
+node docs/review-studio-usability-v1/evidence/open-session.mjs --reference 4133c2262fb16546a0dd41f09dd5a6a92b64c100 --scenario load-error --lang es --width 1440 --height 900
 ```
 
 La segunda ventana intercepta únicamente `report.json` con un 404 en su propio
@@ -104,6 +114,7 @@ fallo de carga controlado de T5, distinto del ERROR de análisis ya distribuido.
 `--lang en` adapta el idioma mediante el control real. `--allow-local-sierra`
 exige una decisión explícita del facilitador si el catálogo local la contiene.
 `--self-check` prueba la utilidad en headless y **no cuenta como sesión humana**.
+Ejecutar ambos comandos con `--self-check` antes de abrir las ventanas de sesión.
 La emulación de 834×1112 o 390×844 en un ordenador no equivale a una tablet o
 teléfono físico; anotarlo así en los resultados.
 
@@ -111,8 +122,8 @@ teléfono físico; anotarlo así en los resultados.
 
 Antes de una sesión: consentimiento operativo completo, moderador asignado,
 casos y referencia verificados, contexto nuevo, medios de acceso acordados y
-salida con Escape ensayada. V01 se observa como defecto conocido; si impide
-continuar, registrar fallo/ayuda y salir del recorrido, sin atribuírselo a la
+salida con Escape ensayada. V01 debe estar corregido en la versión fijada; si
+reaparece, parar la tarea, registrar fallo/ayuda y salir del recorrido, sin atribuírselo a la
 persona. No convertir esa tarea en un éxito sin asistencia. Una persona debe
 poder parar o usar su modo de acceso habitual; no excluirla para mejorar cifras.
 

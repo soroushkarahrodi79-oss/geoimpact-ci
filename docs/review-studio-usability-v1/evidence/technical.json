@@ -1,0 +1,1748 @@
+{
+  "reference_commit": "32f3ab50bb8a91d21118610bfc135b33e3fb2f3c",
+  "executed_at_utc": "2026-10-18T21:09:55.236Z",
+  "command": "node docs/review-studio-usability-v1/evidence/probe.mjs",
+  "browser": "153.0.8010.12",
+  "playwright": "1.56.1",
+  "node": "v24.11.0",
+  "platform": "win32",
+  "source_sha256": {
+    "index.html": "a79aaf6eb1edee0cbbbfa806f08473ac8aa57c3ec805c11e03c23984795784ad",
+    "app.js": "fdf43f7bf06b490af5bc7f7925a562390047b2fa2e1cc04ab11b975afc628edd",
+    "reader.js": "a09f1e4545631a5235917b571e61ead2af64828ac780b27d00370bf7520fe9d8",
+    "style.css": "4a961299dfd5c30106364bb3929eca26521e9fb46bf4f44273e72ab1127f6a34",
+    "onboarding.js": "9617c8b3506fdce4f4e8439bf7b4c4d2594dda9e0f55db01315aa620a0bcc92e",
+    "onboarding-copy.js": "c8d8d084c8ccaca6e585771ec508a6bd319e2536838eeb531842917841c3f19f",
+    "onboarding.css": "ba5b999b6cd6c3fc77c27c9d92507d2f853e01d852a137d1b919ec7d7b229c2a"
+  },
+  "script_sha256": "1dda1b1abd3600fda976e749748c16668120f6dede6958f72bebcf23a82742a9",
+  "independence": "Separate engineering audit by the same assistant that implemented onboarding; not an external human review.",
+  "participants_recruited": 0,
+  "human_sessions": 0,
+  "physical_device_testing": false,
+  "screen_reader_testing": false,
+  "observations": [
+    {
+      "id": "viewport-1440x900",
+      "result": "VERIFIED_WITH_FINDING",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "modalFocusContained": true,
+      "modalEscapeRestoredHelp": true,
+      "mapKeyboardAndCamera": true,
+      "mapZoomAndFit": true,
+      "semantics": {
+        "maps": "- region \"Geometrأ­as originales\":\n  - text: 01 / COMPARAR\n  - heading \"Geometrأ­as originales\" [level=2]\n  - text: CRS84 آ· lon/lat\n  - button \"Acercar\": +\n  - button \"Alejar\": âˆ’\n  - button \"Encuadrar todo\"\n  - button \"Ver selecciأ³n\" [disabled]\n  - button \"Desplazar a la izquierda\": â†گ\n  - button \"Desplazar a la derecha\": â†’\n  - button \"Desplazar arriba\": â†‘\n  - button \"Desplazar abajo\": â†“\n  - checkbox \"Polأ­gonos\" [checked]\n  - text: Polأ­gonos\n  - checkbox \"Inventario fijo\" [checked]\n  - text: Inventario fijo Geometrأ­a primaria\n  - combobox \"Geometrأ­a primaria\":\n    - option \"Todas\" [selected]\n    - option \"chamberi آ· modificada\"\n    - option \"tetuan آ· modificada\"\n  - figure \"â—ڈBASE BASE آ· fixture\":\n    - strong: â—ڈBASE\n    - text: BASE آ· fixture\n    - img \"BASE آ· Geometrأ­as originales آ· 3 Inventario fijo\"\n  - figure \"â—ڈCANDIDATE CANDIDATE آ· fixture\":\n    - strong: â—ڈCANDIDATE\n    - text: CANDIDATE آ· fixture\n    - img \"CANDIDATE آ· Geometrأ­as originales آ· 3 Inventario fijo\"\n  - text: BASE CANDIDATE â—† Regresiأ³n â—ڈ Sin cambio â–، Frontera\n  - paragraph: Sin mapa base آ· coordenadas originales. Flechas para desplazar con el mapa enfocado; +/âˆ’ para zoom. Lista equivalente debajo.\n  - paragraph: GeoImpact CI contributors آ· MIT آ· synthetic fixtures, not official administrative data",
+        "relationships": "- region \"Relaciones espaciales\":\n  - text: 02 / INSPECCIONAR\n  - heading \"Relaciones espaciales\" [level=2]\n  - text: 3 visibles / 3 total Buscar ID o dataset\n  - searchbox \"Buscar ID o dataset\"\n  - text: Mostrar\n  - combobox \"Mostrar\":\n    - option \"Todas\" [selected]\n    - option \"Regresiones\"\n    - option \"Sin cambio\"\n  - text: Transiciأ³n before â†’ after\n  - combobox \"Transiciأ³n before â†’ after\":\n    - option \"Todas\" [selected]\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"]\"\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"]\"\n  - paragraph: Los filtros cambian las filas visibles; el resultado cientأ­fico permanece intacto.\n  - list:\n    - listitem:\n      - button \"hotel_813 hotels [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: hotel_813\n        - text: hotels [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n    - listitem:\n      - button \"hotel_unchanged hotels [\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"] Sin cambio\":\n        - strong: hotel_unchanged\n        - text: hotels [\"chamberi\"] â†’ [\"chamberi\"] Sin cambio\n    - listitem:\n      - button \"poi_212 tourism_pois [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: poi_212\n        - text: tourism_pois [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n  - button \"Anterior\" [disabled]\n  - text: Pأ،gina 1 de 1\n  - button \"Siguiente\" [disabled]",
+        "landmarks": {
+          "main": 1,
+          "h1": 1,
+          "lang": "es"
+        }
+      },
+      "selectionLink": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+      "retainedSelectionOutsideFilter": {
+        "visibleRows": 0,
+        "selectedId": "hotel_813",
+        "selectedSummary": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+        "rowCount": "0 visibles / 3 total"
+      },
+      "overflow": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "overflow": false
+      },
+      "focusTrace": [
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":240.625,"y":834,"width":105.453125,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":354.078125,"y":834,"width":81.3125,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":1164.765625,"y":834,"width":117.234375,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-130,"width":1440,"height":3049.953125},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":1180.78125,"y":20,"width":65.296875,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":1334,"y":20,"width":74,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":1048,"y":168.90625,"width":360,"height":49},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":1289.734375,"y":375.9375,"width":97.265625,"height":18},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-in","text":"+","rect":{"x":49,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-out","text":"âˆ’","rect":{"x":97,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"fit-all","text":"Encuadrar todo","rect":{"x":145,"y":658.53125,"width":96.65625,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panLeft","text":"â†گ","rect":{"x":334.46875,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panRight","text":"â†’","rect":{"x":382.46875,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panUp","text":"â†‘","rect":{"x":430.46875,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panDown","text":"â†“","rect":{"x":478.46875,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"polygons-toggle","text":"","rect":{"x":863.9375,"y":671.53125,"width":18,"height":18},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"points-toggle","text":"","rect":{"x":954.25,"y":671.53125,"width":18,"height":18},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"primary","text":"Todaschamberi آ· modificadatetuan آ· modificada","rect":{"x":156.109375,"y":714.53125,"width":310,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"base-map","text":"chamberi آ· modifiedtetuan آ· modifiedhotel_813 آ· assignment_changedhote","rect":{"x":33,"y":574.53125,"width":516,"height":325},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"candidate-map","text":"chamberi آ· modifiedtetuan آ· modifiedhotel_813 آ· assignment_changedhote","rect":{"x":550,"y":574.53125,"width":515,"height":325},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"search","text":"","rect":{"x":53,"y":302.0625,"width":423.5,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"filter","text":"TodasRegresionesSin cambio","rect":{"x":486.5,"y":302.0625,"width":125,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"transition","text":"Todas[\"chamberi\"] â†’ [\"tetuan\"][\"chamberi\"] â†’ [\"chamberi\"]","rect":{"x":621.5,"y":302.0625,"width":423.5,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_813hotels[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":33,"y":424.5625,"width":1032,"height":65},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_unchangedhotels[\"chamberi\"] â†’ [\"chamberi\"]Sin cambio","rect":{"x":33,"y":490.5625,"width":1032,"height":65},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"poi_212tourism_pois[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":33,"y":556.5625,"width":1032,"height":65},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":452.203125,"width":115,"height":16.5},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":515.703125,"width":115,"height":16.5},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":579.203125,"width":115,"height":16.5},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":642.703125,"width":115,"height":16.5},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":706.203125,"width":115,"height":16.5},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":769.703125,"width":115,"height":16.5},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":833.203125,"width":115,"height":16.5},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":883.703125,"width":115,"height":16.5},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"SUMMARY","text":"Configuraciأ³n original آ· solo lectura","rect":{"x":53,"y":438.203125,"width":1334,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Gate 1 آ· construction and limitations","rect":{"x":71,"y":572.796875,"width":191.09375,"height":16},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"guide-language","text":"ESEN","rect":{"x":1158,"y":663.21875,"width":70,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"أ—","rect":{"x":1238,"y":663.21875,"width":44,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"DIV","text":"آ؟Para quأ© sirve esta herramienta?GeoImpact Review Studio ayuda a revis","rect":{"x":142,"y":714.21875,"width":1156,"height":110.78125},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":240.625,"y":834,"width":105.453125,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":354.078125,"y":834,"width":81.3125,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":1164.765625,"y":834,"width":117.234375,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-1988,"width":1440,"height":3049.953125},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":1180.78125,"y":20,"width":65.296875,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":1334,"y":20,"width":74,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":1048,"y":168.90625,"width":360,"height":49},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":1289.734375,"y":375.9375,"width":97.265625,"height":18},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-in","text":"+","rect":{"x":49,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":655.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"}
+      ],
+      "contrastSamples": [
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "15px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "15px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".guide-panel-body p",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".onboarding-primary",
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(16, 85, 76)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 8.656965759817746,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".onboarding-notice",
+          "foreground": "rgb(51, 76, 58)",
+          "background": "rgb(243, 246, 237)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 8.595375864968924,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        }
+      ],
+      "helpAccessibleSnapshot": "- dialog \"Ayuda y aprendizaje\":\n  - text: APRENDER / REVISIأ“N GUIADA Idioma\n  - combobox \"Idioma\":\n    - option \"ES\" [selected]\n    - option \"EN\"\n  - button \"Cerrar\": أ—\n  - heading \"Ayuda y aprendizaje\" [level=2]\n  - navigation \"Ayuda y aprendizaje\":\n    - button \"آ؟Quأ© es GeoImpact Review Studio?\"\n    - button \"Iniciar recorrido guiado\"\n    - button \"Practicar con un ejemplo\"\n    - button \"Entender PASS / BLOCK / ERROR\"\n    - button \"Diccionario de tأ©rminos\"\n    - button \"Procedencia y limitaciones\"\n  - link \"Revisiأ³n y ayuda del proyecto â†—\":\n    - /url: https://github.com/soroushkarahrodi79-oss/geoimpact-ci/issues\n  - button \"Ver bienvenida\""
+    },
+    {
+      "id": "viewport-1440x1000",
+      "result": "VERIFIED",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "modalFocusContained": true,
+      "modalEscapeRestoredHelp": true,
+      "mapKeyboardAndCamera": true,
+      "mapZoomAndFit": true,
+      "semantics": {
+        "maps": "- region \"Geometrأ­as originales\":\n  - text: 01 / COMPARAR\n  - heading \"Geometrأ­as originales\" [level=2]\n  - text: CRS84 آ· lon/lat\n  - button \"Acercar\": +\n  - button \"Alejar\": âˆ’\n  - button \"Encuadrar todo\"\n  - button \"Ver selecciأ³n\" [disabled]\n  - button \"Desplazar a la izquierda\": â†گ\n  - button \"Desplazar a la derecha\": â†’\n  - button \"Desplazar arriba\": â†‘\n  - button \"Desplazar abajo\": â†“\n  - checkbox \"Polأ­gonos\" [checked]\n  - text: Polأ­gonos\n  - checkbox \"Inventario fijo\" [checked]\n  - text: Inventario fijo Geometrأ­a primaria\n  - combobox \"Geometrأ­a primaria\":\n    - option \"Todas\" [selected]\n    - option \"chamberi آ· modificada\"\n    - option \"tetuan آ· modificada\"\n  - figure \"â—ڈBASE BASE آ· fixture\":\n    - strong: â—ڈBASE\n    - text: BASE آ· fixture\n    - img \"BASE آ· Geometrأ­as originales آ· 3 Inventario fijo\"\n  - figure \"â—ڈCANDIDATE CANDIDATE آ· fixture\":\n    - strong: â—ڈCANDIDATE\n    - text: CANDIDATE آ· fixture\n    - img \"CANDIDATE آ· Geometrأ­as originales آ· 3 Inventario fijo\"\n  - text: BASE CANDIDATE â—† Regresiأ³n â—ڈ Sin cambio â–، Frontera\n  - paragraph: Sin mapa base آ· coordenadas originales. Flechas para desplazar con el mapa enfocado; +/âˆ’ para zoom. Lista equivalente debajo.\n  - paragraph: GeoImpact CI contributors آ· MIT آ· synthetic fixtures, not official administrative data",
+        "relationships": "- region \"Relaciones espaciales\":\n  - text: 02 / INSPECCIONAR\n  - heading \"Relaciones espaciales\" [level=2]\n  - text: 3 visibles / 3 total Buscar ID o dataset\n  - searchbox \"Buscar ID o dataset\"\n  - text: Mostrar\n  - combobox \"Mostrar\":\n    - option \"Todas\" [selected]\n    - option \"Regresiones\"\n    - option \"Sin cambio\"\n  - text: Transiciأ³n before â†’ after\n  - combobox \"Transiciأ³n before â†’ after\":\n    - option \"Todas\" [selected]\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"]\"\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"]\"\n  - paragraph: Los filtros cambian las filas visibles; el resultado cientأ­fico permanece intacto.\n  - list:\n    - listitem:\n      - button \"hotel_813 hotels [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: hotel_813\n        - text: hotels [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n    - listitem:\n      - button \"hotel_unchanged hotels [\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"] Sin cambio\":\n        - strong: hotel_unchanged\n        - text: hotels [\"chamberi\"] â†’ [\"chamberi\"] Sin cambio\n    - listitem:\n      - button \"poi_212 tourism_pois [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: poi_212\n        - text: tourism_pois [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n  - button \"Anterior\" [disabled]\n  - text: Pأ،gina 1 de 1\n  - button \"Siguiente\" [disabled]",
+        "landmarks": {
+          "main": 1,
+          "h1": 1,
+          "lang": "es"
+        }
+      },
+      "selectionLink": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+      "retainedSelectionOutsideFilter": {
+        "visibleRows": 0,
+        "selectedId": "hotel_813",
+        "selectedSummary": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+        "rowCount": "0 visibles / 3 total"
+      },
+      "overflow": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "overflow": false
+      },
+      "focusTrace": [
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":240.625,"y":934,"width":105.453125,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":354.078125,"y":934,"width":81.3125,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":1164.765625,"y":934,"width":117.234375,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-130,"width":1440,"height":3049.953125},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":1180.78125,"y":20,"width":65.296875,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":1334,"y":20,"width":74,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":1048,"y":168.90625,"width":360,"height":49},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":1289.734375,"y":375.9375,"width":97.265625,"height":18},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-in","text":"+","rect":{"x":49,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-out","text":"âˆ’","rect":{"x":97,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"fit-all","text":"Encuadrar todo","rect":{"x":145,"y":658.53125,"width":96.65625,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panLeft","text":"â†گ","rect":{"x":334.46875,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panRight","text":"â†’","rect":{"x":382.46875,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panUp","text":"â†‘","rect":{"x":430.46875,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panDown","text":"â†“","rect":{"x":478.46875,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"polygons-toggle","text":"","rect":{"x":863.9375,"y":671.53125,"width":18,"height":18},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"points-toggle","text":"","rect":{"x":954.25,"y":671.53125,"width":18,"height":18},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"primary","text":"Todaschamberi آ· modificadatetuan آ· modificada","rect":{"x":156.109375,"y":714.53125,"width":310,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"base-map","text":"chamberi آ· modifiedtetuan آ· modifiedhotel_813 آ· assignment_changedhote","rect":{"x":33,"y":674.53125,"width":516,"height":325},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"candidate-map","text":"chamberi آ· modifiedtetuan آ· modifiedhotel_813 آ· assignment_changedhote","rect":{"x":550,"y":674.53125,"width":515,"height":325},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"search","text":"","rect":{"x":53,"y":352.0625,"width":423.5,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"filter","text":"TodasRegresionesSin cambio","rect":{"x":486.5,"y":352.0625,"width":125,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"transition","text":"Todas[\"chamberi\"] â†’ [\"tetuan\"][\"chamberi\"] â†’ [\"chamberi\"]","rect":{"x":621.5,"y":352.0625,"width":423.5,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_813hotels[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":33,"y":474.5625,"width":1032,"height":65},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_unchangedhotels[\"chamberi\"] â†’ [\"chamberi\"]Sin cambio","rect":{"x":33,"y":540.5625,"width":1032,"height":65},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"poi_212tourism_pois[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":33,"y":606.5625,"width":1032,"height":65},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":974.203125,"width":115,"height":16.5},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":501.703125,"width":115,"height":16.5},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":565.203125,"width":115,"height":16.5},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":628.703125,"width":115,"height":16.5},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":692.203125,"width":115,"height":16.5},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":755.703125,"width":115,"height":16.5},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":819.203125,"width":115,"height":16.5},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":1272,"y":882.703125,"width":115,"height":16.5},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"SUMMARY","text":"Configuraciأ³n original آ· solo lectura","rect":{"x":53,"y":931.203125,"width":1334,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Gate 1 آ· construction and limitations","rect":{"x":71,"y":509.796875,"width":191.09375,"height":16},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"guide-language","text":"ESEN","rect":{"x":1158,"y":763.21875,"width":70,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"أ—","rect":{"x":1238,"y":763.21875,"width":44,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"DIV","text":"آ؟Para quأ© sirve esta herramienta?GeoImpact Review Studio ayuda a revis","rect":{"x":142,"y":814.21875,"width":1156,"height":110.78125},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":240.625,"y":934,"width":105.453125,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":354.078125,"y":934,"width":81.3125,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":1164.765625,"y":934,"width":117.234375,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-2051,"width":1440,"height":3049.953125},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":1180.78125,"y":20,"width":65.296875,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":1334,"y":20,"width":74,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":1048,"y":168.90625,"width":360,"height":49},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":1289.734375,"y":375.9375,"width":97.265625,"height":18},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-in","text":"+","rect":{"x":49,"y":658.53125,"width":44,"height":44},"dock":{"x":140,"y":755.21875,"width":1160,"height":232.78125},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"}
+      ],
+      "contrastSamples": [
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "15px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "15px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".guide-panel-body p",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".onboarding-primary",
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(16, 85, 76)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 8.656965759817746,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".onboarding-notice",
+          "foreground": "rgb(51, 76, 58)",
+          "background": "rgb(243, 246, 237)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 8.595375864968924,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        }
+      ],
+      "helpAccessibleSnapshot": "- dialog \"Ayuda y aprendizaje\":\n  - text: APRENDER / REVISIأ“N GUIADA Idioma\n  - combobox \"Idioma\":\n    - option \"ES\" [selected]\n    - option \"EN\"\n  - button \"Cerrar\": أ—\n  - heading \"Ayuda y aprendizaje\" [level=2]\n  - navigation \"Ayuda y aprendizaje\":\n    - button \"آ؟Quأ© es GeoImpact Review Studio?\"\n    - button \"Iniciar recorrido guiado\"\n    - button \"Practicar con un ejemplo\"\n    - button \"Entender PASS / BLOCK / ERROR\"\n    - button \"Diccionario de tأ©rminos\"\n    - button \"Procedencia y limitaciones\"\n  - link \"Revisiأ³n y ayuda del proyecto â†—\":\n    - /url: https://github.com/soroushkarahrodi79-oss/geoimpact-ci/issues\n  - button \"Ver bienvenida\""
+    },
+    {
+      "id": "viewport-834x1112",
+      "result": "VERIFIED_WITH_FINDING",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "modalFocusContained": true,
+      "modalEscapeRestoredHelp": true,
+      "mapKeyboardAndCamera": true,
+      "mapZoomAndFit": true,
+      "semantics": {
+        "maps": "- region \"Geometrأ­as originales\":\n  - text: 01 / COMPARAR\n  - heading \"Geometrأ­as originales\" [level=2]\n  - text: CRS84 آ· lon/lat\n  - button \"Acercar\": +\n  - button \"Alejar\": âˆ’\n  - button \"Encuadrar todo\"\n  - button \"Ver selecciأ³n\" [disabled]\n  - button \"Desplazar a la izquierda\": â†گ\n  - button \"Desplazar a la derecha\": â†’\n  - button \"Desplazar arriba\": â†‘\n  - button \"Desplazar abajo\": â†“\n  - checkbox \"Polأ­gonos\" [checked]\n  - text: Polأ­gonos\n  - checkbox \"Inventario fijo\" [checked]\n  - text: Inventario fijo Geometrأ­a primaria\n  - combobox \"Geometrأ­a primaria\":\n    - option \"Todas\" [selected]\n    - option \"chamberi آ· modificada\"\n    - option \"tetuan آ· modificada\"\n  - figure \"â—ڈBASE BASE آ· fixture\":\n    - strong: â—ڈBASE\n    - text: BASE آ· fixture\n    - img \"BASE آ· Geometrأ­as originales آ· 3 Inventario fijo\"\n  - figure \"â—ڈCANDIDATE CANDIDATE آ· fixture\":\n    - strong: â—ڈCANDIDATE\n    - text: CANDIDATE آ· fixture\n    - img \"CANDIDATE آ· Geometrأ­as originales آ· 3 Inventario fijo\"\n  - text: BASE CANDIDATE â—† Regresiأ³n â—ڈ Sin cambio â–، Frontera\n  - paragraph: Sin mapa base آ· coordenadas originales. Flechas para desplazar con el mapa enfocado; +/âˆ’ para zoom. Lista equivalente debajo.\n  - paragraph: GeoImpact CI contributors آ· MIT آ· synthetic fixtures, not official administrative data",
+        "relationships": "- region \"Relaciones espaciales\":\n  - text: 02 / INSPECCIONAR\n  - heading \"Relaciones espaciales\" [level=2]\n  - text: 3 visibles / 3 total Buscar ID o dataset\n  - searchbox \"Buscar ID o dataset\"\n  - text: Mostrar\n  - combobox \"Mostrar\":\n    - option \"Todas\" [selected]\n    - option \"Regresiones\"\n    - option \"Sin cambio\"\n  - text: Transiciأ³n before â†’ after\n  - combobox \"Transiciأ³n before â†’ after\":\n    - option \"Todas\" [selected]\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"]\"\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"]\"\n  - paragraph: Los filtros cambian las filas visibles; el resultado cientأ­fico permanece intacto.\n  - list:\n    - listitem:\n      - button \"hotel_813 hotels [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: hotel_813\n        - text: hotels [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n    - listitem:\n      - button \"hotel_unchanged hotels [\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"] Sin cambio\":\n        - strong: hotel_unchanged\n        - text: hotels [\"chamberi\"] â†’ [\"chamberi\"] Sin cambio\n    - listitem:\n      - button \"poi_212 tourism_pois [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: poi_212\n        - text: tourism_pois [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n  - button \"Anterior\" [disabled]\n  - text: Pأ،gina 1 de 1\n  - button \"Siguiente\" [disabled]",
+        "landmarks": {
+          "main": 1,
+          "h1": 1,
+          "lang": "es"
+        }
+      },
+      "selectionLink": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+      "retainedSelectionOutsideFilter": {
+        "visibleRows": 0,
+        "selectedId": "hotel_813",
+        "selectedSummary": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+        "rowCount": "0 visibles / 3 total"
+      },
+      "overflow": {
+        "width": 834,
+        "scrollWidth": 834,
+        "overflow": false
+      },
+      "focusTrace": [
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":116.625,"y":1046,"width":105.453125,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":230.078125,"y":1046,"width":81.3125,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":682.765625,"y":1046,"width":117.234375,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-130,"width":834,"height":3535.375},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":594.78125,"y":20,"width":65.296875,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":728,"y":20,"width":74,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":492,"y":180.15625,"width":310,"height":49},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":683.734375,"y":405.1875,"width":97.265625,"height":18},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-in","text":"+","rect":{"x":49,"y":709.53125,"width":44,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-out","text":"âˆ’","rect":{"x":97,"y":709.53125,"width":44,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"fit-all","text":"Encuadrar todo","rect":{"x":145,"y":709.53125,"width":96.65625,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panLeft","text":"â†گ","rect":{"x":334.46875,"y":709.53125,"width":44,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panRight","text":"â†’","rect":{"x":382.46875,"y":709.53125,"width":44,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panUp","text":"â†‘","rect":{"x":430.46875,"y":709.53125,"width":44,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panDown","text":"â†“","rect":{"x":478.46875,"y":709.53125,"width":44,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"polygons-toggle","text":"","rect":{"x":599.9375,"y":722.53125,"width":18,"height":18},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"points-toggle","text":"","rect":{"x":690.25,"y":722.53125,"width":18,"height":18},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"primary","text":"Todaschamberi آ· modificadatetuan آ· modificada","rect":{"x":156.109375,"y":765.53125,"width":310,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"base-map","text":"chamberi آ· modifiedtetuan آ· modifiedhotel_813 آ· assignment_changedhote","rect":{"x":33,"y":766.53125,"width":384,"height":345},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"candidate-map","text":"chamberi آ· modifiedtetuan آ· modifiedhotel_813 آ· assignment_changedhote","rect":{"x":418,"y":766.53125,"width":383,"height":345},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"search","text":"","rect":{"x":53,"y":396.0625,"width":291.5,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"filter","text":"TodasRegresionesSin cambio","rect":{"x":354.5,"y":396.0625,"width":125,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"transition","text":"Todas[\"chamberi\"] â†’ [\"tetuan\"][\"chamberi\"] â†’ [\"chamberi\"]","rect":{"x":489.5,"y":396.0625,"width":291.5,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_813hotels[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":33,"y":518.5625,"width":768,"height":65},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_unchangedhotels[\"chamberi\"] â†’ [\"chamberi\"]Sin cambio","rect":{"x":33,"y":584.5625,"width":768,"height":65},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"poi_212tourism_pois[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":33,"y":650.5625,"width":768,"height":65},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":666,"y":557.859375,"width":115,"height":16.5},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":666,"y":621.359375,"width":115,"height":16.5},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":666,"y":684.859375,"width":115,"height":16.5},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":666,"y":748.359375,"width":115,"height":16.5},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":666,"y":811.859375,"width":115,"height":16.5},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":666,"y":875.359375,"width":115,"height":16.5},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":666,"y":938.859375,"width":115,"height":16.5},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":666,"y":1002.359375,"width":115,"height":16.5},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"SUMMARY","text":"Configuraciأ³n original آ· solo lectura","rect":{"x":53,"y":1050.859375,"width":728,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Gate 1 آ· construction and limitations","rect":{"x":71,"y":558.046875,"width":191.09375,"height":16},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"guide-language","text":"ESEN","rect":{"x":676,"y":852.828125,"width":70,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"أ—","rect":{"x":756,"y":852.828125,"width":44,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"DIV","text":"آ؟Para quأ© sirve esta herramienta?GeoImpact Review Studio ayuda a revis","rect":{"x":18,"y":903.828125,"width":798,"height":133.171875},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":116.625,"y":1046,"width":105.453125,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":230.078125,"y":1046,"width":81.3125,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":682.765625,"y":1046,"width":117.234375,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-2401,"width":834,"height":3535.375},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":594.78125,"y":20,"width":65.296875,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":728,"y":20,"width":74,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":492,"y":180.15625,"width":310,"height":49},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":683.734375,"y":405.1875,"width":97.265625,"height":18},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-in","text":"+","rect":{"x":49,"y":709.53125,"width":44,"height":44},"dock":{"x":16,"y":844.828125,"width":802,"height":255.171875},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"}
+      ],
+      "contrastSamples": [
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "15px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "15px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".guide-panel-body p",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".onboarding-primary",
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(16, 85, 76)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 8.656965759817746,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".onboarding-notice",
+          "foreground": "rgb(51, 76, 58)",
+          "background": "rgb(243, 246, 237)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 8.595375864968924,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        }
+      ],
+      "helpAccessibleSnapshot": "- dialog \"Ayuda y aprendizaje\":\n  - text: APRENDER / REVISIأ“N GUIADA Idioma\n  - combobox \"Idioma\":\n    - option \"ES\" [selected]\n    - option \"EN\"\n  - button \"Cerrar\": أ—\n  - heading \"Ayuda y aprendizaje\" [level=2]\n  - navigation \"Ayuda y aprendizaje\":\n    - button \"آ؟Quأ© es GeoImpact Review Studio?\"\n    - button \"Iniciar recorrido guiado\"\n    - button \"Practicar con un ejemplo\"\n    - button \"Entender PASS / BLOCK / ERROR\"\n    - button \"Diccionario de tأ©rminos\"\n    - button \"Procedencia y limitaciones\"\n  - link \"Revisiأ³n y ayuda del proyecto â†—\":\n    - /url: https://github.com/soroushkarahrodi79-oss/geoimpact-ci/issues\n  - button \"Ver bienvenida\""
+    },
+    {
+      "id": "viewport-390x844",
+      "result": "VERIFIED_WITH_FINDING",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "modalFocusContained": true,
+      "modalEscapeRestoredHelp": true,
+      "mapKeyboardAndCamera": true,
+      "mapZoomAndFit": true,
+      "semantics": {
+        "maps": "- region \"Geometrأ­as originales\":\n  - text: 01 / COMPARAR\n  - heading \"Geometrأ­as originales\" [level=2]\n  - text: CRS84 آ· lon/lat\n  - button \"Acercar\": +\n  - button \"Alejar\": âˆ’\n  - button \"Encuadrar todo\"\n  - button \"Ver selecciأ³n\" [disabled]\n  - button \"Desplazar a la izquierda\": â†گ\n  - button \"Desplazar a la derecha\": â†’\n  - button \"Desplazar arriba\": â†‘\n  - button \"Desplazar abajo\": â†“\n  - checkbox \"Polأ­gonos\" [checked]\n  - text: Polأ­gonos\n  - checkbox \"Inventario fijo\" [checked]\n  - text: Inventario fijo Geometrأ­a primaria\n  - combobox \"Geometrأ­a primaria\":\n    - option \"Todas\" [selected]\n    - option \"chamberi آ· modificada\"\n    - option \"tetuan آ· modificada\"\n  - group \"Snapshot\":\n    - button \"BASE\" [pressed]\n    - button \"CANDIDATE\"\n  - figure \"â—ڈBASE BASE آ· fixture\":\n    - strong: â—ڈBASE\n    - text: BASE آ· fixture\n    - img \"BASE آ· Geometrأ­as originales آ· 3 Inventario fijo\"\n  - text: BASE CANDIDATE â—† Regresiأ³n â—ڈ Sin cambio â–، Frontera\n  - paragraph: Sin mapa base آ· coordenadas originales. Flechas para desplazar con el mapa enfocado; +/âˆ’ para zoom. Lista equivalente debajo.\n  - paragraph: GeoImpact CI contributors آ· MIT آ· synthetic fixtures, not official administrative data",
+        "relationships": "- region \"Relaciones espaciales\":\n  - text: 02 / INSPECCIONAR\n  - heading \"Relaciones espaciales\" [level=2]\n  - text: 3 visibles / 3 total Buscar ID o dataset\n  - searchbox \"Buscar ID o dataset\"\n  - text: Mostrar\n  - combobox \"Mostrar\":\n    - option \"Todas\" [selected]\n    - option \"Regresiones\"\n    - option \"Sin cambio\"\n  - text: Transiciأ³n before â†’ after\n  - combobox \"Transiciأ³n before â†’ after\":\n    - option \"Todas\" [selected]\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"]\"\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"]\"\n  - paragraph: Los filtros cambian las filas visibles; el resultado cientأ­fico permanece intacto.\n  - list:\n    - listitem:\n      - button \"hotel_813 hotels [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: hotel_813\n        - text: hotels [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n    - listitem:\n      - button \"hotel_unchanged hotels [\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"] Sin cambio\":\n        - strong: hotel_unchanged\n        - text: hotels [\"chamberi\"] â†’ [\"chamberi\"] Sin cambio\n    - listitem:\n      - button \"poi_212 tourism_pois [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: poi_212\n        - text: tourism_pois [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n  - button \"Anterior\" [disabled]\n  - text: Pأ،gina 1 de 1\n  - button \"Siguiente\" [disabled]",
+        "landmarks": {
+          "main": 1,
+          "h1": 1,
+          "lang": "es"
+        }
+      },
+      "selectionLink": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+      "retainedSelectionOutsideFilter": {
+        "visibleRows": 0,
+        "selectedId": "hotel_813",
+        "selectedSummary": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+        "rowCount": "0 visibles / 3 total"
+      },
+      "overflow": {
+        "width": 390,
+        "scrollWidth": 390,
+        "overflow": false
+      },
+      "focusTrace": [
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":90.890625,"y":733,"width":93.34375,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":190.234375,"y":733,"width":71.0625,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":20,"y":783,"width":104.21875,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-112,"width":390,"height":5384.109375},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":239.703125,"y":15,"width":59.296875,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":309,"y":15,"width":65,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":16,"y":298.09375,"width":358,"height":49},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":36,"y":610.671875,"width":97.265625,"height":18},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-in","text":"+","rect":{"x":29,"y":410.109375,"width":44,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-out","text":"âˆ’","rect":{"x":77,"y":410.109375,"width":44,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"fit-all","text":"Encuadrar todo","rect":{"x":125,"y":410.109375,"width":89.6875,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panLeft","text":"â†گ","rect":{"x":301.609375,"y":410.109375,"width":44,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panRight","text":"â†’","rect":{"x":29,"y":458.109375,"width":44,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panUp","text":"â†‘","rect":{"x":77,"y":458.109375,"width":44,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panDown","text":"â†“","rect":{"x":125,"y":458.109375,"width":44,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"polygons-toggle","text":"","rect":{"x":33,"y":521.109375,"width":18,"height":18},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"points-toggle","text":"","rect":{"x":129.3125,"y":521.109375,"width":18,"height":18},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"primary","text":"Todaschamberi آ· modificadatetuan آ· modificada","rect":{"x":29,"y":584.609375,"width":332,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"base-tab","text":"BASE","rect":{"x":29,"y":640.609375,"width":163.5,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"candidate-tab","text":"CANDIDATE","rect":{"x":197.5,"y":640.609375,"width":163.5,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"base-map","text":"chamberi آ· modifiedtetuan آ· modifiedhotel_813 آ· assignment_changedhote","rect":{"x":17,"y":523.609375,"width":356,"height":320},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"search","text":"","rect":{"x":32,"y":224.046875,"width":206,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"filter","text":"TodasRegresionesSin cambio","rect":{"x":248,"y":224.046875,"width":110,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"transition","text":"Todas[\"chamberi\"] â†’ [\"tetuan\"][\"chamberi\"] â†’ [\"chamberi\"]","rect":{"x":32,"y":298.046875,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_813hotels[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":17,"y":392.046875,"width":356,"height":95},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_unchangedhotels[\"chamberi\"] â†’ [\"chamberi\"]Sin cambio","rect":{"x":17,"y":488.046875,"width":356,"height":95},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"poi_212tourism_pois[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":17,"y":584.046875,"width":356,"height":95},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":410.3125,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":566.8125,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":723.3125,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":409.8125,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":566.3125,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":722.8125,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":410.3125,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":566.8125,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"SUMMARY","text":"Configuraciأ³n original آ· solo lectura","rect":{"x":32,"y":634.8125,"width":326,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Gate 1 آ· construction and limitations","rect":{"x":50,"y":789,"width":191.09375,"height":16},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"guide-language","text":"ESEN","rect":{"x":249,"y":511.625,"width":70,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"أ—","rect":{"x":326,"y":511.625,"width":44,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"DIV","text":"آ؟Para quأ© sirve esta herramienta?GeoImpact Review Studio ayuda a revis","rect":{"x":10,"y":561.625,"width":370,"height":163.375},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":90.890625,"y":733,"width":93.34375,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":190.234375,"y":733,"width":71.0625,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":20,"y":783,"width":104.21875,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-3772,"width":390,"height":5384.109375},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":239.703125,"y":15,"width":59.296875,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":309,"y":15,"width":65,"height":44},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":16,"y":298.09375,"width":358,"height":49},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":36,"y":610.671875,"width":97.265625,"height":18},"dock":{"x":8,"y":504.625,"width":374,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"}
+      ],
+      "contrastSamples": [
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".guide-panel-body p",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".onboarding-primary",
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(16, 85, 76)",
+          "fontSize": "12px",
+          "fontWeight": "600",
+          "ratio": 8.656965759817746,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".onboarding-notice",
+          "foreground": "rgb(51, 76, 58)",
+          "background": "rgb(243, 246, 237)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 8.595375864968924,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        }
+      ],
+      "helpAccessibleSnapshot": "- dialog \"Ayuda y aprendizaje\":\n  - text: APRENDER / REVISIأ“N GUIADA Idioma\n  - combobox \"Idioma\":\n    - option \"ES\" [selected]\n    - option \"EN\"\n  - button \"Cerrar\": أ—\n  - heading \"Ayuda y aprendizaje\" [level=2]\n  - navigation \"Ayuda y aprendizaje\":\n    - button \"آ؟Quأ© es GeoImpact Review Studio?\"\n    - button \"Iniciar recorrido guiado\"\n    - button \"Practicar con un ejemplo\"\n    - button \"Entender PASS / BLOCK / ERROR\"\n    - button \"Diccionario de tأ©rminos\"\n    - button \"Procedencia y limitaciones\"\n  - link \"Revisiأ³n y ayuda del proyecto â†—\":\n    - /url: https://github.com/soroushkarahrodi79-oss/geoimpact-ci/issues\n  - button \"Ver bienvenida\""
+    },
+    {
+      "id": "viewport-375x812",
+      "result": "VERIFIED_WITH_FINDING",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "modalFocusContained": true,
+      "modalEscapeRestoredHelp": true,
+      "mapKeyboardAndCamera": true,
+      "mapZoomAndFit": true,
+      "semantics": {
+        "maps": "- region \"Geometrأ­as originales\":\n  - text: 01 / COMPARAR\n  - heading \"Geometrأ­as originales\" [level=2]\n  - text: CRS84 آ· lon/lat\n  - button \"Acercar\": +\n  - button \"Alejar\": âˆ’\n  - button \"Encuadrar todo\"\n  - button \"Ver selecciأ³n\" [disabled]\n  - button \"Desplazar a la izquierda\": â†گ\n  - button \"Desplazar a la derecha\": â†’\n  - button \"Desplazar arriba\": â†‘\n  - button \"Desplazar abajo\": â†“\n  - checkbox \"Polأ­gonos\" [checked]\n  - text: Polأ­gonos\n  - checkbox \"Inventario fijo\" [checked]\n  - text: Inventario fijo Geometrأ­a primaria\n  - combobox \"Geometrأ­a primaria\":\n    - option \"Todas\" [selected]\n    - option \"chamberi آ· modificada\"\n    - option \"tetuan آ· modificada\"\n  - group \"Snapshot\":\n    - button \"BASE\" [pressed]\n    - button \"CANDIDATE\"\n  - figure \"â—ڈBASE BASE آ· fixture\":\n    - strong: â—ڈBASE\n    - text: BASE آ· fixture\n    - img \"BASE آ· Geometrأ­as originales آ· 3 Inventario fijo\"\n  - text: BASE CANDIDATE â—† Regresiأ³n â—ڈ Sin cambio â–، Frontera\n  - paragraph: Sin mapa base آ· coordenadas originales. Flechas para desplazar con el mapa enfocado; +/âˆ’ para zoom. Lista equivalente debajo.\n  - paragraph: GeoImpact CI contributors آ· MIT آ· synthetic fixtures, not official administrative data",
+        "relationships": "- region \"Relaciones espaciales\":\n  - text: 02 / INSPECCIONAR\n  - heading \"Relaciones espaciales\" [level=2]\n  - text: 3 visibles / 3 total Buscar ID o dataset\n  - searchbox \"Buscar ID o dataset\"\n  - text: Mostrar\n  - combobox \"Mostrar\":\n    - option \"Todas\" [selected]\n    - option \"Regresiones\"\n    - option \"Sin cambio\"\n  - text: Transiciأ³n before â†’ after\n  - combobox \"Transiciأ³n before â†’ after\":\n    - option \"Todas\" [selected]\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"]\"\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"]\"\n  - paragraph: Los filtros cambian las filas visibles; el resultado cientأ­fico permanece intacto.\n  - list:\n    - listitem:\n      - button \"hotel_813 hotels [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: hotel_813\n        - text: hotels [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n    - listitem:\n      - button \"hotel_unchanged hotels [\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"] Sin cambio\":\n        - strong: hotel_unchanged\n        - text: hotels [\"chamberi\"] â†’ [\"chamberi\"] Sin cambio\n    - listitem:\n      - button \"poi_212 tourism_pois [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: poi_212\n        - text: tourism_pois [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n  - button \"Anterior\" [disabled]\n  - text: Pأ،gina 1 de 1\n  - button \"Siguiente\" [disabled]",
+        "landmarks": {
+          "main": 1,
+          "h1": 1,
+          "lang": "es"
+        }
+      },
+      "selectionLink": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+      "retainedSelectionOutsideFilter": {
+        "visibleRows": 0,
+        "selectedId": "hotel_813",
+        "selectedSummary": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+        "rowCount": "0 visibles / 3 total"
+      },
+      "overflow": {
+        "width": 375,
+        "scrollWidth": 375,
+        "overflow": false
+      },
+      "focusTrace": [
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":90.890625,"y":701,"width":93.34375,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":190.234375,"y":701,"width":71.0625,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":20,"y":751,"width":104.21875,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-112,"width":375,"height":5456.609375},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":224.703125,"y":15,"width":59.296875,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":294,"y":15,"width":65,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":16,"y":298.09375,"width":343,"height":49},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":36,"y":610.671875,"width":97.265625,"height":18},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-in","text":"+","rect":{"x":29,"y":394.109375,"width":44,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-out","text":"âˆ’","rect":{"x":77,"y":394.109375,"width":44,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"fit-all","text":"Encuadrar todo","rect":{"x":125,"y":394.109375,"width":89.6875,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panLeft","text":"â†گ","rect":{"x":301.609375,"y":394.109375,"width":44,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panRight","text":"â†’","rect":{"x":29,"y":442.109375,"width":44,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panUp","text":"â†‘","rect":{"x":77,"y":442.109375,"width":44,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panDown","text":"â†“","rect":{"x":125,"y":442.109375,"width":44,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"polygons-toggle","text":"","rect":{"x":33,"y":505.109375,"width":18,"height":18},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"points-toggle","text":"","rect":{"x":129.3125,"y":505.109375,"width":18,"height":18},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"primary","text":"Todaschamberi آ· modificadatetuan آ· modificada","rect":{"x":29,"y":568.609375,"width":317,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"base-tab","text":"BASE","rect":{"x":29,"y":624.609375,"width":156,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"candidate-tab","text":"CANDIDATE","rect":{"x":190,"y":624.609375,"width":156,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"base-map","text":"chamberi آ· modifiedtetuan آ· modifiedhotel_813 آ· assignment_changedhote","rect":{"x":17,"y":491.609375,"width":341,"height":320},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"search","text":"","rect":{"x":32,"y":208.046875,"width":191,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"filter","text":"TodasRegresionesSin cambio","rect":{"x":233,"y":208.046875,"width":110,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"transition","text":"Todas[\"chamberi\"] â†’ [\"tetuan\"][\"chamberi\"] â†’ [\"chamberi\"]","rect":{"x":32,"y":282.046875,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_813hotels[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":17,"y":376.046875,"width":341,"height":95},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_unchangedhotels[\"chamberi\"] â†’ [\"chamberi\"]Sin cambio","rect":{"x":17,"y":472.046875,"width":341,"height":95},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"poi_212tourism_pois[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":17,"y":568.046875,"width":341,"height":95},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":393.8125,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":550.3125,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":706.8125,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":394.3125,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":550.8125,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":707.3125,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":393.8125,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":550.3125,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"SUMMARY","text":"Configuraciأ³n original آ· solo lectura","rect":{"x":32,"y":618.3125,"width":311,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Gate 1 آ· construction and limitations","rect":{"x":50,"y":772.5,"width":191.09375,"height":16},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"guide-language","text":"ESEN","rect":{"x":234,"y":479.625,"width":70,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"أ—","rect":{"x":311,"y":479.625,"width":44,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"DIV","text":"آ؟Para quأ© sirve esta herramienta?GeoImpact Review Studio ayuda a revis","rect":{"x":10,"y":529.625,"width":355,"height":163.375},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":90.890625,"y":701,"width":93.34375,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":190.234375,"y":701,"width":71.0625,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":20,"y":751,"width":104.21875,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-3861,"width":375,"height":5456.609375},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":224.703125,"y":15,"width":59.296875,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":294,"y":15,"width":65,"height":44},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":16,"y":298.09375,"width":343,"height":49},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":36,"y":610.671875,"width":97.265625,"height":18},"dock":{"x":8,"y":472.625,"width":359,"height":331.375},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"}
+      ],
+      "contrastSamples": [
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        }
+      ],
+      "helpAccessibleSnapshot": "- dialog \"Ayuda y aprendizaje\":\n  - text: APRENDER / REVISIأ“N GUIADA Idioma\n  - combobox \"Idioma\":\n    - option \"ES\" [selected]\n    - option \"EN\"\n  - button \"Cerrar\": أ—\n  - heading \"Ayuda y aprendizaje\" [level=2]\n  - navigation \"Ayuda y aprendizaje\":\n    - button \"آ؟Quأ© es GeoImpact Review Studio?\"\n    - button \"Iniciar recorrido guiado\"\n    - button \"Practicar con un ejemplo\"\n    - button \"Entender PASS / BLOCK / ERROR\"\n    - button \"Diccionario de tأ©rminos\"\n    - button \"Procedencia y limitaciones\"\n  - link \"Revisiأ³n y ayuda del proyecto â†—\":\n    - /url: https://github.com/soroushkarahrodi79-oss/geoimpact-ci/issues\n  - button \"Ver bienvenida\""
+    },
+    {
+      "id": "viewport-320x812",
+      "result": "VERIFIED_WITH_FINDING",
+      "viewport": {
+        "width": 320,
+        "height": 812
+      },
+      "modalFocusContained": true,
+      "modalEscapeRestoredHelp": true,
+      "mapKeyboardAndCamera": true,
+      "mapZoomAndFit": true,
+      "semantics": {
+        "maps": "- region \"Geometrأ­as originales\":\n  - text: 01 / COMPARAR\n  - heading \"Geometrأ­as originales\" [level=2]\n  - text: CRS84 آ· lon/lat\n  - button \"Acercar\": +\n  - button \"Alejar\": âˆ’\n  - button \"Encuadrar todo\"\n  - button \"Ver selecciأ³n\" [disabled]\n  - button \"Desplazar a la izquierda\": â†گ\n  - button \"Desplazar a la derecha\": â†’\n  - button \"Desplazar arriba\": â†‘\n  - button \"Desplazar abajo\": â†“\n  - checkbox \"Polأ­gonos\" [checked]\n  - text: Polأ­gonos\n  - checkbox \"Inventario fijo\" [checked]\n  - text: Inventario fijo Geometrأ­a primaria\n  - combobox \"Geometrأ­a primaria\":\n    - option \"Todas\" [selected]\n    - option \"chamberi آ· modificada\"\n    - option \"tetuan آ· modificada\"\n  - group \"Snapshot\":\n    - button \"BASE\" [pressed]\n    - button \"CANDIDATE\"\n  - figure \"â—ڈBASE BASE آ· fixture\":\n    - strong: â—ڈBASE\n    - text: BASE آ· fixture\n    - img \"BASE آ· Geometrأ­as originales آ· 3 Inventario fijo\"\n  - text: BASE CANDIDATE â—† Regresiأ³n â—ڈ Sin cambio â–، Frontera\n  - paragraph: Sin mapa base آ· coordenadas originales. Flechas para desplazar con el mapa enfocado; +/âˆ’ para zoom. Lista equivalente debajo.\n  - paragraph: GeoImpact CI contributors آ· MIT آ· synthetic fixtures, not official administrative data",
+        "relationships": "- region \"Relaciones espaciales\":\n  - text: 02 / INSPECCIONAR\n  - heading \"Relaciones espaciales\" [level=2]\n  - text: 3 visibles / 3 total Buscar ID o dataset\n  - searchbox \"Buscar ID o dataset\"\n  - text: Mostrar\n  - combobox \"Mostrar\":\n    - option \"Todas\" [selected]\n    - option \"Regresiones\"\n    - option \"Sin cambio\"\n  - text: Transiciأ³n before â†’ after\n  - combobox \"Transiciأ³n before â†’ after\":\n    - option \"Todas\" [selected]\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"]\"\n    - option \"[\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"]\"\n  - paragraph: Los filtros cambian las filas visibles; el resultado cientأ­fico permanece intacto.\n  - list:\n    - listitem:\n      - button \"hotel_813 hotels [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: hotel_813\n        - text: hotels [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n    - listitem:\n      - button \"hotel_unchanged hotels [\\\"chamberi\\\"] â†’ [\\\"chamberi\\\"] Sin cambio\":\n        - strong: hotel_unchanged\n        - text: hotels [\"chamberi\"] â†’ [\"chamberi\"] Sin cambio\n    - listitem:\n      - button \"poi_212 tourism_pois [\\\"chamberi\\\"] â†’ [\\\"tetuan\\\"] Cambio de asignaciأ³n\":\n        - strong: poi_212\n        - text: tourism_pois [\"chamberi\"] â†’ [\"tetuan\"] Cambio de asignaciأ³n\n  - button \"Anterior\" [disabled]\n  - text: Pأ،gina 1 de 1\n  - button \"Siguiente\" [disabled]",
+        "landmarks": {
+          "main": 1,
+          "h1": 1,
+          "lang": "es"
+        }
+      },
+      "selectionLink": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+      "retainedSelectionOutsideFilter": {
+        "visibleRows": 0,
+        "selectedId": "hotel_813",
+        "selectedSummary": "Relaciأ³n seleccionada: hotel_813 آ· Evidencia de relaciأ³n â†“",
+        "rowCount": "0 visibles / 3 total"
+      },
+      "overflow": {
+        "width": 320,
+        "scrollWidth": 320,
+        "overflow": false
+      },
+      "focusTrace": [
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":90.890625,"y":701,"width":93.34375,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":190.234375,"y":701,"width":71.0625,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":20,"y":751,"width":104.21875,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-112,"width":320,"height":5753.734375},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":169.703125,"y":15,"width":59.296875,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":239,"y":15,"width":65,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":16,"y":332.890625,"width":288,"height":49},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":36,"y":668.46875,"width":97.265625,"height":18},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-in","text":"+","rect":{"x":29,"y":393.90625,"width":44,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"zoom-out","text":"âˆ’","rect":{"x":77,"y":393.90625,"width":44,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"fit-all","text":"Encuadrar todo","rect":{"x":125,"y":393.90625,"width":89.6875,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panLeft","text":"â†گ","rect":{"x":111.921875,"y":441.90625,"width":44,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panRight","text":"â†’","rect":{"x":159.921875,"y":441.90625,"width":44,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panUp","text":"â†‘","rect":{"x":207.921875,"y":441.90625,"width":44,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"panDown","text":"â†“","rect":{"x":29,"y":489.90625,"width":44,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"polygons-toggle","text":"","rect":{"x":33,"y":552.90625,"width":18,"height":18},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"points-toggle","text":"","rect":{"x":129.3125,"y":552.90625,"width":18,"height":18},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"primary","text":"Todaschamberi آ· modificadatetuan آ· modificada","rect":{"x":29,"y":616.40625,"width":262,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"base-tab","text":"BASE","rect":{"x":29,"y":672.40625,"width":128.5,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"candidate-tab","text":"CANDIDATE","rect":{"x":162.5,"y":672.40625,"width":128.5,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"base-map","text":"chamberi آ· modifiedtetuan آ· modifiedhotel_813 آ· assignment_changedhote","rect":{"x":17,"y":492.40625,"width":286,"height":320},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"search","text":"","rect":{"x":32,"y":199.78125,"width":136,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"filter","text":"TodasRegresionesSin cambio","rect":{"x":178,"y":199.78125,"width":110,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"transition","text":"Todas[\"chamberi\"] â†’ [\"tetuan\"][\"chamberi\"] â†’ [\"chamberi\"]","rect":{"x":32,"y":273.78125,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_813hotels[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":17,"y":367.78125,"width":286,"height":95},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"hotel_unchangedhotels[\"chamberi\"] â†’ [\"chamberi\"]Sin cambio","rect":{"x":17,"y":463.78125,"width":286,"height":95},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"poi_212tourism_pois[\"chamberi\"] â†’ [\"tetuan\"]Cambio de asignaciأ³n","rect":{"x":17,"y":559.78125,"width":286,"height":95},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":393.5625,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":550.0625,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":706.5625,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":394.0625,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":550.5625,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":707.0625,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":393.5625,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Archivo original â†“","rect":{"x":32,"y":550.0625,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"SUMMARY","text":"Configuraciأ³n original آ· solo lectura","rect":{"x":32,"y":618.0625,"width":256,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Gate 1 آ· construction and limitations","rect":{"x":50,"y":772.25,"width":191.09375,"height":16},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"guide-language","text":"ESEN","rect":{"x":179,"y":461.84375,"width":70,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"أ—","rect":{"x":256,"y":461.84375,"width":44,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"DIV","text":"آ؟Para quأ© sirve esta herramienta?GeoImpact Review Studio ayuda a revis","rect":{"x":10,"y":511.84375,"width":300,"height":181.15625},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Ir al apartado","rect":{"x":90.890625,"y":701,"width":93.34375,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Siguiente","rect":{"x":190.234375,"y":701,"width":71.0625,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BUTTON","text":"Saltar recorrido","rect":{"x":20,"y":751,"width":104.21875,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"BODY","text":"Ir a la revisiأ³n\n  \n    â—ˆGeoImpactREVIEW STUDIO\n    LOCAL آ· SOLO LECTU","rect":{"x":0,"y":-4104,"width":320,"height":5753.734375},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":false,"outline":"rgb(24, 53, 66) none 3px"},
+        {"id":"A","text":"Ir a la revisiأ³n","rect":{"x":18,"y":12,"width":121.6875,"height":48},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"help-button","text":"Ayuda","rect":{"x":169.703125,"y":15,"width":59.296875,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"language","text":"ESEN","rect":{"x":239,"y":15,"width":65,"height":44},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"case","text":"Lأ­mites sintأ©ticos آ· BLOCKMismos lأ­mites آ· PASSError de anأ،lisis آ· sin","rect":{"x":16,"y":332.890625,"width":288,"height":49},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":false,"hitGuide":false,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"},
+        {"id":"A","text":"Ver procedencia â†—","rect":{"x":36,"y":668.46875,"width":97.265625,"height":18},"dock":{"x":8,"y":454.84375,"width":304,"height":349.15625},"fullyCovered":true,"hitGuide":true,"focusVisible":true,"outline":"rgb(150, 96, 3) solid 3px"}
+      ],
+      "contrastSamples": [
+        {
+          "selector": "body",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "ratio": 11.86389413900627,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".intro-copy",
+          "foreground": "rgb(80, 108, 113)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "13px",
+          "fontWeight": "400",
+          "ratio": 5.181691533452349,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".scope-note",
+          "foreground": "rgb(82, 105, 108)",
+          "background": "rgb(243, 246, 244)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 5.367046303561354,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#verdict-meaning",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 250, 240)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.407876157922415,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".stat small",
+          "foreground": "rgb(88, 114, 117)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.14865165856041,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row small",
+          "foreground": "rgb(88, 116, 119)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "10px",
+          "fontWeight": "400",
+          "ratio": 5.024548804172409,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".row .transition-code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".field dd",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".provenance-note",
+          "foreground": "rgb(69, 102, 108)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "12px",
+          "fontWeight": "400",
+          "ratio": 6.231209578582351,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": ".file-row code",
+          "foreground": "rgb(24, 53, 66)",
+          "background": "rgb(255, 255, 255)",
+          "fontSize": "11px",
+          "fontWeight": "400",
+          "ratio": 12.909184695966474,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        },
+        {
+          "selector": "#help-button",
+          "foreground": "rgb(238, 246, 243)",
+          "background": "rgb(28, 57, 71)",
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "ratio": 11.075456441355623,
+          "note": "Opaque CSS token pair only; not every state, pixel or SVG boundary."
+        }
+      ],
+      "helpAccessibleSnapshot": "- dialog \"Ayuda y aprendizaje\":\n  - text: APRENDER / REVISIأ“N GUIADA Idioma\n  - combobox \"Idioma\":\n    - option \"ES\" [selected]\n    - option \"EN\"\n  - button \"Cerrar\": أ—\n  - heading \"Ayuda y aprendizaje\" [level=2]\n  - navigation \"Ayuda y aprendizaje\":\n    - button \"آ؟Quأ© es GeoImpact Review Studio?\"\n    - button \"Iniciar recorrido guiado\"\n    - button \"Practicar con un ejemplo\"\n    - button \"Entender PASS / BLOCK / ERROR\"\n    - button \"Diccionario de tأ©rminos\"\n    - button \"Procedencia y limitaciones\"\n  - link \"Revisiأ³n y ayuda del proyecto â†—\":\n    - /url: https://github.com/soroushkarahrodi79-oss/geoimpact-ci/issues\n  - button \"Ver bienvenida\""
+    },
+    {
+      "id": "practice-action-gate",
+      "result": "VERIFIED_WITH_FINDING",
+      "correctAnswerAndScrollAloneAdvance": false,
+      "helperVisitThenAdvance": true,
+      "realEvidenceAndSourceComplete": true,
+      "interpretation": "A specific instrumented visit is required; no human comprehension conclusion follows."
+    },
+    {
+      "id": "provenance-source-download",
+      "result": "VERIFIED",
+      "versions": 5,
+      "originalFileRows": 8,
+      "originalConfigHashMatches": true,
+      "downloadedReportSha256": "d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd",
+      "limitsPresent": true
+    },
+    {
+      "id": "pass-and-analysis-error",
+      "result": "VERIFIED",
+      "passHasTwoRegressions": true,
+      "analysisErrorClearsScientificView": true,
+      "safeHelp": true
+    },
+    {
+      "id": "load-missing",
+      "result": "VERIFIED",
+      "normalViewHidden": true,
+      "noScientificVerdict": true,
+      "noWelcomeInterruption": true,
+      "safeHelp": true,
+      "problem": "ERROR آ· CARGA O INTEGRIDAD\nEvidencia no disponible\n\nNo se puede revisar este paquete. No hay un veredicto vأ،lido para esta carga; la vista anterior se ha retirado.\n\nMISSING آ· data/synthetic-block/report.json\n\nReintentar"
+    },
+    {
+      "id": "load-byte-change",
+      "result": "VERIFIED",
+      "normalViewHidden": true,
+      "noScientificVerdict": true,
+      "noWelcomeInterruption": true,
+      "safeHelp": true,
+      "problem": "ERROR آ· CARGA O INTEGRIDAD\nEvidencia no disponible\n\nNo se puede revisar este paquete. No hay un veredicto vأ،lido para esta carga; la vista anterior se ha retirado.\n\nHASH_MISMATCH آ· data/synthetic-block/report.json\n\nReintentar"
+    },
+    {
+      "id": "reflow-zoom",
+      "result": "VERIFIED",
+      "method": "200% CSS zoom at 1440x1000 plus 320px viewport; not browser-chrome zoom",
+      "normal": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "overflow": false
+      },
+      "reducedMotion": true
+    },
+    {
+      "id": "sierra-local-zero",
+      "result": "VERIFIED",
+      "relationships": 52,
+      "regressions": 0,
+      "originalPointsRemain": true,
+      "noInventedRegressionId": true,
+      "screenshotsRetained": false,
+      "rights": "Retained local preparation/attribution only; no new legal clearance."
+    }
+  ],
+  "external_requests": [],
+  "uncaught_errors": [],
+  "ordinary_console_errors": [],
+  "scientific_bytes_unchanged": true,
+  "retained_bytes_sha256": {
+    "data/synthetic-block/manifest.json": "45840143923429ac8136eb86be5ca76f4268c20a4a3121e5af1f0e55fed83029",
+    "data/synthetic-block/geoimpact.yml": "17d97b90f4484be8b4244651441b4d5eea35e2f953b630f34429334af14f5df1",
+    "data/synthetic-block/districts_base.geojson": "fe2621c4defed71287355595ecd428fd8c1f7fddee822a37dddff4fe71b23837",
+    "data/synthetic-block/districts_candidate.geojson": "a3ef49590971c5cf5dc45c33ece307d0d77d300f4aba374a6947e56b3198e19c",
+    "data/synthetic-block/hotels.geojson": "b92889469f7c14863963ec8242b86cd215497db13af4ea60f88ece81f77b06f4",
+    "data/synthetic-block/tourism_pois.geojson": "ac93115affcf7db76f768785eb932b3d289a3d2da8d323f4d242566c96210257",
+    "data/synthetic-block/report.json": "d09f70d2f7fa07cef3fa87f5b1fe73d932c8f9c4619487c4a0fe8c4cc1d7b8dd",
+    "data/synthetic-block/report.md": "65ca9d67dd7ff59bc148fccc003354ea3201f51707f3e73ca2fd96dac208d95a",
+    "data/synthetic-block/relationship-regressions.geojson": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
+    "data/synthetic-pass/manifest.json": "b57b8d4f7376d0978be3ec7844ce0f4b16c7b05880f1a3a08cd603c477e416f5",
+    "data/synthetic-pass/geoimpact-pass.yml": "1ecd53d2f6ba5402d1e2f0b23de60749fa3d6de7224c10663e15685b19bca0a9",
+    "data/synthetic-pass/districts_base.geojson": "fe2621c4defed71287355595ecd428fd8c1f7fddee822a37dddff4fe71b23837",
+    "data/synthetic-pass/districts_candidate.geojson": "a3ef49590971c5cf5dc45c33ece307d0d77d300f4aba374a6947e56b3198e19c",
+    "data/synthetic-pass/hotels.geojson": "b92889469f7c14863963ec8242b86cd215497db13af4ea60f88ece81f77b06f4",
+    "data/synthetic-pass/tourism_pois.geojson": "ac93115affcf7db76f768785eb932b3d289a3d2da8d323f4d242566c96210257",
+    "data/synthetic-pass/report.json": "187e22c76d13de6902794c92d70e633fb98f9eb0c4f76f806a47709f498df5a4",
+    "data/synthetic-pass/report.md": "ad19ab07fc9bdd8e62b6f9dd9d95d952e8d1fca1540e1dacd3443e0b6d60b1f7",
+    "data/synthetic-pass/relationship-regressions.geojson": "a3557416a5a6f7c6eb5c3fa5d4b14a48864249f208981138e6d21bc542318978",
+    "data/synthetic-error/manifest.json": "a9a207871da02235dc5221512914973baf62a3dfc6a1b3e9329afc8ee338aac4",
+    "data/sierra-local/manifest.json": "350ae19b5bbae62e2986c07d8330b0a101884f391749e1fc84d5e9e3f3769ee5",
+    "data/sierra-local/geoimpact.yml": "f7e3245517cc5c16d97b34c08b0760e5055cfc25a71a39f1ee847413c0ee2520",
+    "data/sierra-local/base.geojson": "eae31120ec45e51c53b48515c0bde6e1d1c269edafea51076f862c16854d2799",
+    "data/sierra-local/candidate.geojson": "4f4b4ff369befb14c8f1d26e902fda4b431de26432f85897d2cd77df9485cc17",
+    "data/sierra-local/dependencies.geojson": "617d4b71921b8d66692f1c8457a56b9b6224abb0c044bb06ce7608e2524c0f6c",
+    "data/sierra-local/report.json": "b17899f1472500567bb2d2eb7d0a2a9c91731a3d7827896f5635a3ef353f7cf1",
+    "data/sierra-local/report.md": "907db7fd57c1091927277b55f624d51fb7087b453facf9cc35bdffdea44d3a89",
+    "data/sierra-local/relationship-regressions.geojson": "a55b431e78049bb7fdc7330ffdf2c9f8e87712545ebba199445408d48694225a"
+  }
+}

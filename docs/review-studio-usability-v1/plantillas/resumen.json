@@ -1,0 +1,21 @@
+{
+  "status": "NOT_RUN",
+  "reference_commit": "32f3ab50bb8a91d21118610bfc135b33e3fb2f3c",
+  "planned_participants": 4,
+  "recruited_participants": 0,
+  "human_sessions_completed": 0,
+  "human_results": [],
+  "actual_tested_profiles": [],
+  "withdrawals_or_omissions": [],
+  "assistance_and_onboarding_exposure": [],
+  "critical_interpretations": [],
+  "not_evaluated": [
+    "Human comprehension",
+    "Human task completion and timings",
+    "Screen-reader interaction",
+    "Physical-device interaction"
+  ],
+  "anonymisation_review_completed": false,
+  "publication_authorised": false,
+  "note": "Blank planning template. Technical browser traces are not participant results."
+}
